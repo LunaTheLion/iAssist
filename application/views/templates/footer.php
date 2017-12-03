@@ -16,9 +16,19 @@
         <script src="assets/js/popper.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="assets/js/bootstrap.min.js"></script>
+        </div>
       </body>
+      <p></p>
 <div class="row" style="background-color: black;" >
-    This is the footer bitchess
+    <div class="col-lg-4">
+        
+    </div>
+    <div class="col-lg-4">
+      iAssist  Copy Right @ 2017
+    </div>
+    <div class="col-lg-4">
+        
+    </div>
 </div>
     </html>
 

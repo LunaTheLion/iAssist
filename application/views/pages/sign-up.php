@@ -14,13 +14,13 @@
 	</div>
 	
 	<div class=" col-sm-5" style="margin: 0px;">
-		<form method="POST" action="<?php echo base_url('login/sign_in');?>"><p></p>
-		<input class="form-control form-control" type="text" name="gname" placeholder="Given Name" required="true"> <P></P>
-		<input class="form-control form-control" type="text" name="sname" placeholder="Surname" required="true"> <P></P>
-		<input class="form-control form-control" type="text" name="uname" placeholder="Username" required="true"> <label class="help-block">Create a Unique Username</label>
-		<input class="form-control form-control" type="email" name="email" placeholder="Email" required="true"><p></p>
-		<input class="form-control form-control" type="password" name="password" placeholder="Password" minlength="8" required="true"><p></p>
-		<input class="form-control form-control" type="password" name="cpassword" placeholder="Confirm Password" minlength="8" required="true"><p></p>
+		<form method="POST" action="<?php echo base_url('login/sign_up_validation');?>"><p></p>
+		<input class="form-control form-control" type="email" name="email" placeholder="Email" required="true">
+		 <?php echo form_error('email');?><p></p>
+		<input class="form-control form-control" type="password" name="password" placeholder="Password" minlength="8" required="true">
+		 <?php echo form_error('password');?><p></p>
+		<input class="form-control form-control" type="password" name="cpassword" placeholder="Confirm Password" minlength="8" required="true">
+		<?php echo form_error('cpassword');?><p></p>
 		
 		<div class="row">
 		<div class="col-lg-6">
@@ -34,7 +34,7 @@
 		</div>
 
 		</form><p></p>
-		<button class="btn btn-success btn-block" id="mButton">Modal</button>	
+		<!-- <button class="btn btn-success btn-block" id="mButton">Modal</button>	 -->
 
 		
 
