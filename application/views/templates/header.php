@@ -11,7 +11,9 @@
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
 
-    
+    <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
+    <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +42,7 @@
                       <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
+                      <a class="nav-link" href="<?php echo base_url('/about');?>">About</a>
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
@@ -51,6 +53,6 @@
               </nav>
       </div>    
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url('..assets/img/blog-desk7.jpg'); ">
 
    
