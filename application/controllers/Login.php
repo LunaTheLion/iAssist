@@ -13,9 +13,26 @@ class Login extends CI_Controller{
 			$password = $this->input->post('password');
 			if($this->Login_model->signin($email,$password))
 			{
-				$this->load->view('templates/header');
-				$this->load->view('pages/sign-in');
-				$this->load->view('templates/footer');	
+
+				if($this->Login_model->accountstatus($email)) // if user has completed the profile
+				{
+					//create an html file for creating and showing the data from the database
+					//then proceed to getting the data from database.
+					//show an html first to test the connection. 
+					//create an html wherein the user while be advised to complete his/her profile. 
+					//show info
+					$this->load->view('freelance/header');
+					$this->load->view('freelance/profile');
+					$this->load->view('freelance/footer');
+				}
+				else
+				{
+					//prompt profile completions
+					$this->load->view('freelance/header');
+					$this->load->view('freelance/create-profile');
+					$this->load->view('freelance/footer');	
+				}
+				
 			}
 			else
 				{

@@ -8,8 +8,8 @@ class Login_model extends CI_Model{
 		
 	}
 
-	public function signin($email,$password){
-		
+	public function signin($email,$password)// check if the user has signed up
+	{	
 		   $this->db->where('account_password', $password);
 		   $this->db->where('account_email', $email);
 		   $query = $this->db->get('account_tbl');        
@@ -23,6 +23,23 @@ class Login_model extends CI_Model{
 			return false;
 		}
 	}
+
+	public function accountstatus($email)//checking if the user has profile
+	{
+		$this->db->where('account_email', $email);
+		$this->db->where('account_status', 1);
+		$sql = $this->db->get('account_tbl');
+		if($sql->num_rows()> 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
 	public function signup($email,$password)
 	{
 		$data = array(

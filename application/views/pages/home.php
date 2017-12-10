@@ -1,7 +1,7 @@
-
+<div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk2.jpg'); ?>); background-size: cover;">
 <div class="row">
 	<div class="col-lg-8">
-		  <h1 class="display-3">Welcome to iAssist</h1>
+		
 	</div>
 	<div class="col-lg-4">
 		<div class="container">
@@ -50,3 +50,4 @@
 
 	</div>
 </div>
+</div><!-- jumbotron -->
