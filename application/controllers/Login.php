@@ -23,7 +23,7 @@ class Login extends CI_Controller{
 					//show info
 					$this->load->view('freelance/header');
 					$this->load->view('freelance/profile');
-					$this->load->view('freelance/footer');
+					$this->load->view('freelance/footer');	
 				}
 				else
 				{
@@ -40,6 +40,13 @@ class Login extends CI_Controller{
 					redirect(base_url().'home');
 				}
 	}
+	public function thread()
+	{
+		$this->load->view('freelance/header');
+		$this->load->view('freelance/thread');
+		$this->load->view('freelance/footer');
+	}
+
 	public function sign_up(){
 
 			$this->load->view('templates/header');

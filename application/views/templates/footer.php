@@ -1,17 +1,7 @@
 <p></p>
-<div class="row" style="background-color: black;" >
-    <div class="col-lg-4">
-        
-    </div>
-
-    <div class="col-lg-4">
-      iAssist  Copy Right @ 2017
-    </div>
-    <div class="col-lg-4">
-        
-    </div>
+<div class="jumbotron"  style="background-color: black;">
+    Hi!
 </div>
-
     <script src="./Bootswatch_ Lux_files/jquery.min.js.download"></script>
     <script src="./Bootswatch_ Lux_files/popper.min.js.download"></script>
     <script src="./Bootswatch_ Lux_files/bootstrap.min.js.download"></script>
