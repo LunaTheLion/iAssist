@@ -1,6 +1,16 @@
 <p></p>
 <div class="jumbotron"  style="background-color: black;">
-    Hi!
+    <div class="row">
+        <div class="col-lg-4">
+            
+        </div>
+        <div class="col-lg-4">
+            <h4 class="text-muted">iAssist @Copyrights 2017</h4>
+        </div>
+        <div class="col-lg-4">
+            
+        </div>
+    </div>
 </div>
     <script src="./Bootswatch_ Lux_files/jquery.min.js.download"></script>
     <script src="./Bootswatch_ Lux_files/popper.min.js.download"></script>

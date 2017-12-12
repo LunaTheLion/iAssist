@@ -21,9 +21,7 @@ class Login extends CI_Controller{
 					//show an html first to test the connection. 
 					//create an html wherein the user while be advised to complete his/her profile. 
 					//show info
-					$this->load->view('freelance/header');
-					$this->load->view('freelance/profile');
-					$this->load->view('freelance/footer');	
+					$this->profile();
 				}
 				else
 				{
@@ -40,6 +38,12 @@ class Login extends CI_Controller{
 					redirect(base_url().'home');
 				}
 	}
+	public function profile()
+	{
+		$this->load->view('freelance/header');
+		$this->load->view('freelance/profile');
+		$this->load->view('freelance/footer');	
+	}
 	public function thread()
 	{
 		$this->load->view('freelance/header');
@@ -47,12 +51,13 @@ class Login extends CI_Controller{
 		$this->load->view('freelance/footer');
 	}
 
-	public function sign_up(){
+	public function sign_up()
+	{
 
 			$this->load->view('templates/header');
 			$this->load->view('pages/sign-up');
 			$this->load->view('templates/footer');
-		}
+	}
 	public function sign_up_validation(){
 		
 		$this->form_validation->set_rules('email','Email', 'required');
