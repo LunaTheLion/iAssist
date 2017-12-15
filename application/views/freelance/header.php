@@ -19,21 +19,7 @@
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
     <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
-    <script>
 
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
-    </script>
 
 
   </head>
@@ -48,7 +34,7 @@
                <div class="collapse navbar-collapse" id="navbarColor01">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
-                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                     <a class="nav-link" href="<?php echo base_url('');?>Thread">Thread <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
                      <a class="nav-link" href="#">Profile</a>
@@ -59,11 +45,10 @@
                    <li class="nav-item">
                      <a class="nav-link" href="#">Settings</a>
                    </li>
+                   
                  </ul>
-                 <form class="form-inline my-2 my-lg-0">
-                   <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                   <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                 </form>
+                 
+                 
                </div>
              </nav>
       </div>    

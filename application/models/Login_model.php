@@ -4,8 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login_model extends CI_Model{
 
 	public function __construct(){
-		parent::__construct();
-		
+		parent::__construct();	
 	}
 
 	public function signin($email,$password)// check if the user has signed up
@@ -48,7 +47,6 @@ class Login_model extends CI_Model{
 			 );
 		$this->db->insert('account_tbl', $data);
 		return true;
-
 		// $this->load->view('templates/header');
 		// $this->load->view('pages/sign-up');
 		// $this->load->view('templates/footer');
