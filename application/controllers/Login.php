@@ -26,9 +26,7 @@ class Login extends CI_Controller{
 				else
 				{
 					//prompt profile completions
-					$this->load->view('freelance/header');
-					$this->load->view('freelance/create-profile');
-					$this->load->view('freelance/footer');	
+					redirect(base_url().'login/success_sign');
 				}	
 			}
 			else
@@ -37,6 +35,14 @@ class Login extends CI_Controller{
 					redirect(base_url('home'));
 				}
 	}
+	
+	public function success_sign()
+	{
+		$this->load->view('freelance/header');
+		$this->load->view('freelance/success-sign-in');
+		$this->load->view('freelance/footer');
+	}
+
 	public function profile()
 	{
 		$this->load->view('freelance/header');
@@ -60,26 +66,24 @@ class Login extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email','Email', 'required');
 		$this->form_validation->set_rules('password','Password', 'required');
-		$this->form_validation->set_rules('cpassword','Confirm Password', 'required');
+		$this->form_validation->set_rules('cpassword','Confirm Password', 'required|matches[password]');
 		$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
 
 		 if($this->form_validation->run())
 		 {
-			
-		 	
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			echo $email ; echo $password;
-			// if($this->Login_model->signup($email,$password))//if the model function is true.
-			// {
-			// 	// redirect(base_url().'login/sign_in');
-			// 	echo $email ; echo $password;
-			// }
-			// else
-			// {
-				
-			// 	redirect(base_url().'login/sign_up');
-			// }
+			//echo $email ; echo $password;
+			if($this->Login_model->signup($email,$password))//if the model function is true.
+			{
+				redirect(base_url().'login/sign_in');
+
+				//echo $email ; echo $password;
+			}
+			else
+			{
+				redirect(base_url().'login/sign_up');
+			}
 		}
 		else
 		{		

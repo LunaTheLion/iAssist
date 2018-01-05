@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-1">
 	
 	<p></p>
 	<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -16,9 +16,10 @@
 	<div class=" col-sm-5" style="margin: 0px;">
 		<form method="POST" action="<?php echo base_url('login/sign_up_validation');?>"><p></p>
 		<label class="helper-block">Please provide your Umak Email</label>
-		<input class="form-control form-control" type="email" name="email" placeholder="jdelacruz.k1122334@umak.edu.ph" required="true" value="<?php echo set_value('email'); ?>" pattern="[a-z]+.+[a-l0-9]+[@umak.edu.ph]">
+		<input class="form-control form-control" type="email" name="email" placeholder="jdelacruz.k1122334@umak.edu.ph" required="true" value="<?php echo set_value('email'); ?>" pattern="[a-z]+.+[a-z0-9]+[@umak.edu.ph]" title="Please your UMak email">character limit	 <br>
+		
 		 <p></p>
-		<input class="form-control form-control" type="password" name="password" placeholder="Password" minlength="8" required="true">
+		<input class="form-control form-control" type="password" name="password" placeholder="Password" pattern=".{8,}" title="8 or more characters" required="true">
 		 <?php echo form_error('password');?><p></p>
 		<input class="form-control form-control" type="password" name="cpassword" placeholder="Confirm Password" minlength="8" required="true" >
 		<?php echo form_error('cpassword');?><p></p>

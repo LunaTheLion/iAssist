@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
     <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
+    <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +30,7 @@
       <div class="bs-component">
                      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand" href="<?php echo base_url('/home');?>">iAssist</a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>

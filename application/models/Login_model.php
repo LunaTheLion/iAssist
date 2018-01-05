@@ -47,9 +47,9 @@ class Login_model extends CI_Model{
 			 );
 		$this->db->insert('account_tbl', $data);
 		return true;
-		// $this->load->view('templates/header');
-		// $this->load->view('pages/sign-up');
-		// $this->load->view('templates/footer');
+		$this->load->view('templates/header');
+		$this->load->view('pages/sign-up');
+		$this->load->view('templates/footer');
 
 	}
 
