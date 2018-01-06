@@ -51,3 +51,91 @@
 	</div>
 </div>
 </div><!-- jumbotron -->
+<div class="jumbotron bg-white" style="margin-bottom: 0rem;">
+	<div class="container text-center">
+		<h2>Explore the Business World</h2>
+		<p class="lead">Get the pre-work experience</p>
+	</div>
+</div><!-- jumbotron -->
+
+<div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk3.jpg'); ?>); background-size:auto ; background-repeat: no-repeat; ">
+	
+	<div class="container">
+		 
+		 <div class="page-header">
+		 	<h1 class="text-center" style="font-size:3rem;">We will Assist your need</h1>
+		 	<br>
+		 </div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action active">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action active">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action active">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div><!-- jumbotron -->
+
+<div class="jumbotron" style="margin-bottom: 0rem;background-color: black;">
+	<div class="container">
+		<h2 class="text-muted">Explore the Business World</h2>
+		<p class="lead">Get the pre-work experience</p>
+
+	</div>
+</div><!-- jumbotron -->
+
+
+
+<div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk9.jpg'); ?>); background-size:auto ; background-repeat: no-repeat; ">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4">
+				<div class="list-group">
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action active">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				  <a href="https://bootswatch.com/lux/#" class="list-group-item list-group-item-action">
+				    <h4 class="list-group-item-heading">List group item heading</h4>
+				    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				  </a>
+				</div>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+	</div>
+
+</div><!-- jumbotron -->
