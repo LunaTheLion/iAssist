@@ -112,7 +112,7 @@
 <div class="jumbotron" style="margin-bottom: 0rem;background-color: black;">
 	<div class="container">
 		<h2 class="text-muted text-center">Work on your free time</h2>
-		<p class="lead">Earn while studying</p>
+		<p class="lead text-center">Earn while studying</p>
 
 	</div>
 </div><!-- jumbotron -->

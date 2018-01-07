@@ -27,13 +27,13 @@
   </head>
   <body>
       <div class="bs-component">
-             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                <a class="navbar-brand" href="<?php echo base_url('/home')?>">iAssist</a>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
                  <span class="navbar-toggler-icon"></span>
                </button>
 
-               <div class="collapse navbar-collapse" id="navbarColor01">
+               <div class="collapse navbar-collapse" id="navbarColor03">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
                      <a class="nav-link" href="<?php echo base_url('');?>Thread">Thread <span class="sr-only">(current)</span></a>

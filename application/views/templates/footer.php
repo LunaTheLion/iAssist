@@ -1,4 +1,4 @@
-<p></p>
+
 <div class="jumbotron"  style="background-color: black;">
     <div class="row">
         <div class="col-lg-4">
