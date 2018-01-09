@@ -9,7 +9,7 @@
 				<div class="card border-primary">
 				  <div class="card-body">
 				    <blockquote class="card-blockquote">
-				    		<form method="POST" action="<?php echo base_url('admin/sign_in');?>">
+				    		<form method="POST" action="<?php echo base_url('Admin/sign_in_validation');?>">
 
 				    	  <fieldset>
 				    	    <legend>Log In</legend>
