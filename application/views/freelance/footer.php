@@ -1,8 +1,14 @@
 <p></p>
 <div class="jumbotron"  style="background-color: black;">
+
     <div class="row">
+        
         <div class="col-lg-4">
-            
+           <?php 
+               echo "<pre class='text-muted'>";
+               print_r($this->session->all_userdata());
+               echo "</pre>";
+            ?>
         </div>
         <div class="col-lg-4">
             <h4 class="text-muted">iAssist @Copyrights 2017</h4>

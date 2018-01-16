@@ -28,7 +28,7 @@ class Login_model extends CI_Model{
 		$this->db->where('account_email', $email);
 		$this->db->where('account_status', 1);
 		$sql = $this->db->get('account_tbl');
-		if($sql->num_rows()> 0)
+		if($sql->num_rows() == 1)
 		{
 			return true;
 		}
