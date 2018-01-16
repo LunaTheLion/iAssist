@@ -1,55 +1,91 @@
-<div class="jumbotron">
-	<div class="row">
-		<div class="col-lg-3" style="padding-left: 50px;">
-			
-			<img src="<?php echo base_url('assets/img/profile.png');?>"  style="height: 220px; width: 80%; display: block;"></img>
-			
-		</div>
-		<div class="col-lg-7">
-		
-			<h4>Your Name</h4>
-			<ul class="nav nav-tabs">
-			  <li class="nav-item">
-			    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link disabled" href="#">Disabled</a>
-			  </li>
-			  <li class="nav-item dropdown">
-			    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://bootswatch.com/lux/#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#">Action</a>
-			      <a class="dropdown-item" href="#">Another action</a>
-			      <a class="dropdown-item" href="#">Something else here</a>
-			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="#">Separated link</a>
-			    </div>
-			  </li>
-			</ul>
-			<div id="myTabContent" class="tab-content">
-			  <div class="tab-pane fade active in" id="home">
-			    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-			  </div>
-			  <div class="tab-pane fade" id="profile">
-			    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-			  </div>
-			  <div class="tab-pane fade" id="dropdown1">
-			    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-			  </div>
-			  <div class="tab-pane fade" id="dropdown2">
-			    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-			  </div>
-			</div>
-			Back to topBlog
-			
+ 	<div class="row">
+ 		<div class="col-lg-1"></div>
+ 		<div class="col-lg-10">
+ 			<div class="container" style="background-size: 1200px 500px; background-repeat: no-repeat; background-color:#343a40 ;" >
+ 			
+ 				<h2 class="text-left text-muted" style="font-style: sans-serif; font-size:3rem; ">
+ 					<?php echo $this->session->userdata('user_name');?></h2>
+ 				<p class="text-muted text-left"><?php echo $this->session->userdata('field');?></p>
+ 				<br><br><br><br><br><br>
+ 				<h3 class="text-left text-muted" style="font-size:8rem;">&nbsp&nbspHello!</h3>
+ 				<br>
+
+ 			</div>
+ 			<div class="container">
+ 				<p></p>
+ 				<div class="row">
+ 					<div class="col-lg-3">
+ 						<h4>About Me</h4>
+ 					</div>
+ 					<div class="col-lg-9">
+ 						
+ 						<div class="row">
+ 							<div class="col-lg-6">
+ 								<label><h6>Username: </h6></label><?php echo $this->session->userdata('user_name');?><br>
+ 								<label><h6>Name:</h6></label><?php echo $this->session->userdata('given_name');?><br>
+ 								
+ 							</div>
+ 							<div class="col-lg-6">
+ 								<label><h6>Contact #: </h6></label><br>
+ 								<label><h6>Email:</h6></label><?php echo $this->session->userdata('email');?><br>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</div>
+ 				<hr>
+
+ 				<div class="row">
+ 					<div class="col-lg-3">
+ 						<h4>College & University</h4>
+ 					</div>
+ 					<div class="col-lg-9">
+ 						<label><h6>School: </h6></label><br>
+ 						<label><h6>College:</h6></label>
+ 						<?php echo $this->session->userdata('college');?><br>
+ 						<label><h6>Major: </h6></label>
+ 						<?php echo $this->session->userdata('course');?><br>
+ 						
+ 					</div>
+ 				</div>
+
+ 				<hr>
+
+ 				<div class="row">
+ 					<div class="col-lg-3">
+ 						<h4>Skills & Profession</h4>
+ 					</div>
+ 					<div class="col-lg-9">
+ 						<label><h6>School: </h6></label><br>
+ 						<label><h6>College:</h6></label><br>
+ 						<label><h6>Course: </h6></label><br>
+ 						
+ 					</div>
+ 				</div>
+
+ 				<hr>
+
+ 				<div class="row">
+ 					<div class="col-lg-3">
+ 						<h4>Work & Experience</h4>
+ 					</div>
+ 					<div class="col-lg-9">
+ 						<label><h6>Company: </h6></label>
+ 						<?php echo $this->session->userdata('company');?><br>
+ 						<label><h6>Company Address: </h6></label>
+ 						<?php echo $this->session->userdata('location');?><br>
+ 						<label><h6>Job Title:</h6></label>
+ 						<?php echo $this->session->userdata('title');?><br>
+ 						<label><h6>Description: </h6></label>
+ 						<?php echo $this->session->userdata('description');?><br>
+ 						
+ 					</div>
+ 				</div>
 
 
-			
-		</div>
-		<div class="col-lg-2">
-		</div>
-	</div>
-</div>
+ 			</div>
+ 			
+ 		</div>
+ 		<div class="col-lg-1"></div>
+ 	</div>
+
+ 

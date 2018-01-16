@@ -9,16 +9,16 @@
 		</div>
 		<div class="col-lg-6">
 			<h2>Educational Background</h2>
-		
+			<form method="POST" action="<?php echo base_url('users/validate_profile_1');?>">
 			
 				<div class="form-group">
 				      <label for="college1">College</label>
-				      <select class="form-control form-control-sm" id="college1">
+				      <select class="form-control form-control-sm" id="college1" name="college1">
 				        <!-- <option>COAHS - College of Allied Health and Studies</option>
 				        <option>CAS - College of Arts and Sciences</option>
 				        <option>CAL - College of Arts and Letters</option>
 				        <option>CBFS - College of Business Finance and Sciences</option> -->
-				        <option>CCS - College of Computer Science</option>
+				        <option value="College of Computer Science">CCS - College of Computer Science</option>
 				        <!-- <option>CCSCE - College of Construction Science and Civil Engineering</option>
 				        <option>COE - College of Education</option>
 				        <option>CGPP - College of Governance and Public Policy</option>
@@ -59,12 +59,12 @@
 				        <option>APPDEV - Appication Development</option>
 				        <option>NETAD - Network Administration</option>
 				      </select> -->
-				      if CCS
+				     <!--if CCS   -->
 				      <label for="ccs">Course</label>
-				      <select class="form-control form-control-sm" id="ccs">
-				        <option>ITSM - Information Technology Service Management</option>
-				        <option>APPDEV - Appication Development</option>
-				        <option>NETAD - Network Administration</option>
+				      <select class="form-control form-control-sm" id="ccs" name="ccs">
+				        <option value="Information Technology Service Management">ITSM - Information Technology Service Management</option>
+				        <option value="Appication Development">APPDEV - Appication Development</option>
+				        <option value="Network Administration">NETAD - Network Administration</option>
 				      </select>
 				      <!-- if CCSCE
 				      <label for="exampleSelect1">Course</label>
@@ -110,15 +110,15 @@
 			<h2>Hobbies and Other Skills</h2>
 		
 			<div class="form-group">
-				<label>Field:</label><input type="text"  class="form-control form-control-sm " name="field"><p></p>
+				<label>Field:</label><input type="text"  class="form-control form-control-sm " name="field" ><p></p>
 					<div class="form-group">
 					      <label for="skill">Skill Level</label>
-					      <select class="form-control" id="skill">
-					        <option>Novice</option>
-					        <option>Advance Beginner</option>
-					        <option>Competent</option>
-					        <option>Proficient</option>
-					        <option>Expert</option>
+					      <select class="form-control" id="skill" name="skill">
+					        <option value="Novice">Novice</option>
+					        <option value="Advance-Beginner">Advance Beginner</option>
+					        <option value="Competent">Competent</option>
+					        <option value="Proficient">Proficient</option>
+					        <option value="Expert">Expert</option>
 					      </select>
 					    </div>	
 				</div>
@@ -129,7 +129,7 @@
 					<a class="btn btn-primary btn-outline btn-block" href="javascript:window.history.go(-1);">Back</a>
 				</div>
 				<div class="col-lg-3">
-					<a class="btn btn-success btn-outline btn-block" href="<?php echo base_url('users/create_profile_2')?>">Next</a>
+					<button class="btn btn-success btn-block" type="submit">Next</a>
 				</div>
 				<div class="col-lg-3"></div>
 			</div>			

@@ -36,7 +36,7 @@
                <div class="collapse navbar-collapse" id="navbarColor01">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
-                     <a class="nav-link" href="<?php echo base_url('');?>Thread">Thread <span class="sr-only">(current)</span></a>
+                     <a class="nav-link" href="<?php echo base_url('users/thread');?>">Thread <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
                      <a class="nav-link" href="#">Profile</a>
