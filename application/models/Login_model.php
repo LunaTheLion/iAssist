@@ -42,8 +42,10 @@ class Login_model extends CI_Model{
 	public function signup($email,$password)
 	{
 		$data = array(
+			'account_type' => 'freelance',
 			'account_email' => $email,
 			'account_password' => $password,
+			'account_date_joined' => date('Y-m-d'),
 			 );
 		$this->db->insert('account_tbl', $data);
 		return true;

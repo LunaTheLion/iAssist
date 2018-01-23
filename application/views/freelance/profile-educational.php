@@ -1,15 +1,11 @@
 <div class="container mt-5">
-
-	
-	<div class="progress">
-	  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 28%">28%</div>
-	</div><br>
+<br>
 		<div class="row">
 		<div class="col-lg-3">
 		</div>
 		<div class="col-lg-6">
 			<h2>Educational Background</h2>
-			<form method="POST" action="<?php echo base_url('users/validate_profile_1');?>">
+			<form method="POST" action="<?php echo base_url('users/validate_profile_educational');?>">
 			
 				<div class="form-group">
 				      <label for="college1">College</label>
@@ -137,4 +133,5 @@
 		<div class="col-lg-3">			
 		</div>
 	</div>
+</div>
 </div>

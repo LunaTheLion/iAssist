@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
     <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
-
+    
 
 
   </head>
@@ -38,18 +38,33 @@
                    <li class="nav-item active">
                      <a class="nav-link" href="<?php echo base_url('users/thread');?>">Thread <span class="sr-only">(current)</span></a>
                    </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="#">Profile</a>
-                   </li>
+                   
                    <li class="nav-item">
                      <a class="nav-link" href="#">Notification</a>
                    </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="#">Settings</a>
-                   </li>
+                   
                    
                  </ul>
                  
+                  <div>
+                   <ul class="navbar-nav mr-auto">
+                    <li class="nav-item nav-">
+                      <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php echo $this->session->userdata('user_name')?></a>
+                    </li>
+                  
+                    <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
+                       <div class="dropdown-menu">
+                         <a class="dropdown-item" href="https://bootswatch.com/lux/#">Logout</a>
+                         <a class="dropdown-item" href="https://bootswatch.com/lux/#">Another action</a>
+                         <a class="dropdown-item" href="https://bootswatch.com/lux/#">Something else here</a>
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
+                       </div>
+                     </li>
+                  </ul>
+                </div>
+
                  
                </div>
              </nav>

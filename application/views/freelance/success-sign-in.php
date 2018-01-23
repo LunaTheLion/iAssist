@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
-				<a href="<?php echo base_url('users/create_profile');?>" class="btn btn-outline-primary ">Click here to Create Profile</a>
+				<a href="<?php echo base_url('users/profile_personal');?>" class="btn btn-outline-primary ">Click here to Create Profile</a>
 			</div>
 			<div class="col-lg-4"></div>
 

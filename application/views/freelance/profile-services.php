@@ -1,9 +1,8 @@
 <div class="container mt-5">
 
 	
-	<div class="progress">
-	  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 82%">82%</div>
-	</div><br>
+	
+	<br>
 		<div class="row">
 		<div class="col-lg-3">
 		</div>

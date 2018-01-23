@@ -21,6 +21,8 @@ class Login extends CI_Controller{
 				$this->session->set_userdata('Account_Status', $astatus);
 				
 
+
+
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
 				{
 					//create an html file for creating and showing the data from the database
@@ -28,7 +30,8 @@ class Login extends CI_Controller{
 					//show an html first to test the connection. 
 					//create an html wherein the user while be advised to complete his/her profile. 
 					//show info
-					redirect(base_url('users/index'));
+					$this->session->set_userdata('email',$email);
+					redirect(base_url().'users/index');
 				}
 				else
 				{
@@ -70,7 +73,7 @@ class Login extends CI_Controller{
 
 	public function sign_up()
 	{
-			$this->load->view('templates/header' , $page_data);
+			$this->load->view('templates/header');
 			$this->load->view('pages/sign-up');
 			$this->load->view('templates/footer');
 	}
@@ -80,8 +83,6 @@ class Login extends CI_Controller{
 		$this->form_validation->set_rules('password','Password', 'required');
 		$this->form_validation->set_rules('cpassword','Confirm Password', 'required|matches[password]');
 		$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
-
-
 
 		 if($this->form_validation->run())
 		 {

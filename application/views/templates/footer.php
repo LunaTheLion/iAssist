@@ -2,8 +2,7 @@
 <div class="jumbotron"  style="background-color: black;">
     <div class="row">
         <div class="col-lg-4">
-            
-        </div>
+           
         <div class="col-lg-4">
             <h4 class="text-muted">iAssist @Copyrights 2017</h4>
         </div>
