@@ -44,7 +44,7 @@
 				</div>
 				<div class="col-lg-4">
 
-					<button class="btn btn-success btn-block" type="submit">Next</a>
+					<button class="btn btn-success btn-block" type="submit">Next</button>
 				</div>
 				<div class="col-lg-4"></div>
 			</div>

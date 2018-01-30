@@ -36,7 +36,7 @@
 	<div class="row">
 		
 		<div class="col-md-4">
-			<h4 class="text-center"><a href="#">Education &amp; Jobs</a></h4>
+			<h4 class="text-center"><a href="<?php echo base_url('users/education')?>">Education &amp; Jobs</a></h4>
 			<p></p>
 			<label><h6 class="text-muted mb-0">School: </h6></label><br>
 			<label><h6 class="text-muted mb-0">College:</h6></label><br>
@@ -50,7 +50,7 @@
 			<p></p>
 		</div>
 		<div class="col-md-4">
-			<h4 class="text-center">Skills &amp; Abilities</h4>
+			<h4 class="text-center"><a href="<?php echo base_url('users/portfolio')?>">Skills &amp; Abilities</a></h4>
 			<?php 
 				$skill = $this->session->userdata('skill');
 				if( $skill == 'Novice')
@@ -91,7 +91,7 @@
 	</div>
 </div>
 <div class="jumbotron" style=" margin: 0px;">
-	<h3 class="text-center" style="font-style: initial;">- <a href="<?php echo base_url('users/portfolio');?>">My Projects</a> -</h3>
+	<h3 class="text-center" style="font-style: initial;">- <a href="<?php echo base_url('users/projects');?>">My Projects</a> -</h3>
 	<br><br>
 	<div class="row">
 		<div class="col-md-4" style="padding: 8px;">

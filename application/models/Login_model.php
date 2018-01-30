@@ -7,10 +7,13 @@ class Login_model extends CI_Model{
 		parent::__construct();	
 	}
 
+	
+
 	public function signin($email,$password)// check if the user has signed up
 	{	
 		   $this->db->where('account_password', $password);
 		   $this->db->where('account_email', $email);
+		   $this->db->set('log_status', 1);// TRY THISSSS LUNA
 		   $query = $this->db->get('account_tbl');        
 
 		if($query->num_rows() == 1 )
@@ -43,6 +46,7 @@ class Login_model extends CI_Model{
 	{
 		$data = array(
 			'account_type' => 'freelance',
+			'log_status' =>1,
 			'account_email' => $email,
 			'account_password' => $password,
 			'account_date_joined' => date('Y-m-d'),

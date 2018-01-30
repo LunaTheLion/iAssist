@@ -8,6 +8,7 @@
 			<form method="POST" action="<?php echo base_url('users/validate_profile_educational');?>">
 			
 				<div class="form-group">
+					<input class="read-only" type="text" name="school" value="University of Makati">
 				      <label for="college1">College</label>
 				      <select class="form-control form-control-sm" id="college1" name="college1">
 				        <!-- <option>COAHS - College of Allied Health and Studies</option>

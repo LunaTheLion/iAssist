@@ -55,7 +55,7 @@
                     <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
                        <div class="dropdown-menu">
-                         <a class="dropdown-item" href="https://bootswatch.com/lux/#">Logout</a>
+                         <a class="dropdown-item" href="<?php echo base_url('users/logout')?>">Logout</a>
                          <a class="dropdown-item" href="https://bootswatch.com/lux/#">Another action</a>
                          <a class="dropdown-item" href="https://bootswatch.com/lux/#">Something else here</a>
                          <div class="dropdown-divider"></div>

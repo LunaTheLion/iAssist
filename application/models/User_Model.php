@@ -7,6 +7,19 @@ class User_Model extends CI_Model{
 		parent::__construct();	
 		
 	}
+	public function get_log_stat($email,$var)// logged in and out
+	{
+		if(!empty($email))
+		{
+			$this->db->where('account_email',$email);
+			$this->db->set('log_status',$var);
+			$this->db->update('account_tbl');
+			return $this->db->affected_rows() > 0;
+		}	
+		
+	 }
+	
+
 	public function account_info($account_info, $email)
 	{
 		if(!empty($account_info))
@@ -22,7 +35,7 @@ class User_Model extends CI_Model{
 	 {
 	 	if(!empty($email))
 	 	{
-	 		$this->db->where('account_email', $email);
+	 		$this->db->where('account_email', $email);	
 	 		$this->db->where('account_status', 1);
 	 		$query= $this->db->get('account_tbl'); 		
 
@@ -74,23 +87,62 @@ class User_Model extends CI_Model{
 	 		}
 	 	}
 	 }
+	  public function get_proj_info($email)
+	  {
+	  	if(!empty($email))
+	  	{
+	 		$this->db->where('project_publisher', $email);
+	 		$query2 = $this->db->get('freelance_project_tbl');	
+	 		
+	  		if(!empty($query2) && $query2->num_rows() > 0)
+	  		{
+	  			return $query2->row();
 
-	 public function portfolio_info($port_data)
+	  		}
+	  		else
+	  		{
+	  			"No Result";
+	  		}
+	  	}
+	  }
+
+	  public function create_project($portfolio_info)
+	  {
+	  	if(!empty($portfolio_info))
+	 	{
+
+	 		//print_r($port_data);
+	 		$this->db->insert('freelance_portfolio_tbl', $portfolio_info);
+	 		return $this->db->affected_rows() > 0;
+	 	}
+	  }
+
+	 public function portfolio_info($portfolio_info)
 	 {
-	 	if(!empty($port_data))
+	 	if(!empty($portfolio_info))
 		{
-			//$this->db->where('portfolio_owner',$email);
-			print_r($port_data);
-			$this->db->insert('freelance_portfolio_tbl', $port_data);
+
+			//print_r($port_data);
+			$this->db->insert('freelance_portfolio_tbl', $portfolio_info);
 			return $this->db->affected_rows() > 0;
 		}
 	 }
+	  public function project_info($project_info)
+	  {
+	  	if(!empty($project_info))
+	 	{
+
+	 		//print_r($port_data);
+	 		$this->db->insert('freelance_project_tbl', $project_info);
+	 		return $this->db->affected_rows() > 0;
+	 	}
+	  }
 
 	  public function educational_info($educ_data)
 	  {
 	  	if(!empty($educ_data))
 	 	{
-	 		print_r($educ_data);
+	 		//print_r($educ_data);
 	 		//$this->db->where('ed_account_email',$email);
 	 		$this->db->insert('freelance_education_tbl', $educ_data);
 	 		return $this->db->affected_rows() > 0;

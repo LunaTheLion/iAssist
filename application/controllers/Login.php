@@ -13,15 +13,13 @@ class Login extends CI_Controller{
 	public function sign_in(){
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
-
+			
 			
 			if($this->Login_model->signin($email,$password))
 			{
 				$astatus = $this->Login_model->accountstatus($this->session->userdata('email'));
+
 				$this->session->set_userdata('Account_Status', $astatus);
-				
-
-
 
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
 				{
@@ -31,6 +29,7 @@ class Login extends CI_Controller{
 					//create an html wherein the user while be advised to complete his/her profile. 
 					//show info
 					$this->session->set_userdata('email',$email);
+					
 					redirect(base_url().'users/index');
 				}
 				else

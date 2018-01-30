@@ -11,9 +11,6 @@
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
 
-
-
-
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
     <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
