@@ -1,7 +1,7 @@
 <div class="jumbotron" style="padding-right:40px; padding-left: 8px;">
 	<div class="row">
 		<div class="col-lg-2" style="padding-right:8px; padding-left: 8px;">
-			
+		
 		</div>
 		<div class="col-lg-2" style="padding-right:8px; padding-left: 8px;" >
 			<div class="card">
@@ -77,3 +77,4 @@
 
 	</div>
 </div>
+

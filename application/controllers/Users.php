@@ -9,6 +9,12 @@ class Users extends CI_Controller{
 		$this->load->model('User_Model');
 
 	}
+	public function profile()
+	{
+
+
+	}
+
 
 	public function index()
 	{
@@ -18,7 +24,14 @@ class Users extends CI_Controller{
 		$info = $this->User_Model->get_account_info($email);
 		$educ = $this->User_Model->get_educ_info($email);
 		$port = $this->User_Model->get_port_info($email);
-		
+
+
+	//$proj = $this->User_Model->get_user_project($email);
+
+		$data = array(
+			'proj'     =>$this->User_Model->get_user_project($email),
+
+		);
 
 		$page_data2 = array(
 		'college' => $educ->ed_college,
@@ -26,15 +39,12 @@ class Users extends CI_Controller{
 		);
 
 		$page_data = array(
-		
 		'user_name' => $info->account_username,
 		'given_name' => $info->account_gname,
 		'surname' => $info->account_sname,
 		'email' => $info->account_email,
 		'log_status' => $info->log_status,
 		'contact' => $info->account_contact,
-
-
 		);
 
 
@@ -49,11 +59,13 @@ class Users extends CI_Controller{
 		$this->session->set_userdata($page_data3);
 
 		$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
-		$this->load->view('freelance/profile');
+		$this->load->view('freelance/profile',$data);
 		$this->load->view('freelance/footer');	
 	}
 	public function profile_personal()
 	{
+
+
 
 		$page_data = array(
 		'page_title' => 'Create User Profile',
@@ -179,6 +191,7 @@ class Users extends CI_Controller{
 
 			//echo $uname."<br>".$gname."<br>".$surname;
 			
+
 			$page_data = array(
 			'page_title' => 'Create User Profile',
 			'user_name' => $this->session->userdata('user_name'),
@@ -225,6 +238,11 @@ class Users extends CI_Controller{
 	
 	public function thread()
 	{
+
+		$this->session->sess_destroy();
+		
+
+
 		$this->load->view('freelance/header');
 		$this->load->view('freelance/thread');
 		$this->load->view('freelance/footer');
@@ -232,6 +250,7 @@ class Users extends CI_Controller{
 
 	public function projects()
 	{
+
 		$page_data = array(
 		'page_title' => 'Create Project',
 		'user_type' => $this->session->userdata('user_type'),
@@ -254,16 +273,19 @@ class Users extends CI_Controller{
 		$this->form_validation->set_rules('service', 'Service', 'required');
 		$this->form_validation->set_rules('offer', 'Offer', 'required');
 		$this->form_validation->set_rules('delivery', 'Delivery', 'required');
-		$this->form_validation->set_rules('description', 'Description', 'required');
+		//$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('requirements', 'Requirements', 'required');
+		$this->form_validation->set_rules('search', 'Search', 'required');
 		
+
 		$this->session->set_userdata('title', $this->input->post('title'));
+		$this->session->set_userdata('search', $this->input->post('search'));
 		$this->session->set_userdata('category', $this->input->post('category'));
 		$this->session->set_userdata('subcategory',$this->input->post('subcategory'));
 		$this->session->set_userdata('service', $this->input->post('service'));
 		$this->session->set_userdata('offer', $this->input->post('offer'));
 		$this->session->set_userdata('delivery', $this->input->post('delivery'));
-		$this->session->set_userdata('description', $this->input->post('description'));
+		//$this->session->set_userdata('description', $this->input->post('description'));
 		$this->session->set_userdata('requirements', $this->input->post('requirements'));
 
 		if($this->form_validation->run())
@@ -281,31 +303,80 @@ class Users extends CI_Controller{
 			'delivery' => $this->session->userdata('delivery'),
 			'description' => $this->session->userdata('description'),
 			'requirements' => $this->session->userdata('requirements'),
-
+			'search' => $this->session->userdata('search'),
 			);
 
 			$this->session->set_userdata($page_data);
 			$email = $this->session->userdata('email');
 
-			$project_info = array(
-				'email' => $this->session->userdata('email'),
-				'title' => $this->session->userdata('title'),
-				'category' => $this->session->userdata('category'),
-				'subcategory' => $this->session->userdata('subcategory'),
-				'service' => $this->session->userdata('service'),
-				'offer' => $this->session->userdata('offer'),
-				'delivery' => $this->session->userdata('delivery'),
-				'description' => $this->session->userdata('description'),
-				'requirements' => $this->session->userdata('requirements'),
-			);
 
-			$this->load->model('User_Model');
+			redirect(base_url().'users/projects_upload_images');
 
-			$this->User_Model->create_project($project_info);
+			// $project_info = array(
+			// 	'email' => $this->session->userdata('email'),
+			// 	'title' => $this->session->userdata('title'),
+			// 	'category' => $this->session->userdata('category'),
+			// 	'subcategory' => $this->session->userdata('subcategory'),
+			// 	'service' => $this->session->userdata('service'),
+			// 	'offer' => $this->session->userdata('offer'),
+			// 	'delivery' => $this->session->userdata('delivery'),
+			// 	'description' => $this->session->userdata('description'),
+			// 	'requirements' => $this->session->userdata('requirements'),
+			// );
+
+			///UPLOAD IMAGE
 
 
-			redirect(base_url('users/projects_upload_images'));
-		}
+			// $config['upload_path'] = './uploads/';
+			// $config['allowed_types'] = 'gif|jpg|png|jpeg';
+			// $config['max_size'] = 100;
+			// $config['max_width'] = 1024;
+			// $config['max_height'] = 768;
+
+			// $this->load->library('upload',$config);
+
+			// if(!$this->upload->do_upload('userfile'))
+			// {
+			// 	$error = array('error' => $this->upload->display_errors());
+			// 	$this->load->view('freelance/header');
+			// 	$this->load->view('freelance/profile-projects',$error);
+			// 	$this->load->view('freelance/footer');
+			// }
+			// else
+			// {
+			// 	$email= $this->session->userdata('email');
+			// 	$proj= $this->User_Model->get_proj_info($email);
+
+			// 	$file_data = $this->upload->data();
+			// 	$data['img'] = base_url().'/uploads/'.$file_data['file_name'];
+
+			// 	$project_info = array(
+			// 		'project_publisher' => $this->session->userdata('email'),
+			// 		'project_publisher_type' => $this->session->userdata('user_type'),
+			// 		'project_title' => $this->session->userdata('title'),
+			// 		'project_category' => $this->session->userdata('category'),
+			// 		'project_subcategory' => $this->session->userdata('subcategory'),
+			// 		'project_service_type' => $this->session->userdata('service'),
+			// 		'project_offer' => $this->session->userdata('offer'),
+			// 		'project_delivery' => $this->session->userdata('delivery'),
+			// 		'project_description' => $this->session->userdata('description'),
+			// 		'project_search' => $this->session->userdata('search'),
+			// 		'project_requirements' => $this->session->userdata('requirements'),
+			// 		'porject_image' => $this->upload->data('full_path'),
+			// 		'project_date_posted' =>date('Y-m-d'),
+			// 	);
+
+			// 	$this->load->model('User_Model');
+			// 	$this->User_Model->create_project($project_info);
+
+
+				// $this->load->view('freelance/header');
+				// $this->load->view('freelance/success-profile-projects',$data);
+				// $this->load->view('freelance/footer');
+			}
+
+			
+		
 		else
 		{
 			$page_data = array(
@@ -320,8 +391,9 @@ class Users extends CI_Controller{
 			'delivery' => $this->session->userdata('delivery'),
 			'description' => $this->session->userdata('description'),
 			'requirements' => $this->session->userdata('requirements'),
-
+			'search' => $this->session->userdata('search'),
 			);
+
 
 			$this->session->set_userdata($page_data);
 			redirect(base_url('users/projects'));
@@ -356,18 +428,18 @@ class Users extends CI_Controller{
 			'project_delivery' => $this->session->userdata('delivery'),
 			'project_description' => $this->session->userdata('description'),
 			'project_requirements' => $this->session->userdata('requirements'),
-			'project_date_posted' =>date('Y-m-d'),
+			'project_date_posted' =>date("F j, Y, g:i a"),
 		);
 
 
-
 		$this->session->set_userdata($page_data);
-		$this->load->model('User_Model');
-		$this->User_Model->project_info($project_info);
+		// $this->load->model('User_Model');
+		// $this->User_Model->project_info($project_info);
 		$this->load->view('freelance/header',$page_data);
 		$this->load->view('freelance/profile-projects-images');
 		$this->load->view('freelance/footer');
 	}
+	
 
 	public function education()
 	{
@@ -384,7 +456,7 @@ class Users extends CI_Controller{
 		$config['max_height'] = 768;
 
 		$this->load->library('upload',$config);
-
+		$error = "";
 		if(!$this->upload->do_upload())
 		{
 			$error = array('error' => $this->upload->display_errors());
@@ -400,7 +472,43 @@ class Users extends CI_Controller{
 			$file_data = $this->upload->data();
 			$data['img'] = base_url().'/uploads/'.$file_data['file_name'];
 
-			$this->load->view('freelance/header');
+
+			$page_data = array(
+			'page_title' => 'Upload Image',
+			'user_type' => $this->session->userdata('user_type'),
+			'email' => $this->session->userdata('email'),	
+			'title' => $this->session->userdata('title'),
+			'category' => $this->session->userdata('category'),
+			'subcategory' => $this->session->userdata('subcategory'),
+			'service' => $this->session->userdata('service'),
+			'offer' => $this->session->userdata('offer'),
+			'delivery' => $this->session->userdata('delivery'),
+			// 'description' => $this->session->userdata('description'),
+			'requirements' => $this->session->userdata('requirements'),
+
+
+			);
+
+			$project_info = array(
+				'project_publisher' => $this->session->userdata('email'),
+				'project_publisher_type' => $this->session->userdata('user_type'),
+				'project_title' => $this->session->userdata('title'),
+				'project_category' => $this->session->userdata('category'),
+				'project_subcategory' => $this->session->userdata('subcategory'),
+				'project_service_type' => $this->session->userdata('service'),
+				'project_offer' => $this->session->userdata('offer'),
+				'project_delivery' => $this->session->userdata('delivery'),
+				// 'project_description' => $this->session->userdata('description'),
+				'project_requirements' => $this->session->userdata('requirements'),
+				'project_image' => $this->upload->data('full_path'),
+				'project_date_posted' =>date("F j, Y, g:i a"),
+			);
+			//print_r($project_info);
+
+			$this->session->set_userdata($page_data);
+			$this->load->model('User_Model');
+			$this->User_Model->create_project($project_info);
+			$this->load->view('freelance/header',$page_data);
 			$this->load->view('freelance/success-profile-projects',$data);
 			$this->load->view('freelance/footer');
 		}

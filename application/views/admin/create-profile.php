@@ -9,7 +9,7 @@
 				  <div class="card-body">
 				  
 				    	<label>Email</label>
-				    	<input class="form-control" type="email" name="email" placeholder="Email" required="true"></input>
+				    	<input class="form-control " readonly type="email" name="email" placeholder="Email" required="true" value="<?php echo $this->session->userdata('email')?>"></input>
 				    	<label>Username</label>
 				    	<input class="form-control" type="text" name="username" placeholder="Username" required="true"></input>
 				    	<label>Contact no:</label>

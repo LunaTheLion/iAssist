@@ -7,6 +7,20 @@ class User_Model extends CI_Model{
 		parent::__construct();	
 		
 	}
+
+	public function get_user_project($email)
+	{
+		if(!empty($email))
+		{
+			$this->db->limit(3);
+			$this->db->order_by('id', 'DESC');
+			$this->db->where('project_publisher', $email);
+			$q = $this->db->get('freelance_project_tbl');
+			return $q->result();
+		}
+	}
+
+
 	public function get_log_stat($email,$var)// logged in and out
 	{
 		if(!empty($email))
@@ -106,13 +120,14 @@ class User_Model extends CI_Model{
 	  	}
 	  }
 
-	  public function create_project($portfolio_info)
+	  public function create_project($project_info)
 	  {
-	  	if(!empty($portfolio_info))
+	  	if(!empty($project_info))
 	 	{
 
-	 		//print_r($port_data);
-	 		$this->db->insert('freelance_portfolio_tbl', $portfolio_info);
+	 		//print_r($project_info);
+
+	 		$this->db->insert('freelance_project_tbl', $project_info);
 	 		return $this->db->affected_rows() > 0;
 	 	}
 	  }

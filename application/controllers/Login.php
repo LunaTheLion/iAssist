@@ -13,14 +13,14 @@ class Login extends CI_Controller{
 	public function sign_in(){
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			
+
 			
 			if($this->Login_model->signin($email,$password))
 			{
 				$astatus = $this->Login_model->accountstatus($this->session->userdata('email'));
-
+				// upon signing in you are logged in. until you click the logout.
+				//
 				$this->session->set_userdata('Account_Status', $astatus);
-
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
 				{
 					//create an html file for creating and showing the data from the database
@@ -28,15 +28,16 @@ class Login extends CI_Controller{
 					//show an html first to test the connection. 
 					//create an html wherein the user while be advised to complete his/her profile. 
 					//show info
-					$this->session->set_userdata('email',$email);
 					
+					$this->session->set_userdata('email',$email);
+					$this->session->set_userdata('log_status',1);
 					redirect(base_url().'users/index');
 				}
 				else
 				{
 					//prompt profile completions
 					$this->session->set_userdata('email',$email);
-
+					$this->session->set_userdata('log_status',1);
 					//$this->session->set_userdata('',);
 					redirect(base_url().'login/success_sign');
 				}	
@@ -87,7 +88,7 @@ class Login extends CI_Controller{
 		 {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			//echo $email ; echo $password;
+			
 			if($this->Login_model->signup($email,$password))//if the model function is true.
 			{
 				redirect(base_url().'login/sign_in');

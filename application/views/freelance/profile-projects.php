@@ -10,16 +10,17 @@
 				<br><br>	
 			<div class="container">
 				
-					<form method="POST" action="<?php echo base_url('users/validate_projects');?>">
+					<?php echo form_open_multipart('users/validate_projects');?>
 					<div class="form-group">
-						<input class="form-control" type="text" placeholder="Service Title" name="title"></input>
+						<input class="form-control" type="text" placeholder="Service Title" name="title" value="<?php echo $this->session->userdata('title');?>"></input>
 						<p></p>
 						<div class="row">
 							
 							<div class="col-4">
 								<div class="form-group">
 								      <label for="category">Category</label>
-								      <select class="form-control" style="padding-right: 20px;padding-left: 20px;" id="category" name="category"  required="">
+								      <select class="form-control" style="padding-right: 20px;padding-left: 20px;" id="category" name="category"  required="" >
+								      	<option><?php echo $this->session->userdata('category');?></option>
 								        <option value="Programming & Tech">Programming &amp; Tech</option>
 								        <option value="Graphics & Design">Graphics &amp; Design</option>
 								        <option value="Fun & Entertainment">Fun &amp; Entertainment</option>
@@ -35,7 +36,8 @@
 							<div class="col-4">
 								<div class="form-group">
 								      <label for="category">Sub-Category</label>
-								      <select class="form-control"  style="padding-right: 20px;padding-left: 20px;" id="category" name="subcategory">
+								      <select class="form-control" required style="padding-right: 20px;padding-left: 20px;" id="category" name="subcategory"  >
+								      	<option><?php echo $this->session->userdata('subcategory');?></option>
 								        <option value="Programming & Tech">Programming &amp; Tech</option>
 								        <option value="Graphics & Design">Graphics &amp; Design</option>
 								        <option value="Fun & Entertainment">Fun &amp; Entertainment</option>
@@ -55,7 +57,8 @@
 							<div class="col-6">
 								<div class="form-group">
 								      <label for="category">Service Type</label>
-								      <select class="form-control"  style="padding-right: 20px;padding-left: 20px;" id="category" name="service">
+								      <select class="form-control" required  style="padding-right: 20px;padding-left: 20px;" id="category" name="service" >
+								      	<option><?php echo $this->session->userdata('service');?></option>
 								        <option value="Programming & Tech">Programming &amp; Tech</option>
 								        <option value="Graphics & Design">Graphics &amp; Design</option>
 								        <option value="Fun & Entertainment">Fun &amp; Entertainment</option>
@@ -68,20 +71,22 @@
 								    </div>
 							</div>
 						</div>
-						<input class="form-control" type="text" data-role="tagsinput" placeholder="Search Keywords" name="search" required></input>
+						 <label for="search"  >Search</label>
+						<input class="form-control" type="text" data-role="tagsinput" id="search" placeholder="Search Keywords" name="search"  value="<?php echo $this->session->userdata('search');?>" required></input>
 						<p></p>
 						<hr>
 						<p></p>
 						<div class="form-group">
-						      <label for="exampleTextarea"  required>Describe your offer</label>
-						     <textarea class="form-control" id="exampleTextarea" name="offer" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
+						      <label for="exampleTextarea"  >Describe your offer</label>
+						     <textarea class="form-control" required id="exampleTextarea" name="offer" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;" ><?php echo $this->session->userdata('offer');?></textarea>
 						    </div>
 						<p></p>
 						<div class="row">
 							<div class="col-5">
 								<div class="form-group">
-								      <label for="category"  required >Delivery Time</label>
-								      <select class="form-control" style="padding-right: 20px;padding-left: 20px;" id="category" name="delivery">
+								      <label for="category">Delivery Time</label>
+								      <select class="form-control" required  style="padding-right: 20px;padding-left: 20px;" id="category" name="delivery">
+								      	<option value="<?php echo $this->session->userdata('delivery');?>"></option>
 								       <option value="1 Days">1 Day Delivery</option>
 								       <option value="2 Days">2 Days Delivery</option>
 								       <option value="3 Days">3 Days Delivery</option>
@@ -116,18 +121,26 @@
 							</div>
 						</div>	
 						<div class="form-group">
-						      <label for="exampleTextarea"  required>Briefly Describe your Service</label>
-						     <textarea class="form-control" id="exampleTextarea" name="description" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
+						      <label for="exampleTextarea"  >Briefly Describe your Service</label>
+						     <textarea class="form-control" required id="exampleTextarea" name="service" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('service');?></textarea>
+
+
 						    </div>
 						<p></p>
 						<div class="form-group">
-						      <label for="exampleTextarea"  required>Tell your future client what you need to get started.</label>
-						     <textarea class="form-control" id="exampleTextarea" name="requirements" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
+						      <label for="exampleTextarea"  >Tell your future client what you need to get started.</label>
+						     <textarea class="form-control" required id="exampleTextarea" name="requirements" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('requirements');?></textarea>
 
 
 						    </div>
 						<p></p>
-						
+						<hr>
+						<!-- <div class="form-group">
+							<label for="userfile" class="text-primary">Upload an image to make your prject more appealing.</label><br>
+						     <input type="file" name="userfile" size="20" />
+						    </div> -->
+						<p></p>
+						<hr>
 					</div>
 
 
@@ -145,6 +158,24 @@
 					
 					<button class="btn btn-success btn-outline btn-block" type="submit">Next</button>
 				</form>
+<!-- 
+				<div class="container mt-5">
+					<hr>
+					
+
+					<!-- <?php echo form_open_multipart('users/do_upload');?> -->
+
+					
+
+					<!--<br /><br />
+
+					<input type="submit" class="btn btn-primary-outline" value="upload" /></form>
+
+					<hr>
+
+					
+				</div> -->
+
 				</div>
 				<div class="col-lg-3"></div>
 			</div>			
