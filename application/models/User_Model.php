@@ -110,7 +110,7 @@ class User_Model extends CI_Model{
 	 		
 	  		if(!empty($query2) && $query2->num_rows() > 0)
 	  		{
-	  			return $query2->row();
+	  			return $query2->result();
 
 	  		}
 	  		else
@@ -164,6 +164,41 @@ class User_Model extends CI_Model{
 	 	}
 	  }
 
+
+	  public function get_thread($search)
+	{
+		if(empty($search))
+		{
+			$query2 = $this->db->get('freelance_project_tbl');	
+	 		
+	  		if(!empty($query2) && $query2->num_rows() > 0)
+	  		{
+	  			return $query2->result();
+
+	  		}
+	  		else
+	  		{
+	  			"No Result";
+	  		}
+	  	}
+	  	elseif(!empty($search))
+	  	{
+	  		$this->db->where('project_search', $search);
+	  		$query2 = $this->db->get('freelance_project_tbl');	
+	 		
+	  		if(!empty($query2) && $query2->num_rows() > 0)
+	  		{
+	  			return $query2->result();
+
+	  		}
+	  		else
+	  		{
+	  			"No Result";
+	  		}
+	  	}
+
+
+	  }
 
 
 	// public function account($save_data)

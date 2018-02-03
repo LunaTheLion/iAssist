@@ -6,7 +6,13 @@
 
 	<input type="file" name="userfile" size="20" />
 
-	<?php echo $error;?>
+	<?php
+		if(isset($error))
+		{
+			echo $error;
+		}
+
+	;?>
 	<br /><br />
 
 	<input type="submit" class="btn btn-primary-outline" value="upload" /></form>

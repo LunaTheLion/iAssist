@@ -54,13 +54,20 @@
                  
                   <div>
                    <ul class="navbar-nav mr-auto">
+                    <li>
+                      <a class="nav-link" href="<?php echo base_url('users/message');?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
+                    </li>
                     <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php echo base_url('users/index');?>"><?php echo $this->session->userdata('user_name')?></a>
+                      <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php echo $this->session->userdata('user_name')?></a>
 
                     </li>
+
+                   
+
                   <li>
                     <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
                   </li>
+                  
                     <!-- <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
                        <div class="dropdown-menu">

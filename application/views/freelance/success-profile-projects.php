@@ -10,19 +10,7 @@
 		    <h5 class="card-title"><?php echo $this->session->userdata('title')?></h5>
 		    <h5 class="card-title text-right"><a href="<?php echo base_url('users/index')?>">Done</a></h5>
 		    <hr>
-		    <!--
-		    <p class="text-primary"><b>Title</b>&nbsp;&nbsp;<?php echo $this->session->userdata('title')?></p>
-<!-- 		    <p class="text-primary"><b>Category</b>&nbsp;&nbsp;<?php echo $this->session->userdata('category')?></p>
-		    <p class="text-primary"><b>Sub-Category</b>&nbsp;&nbsp;<?php echo $this->session->userdata('subcategory')?></p> -->
-		   <!--  <p class="text-primary"><b>Type of Service</b>&nbsp;&nbsp;<?php echo $this->session->userdata('service')?></p>
-		    <p class="text-primary"><b>Service Offer</b>&nbsp;&nbsp;<?php echo $this->session->userdata('offer')?></p>
-		    <p class="text-primary"><b>Time of Delivery</b>&nbsp;&nbsp;<?php echo $this->session->userdata('delivery')?></p> -->
-		   <!--  <p class="text-primary"><b>Service Description</b>&nbsp;&nbsp;<?php echo $this->session->userdata('description')?></p> -->
-		    <!--<p class="text-primary"><b>Requirements</b>&nbsp;&nbsp;<?php echo $this->session->userdata('requirements')?></p>
-		    
-		
-
--->
+		  
 		  </div>
 
 

@@ -11,13 +11,6 @@ class Users extends CI_Controller{
 	}
 	public function profile()
 	{
-
-
-	}
-
-
-	public function index()
-	{
 		$email = $this->session->userdata('email');
 		$var = 1;
 		$logged = $this->User_Model->get_log_stat($email,$var);
@@ -27,6 +20,8 @@ class Users extends CI_Controller{
 
 
 	//$proj = $this->User_Model->get_user_project($email);
+
+
 
 		$data = array(
 			'proj'     =>$this->User_Model->get_user_project($email),
@@ -61,6 +56,29 @@ class Users extends CI_Controller{
 		$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
 		$this->load->view('freelance/profile',$data);
 		$this->load->view('freelance/footer');	
+
+	}
+	
+
+
+	public function index()
+	{
+		
+
+
+	}
+
+
+	public function projects()
+	{
+		$email = $this->session->userdata('email');
+		$project_data = array(
+			'data' =>$this->User_Model->get_proj_info($email), );
+
+
+		 $this->load->view('freelance/header');
+		 $this->load->view('freelance/my-projects', $project_data);
+		 $this->load->view('freelance/footer');
 	}
 	public function profile_personal()
 	{
@@ -238,17 +256,30 @@ class Users extends CI_Controller{
 	
 	public function thread()
 	{
+		
+		$email = $this->session->userdata('email');
+		$info = $this->User_Model->get_account_info($email);
 
-		$this->session->sess_destroy();
+		$page_data = array(
+		'email' => $info->account_email,
+		'log_status' => $info->log_status,
+		);
+
+
+		$search = $this->input->post('search');
+
+
+		$thread = array(
+			'data' => $this->User_Model->get_thread($search),
+		);
 		
 
-
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/thread');
+		$this->load->view('freelance/header',$page_data);
+		$this->load->view('freelance/thread', $thread);
 		$this->load->view('freelance/footer');
 	}
 
-	public function projects()
+	public function create_projects()
 	{
 
 		$page_data = array(
@@ -428,7 +459,7 @@ class Users extends CI_Controller{
 			'project_delivery' => $this->session->userdata('delivery'),
 			'project_description' => $this->session->userdata('description'),
 			'project_requirements' => $this->session->userdata('requirements'),
-			'project_date_posted' =>date("F j, Y, g:i a"),
+			'project_date_posted' =>date("F j, Y"),
 		);
 
 
@@ -456,7 +487,7 @@ class Users extends CI_Controller{
 		$config['max_height'] = 768;
 
 		$this->load->library('upload',$config);
-		$error = "";
+		
 		if(!$this->upload->do_upload())
 		{
 			$error = array('error' => $this->upload->display_errors());
@@ -500,8 +531,8 @@ class Users extends CI_Controller{
 				'project_delivery' => $this->session->userdata('delivery'),
 				// 'project_description' => $this->session->userdata('description'),
 				'project_requirements' => $this->session->userdata('requirements'),
-				'project_image' => $this->upload->data('full_path'),
-				'project_date_posted' =>date("F j, Y, g:i a"),
+				'project_image' => $file_data['file_name'],
+				'project_date_posted' =>date("F j, Y"),
 			);
 			//print_r($project_info);
 
