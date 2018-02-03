@@ -10,6 +10,7 @@ class Login extends CI_Controller{
 		
 	}
 
+
 	public function sign_in(){
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
@@ -31,7 +32,7 @@ class Login extends CI_Controller{
 					
 					$this->session->set_userdata('email',$email);
 					$this->session->set_userdata('log_status',1);
-					redirect(base_url().'users/index');
+					redirect(base_url().'users/profile');
 				}
 				else
 				{
@@ -57,20 +58,6 @@ class Login extends CI_Controller{
 		$this->load->view('freelance/success-sign-in');
 		$this->load->view('freelance/footer');
 	}
-
-	public function profile()
-	{
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/profile');
-		$this->load->view('freelance/footer');	
-	}
-	public function thread()
-	{
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/thread');
-		$this->load->view('freelance/footer');
-	}
-
 	public function sign_up()
 	{
 			$this->load->view('templates/header');

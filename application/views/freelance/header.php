@@ -55,7 +55,7 @@
                   <div>
                    <ul class="navbar-nav mr-auto">
                     <li>
-                      <a class="nav-link" href="<?php echo base_url('users/message');?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
+                      <a class="nav-link" href="#"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                     </li>
                     <li class="nav-item nav-">
                       <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php echo $this->session->userdata('user_name')?></a>

@@ -28,15 +28,15 @@
     <script src="<?php echo base_url('assets/js/popper.min.js'); ?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?php echo base_url('http://code.jquery.com/jquery-latest.min.js" type="text/javascript'); ?>"></script>
-    <script src="<?php echo base_url('https://code.jquery.com/jquery-1.10.2.js'); ?>"></script>     
+   <script src="<?php echo base_url('http://code.jquery.com/jquery-latest.min.js" type="text/javascript'); ?>"></script>
+    <script src="<?php echo base_url('https://code.jquery.com/jquery-1.10.2.js'); ?>"></script>    
 
     <script src="<?php echo base_url('assets/tether/tether.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/smooth-scroll/smooth-scroll.js'); ?>"></script>
     <script src="<?php echo base_url('assets/dropdown/js/script.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/touch-swipe/jquery.touch-swipe.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/jarallax/jarallax.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/theme/js/script.js'); ?>"></script>
+
 
     <script type="text/javascript"> //for disabled
         $("#copy").click(function() { 

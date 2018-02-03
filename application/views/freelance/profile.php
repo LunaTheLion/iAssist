@@ -101,7 +101,7 @@
 				  <img style="height: 250px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>" " alt="Card image">
 
 				  <div class="card-body" style="padding-top: 10px;">
-				    <p class="card-text text-center" style="margin:2px;"><?php $date = date_create($row->project_date_posted); echo date_format($date,'F j, Y, l, g:i: a');?></p>
+				    <p class="card-text text-center" style="margin:2px;"><?php echo date_format($row->project_date_posted,'F j, Y, l, g:i: a');?></p>
 				  
 				   	<h6 class="text-center text-primary" style="margin:3px";><?php echo $row->project_title;?></h6>
 				  </div>

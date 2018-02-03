@@ -1,5 +1,5 @@
 <div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk2.jpg'); ?>); background-size: cover; ">
-
+<?php echo $this->session->sess_destroy();?>
 
 <div class="row">
 	<div class="col-lg-3">

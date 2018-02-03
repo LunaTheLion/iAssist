@@ -10,12 +10,12 @@
 		    </div>
 		    <div class="carousel-item" >
 		       <div class="jumbotron p-0 m-0" style="height: 300px; width: 100%; ">
-		      	<img src="<?php echo base_url('assets/img/blog-desk21.jpg')?>">
+		      	<img src="<?php echo base_url('assets/img/blog-desk38.jpg')?>">
 		      </div>
 		    </div>
 		    <div class="carousel-item">
 		      <div class="jumbotron p-0 m-0" style="height: 300px; width: 100%;">
-		      	<img src="<?php echo base_url('assets/img/blog-desk333.jpg')?>">
+		      	<img src="<?php echo base_url('assets/img/blog-desk28.png')?>">
 		      </div>
 		    </div>
 		  </div>
@@ -37,16 +37,32 @@
 
 
 
-<div class="jumbotron m-0" >
+<div class="jumbotron m-0 p-0" >
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4	" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover258369">Graphics &amp; Design</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover907357">Digital Marketing</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+		sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Writing &amp; Translation</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Video &amp; Animation</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Video &amp; Animation</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Music &amp; Audio</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Programming &amp; Tech</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Business</button>
+
+		<button type="button" class="btn btn-secondary pr-3 pl-4" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Fun &amp; Lifestyle</button>
+
 	<div class="row">
 
-
-
-
-
 		<div class="col-lg-3" style="padding-right:8px; padding-left: 8px;">
-			<div class="container" style="background-color: black;">
-				
+			<div class="Card" style="background-color: #FFFFFF;">
+				<h3 class="card-header">Category</h3>
 			</div>
 		</div>
 		
@@ -54,14 +70,14 @@
 		
 		<div class="row">
 		<?php foreach($data as $row):?>
-		<!-- <?php print_r($proj)?> -->
+		
 			<div class="col-md-3" style="padding: 8px;">
 				<div class="card">
 				  <img style="height: 150px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>" " alt="Card image">
 
 				  <div class="card-body" style="padding-top: 10px;">
 				    <p class="card-text text-center" style="margin:2px;">
-				    	<?php $date = date_create($row->project_date_posted); echo date_format($date,'M j, Y, D, g:i: a');?></p>
+				    	<?php $date = date_create($row->project_date_posted); echo date_format($date,'M j, Y, g:i');?></p>
 				   	<h6 class="text-center text-primary" style="margin:3px";><?php echo $row->project_title;?></h6>
 				  </div>
 				 
