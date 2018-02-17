@@ -22,20 +22,30 @@
 				<label>Email:</label><input type="text" name="email"  class="form-control form-control-sm " readonly="" value=" <?php echo $this->session->userdata('email');?>"><p></p>
 				<div class="form-check">
 					<div class="row">
-						<div class="col-lg-1"></div>
-						<div class="col-lg-4">
+						<div class="col-md-1"></div>
+						<div class="col-md-4">
 
 							<input class="form-check-input" type="radio" name="user_status" value="Student">I am a Student</input>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-md-4">
 							<input class="form-check-input" type="radio" name="user_status" value="Teacher">I am a Teacher</input>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-md-3">
 							<input class="form-check-input" type="radio" name="user_status" value="Alumni">I am a Alumni</input>
 						</div>
 						
 					</div>		
 				</div>
+			
+				<?php
+					if(isset($error))
+					{
+						echo $error;
+					}
+
+				;?>
+
+
 				</div>
 				<br>
 			

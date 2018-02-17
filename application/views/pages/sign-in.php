@@ -24,7 +24,20 @@
 			    	      <label for="exampleInputPassword1">Password</label>
 			    	      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="true">
 			    	      	<label class="text-danger">
-			    	            <?php echo $this->session->flashdata('error'); ?>
+			    	            <?php 
+			    	            	$error = $this->session->flashdata('error');
+
+			    	            if(!empty($error))
+			    	            	{
+			    	            		echo $this->session->flashdata('error'); 
+			    	            	}
+			    	            	else
+			    	            		{echo "";
+			    	            		}
+
+
+
+			    	             ?>
 			    	        </label>
 			    	    </div>   
 			    	    

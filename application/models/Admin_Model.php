@@ -7,9 +7,15 @@ class Admin_model extends CI_Model{
 		parent::__construct();	
 	}
 
+	public function review_project()
+	{
+		$this->db->where('project_admin_review', 0);
+		$query = $this->db->get('freelance_project_tbl');	
+			return $query->result();
+	}
+
 	public function get_users()
 	{
-
 			$this->db->limit(10);
 			$this->db->order_by('account_id', 'DESC');
 			$query = $this->db->get('account_tbl');

@@ -8,6 +8,7 @@ class User_Model extends CI_Model{
 		
 	}
 
+
 	public function get_user_project($email)
 	{
 		if(!empty($email))
@@ -31,6 +32,18 @@ class User_Model extends CI_Model{
 			return $this->db->affected_rows() > 0;
 		}	
 		
+	 }
+
+	 public function insert_profile_pic($email,$image)
+	 {
+	 	if(!empty($email))
+	 	{
+	 		$this->db->where('account_email', $email);
+	 		$this->db->set('account_img', $image);
+	 		$this->db->update('account_tbl');
+	 		return $this->db->affected_rows() > 0;
+
+	 	}
 	 }
 	
 
@@ -106,6 +119,7 @@ class User_Model extends CI_Model{
 	  	if(!empty($email))
 	  	{
 	 		$this->db->where('project_publisher', $email);
+	 		$this->db->order_by('project_date_posted', 'DESC');
 	 		$query2 = $this->db->get('freelance_project_tbl');	
 	 		
 	  		if(!empty($query2) && $query2->num_rows() > 0)
@@ -125,7 +139,7 @@ class User_Model extends CI_Model{
 	  	if(!empty($project_info))
 	 	{
 
-	 		//print_r($project_info);
+	 		// print_r($project_info);
 
 	 		$this->db->insert('freelance_project_tbl', $project_info);
 	 		return $this->db->affected_rows() > 0;
@@ -200,6 +214,66 @@ class User_Model extends CI_Model{
 
 	  }
 
+	  public function get_email($id)
+	  {
+	  	if(!empty($id))
+	  	{
+	  		
+	  		$this->db->where('id', $id);
+	  		$query= $this->db->get('freelance_project_tbl'); 		
+	  		return $query->row();
+	  	}
+	  }
+	  public function get_post($id)
+	  {
+	  	if(!empty($id))
+	  	{
+	  		$this->db->where('id', $id);
+	  		$q = $this->db->get('freelance_project_tbl');
+	  		return $q->result();
+	  	}
+	  }
+	  
+	  public function get_owner($email)
+	  {
+	  	if(!empty($email))
+	  	{
+	  		$this->db->where('account_email', $email);
+	  		$q = $this->db->get('account_tbl');
+	  		return $q->result();
+	  	}
+	  }
+	  public function get_more_proj($email)
+	  {
+	  	if(!empty($email))
+	  	{
+	  		$this->db->limit(4);
+	  		$this->db->order_by('id', 'DESC');
+	  		$this->db->where('project_publisher', $email);
+	  		$q = $this->db->get('freelance_project_tbl');
+	  		return $q->result();
+	  	}
+	  }
+
+	  public function update($password, $username)
+	  {
+	  	if(!empty($username))
+	  	{
+	  		$this->db->where('account_email', $username);
+	  		$this->db->where('account_password', $password);
+	  		$sql = $this->db->get('account_tbl');
+	  		return $sql->result();
+	  		if(!empty($sql) && $sql->num_rows() > 0)
+	  		{
+	  			return true;
+
+	  		}
+	  		else
+	  		{
+	  			return false;
+	  		}
+	  	}
+	  }
 
 	// public function account($save_data)
 	// {

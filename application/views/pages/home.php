@@ -8,13 +8,15 @@
 	<div class="col-lg-6">
 		<br><br><br><br><br>
 		<h1 class="text-center" style="font-size:3rem;">Create your team</h1><p></p>
-		<input class="form-control mr-sm-2" type="text" placeholder="Search Talents You Need">
+	 	<form action="<?php echo base_url('search/find')?>" method="POST"> 
+		<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need">
 		<p></p>
 		<div class="row">
 
 		  <div class="col-lg-4"></div>
 		  <div class="col-lg-4">
 		  	<button class="btn btn-secondary btn-block" type="submit">Search</button>
+		 </form>
 		  </div>
 		  <div class="col-lg-4"></div>
 		</div>

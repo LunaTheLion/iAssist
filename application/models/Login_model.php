@@ -49,7 +49,7 @@ class Login_model extends CI_Model{
 			'log_status' =>1,
 			'account_email' => $email,
 			'account_password' => $password,
-			'account_date_joined' => date('Y-m-d'),
+			'account_date_joined' => date('Y-m-d H:i:s'),
 			 );
 		$this->db->insert('account_tbl', $data);
 		return true;

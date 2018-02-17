@@ -8,7 +8,7 @@
 		 
 		   <div class="card-body text-success">
 		    <h5 class="card-title"><?php echo $this->session->userdata('title')?></h5>
-		    <h5 class="card-title text-right"><a href="<?php echo base_url('users/index')?>">Done</a></h5>
+		   
 		    <hr>
 		  
 		  </div>
@@ -72,6 +72,16 @@
 		   <img src="<?php echo $img?>" width="340" height="310">
 		  </div>
 		</div>
+
+		 <br>
+		 		<div class="card border-success" style="">
+		 		 
+		 		  <div class="card-body text-center">
+		 		 	<button class="btn btn-info btn-block" href="<?php echo base_url('users/profile')?>">Done</button>
+		 		 	
+		 		  </div>
+		 		
+		 		</div>
 	</div>
 
 	

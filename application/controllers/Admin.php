@@ -6,6 +6,18 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('Admin_model');
 	}
+	public function projects()
+	{
+		
+		$review = array(
+			'data' => $this->Admin_model->review_project(),
+		);
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/template/nav');	
+		$this->load->view('admin/projects',$review);
+		$this->load->view('admin/template/footer');
+
+	}
 
 	public function dashboard()
 	{
@@ -48,13 +60,11 @@ class Admin extends CI_Controller
 
 		$this->session->set_userdata($admin_data);
 		$this->load->view('admin/template/header',$admin_data);
-		$this->load->view('admin/template/nav', $nav_data);
-
-		// $this->session->set_userdata($admin_data);		
-		
+		$this->load->view('admin/template/nav', $nav_data);	
 		$this->load->view('admin/dashboard', $dash_data);
 		$this->load->view('admin/template/footer');
 	}
+
 
 
 	public function logout()

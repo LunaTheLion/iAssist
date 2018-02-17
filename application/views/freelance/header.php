@@ -20,11 +20,14 @@
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
 
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-
+    
     
     <style type="text/css">
       .hide{
         display: none;
+      }
+      .img-circle {
+        border-radius: 50%;
       }
     </style>
     
@@ -68,7 +71,7 @@
                     <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
                   </li>
                   
-                    <!-- <li class="nav-item dropdown">
+                   <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
                        <div class="dropdown-menu">
                          <a class="dropdown-item" href="<?php echo base_url('users/logout')?>">Logout</a>
@@ -77,11 +80,11 @@
                          <div class="dropdown-divider"></div>
                          <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
                        </div>
-                     </li> -->
+                     </li> 
                     
                   </ul>
                 </div>
-
+                
                  
                </div>
              </nav>
