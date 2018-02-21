@@ -12,7 +12,16 @@ class Search_Model extends CI_Model{
 	{
 		echo $this->input->post('search');
 	}
-
+	public function get_email($id)
+	{
+		if(!empty($id))
+		{
+			
+			$this->db->where('id', $id);
+			$query= $this->db->get('freelance_project_tbl'); 		
+			return $query->row();
+		}
+	}
 	public function get_post($id)
 	{
 		if(!empty($id))
@@ -22,15 +31,7 @@ class Search_Model extends CI_Model{
 			return $q->result();
 		}
 	}
-	public function get_email($id)
-	{
-		if(!empty($id))
-		{
-			$this->db->where('id', $id);
-			$query= $this->db->get('freelance_project_tbl'); 		
-			return $query->row();
-		}
-	}
+	
 	public function get_owner($email)
 	{
 		if(!empty($email))
@@ -41,16 +42,17 @@ class Search_Model extends CI_Model{
 		}
 	}
 	public function get_more_proj($email)
-	{
-		if(!empty($email))
-		{
-			$this->db->limit(4);
-			$this->db->order_by('id', 'DESC');
-			$this->db->where('project_publisher', $email);
-			$q = $this->db->get('freelance_project_tbl');
-			return $q->result();
-		}
-	}
+	  {
+	  	if(!empty($email))
+	  	{
+	  		$this->db->limit(4);
+	  		$this->db->order_by('id', 'DESC');
+	  		$this->db->where('project_publisher', $email);
+	  		$q = $this->db->get('freelance_project_tbl');
+	  		return $q->result();
+	  	}
+	  }
+	
 	
 
 

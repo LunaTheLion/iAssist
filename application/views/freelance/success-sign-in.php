@@ -1,4 +1,5 @@
 <div class="jumbotron">
+<title>Sign In</title>
 	<div class="container">
 		<p class="text-primary text-center">You successfully Signed in ! <?php echo $this->session->userdata('email');?>
 		<br>

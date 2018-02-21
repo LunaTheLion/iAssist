@@ -1,9 +1,12 @@
+
 <div class="jumbotron">
+	<?php foreach ($view as $row):?>
+<title>View Project <?php echo $row->project_title?> </title>
 	<div class="row">
 		<div class="col-md-7">
 
 			<div class="card border-success mb-3" style="margin-left: 150px;">
-				<?php foreach ($view as $row):?>
+				
 			  <h3 class="card-header"><?php echo $row->project_title?></h3>
 			  <div class="card-body">
 			    <h5 class="card-title"><a href="<?php ?>"><?php echo $row->project_category?></a></h5>

@@ -1,4 +1,5 @@
 <div class="container mt-5">
+	<title>Educational</title>
 <br>
 		<div class="row">
 		<div class="col-lg-3">

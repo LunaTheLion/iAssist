@@ -1,4 +1,5 @@
 <div class="container mt-2">
+	<title>Create Profile</title>
 	<p></p>
 	<div class="alert alert-dismissible alert-success">
 	  <button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -214,49 +214,11 @@ class User_Model extends CI_Model{
 
 	  }
 
-	  public function get_email($id)
-	  {
-	  	if(!empty($id))
-	  	{
-	  		
-	  		$this->db->where('id', $id);
-	  		$query= $this->db->get('freelance_project_tbl'); 		
-	  		return $query->row();
-	  	}
-	  }
-	  public function get_post($id)
-	  {
-	  	if(!empty($id))
-	  	{
-	  		$this->db->where('id', $id);
-	  		$q = $this->db->get('freelance_project_tbl');
-	  		return $q->result();
-	  	}
-	  }
-	  
-	  public function get_owner($email)
-	  {
-	  	if(!empty($email))
-	  	{
-	  		$this->db->where('account_email', $email);
-	  		$q = $this->db->get('account_tbl');
-	  		return $q->result();
-	  	}
-	  }
-	  public function get_more_proj($email)
-	  {
-	  	if(!empty($email))
-	  	{
-	  		$this->db->limit(4);
-	  		$this->db->order_by('id', 'DESC');
-	  		$this->db->where('project_publisher', $email);
-	  		$q = $this->db->get('freelance_project_tbl');
-	  		return $q->result();
-	  	}
-	  }
+	 
 
 	  public function update($password, $username)
 	  {
+
 	  	if(!empty($username))
 	  	{
 	  		$this->db->where('account_email', $username);
@@ -266,12 +228,34 @@ class User_Model extends CI_Model{
 	  		if(!empty($sql) && $sql->num_rows() > 0)
 	  		{
 	  			return true;
-
+	  			
 	  		}
 	  		else
 	  		{
 	  			return false;
+	  			
 	  		}
+	  	}
+	  }
+	  public function update_proj($page_data)
+	  {
+	  	print_r($page_data);
+	  	// $email =$this->session->userdata('email');
+	  	// $this->db->where('project_publisher', $email);
+	  	// $this->db->update('freelance_project_tbl', $page_data);
+	  	// print_r($page_data);
+	  	// return $this->db->affected_rows() > 0;
+	  }
+
+	  public function insert_about($a, $b)
+	  {
+	  	
+	  	if(!empty($a))
+	  	{
+	  		$this->db->where('account_email', $b);
+	  		$this->db->set('about_user', $a);
+			$this->db->update('account_tbl');
+			return $this->db->affected_rows() > 0;
 	  	}
 	  }
 

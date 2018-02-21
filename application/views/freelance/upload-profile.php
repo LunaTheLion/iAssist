@@ -1,3 +1,4 @@
+<title>Upload Profile Images</title>
 <div class="container mt-5">
 	<hr>
 	

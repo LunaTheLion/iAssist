@@ -1,4 +1,5 @@
 <div class="jumbotron">
+	<title>Buy Project</title>
 	<div class="row">
 		<div class="col-md-7">
 

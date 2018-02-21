@@ -37,6 +37,7 @@ class Users extends CI_Controller{
 		'log_status' => $info->log_status,
 		'contact' => $info->account_contact,
 		'profile_pic' =>$info->account_img,
+		'about_me' => $info->about_user,
 		);
 
 
@@ -570,7 +571,7 @@ class Users extends CI_Controller{
 
 	public function edit_projects($slug)
 	{	
-
+	
 		$id = substr($slug, -2);
 
 		$post = $this->User_Model->get_email($id);
@@ -582,47 +583,64 @@ class Users extends CI_Controller{
 			'proj'			=>  $this->User_Model->get_more_proj($email),
 		);
 
+
+
+
 		$this->load->view('freelance/header');
-		$this->load->view('freelance/edit-projects', $view);
+		$this->load->view('freelance/edit-projects',$view);
 		$this->load->view('freelance/footer');
 	}
 
 
+
 	public function update_project()
 	{
-		//open modal to input password
-		// $password = $this->input->post('password');
-		// $username = $this->input->post('username');
-		// $this->User_Model->update($password,$username);		
-
-		if($_POST["action"] == "Proceed")
+		$password = $this->input->post('password');
+		$username = $this->input->post('username');
+		if($this->User_Model->update($password, $username))
 		{
+			echo "Account Exist!";
 
-			$password = $this->input->post('password');
-			$username = $this->input->post('username');
-
-			if($this->User_Model->update($password,$username))
-			{
-				//if password is correct update table and show success modal
-				
-				echo "Correct Password";
-			}	
-			else
-			{
-				//return to view.
-				echo "Incorrect Password";
-			}
+		}
+		else
+		{
+			echo "Email and Password does not match!";
 			
 		}
-
-
-
-
 	}
+			
+	public function validate_update()
+	{
+
+		$this->load->view('freelance/header');
+		$this->load->view('freelance/success-edit-project');
+		$this->load->view('freelance/footer');
+	}
+
+	
+
 	public function remove_project()
 	{
 		//open modal to input password
+		echo "Okay";
+	}
+	public function about_me()
+	{
+		$a = $this->input->post('about');
+		$b = $this->input->post('email');
+
+		if($this->User_Model->insert_about($a, $b))
+		{
+			echo "Update Success";
+			//redirect(base_url('users/profile'));
+		}
+		else
+		{
+			echo "Update Fail";
+		}
 		
+
+
 	}
 
 

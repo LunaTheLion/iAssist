@@ -1,4 +1,5 @@
 <div class="container mt-5">
+	<title>Upload Images</title>
 	<hr>
 	
 

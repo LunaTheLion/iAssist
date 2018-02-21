@@ -9,18 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/css/bootstrap-lux-bootswatch.css'); ?>" rel="stylesheet"> 
-     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-
-    <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
-    <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
-
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-    
+    <!-- <script type="text/javascript" async="" src="<?php echo base_url('assets/js/bootswatch.lux.js')?>"></script> -->
     
     <style type="text/css">
       .hide{
@@ -29,6 +19,7 @@
       .img-circle {
         border-radius: 50%;
       }
+      
     </style>
     
 

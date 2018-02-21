@@ -37,24 +37,13 @@ class Search extends CI_Controller{
 		$this->load->view('freelance/view-project', $view);
 		$this->load->view('freelance/footer');
 	}
-	public function edit_projects($slug)
-	{	
-
-		$id = substr($slug, -2);
-		$post = $this->Search_Model->get_email($id);
-		$email = $post->project_publisher;
-		
-		$view = array (
-			'view' 			=>	$this->Search_Model->get_post($id),
-			'publisher' 	=>	$this->Search_Model->get_owner($email), 
-			'proj'			=>  $this->Search_Model->get_more_proj($email),
-		);
-
+	
+	public function request_service()
+	{
 		$this->load->view('freelance/header');
-		$this->load->view('freelance/edit-projects', $view);
+		$this->load->view('freelance/project-request');
 		$this->load->view('freelance/footer');
 	}
-
 
 
 	

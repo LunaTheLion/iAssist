@@ -1,4 +1,4 @@
-
+<title>Profile</title>
 <div class="jumbotron" style="padding-top: 100px; padding-bottom: 100px; margin: 0px;">
 	<div class="row">
 		<div class="col-lg-1"></div>
@@ -36,29 +36,64 @@
 				<div class="col-md-6">
 					<div class="container">
 						<h3 class="text-center" style="font-style: initial;">About Me</h3>
-						<h6 class="text-center">Write a simple introduction about yourself <a data-toggle="modal" data-target="#aboutMe">here!</a></h6>
+						
+
+						<?php 
+						 if(!empty($this->session->userdata('about_me')))
+						 {
+						 	
+						 	// echo '<div class="container-fluid" style="background-color: #FFFFFF;height: 20px; width: 80px; padding: 20px;">
+		    		// 	  	<p class="text-primary text-center">';
+		      // 				
+
+		      				echo ' <div class="container-fluid mb-4" id="AboutDiv" style="background-color: #FFFFFF;height: 100px; width: 500px; padding: 15px;">
+		    		<p class="text-primary text-center">'.$this->session->userdata('about_me').'
+		    			 
+		    		</p><a data-toggle="modal" data-target="#aboutMe"><p class="text-right">Edit</p></a>
+		    	</div>';
+		    		
+						 }
+						 else
+						 {
+						 	echo '<h6 class="text-center">Write a simple introduction about yourself <a data-toggle="modal" data-target="#aboutMe">here!</a></h6>';
+						 }
+
+						?>
+							
+
 
 						  <div class="modal fade" id="aboutMe" role="dialog">
 						    <div class="modal-dialog" role="document">
+						    		<form method="POST" id="about_form">
 						      <div class="modal-content">
 						        <div class="modal-header">
-						          <h5 class="modal-title text-center">Write something about yourself</h5>
+						          <h5 class="modal-title text-center">About Me</h5>
 						          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						            <span aria-hidden="true">&times;</span>
 						          </button>
 						        </div>
 						        <div class="modal-body">
-						         
-								  <input class="form-control" type="textarea" name="about" placeholder="Describe yourself in one line">
+						          <p class="text-primary">Describe yourself in a few lines</p>
+						          <input class="form-control p-1 mb-1" type="text" id="email" name="email" value="<?php echo $this->session->userdata('email');?>" hidden="">
+						          <textarea class="form-control mb-1" required="true" id="about" name="about" rows="4" cols="50"><?php
+						          if(!empty($this->session->userdata('about_me')))
+						          {
+						          	echo $this->session->userdata('about_me');
+						          }
+						          else
+						          {
+						          	echo "We suggest to write at least a sentence ";
+						          }
+						          ?></textarea>
 						        </div>
 						        <div class="modal-footer">
-						          <button type="button" class="btn btn-primary">Proceed</button>
+						          <input type="submit" class="btn btn-primary" name="action" value="Proceed">
 						          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						        </div>
 						      </div>
-						    </div>
 
-						  
+						       </form>
+						    </div>
 						</div>
 
 

@@ -1,3 +1,4 @@
+<title>Create Project</title>
 <div class="container mt-5">
 
 	<br>

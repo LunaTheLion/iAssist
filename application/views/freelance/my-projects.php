@@ -1,5 +1,5 @@
 <div class="jumbotron">
-	
+	<title>My Projects</title>
 
 
 <div class="row">

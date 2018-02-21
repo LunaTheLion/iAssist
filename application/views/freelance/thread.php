@@ -1,3 +1,4 @@
+<title>iAssist - thread</title>
 <div class="jumbotron p-0 m-0">
 	
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -61,8 +62,14 @@
 	<div class="row">
 
 		<div class="col-lg-3" style="padding-right:8px; padding-left: 8px;">
-			<div class="Card" style="background-color: #FFFFFF;">
-				<h3 class="card-header">Category</h3>
+			<div class="card" style="background-color: #FFFFFF;">
+				<h4 class="card-header">Custom Search</h4>
+				<div class="card-body">
+					<p class="text-primary font-weight-bold"> Hi, <?php echo $this->session->userdata('user_name')?></p>
+					<p class="text-primary"> Looking for a specific skill that fits your need?</p>
+					<a class="btn btn-success btn-block" href="<?php base_url()?>/iAssist/search/request_service">Post a request</a>
+				</div>
+				
 			</div>
 		</div>
 		
