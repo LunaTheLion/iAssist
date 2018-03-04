@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+ if(!defined('BASEPATH'))exit('No direct script access allowed');
 
 class Users extends CI_Controller{
 
@@ -9,6 +9,7 @@ class Users extends CI_Controller{
 		$this->load->model('User_Model');
 
 	}
+	
 	public function profile()
 	{
 		$email = $this->session->userdata('email');
@@ -63,8 +64,6 @@ class Users extends CI_Controller{
 	{
 
 	}
-
-
 	
 	public function profile_personal()
 	{
@@ -293,16 +292,46 @@ class Users extends CI_Controller{
 		$this->load->view('freelance/header',$page_data);
 		$this->load->view('freelance/profile-projects');
 		$this->load->view('freelance/footer');
-	}
+	}	
 
+	public function project_pricing()
+	{
+
+		$page_data = array(
+		'page_title' => 'Upload Image',
+		'user_type' => $this->session->userdata('user_type'),
+		'email' => $this->session->userdata('email'),	
+		'title' => $this->session->userdata('title'),
+		'category' => $this->session->userdata('category'),
+		'subcategory' => $this->session->userdata('subcategory'),
+		'service' => $this->session->userdata('service'),
+		'offer' => $this->session->userdata('offer'),
+		'delivery' => $this->session->userdata('delivery'),
+		'type' => $this->session->userdata('type'),
+		'description' => $this->session->userdata('description'),
+		'requirements' => $this->session->userdata('requirements'),
+		'price' => $this->session->userdata('price'),
+		'search' => $this->session->userdata('search'),
+		);
+
+		$this->session->set_userdata($page_data);
+		$this->load->view('freelance/header',$page_data);
+		$this->load->view('freelance/profile-project-price');
+		$this->load->view('freelance/footer');
+	}
+	public function validate_project_pricing()
+	{
+		echo "Okay";
+
+	}
 
 	public function validate_projects()
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('title', 'Title', 'required');
-		$this->form_validation->set_rules('category', 'Category', 'required');
-		$this->form_validation->set_rules('subcategory', 'Subcategory', 'required');
-		$this->form_validation->set_rules('type', 'Type', 'required');
+		//$this->form_validation->set_rules('category', 'Category', 'required');
+		// $this->form_validation->set_rules('subcategory', 'Subcategory', 'required');
+		
 		$this->form_validation->set_rules('service', 'Service', 'required');
 		$this->form_validation->set_rules('offer', 'Offer', 'required');
 		$this->form_validation->set_rules('delivery', 'Delivery', 'required');					
@@ -349,9 +378,9 @@ class Users extends CI_Controller{
 		$this->session->set_userdata('title', $this->input->post('title'));
 		$this->session->set_userdata('search', $this->input->post('search'));
 		$this->session->set_userdata('category', $cg);
-		$this->session->set_userdata('type', $this->input->post('type') );
+	
 		$this->session->set_userdata('subcategory',$this->input->post('subcategory'));
-		$this->session->set_userdata('service', $this->input->post('service'));
+		//$this->session->set_userdata('service', $this->input->post('service'));
 		$this->session->set_userdata('offer', $this->input->post('offer'));
 		$this->session->set_userdata('delivery', $this->input->post('delivery'));
 		$this->session->set_userdata('search', $this->input->post('search'));
@@ -368,7 +397,7 @@ class Users extends CI_Controller{
 			'title' => $this->session->userdata('title'),
 			'category' => $this->session->userdata('category'),
 			'subcategory' => $this->session->userdata('subcategory'),
-			'service' => $this->session->userdata('service'),
+			//'service' => $this->session->userdata('service'),
 			'offer' => $this->session->userdata('offer'),
 			'delivery' => $this->session->userdata('delivery'),
 			'type' => $this->session->userdata('type'),
@@ -394,7 +423,7 @@ class Users extends CI_Controller{
 			'title' => $this->session->userdata('title'),
 			'category' => $this->session->userdata('category'),
 			'subcategory' => $this->session->userdata('subcategory'),
-			'service' => $this->session->userdata('service'),
+			//'service' => $this->session->userdata('service'),
 			'offer' => $this->session->userdata('offer'),
 			'delivery' => $this->session->userdata('delivery'),
 			'type' => $this->session->userdata('type'),
@@ -438,8 +467,8 @@ class Users extends CI_Controller{
 	public function education()
 	{
 		$this->load->view('freelance/header');
-		$this->load->view('freelance/profile-educational1');
-		$this->load->view('freelance/header');
+		$this->load->view('freelance/profile-educational-2');
+		$this->load->view('freelance/footer');
 	}
 
 	public function upload_profile()

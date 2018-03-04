@@ -11,16 +11,22 @@
 				<br><br>	
 			<div class="container">
 				
-					<?php echo form_open_multipart('users/validate_projects');?>
-					<div class="form-group">
-						<input class="form-control" type="text" placeholder="Service Title" name="title" value="<?php echo $this->session->userdata('title');?>"></input>
+					<?php echo form_open('users/validate_projects');?>
+
+					<div class="form-group ">
+						<!-- <input class="form-control" type="text" placeholder="Service Title" name="title" value=""></input> -->
+						<!-- <span class=""> I can</span> -->
 						<p></p>
+						 <textarea id="myTextarea" rows="2" cols="2" class="form-control" required name="title" style="font-size:32pt">I can <?php echo $this->session->userdata('title');?></textarea>
+						<!-- <div class="textarea-container" onclick="document.getElementById('myTextarea').focus()">
+						</div> -->
+						<br>
 						<div class="row">
 							
 							<div class="col-4">
 									<div class="form-group">
 								      <label for="category">Category</label>
-								      <select class="form-control form-control-sm" id="category" name="Category" required>
+								      <select class="form-control form-control-sm" id="category" name="Category" >
 								      	<option value="">
 								      		<?php
 								      			$category = $this->session->userdata('category');
@@ -32,7 +38,6 @@
 								      			{
 								      				echo "-- SELECT CATEGORY --";
 								      			}
-
 								      		?>
 								      	</option>
 								        <option value="VAA">Video &amp; Animation</option>
@@ -51,7 +56,7 @@
 
 									<div class="form-group">
 								 	<label for="subcategory">Sub-Category</label>
-								      <select class="form-control form-control-sm hide VAA" name="subcategory" id="VAA"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide VAA" name="subcategory" id="VAA"  style="padding-right: 20px;padding-left: 20px;">
 								      	<option value="" selecteD>
 								      		<?php
 								      			$sub = $this->session->userdata('subcategory');
@@ -79,7 +84,7 @@
 								        <option value="Others">Others</option>   
 								      </select>
 								    
-								    <select class="form-control form-control-sm hide GAD" name="subcategory" id="GAD"  required style="padding-right: 20px;padding-left: 20px;">
+								    <select class="form-control form-control-sm hide GAD" name="subcategory" id="GAD"  style="padding-right: 20px;padding-left: 20px;">
 								        <option value="Logo Design">Logo Design</option>
 								        <option value="Business Cards &amp; Stationery">Business Cards &amp; Stationery </option>
 								        <option value="Illustration">Illustration</option>
@@ -99,7 +104,7 @@
 								        <option value="Other">Other </option>
 								       </select>
 								 
-								      <select class="form-control form-control-sm hide DM" name="subcategory" id="DM"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide DM" name="subcategory" id="DM" style="padding-right: 20px;padding-left: 20px;">
 								        <option value="Social Media Marketing">Social Media Marketing</option>
 								        <option value="SEO">SEO</option>
 								        <option value="Content Marketing">Content Marketing</option>
@@ -118,7 +123,7 @@
 								        <option value="Other">Other</option>
 								      </select>
 								  
-								      <select class="form-control form-control-sm hide WAT" name="subcategory" id="WAT"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide WAT" name="subcategory" id="WAT" style="padding-right: 20px;padding-left: 20px;">
 								         <option value="Resumes &amp; Cover Letters">Resumes &amp; Cover Letters</option>
 								         <option value="Proofreading &amp; Editin">Proofreading &amp; Editing</option>
 								         <option value="Translation">Translation</option>
@@ -132,7 +137,7 @@
 								         <option value="Other">Other</option>
 								      </select>
 								    
-								      <select class="form-control form-control-sm hide MAA" name="subcategory" id="MAA"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide MAA" name="subcategory" id="MAA" style="padding-right: 20px;padding-left: 20px;">
 								        <option value="Voice Over">Voice Over</option>
 								        <option value="Mixing &amp; Mastering">Mixing &amp; Mastering</option>
 								        <option value="Produces &amp; Composers">Produces &amp; Composers</option>
@@ -143,7 +148,7 @@
 								        <option value="Others">Others</option>
 								      </select>
 								    
-								      <select class="form-control form-control-sm hide PAT" name="subcategory" id="PAT"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide PAT" name="subcategory" id="PAT"  style="padding-right: 20px;padding-left: 20px;">
 								        <option value="WordPress">WordPress</option>
 								        <option value="Website Builders &amp; CMS">Website Builders &amp; CMS</option>
 								        <option value="Web Programmin">Web Programming</option>
@@ -160,7 +165,7 @@
 								        <option value="Others">Others</option>
 								      </select>
 								  
-								      <select class="form-control form-control-sm hide BUS" name="subcategory" id="BUS"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide BUS" name="subcategory" id="BUS"  style="padding-right: 20px;padding-left: 20px;">
 								        <option value="Virtual Assistant">Virtual Assistant</option>
 								        <option value="Market Research">Market Research</option>
 								        <option value="Business Plans">Business Plans</option>
@@ -174,7 +179,7 @@
 								        <option value="Other">Other</option>
 								      </select>
 								     
-								      <select class="form-control form-control-sm hide FAL" name="subcategory" id="FAL"  required style="padding-right: 20px;padding-left: 20px;">
+								      <select class="form-control form-control-sm hide FAL" name="subcategory" id="FAL"  style="padding-right: 20px;padding-left: 20px;">
 								        <option value="Online Lessons">Online Lessons</option>
 								        <option value="Arts &amp; Crafts">Arts &amp; Crafts</option>
 								        <option value="Health, Nutrition &amp; Fitness">Health, Nutrition &amp; Fitness</option>
@@ -201,9 +206,37 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-								      <label for="category">Service Type</label>
-								      <select class="form-control" required  style="padding-right: 20px;padding-left: 20px;" id="category" name="type" >
-								      	<option selected><?php echo $this->session->userdata('type');?></option>
+								      <label for="type">Service Type</label>
+								      <select class="form-control" id="service"  style="padding-right: 20px;padding-left: 20px;" name="service" >
+								      	<option selected value="
+
+								      			<?php 
+								      				$da = $this->session->userdata('type');
+								      				if(empty($da))
+								      				{
+								      					echo " ";
+								      				}
+								      				else
+								      				{
+								      					echo $da;
+								      				}
+
+
+								      			?>
+								      	">
+								      		<?php 
+								      			$da = $this->session->userdata('type');
+								      			if(empty($da))
+								      			{
+								      				echo "Select Service Type";
+								      			}
+								      			else
+								      			{
+								      				echo $da;
+								      			}
+								      		?>
+								      		</option>
+								        
 								        <option value="Programming & Tech">Programming &amp; Tech</option>
 								        <option value="Graphics & Design">Graphics &amp; Design</option>
 								        <option value="Fun & Entertainment">Fun &amp; Entertainment</option>
@@ -217,22 +250,60 @@
 							</div>
 						</div>
 						 <label for="search">Search</label>
-						<input class="form-control" type="text" data-role="tagsinput" id="search" placeholder="Search Keywords" name="search"  value="<?php echo $this->session->userdata('search');?>" required></input>
+						
+						<div class="tagsinput" data-name="tagsinput">
+							<!-- <span class="tag">CSS<span class="close"></span></span>
+							<span class="tag">JavaScript<span class="close"></span></span>
+							<span class="tag">HTML<span class="close"></span></span> -->
+							<input type="hidden" name="tagsinput" ></input>
+							<input type="text" class="main-input"  id="search" placeholder="Search Keywords" name="search"  value="<?php echo $this->session->userdata('search');?>" ></input>
+
+						</div>
+
+						
+
+
+
+
 						<p></p>
 						<hr>
 						<p></p>
 						<div class="form-group">
 						      <label for="exampleTextarea"  >Describe your offer</label>
-						     <textarea class="form-control" required id="exampleTextarea" name="offer" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;" ><?php echo $this->session->userdata('offer');?></textarea>
+						     <textarea class="form-control" placeholder="What does your offer have"   id="exampleTextarea" name="offer" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;" ><?php echo $this->session->userdata('offer');?> </textarea>
 						    </div>
 						<p></p>
 						<div class="row">
 							<div class="col-5">
 								<div class="form-group">
 								      <label for="category">Delivery Time</label>
-								      <select class="form-control" required  style="padding-right: 20px;padding-left: 20px;" id="category" name="delivery">
-								      	<option value="<?php echo $this->session->userdata('delivery');?>">
-								      		
+								      <select class="form-control"   style="padding-right: 20px;padding-left: 20px;" id="category" name="delivery">
+								      	<option selected value="<?php 
+								      			$b = $this->session->userdata('delivery');
+								      			if(empty($b))
+								      			{
+								      				echo " ";
+								      			}
+								      			else
+								      			{
+								      				echo $b;
+								      			}
+
+
+								      		?>">
+								      		<?php 
+								      			$a = $this->session->userdata('delivery');
+								      			if(empty($a))
+								      			{
+								      				echo "Select Delivery Type";
+								      			}
+								      			else
+								      			{
+								      				echo $a;
+								      			}
+
+
+								      		?>
 								      	</option>
 								       <option value="1 Days">1 Day Delivery</option>
 								       <option value="2 Days">2 Days Delivery</option>
@@ -269,14 +340,14 @@
 						</div>	
 						<div class="form-group">
 						      <label for="exampleTextarea"  >Briefly Describe your Service</label>
-						     <textarea class="form-control" required id="exampleTextarea" name="service" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('service');?></textarea>
+						     <textarea class="form-control"  id="exampleTextarea" name="service" rows="6" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('service');?></textarea>
 
 
 						    </div>
 						<p></p>
 						<div class="form-group">
 						      <label for="exampleTextarea"  >Tell your future client what you need to get started.</label>
-						     <textarea class="form-control" required id="exampleTextarea" name="requirements" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('requirements');?></textarea>
+						     <textarea class="form-control"  id="exampleTextarea" name="requirements" rows="3" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"><?php echo $this->session->userdata('requirements');?></textarea>
 
 
 						    </div>
@@ -293,6 +364,7 @@
 							<option value="50">P 50.00</option>
 							<option value="60">P 60.00</option>
 							<option value="70">P 70.00</option>
+							<option value=""></option>
 
 						</select>
 
@@ -324,7 +396,10 @@
 				<div class="col-lg-3"></div>
 			</div>			
 		</div>
-		<div class="col-lg-3">			
+		<div class="col-lg-3">	
+		<div class="container ">
+			<a class="btn btn-success btn-block" href="<?php echo site_url('users/project_pricing')?>" >Make a Package</a>
+		</div>		
 		</div>
 	</div>
 </div>

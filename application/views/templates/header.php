@@ -48,7 +48,18 @@
                 <div>
                    <ul class="navbar-nav mr-auto">
                     <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php echo base_url('/sign-in');?>">Sign In</a>
+                      <a class="nav-link" href="<?php
+                        if($this->session->userdata('log_status') == 1)
+                        {
+                           echo base_url('users/profile');
+                        }
+                        else
+                        {
+                           echo base_url('/sign-in');
+                        }
+
+
+                      ?>">Sign In</a>
                     </li>
                     <li class="nav-item nav-">
                       <a class="nav-link" href="<?php echo base_url('/sign-up');?>">Sign Up</a>

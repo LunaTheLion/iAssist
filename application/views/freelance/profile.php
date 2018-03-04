@@ -23,13 +23,12 @@
 				<div class="col-md-3">
 					<a href="<?php echo base_url("users/upload_profile")?>"><img class="img-circle" src="<?php 
 							$pic = $this->session->userdata('profile_pic');
-							if(!empty($pic))
+							if( !empty($pic))
 							{
 								echo site_url("uploads/$pic");
 							}
 							else
-								echo 
-					 site_url("uploads/pic.jpg");?>" width="210" height="180">
+								echo site_url("uploads/pic.jpg");?>" width="210" height="180">
 					</a>
 				</div>
 				
@@ -46,10 +45,10 @@
 		    		// 	  	<p class="text-primary text-center">';
 		      // 				
 
-		      				echo ' <div class="container-fluid mb-4" id="AboutDiv" style="background-color: #FFFFFF;height: 100px; width: 500px; padding: 15px;">
+		      				echo ' <div class="container-fluid mb-4" id="AboutDiv" style="background-color: #FFFFFF;height: 100%; width: 100%; padding:15px;">
 		    		<p class="text-primary text-center">'.$this->session->userdata('about_me').'
 		    			 
-		    		</p><a data-toggle="modal" data-target="#aboutMe"><p class="text-right">Edit</p></a>
+		    		</p><a data-toggle="modal" data-target="#aboutMe"><p class="text-right" style="margin:0px;">Edit</p></a>
 		    	</div>';
 		    		
 						 }
@@ -75,7 +74,7 @@
 						        <div class="modal-body">
 						          <p class="text-primary">Describe yourself in a few lines</p>
 						          <input class="form-control p-1 mb-1" type="text" id="email" name="email" value="<?php echo $this->session->userdata('email');?>" hidden="">
-						          <textarea class="form-control mb-1" required="true" id="about" name="about" rows="4" cols="50"><?php
+						          <textarea class="form-control mb-1" id="about" name="about" rows="4" cols="50" maxlength="300"><?php
 						          if(!empty($this->session->userdata('about_me')))
 						          {
 						          	echo $this->session->userdata('about_me');
@@ -117,6 +116,7 @@
 
 			
 </div>
+
 <div class="container mt-5">
 	<div class="row">
 		
@@ -169,6 +169,7 @@
 		</div>
 		
 	</div>
+	<hr>
 </div>
 <div class="jumbotron" style=" margin: 0px;">
 	<h3 class="text-center" style="font-style: initial;">- <a href="<?php echo base_url('users/projects');?>">My Projects</a> -</h3>
@@ -197,6 +198,7 @@
 
 
 </div>
+
 <div class="jumbotron" style="background-color: #D3D3D3; margin: 0px;">
 	<h3 class="text-center" style="font-style: initial;">- Testimonials -</h3>
 	<br><br>

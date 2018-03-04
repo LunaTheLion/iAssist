@@ -12,6 +12,7 @@ class Login extends CI_Controller{
 
 
 	public function sign_in(){
+
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
 

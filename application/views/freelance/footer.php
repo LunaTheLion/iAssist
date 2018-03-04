@@ -21,17 +21,51 @@
     <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-<!--     <script type="text/javascript" src="<?php echo base_url('assets/js/bootswatch.lux.js') ?>"></script> -->
-    <!-- <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js') ?>"></script> -->
+ <!--    <script type="text/javascript" src="<?php echo base_url('assets/js/bootswatch.lux.js') ?>"></script> 
+   <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js') ?>"></script>  -->
 
-    <script src="<?php echo base_url('assets/tether/tether.min.js'); ?>"></script>
+   <!--  <script src="<?php echo base_url('assets/tether/tether.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/smooth-scroll/smooth-scroll.js'); ?>"></script>
     <script src="<?php echo base_url('assets/dropdown/js/script.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/touch-swipe/jquery.touch-swipe.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/jarallax/jarallax.min.js'); ?>"></script> 
-
+ -->
 
     <script type="text/javascript"> //for disabled
+
+
+    [].forEach.call(document.getElementsByClassName('tagsinput').function(el){
+        let hiddenInput = document.createElement('input').
+        mainInput = document.createElement('input');
+
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', el.getAttribute('data-name'));
+
+        mainInput.setAttribute('type', 'text');
+        mainInput.classList.add('main-input');
+
+        el.appendChild(mainInput )
+
+
+    });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
         $("#copy").click(function() { 
           $("#proceed").attr("disabled", !this.checked);
         });
@@ -52,6 +86,7 @@
             }).change();
         });
 
+        //$('#price').editableSelect();
 
 
         $(document).on('submit','#user_form', function(event)
@@ -171,6 +206,11 @@
                     }
                 });
                 
+            }
+            else
+            {
+                <?php echo $this->session->set_userdata('about_me', '');?>
+                location.reload();
             }
             
         });

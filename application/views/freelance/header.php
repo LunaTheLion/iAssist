@@ -19,8 +19,71 @@
       .img-circle {
         border-radius: 50%;
       }
+
+      div.textarea-container {
+          border: solid 1px #808080;
+          overflow: auto;
+          width: 480px;
+          padding: 2px;
+          font-family: Arial;
+          font-size: 12px;
+      }
+       
+      div.textarea-container textarea {
+          font-family: Arial;
+          font-size: 12px;
+          overflow: auto;
+          border: none;
+          outline: none;
+          width: 480px;
+          height: 120px;
+          margin: 0px;
+          padding: 0px;
+
+
+      }
+
+
+      .tagsinput{
+         border: 1px solid #333;
+         display: inline-block;
+      }
+      .tagsinput .tag{
+        font-size: 85%;
+        padding: 0.5em 0.75em;
+        margin: 0.25em 0.1em;
+        display: inline-block;
+        background-color: #ddd;
+        transition: all 0.1s linear;
+        cursor: pointer;
+      }
+      .taginsput .tag:hover {
+        background-color: #3af;
+        color: black;
+      }
+      .tagsinput .tag .close::after {
+         content: 'x';
+        font-weight: bold;
+        display: inline-block;
+        transform: scale(0.8);
+        margin-left: 0.75em;
+      }
+
+      .tagsinput .tag .close:hover:after{
+        color:red;
+      }
+
+      .tagsinput .main-input{
+        border: 0;
+        outline: 0;
+        padding: 0.25em 0.1em;
+      }
+
+
+
       
     </style>
+
     
 
   </head>
@@ -49,10 +112,17 @@
                   <div>
                    <ul class="navbar-nav mr-auto">
                     <li>
-                      <a class="nav-link" href="#"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
+                      <a class="nav-link" href="<?php echo base_url('Pm/index')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                     </li>
                     <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php echo $this->session->userdata('user_name')?></a>
+                      <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php 
+
+                      echo $this->session->userdata('user_name');
+
+
+                      ?>
+
+                      </a>
 
                     </li>
 
