@@ -317,7 +317,27 @@ class User_Model extends CI_Model{
 
 	// 		$this->db->insert('account_info_tbl', $save_data);
 	// 	}
-	// }	
+	// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

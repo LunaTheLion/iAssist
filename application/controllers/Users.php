@@ -7,7 +7,7 @@ class Users extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model('User_Model');
-
+		
 	}
 	
 	public function profile()
@@ -322,6 +322,16 @@ class Users extends CI_Controller{
 	public function validate_project_pricing()
 	{
 		echo "Okay";
+		
+		if(is_null($this->input->post('package')) )
+		{
+			
+			echo "Negative";
+		}
+		else
+		{
+			echo "Positive";
+		}
 
 	}
 

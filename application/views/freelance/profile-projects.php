@@ -10,7 +10,7 @@
 			<h6>Upload your works here to prove how great you are!</h6>
 				<br><br>	
 			<div class="container">
-				
+
 					<?php echo form_open('users/validate_projects');?>
 
 					<div class="form-group ">
@@ -250,18 +250,17 @@
 							</div>
 						</div>
 						 <label for="search">Search</label>
-						
-						<div class="tagsinput" data-name="tagsinput">
-							<!-- <span class="tag">CSS<span class="close"></span></span>
+						<input type="text" class="form-control" name="search" id="search">
+						<!-- <div class="tagsinput" data-name="tagsinput">
+							<span class="tag">CSS<span class="close"></span></span>
 							<span class="tag">JavaScript<span class="close"></span></span>
-							<span class="tag">HTML<span class="close"></span></span> -->
+							<span class="tag">HTML<span class="close"></span></span>
 							<input type="hidden" name="tagsinput" ></input>
-							<input type="text" class="main-input"  id="search" placeholder="Search Keywords" name="search"  value="<?php echo $this->session->userdata('search');?>" ></input>
-
-						</div>
+								<input type="text" class="main-input"  id="search" placeholder="Search Keywords" name="search"  value="<?php echo $this->session->userdata('search');?>" ></input>
+								
+						</div> -->
 
 						
-
 
 
 

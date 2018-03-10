@@ -21,6 +21,7 @@
     <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  <!--    <script type="text/javascript" src="<?php echo base_url('assets/js/bootswatch.lux.js') ?>"></script> 
    <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js') ?>"></script>  -->
 
@@ -30,47 +31,56 @@
     <script src="<?php echo base_url('assets/touch-swipe/jquery.touch-swipe.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/jarallax/jarallax.min.js'); ?>"></script> 
  -->
+    <!-- <script src="<?php echo base_url('assets/js/tags-input.js')?>"></script> -->
+
+    <script src="<?php echo base_url('assets/js/bootstrap-tokenfield.js')?>">
+
+
+
 
     <script type="text/javascript"> //for disabled
+        $(document).ready(function(){
+            $('#search').tokenfield({
+                autocomplete:{
+                    source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
+                    delay:100
+                },
+                showAutocompleteOnFocus: true
+            });
 
-
-    [].forEach.call(document.getElementsByClassName('tagsinput').function(el){
-        let hiddenInput = document.createElement('input').
-        mainInput = document.createElement('input');
-
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', el.getAttribute('data-name'));
-
-        mainInput.setAttribute('type', 'text');
-        mainInput.classList.add('main-input');
-
-        el.appendChild(mainInput )
-
-
-    });
+        });
     
 
+        $(document).on('ready', function() {
+          $.fn.extend({
+            setLabel: function() {
+              var label = $('[for="'+$(this).attr('id')+'"]').eq(0);
+              $(label).text(($(this).is(':checked') ? '' : 'not ') + 'checked');            }
+          });
+          $('#front_set').on('change', function(){
+            $(this).setLabel();
+          })
+          $('#front_set').setLabel();
+        });
 
+        $("#package").on("change", function(event) {
+             if($(this).is(":checked")) {
 
-
-
-
-
-
-
-
-
-
-
-    
-
+                document.getElementById('iam').style.display='none';
+             }
+            else
+            {
+                 document.getElementById('iam').style.display='block';
+ 
+             }
+        });
+  
 
 
         $("#copy").click(function() { 
           $("#proceed").attr("disabled", !this.checked);
         });
-    </script>
-    <script type="text/javascript"> //for hidden elements
+
         $(document).ready(function(){
             $("select[name=College]").change(function(){
                 $(this).find("option:selected").each(function(){
@@ -85,8 +95,6 @@
                 });
             }).change();
         });
-
-        //$('#price').editableSelect();
 
 
         $(document).on('submit','#user_form', function(event)

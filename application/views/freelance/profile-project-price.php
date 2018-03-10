@@ -12,11 +12,42 @@
 		<div class="row">
 			<div class="col-md-8">
 				
-					<form action="<?php echo base_url('users/validate_project_pricing')?>" method="POST">
+					<form action="<?php echo site_url('users/validate_project_pricing')?>" method="POST">
 						
 						<div class="card border-primary mb-5">
 							 
 						  <div class="card-body">
+						  	
+
+						  	<!-- Rounded switch -->
+						  	<div class="card-head">
+						  			
+
+
+
+						  		<div class="row">
+						  			<div class="col-md-6">
+						  				<h4>Activate Package</h4>
+						  			</div>
+						  			
+						  			<div class="col-md-2">
+						  				
+						  			</div>
+						  			<div class="col-md-2">
+						  			
+						  			</div>
+						  			<div class="col-md-2">
+						  				<label class="switch" >
+						  		  			<input type="checkbox" id="package">
+						  		  			<!-- <input id="test_id" type="checkbox"  checked data-toggle="toggle"> -->
+						  		  			<span class="slider round"></span>s
+						  				</label>
+
+						  			</div>
+						  		</div>
+						  	</div>
+						  	
+
 						  	<table class="table table-bordered" >
 						  	  <thead>
 						  	    <tr>
@@ -32,14 +63,18 @@
 						  	      <th rowspan="3"><p class="text-primary text-center">&nbsp;</p></th>
 						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control" type="text" id="tx" name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	      	<textarea class="form-control tx" type="text"  name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
 						  	      </td>
+						  	      <div class="iam" id="iam">
+
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control" rows="4" id="tx" cols="3" name="title2" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"></textarea>
+						  	      	<textarea class="form-control tx" rows="4" cols="3" name="title2" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"></textarea>
 						  	      </td>
+
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control" rows="4" id="tx" cols="3" name="title3" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package"></textarea></td>
-						  	      	
+						  	      	<textarea class="form-control tx" rows="4" cols="3" name="title3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package"></textarea></td>
+						  	      </div>
+						  	      
 
 						  	    </tr>
 
@@ -48,13 +83,13 @@
 						  	      <!-- <th scope="row">3</th> -->
 						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control" rows="4" id="tx" name="offer" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('offer')?></textarea>
+						  	      	<textarea class="form-control tx" rows="4"  name="offer" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('offer')?></textarea>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control" rows="4" id="tx" name="offer2" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	      	<textarea class="form-control tx" rows="4" id="hideme" name="offer2" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      <textarea class="form-control" rows="4" id="tx" name="offer3" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	      <textarea class="form-control tx" rows="4" name="offer3" cols="3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
 						  	  		</td>
 
 						  	    </tr>
@@ -62,7 +97,7 @@
 						  	    <tr>
 						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" name="delivery" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control tx" name="delivery" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="" value="<?php echo $this->session->userdata('delivery')?>"><?php echo $this->session->userdata('delivery')?></option>
 						  	      	 <option value="1 Days">1 Day </option>
 								       <option value="2 Days">2 Days </option>
@@ -98,7 +133,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" name="delivery2" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" name="delivery2" id="hideme" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Delivery Time</option>
 						  	      		 <option value="1 Days">1 Day </option>
 								       <option value="2 Days">2 Days </option>
@@ -132,7 +167,7 @@
 
 						  	      	</select>
 						  	      </td>
-						  	      <td style="padding: 0px; "><select class="form-control" name="delivery3" style="background-color: #ffffff; padding: 5px;">
+						  	      <td style="padding: 0px; "><select class="form-control" id="hideme" name="delivery3" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Delivery Time</option>
 						  	      		 <option value="1 Days">1 Day Delivery</option>
 								       <option value="2 Days">2 Days Delivery</option>
@@ -170,33 +205,33 @@
 						  	    </tr>
 						  	    <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    		<textarea class="form-control" type="text" id="tx" name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    		<textarea class="form-control" type="text"  name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
 						  	    	</td>
 						  	    	<td style=" padding: 0px;">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list1" type="checkbox" style="margin-left: 30%;" />
+						  	    			<input class="form-check-input" name="list1" type="checkbox"  style="margin-left: 30%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list2" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list2" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list3" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list3" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    </tr>
 						  	    <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control" type="text" id="tx" name="offer2" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control tx" type="text" name="offer2" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
@@ -208,14 +243,14 @@
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list5" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list5" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list6" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list6" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
@@ -234,14 +269,14 @@
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list8" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list8" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list9" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list9" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
@@ -260,14 +295,14 @@
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list11" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list11" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list12" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list12" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
@@ -286,14 +321,14 @@
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list14" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list14" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list15" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list15" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
@@ -312,14 +347,14 @@
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list17" type="checkbox" style="margin-left: 40%;" />
+						  	    			<input class="form-check-input" name="list17" type="checkbox" id="hideme" style="margin-left: 40%;" />
 											</label>
 						  	    		</div>
 						  	    	</td> 
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
 						  	    			<label class="form-check-label">
-						  	    			<input class="form-check-input" name="list18" type="checkbox" style="margin-left: 35%;" />
+						  	    			<input class="form-check-input" name="list18" type="checkbox" id="hideme" style="margin-left: 35%;" />
 											</label>
 						  	    		</div>
 						  	    	</td>
@@ -344,7 +379,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" id="hideme" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Select</option>
 						  	      		<option value="0">0</option>
 						  	      		<option value="1">1</option>
@@ -362,7 +397,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" id="hideme" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Select</option>
 						  	      		<option value="0">0</option>
 						  	      		<option value="1">1</option>
@@ -385,7 +420,7 @@
 						  	      
 						  	      <td style="padding-bottom: 0px;"><h6 class="text-primary text-center">Price</h6></td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" >
 						  	      		<option selected="" value="<?php echo $this->session->userdata('price')?>">Php <?php echo $this->session->userdata('price')?></option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -431,7 +466,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;" >
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" id="hideme">
 						  	      		<option selected="">Php</option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -477,7 +512,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" id="hideme">
 						  	      		<option selected="">Php</option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -907,12 +942,12 @@
 								 	 </div>
 								 </div>
 						</div>
-					</form>
+					
 				
 			</div>
 			<div class="col-md-4">
 				
-					<form action="<?php echo base_url('users/validate_project_pricing')?>" method="POST">
+				
 						
 						<div class="card border-primary">
 						  <div class="card-body">
@@ -923,7 +958,7 @@
 						  </div>
 						</div>
 
-					</form>
+					
 
 
 

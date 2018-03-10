@@ -18,133 +18,129 @@
 			  <?php endforeach?>
 			</div>
 
+		
+
 			<div class="card border-success  p-4 mb-3" style="margin-left: 150px;">
 				<h5 >Compare Packages</h5>
-				<table class="table table-bordered">
-				  <thead>
-				    <tr>
-				      <th>#</th>
-				      <th>First Name</th>
-				      <th>Last Name</th>
-				      <th>Username</th>
-				      <th>Username</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				      <td>@mdo</td>
+				<table class="table table-bordered" >
+						  	  <thead>
+						  	    <tr>
+						  	      <th></th>
+						  	      
+						  	      <th><h5 class="text-center">Basic</h5></th>
+						  	      <th><h5 class="text-center">Standard</h5></th>
+						  	      <th><h5 class="text-center">Premium</h5></th>
+						  	    </tr>
+						  	  </thead>
+						  	  <tbody>
+						  	    <tr>
+						  	      <th rowspan="3"><p class="text-primary text-center">&nbsp;</p></th>
+						  	      
+						  	      <td style="padding: 0px;">
+						  	      	<textarea class="form-control" type="text" id="tx" disabled="" name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title2" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"></textarea>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title3" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package">adfas</textarea></td>
+						  	      	
 
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@TwBootstrap</td>
-				      <td>@mdo</td>
+						  	    </tr>
 
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				      <td>@mdo</td>
+						  	  
+						  	    <tr>
+						  	      <!-- <th scope="row">3</th> -->
+						  	      
+						  	      <td style="padding: 0px;">
+						  	      	<textarea class="form-control" rows="4" id="tx" disabled="" name="offer" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('offer')?></textarea>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      	<textarea class="form-control" rows="4" id="tx" disabled="" name="offer2" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      <textarea class="form-control" rows="4" id="tx" disabled="" name="offer3" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	  		</td>
 
-				    </tr>
-				    <tr>
-				      <th scope="row">4</th>
-				      <td colspan="2">Larry the Bird</td>
-				      <td>@twitter</td>
-				      <td>@mdo</td>
+						  	    </tr>
 
-				    </tr>
-				  </tbody>
-				</table>
+						  	    <tr>
+						  	      
+						  	      <td style="padding: 0px;">
+						  	      	<p>input</p>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      	<p>input</p>
+						  	      </td>
+						  	      <td style="padding: 0px; ">
+						  	      	<p>input</p>
+						  	      </td>
 
-				<table>
-					<tbody>
-						<tr>
-							<td>&nbsp;</td>
-							<td>	</td>
-							<td>	</td>
-							<td>	</td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
-						<tr>
-							<td>Description</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
-						<tr>
-							<td>Conduct Research</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
-						<tr>
-							<td>Source File</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
-						<tr>
-							<td>Revisions</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
-						<tr>
-							<td>Delivery Time</td>
-							<td>Premium</td>
-							<td>Standard</td>
-							<td>Basic</td>
-						</tr>
+						  	    </tr>
+						  	    <!-- <tr>
+						  	    	<td style="padding: 0px; ">
+						  	    		<textarea class="form-control" type="text" id="tx" name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    	</td>
+						  	    	<td style=" padding: 0px;">
+						  	    		<div class="form-check">
+						  	    			<label class="form-check-label">
+						  	    			<input class="form-check-input" name="list1" type="checkbox" style="margin-left: 30%;" />
+											</label>
+						  	    		</div>
+						  	    	</td>
+						  	    	<td style="padding: 0px; ">
+						  	    		<div class="form-check">
+						  	    			<label class="form-check-label">
+						  	    			<input class="form-check-input" name="list2" type="checkbox" style="margin-left: 40%;" />
+											</label>
+						  	    		</div>
+						  	    	</td>
+						  	    	<td style="padding: 0px; ">
+						  	    		<div class="form-check">
+						  	    			<label class="form-check-label">
+						  	    			<input class="form-check-input" name="list3" type="checkbox" style="margin-left: 35%;" />
+											</label>
+						  	    		</div>
+						  	    	</td>
+						  	    </tr> -->
+						  	  
+						  	
+						  	     
+						 
+						  
+						  	    <tr>
+						  	      
+						  	      <td style="padding-bottom: 0px;"><h6 class="text-primary text-center">Price</h6></td>
+						  	      <td style="padding: 0px;">
+						  	      	<a href="" class="btn btn-success btn-block">$30</a>
+						  	      </td>
+						  	      <td style="padding: 0px;" >
+						  	      	<a href="" class="btn btn-success btn-block">$40</a>
+						  	      </td>
+						  	      <td style="padding: 0px;">
+						  	      	<a href="" class="btn btn-success btn-block">$60</a>
+						  	      		
+						  	      </td>
+						  	    </tr>
+						  	    
+						  	   
+						  	  </tbody>
+						  	</table>
 
-					</tbody>
-
-				</table>
-
-
-
-
-
-				<hr>
-				<p class="text-primary"><?php echo $row->project_description?></p>
-				<a href="" class="btn btn-success">$30</a>
-				<hr>
-				<p class="text-primary"><?php echo $row->project_requirements?></p>
-				<a href="" class="btn btn-success">$40</a>
-				<hr>
-				<p class="text-primary"><?php echo $row->project_delivery?> Delivery</p>
-				<a href="" class="btn btn-success">$50</a>
 			</div>
 			<div class="card border-success  p-4 mb-3" style="margin-left: 150px;">
 				<h5 >About this Project</h5>
 				<hr>
 				<p class="text-primary"><?php echo $row->project_description?></p>
-				<hr>
+			
 				<p class="text-primary"><?php echo $row->project_requirements?></p>
-				<hr>
+		
 				<p class="text-primary"><?php echo $row->project_delivery?> Delivery</p>
 			</div>
 			<div class="card border-success  p-4 mb-3" style="margin-left: 150px;">
 				<h5 >Reviews about this Project</h5>
 				<hr>
-				<p class="text-primary"><?php echo $row->project_description?></p>
-				<hr>
-				<p class="text-primary"><?php echo $row->project_requirements?></p>
-				<hr>
-				<p class="text-primary"><?php echo $row->project_delivery?> Delivery</p>
+				
 			</div>
 		</div>
 		<div class="col-md-5">

@@ -31,9 +31,9 @@
  * field and click "send".
  * 
  * To use the private messaging system with your own application you will
- * want to extend the {@link User_model} with your own user authentication
+ * want to extend the {@link Pm_User_model} with your own user authentication
  * system. Therefore you have to replace the "current_id" method in
- * {@link User_model} with your own method returning the id of the currently
+ * {@link Pm_User_model} with your own method returning the id of the currently
  * logged in user. {@link Pm_model} uses "current_id" to get the user id
  * of the current user.
  *
@@ -98,13 +98,13 @@ class Pm extends CI_Controller {
 		parent::__construct();
 
 		$this->ci = & get_instance();
-		$this->config->load('form_validation', TRUE);
+		$this->config->load('message_validation', TRUE);
 		$this->config->load('pm', TRUE);
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->model('Pm_model', 'pm_model');
-		$this->load->model('User_model', 'user_model');
+		$this->load->model('Pm_User_model', 'Pm_User_model');
 		$this->lang->load('pm', 'english');
 
 		$this->load->view('templates/header');
@@ -159,13 +159,13 @@ class Pm extends CI_Controller {
 			$this->pm_model->flag_read($msg_id);
 
 			// Get recipients & get usernames instead of user ids for recipients and author
-			$message[TF_PM_AUTHOR] = $this->user_model->get_username($message[TF_PM_AUTHOR]);
+			$message[TF_PM_AUTHOR] = $this->Pm_User_model->get_username($message[TF_PM_AUTHOR]);
 			$message[PM_RECIPIENTS] = $this->pm_model->get_recipients($message[TF_PM_ID]);
 			$i = 0;
 			foreach ($message[PM_RECIPIENTS] as $recipient)
 			{
 				$id = $recipient[TF_PMTO_RECIPIENT];
-				$message[PM_RECIPIENTS][$i] = $this->user_model->get_username($id);
+				$message[PM_RECIPIENTS][$i] = $this->Pm_User_model->get_username($id);
 				$i++;
 			}
 			$data['message'] = $message;
@@ -207,13 +207,13 @@ class Pm extends CI_Controller {
 			foreach ($messages as $message)
 			{
 				$messages[$i][TF_PM_BODY] = $this->render($messages[$i][TF_PM_BODY]);
-				$messages[$i][TF_PM_AUTHOR] = $this->user_model->get_username($message[TF_PM_AUTHOR]);
+				$messages[$i][TF_PM_AUTHOR] = $this->Pm_User_model->get_username($message[TF_PM_AUTHOR]);
 				$messages[$i][PM_RECIPIENTS] = $this->pm_model->get_recipients($messages[$i][TF_PM_ID]);
 				$j = 0;
 				foreach ($messages[$i][PM_RECIPIENTS] as $recipient)
 				{
 					$id = $recipient[TF_PMTO_RECIPIENT];
-					$messages[$i][PM_RECIPIENTS][$j] = $this->user_model->get_username($id);
+					$messages[$i][PM_RECIPIENTS][$j] = $this->Pm_User_model->get_username($id);
 					$j++;
 				}
 				$i++;
@@ -270,17 +270,17 @@ class Pm extends CI_Controller {
 			// Get user ids of recipients - if not found, get usernames of suggestions
 			foreach ($recipients as $recipient)
 			{
-				$result = $this->user_model->get_userids(trim($recipient));
+				$result = $this->Pm_User_model->get_userids(trim($recipient));
 				array_push($recipient_ids, reset($result));
 				// Try non-exact search if none found to have suggestions - in this case $data['suggestions']
 				// will contain an array with original strings as keys & arrays with suggestions as values.
 				if( ! reset($result))
 				{
 					$data['found_recipients'] = FALSE;
-					$suggestions = $this->user_model->get_userids(trim($recipient), FALSE);
+					$suggestions = $this->Pm_User_model->get_userids(trim($recipient), FALSE);
 					if($suggestions)
 						foreach ($suggestions as $suggestion)
-							$data['suggestions'][$recipient] = $this->user_model->get_username($suggestion);
+							$data['suggestions'][$recipient] = $this->Pm_User_model->get_username($suggestion);
 				}
 			}
 
