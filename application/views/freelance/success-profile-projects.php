@@ -38,12 +38,7 @@
 		        <td><p class="text-primary"><?php echo $this->session->userdata('delivery')?></p></td>
 		       
 		      </tr>
-		      <tr>
-		        <td><b>Description</b></td>
-		        <td><p class="text-primary"><?php echo $this->session->userdata('description')?></p></td>
 		      
-		        
-		      </tr>
 		      <tr >
 		        <td><b>Requirements</b></td>
 		        <td><p class="text-primary"><?php echo $this->session->userdata('requirements')?></p></td>
@@ -77,7 +72,7 @@
 		 		<div class="card border-success" style="">
 		 		 
 		 		  <div class="card-body text-center">
-		 		 	<button class="btn btn-info btn-block" href="<?php echo base_url('users/profile')?>">Done</button>
+		 		 	<a class="btn btn-info btn-block" href="<?php echo base_url('users/projects')?>">sdfsd</a>
 		 		 	
 		 		  </div>
 		 		

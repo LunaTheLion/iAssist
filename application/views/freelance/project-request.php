@@ -11,8 +11,8 @@
 			 <div class="card-body">
 			 	<p class="text-primary">Describe the service that you are looking for</p>
 			 	<textarea class="form-control" rows="4" cols="5" placeholder="Im Looking for ... "></textarea>
-			 	<label for="requestFile">Attach File</label> <br>
-			    <input type="file" id="requestFile" name="requestFile">
+			 	<!-- <label for="requestFile">Attach File</label> <br>
+			    <input type="file" id="requestFile" name="requestFile"> -->
 			    <hr>
 			    <p class="text-primary">Choose your Category:</p>
 			    <div class="row">

@@ -8,6 +8,19 @@ class User_Model extends CI_Model{
 		
 	}
 
+	public function get_email_by_username($username)
+	{
+		if(!empty($username))
+		{
+			$this->db->where('account_username', $username);
+			$query= $this->db->get('account_tbl'); 		
+			    if($query->num_rows() == 1)
+			    {
+			        return $query->row();
+			    }
+			    return false;
+		}
+	}
 	
 	public function get_user_project($email)
 	{
@@ -18,6 +31,23 @@ class User_Model extends CI_Model{
 			$this->db->where('project_publisher', $email);
 			$q = $this->db->get('freelance_project_tbl');
 			return $q->result();
+		}
+	}
+	public function get_username($username)
+	{
+		if(!empty($username))
+		{
+			
+			$this->db->where('account_username', $username);
+			$query= $this->db->get('account_tbl'); 		
+
+			if(!empty($query) && $query->num_rows() == 1)
+			{
+				return $query->row();
+			}
+			else{
+				echo "No Result";
+			}
 		}
 	}
 
@@ -81,7 +111,6 @@ class User_Model extends CI_Model{
 	 {
 	 	if(!empty($id))
 	 	{
-	 		
 	 		$this->db->where('id', $id);
 	 		$query= $this->db->get('freelance_project_tbl'); 		
 	 		return $query->row();
@@ -136,6 +165,7 @@ class User_Model extends CI_Model{
 	 		}
 	 	}
 	 }
+
 	 public function get_port_info($email)
 	 {
 	 	if(!empty($email))
@@ -177,13 +207,23 @@ class User_Model extends CI_Model{
 	  public function create_project($project_info)
 	  {
 	  	if(!empty($project_info))
-	 	{
-
-	 		// print_r($project_info);
-
-	 		$this->db->insert('freelance_project_tbl', $project_info);
-	 		return $this->db->affected_rows() > 0;
-	 	}
+	  	{
+	  		$this->db->insert('freelance_project_tbl',$project_info);
+	  		if ($this->db->affected_rows()==1)
+	  		{
+	  			// echo "<pre>";
+	  			// print_r($project_info);
+	  			// echo "</pre>";
+	  			return true;
+	  		}
+	  		else
+	  		{
+	  			echo "<pre>";
+	  			print_r($project_info);
+	  			echo "</pre>";
+	  			return false;
+	  		}
+	  	}
 	  }
 
 	 public function portfolio_info($portfolio_info)
@@ -221,8 +261,11 @@ class User_Model extends CI_Model{
 
 	  public function get_thread($search)
 	{
+			
+
 		if(empty($search))
 		{
+
 			$query2 = $this->db->get('freelance_project_tbl');	
 	 		
 	  		if(!empty($query2) && $query2->num_rows() > 0)

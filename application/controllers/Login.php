@@ -32,8 +32,19 @@ class Login extends CI_Controller{
 					//show info
 					
 					$this->session->set_userdata('email',$email);
-					$this->session->set_userdata('log_status',1);
-					redirect(base_url().'users/profile');
+					$get_user = $this->Login_model->get_username($email);
+					if(!empty($get_user))
+					{
+						$user = $get_user->account_username;
+						$this->session->set_userdata('log_status',1);
+						redirect(base_url().'users/profile/'.$user);
+					}
+					else{
+						echo "Error";
+					}
+
+
+					
 				}
 				else
 				{

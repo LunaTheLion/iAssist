@@ -10,60 +10,155 @@ class Users extends CI_Controller{
 		
 	}
 	
-	public function profile()
+	public function profile($username)
 	{
 		$email = $this->session->userdata('email');
-		$var = 1;
-		$logged = $this->User_Model->get_log_stat($email,$var);
-		$info = $this->User_Model->get_account_info($email);
-		$educ = $this->User_Model->get_educ_info($email);
-		$port = $this->User_Model->get_port_info($email);
+		if(!empty($email))
+		{
+				$var = 1;
+				$this->session->userdata('email', $email);
+				$logged = $this->User_Model->get_log_stat($email,$var);
+				$info = $this->User_Model->get_account_info($email);
+				$educ = $this->User_Model->get_educ_info($email);
+				$port = $this->User_Model->get_port_info($email);
 
-		$data = array(
-			'proj'     =>$this->User_Model->get_user_project($email),
+				$data = array(
+					'proj'     =>$this->User_Model->get_user_project($email),
+				);
 
-		);
+				$page_data2 = array(
+				'school' =>$educ->ed_school_name,
+				'college' => $educ->ed_college,
+				'course' => $educ->ed_focus_of_study,
+				);
 
-		$page_data2 = array(
-		'school' =>$educ->ed_school_name,
-		'college' => $educ->ed_college,
-		'course' => $educ->ed_focus_of_study,
-		);
-
-		$page_data = array(
-		'user_name' => $info->account_username,
-		'given_name' => $info->account_gname,
-		'surname' => $info->account_sname,
-		'email' => $info->account_email,
-		'log_status' => $info->log_status,
-		'contact' => $info->account_contact,
-		'profile_pic' =>$info->account_img,
-		'about_me' => $info->about_user,
-		);
+				$page_data = array(
+				'user_name' => $info->account_username,
+				'given_name' => $info->account_gname,
+				'surname' => $info->account_sname,
+				'email' => $info->account_email,
+				'log_status' => $info->log_status,
+				'contact' => $info->account_contact,
+				'profile_pic' =>$info->account_img,
+				'about_me' => $info->about_user,
+				);
 
 
-		$page_data3 = array(
-			'skill' => $port->portfolio_skill_level,
-			'field' => $port->portfolio_skill,
-			'user_type' =>$port->portfolio_owner_type,
-		);
+				$page_data3 = array(
+					'skill' => $port->portfolio_skill_level,
+					'field' => $port->portfolio_skill,
+					'user_type' =>$port->portfolio_owner_type,
+				);
 
-		$this->session->set_userdata($page_data2);
-		$this->session->set_userdata($page_data);
-		$this->session->set_userdata($page_data3);
 
-		$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
-		$this->load->view('freelance/profile',$data);
-		$this->load->view('freelance/footer');	
+				$this->session->set_userdata('user_name', $info->account_username);
+				$this->session->set_userdata('email',$info->account_email);
+				$this->session->set_userdata('log_status', $info->log_status);
+
+				$this->session->set_userdata($page_data2);
+				$this->session->set_userdata($page_data);
+				$this->session->set_userdata($page_data3);
+
+				$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
+				$this->load->view('freelance/profile',$data);
+				$this->load->view('freelance/footer');
+		}
+		elseif(!empty($username))
+		{
+			//$get= $this->User_Model->get_username($username);
+			$getemail = $this->User_Model->get_email_by_username($username);
+
+			if(!empty($getemail))
+			{
+				$email = $getemail->account_email;
+				
+				$educ = $this->User_Model->get_educ_info($email);
+				$port = $this->User_Model->get_port_info($email);
+
+				$data = array(
+					'proj'     =>$this->User_Model->get_user_project($email),
+
+				);
+
+				$page_data2 = array(
+				'school' =>$educ->ed_school_name,
+				'college' => $educ->ed_college,
+				'course' => $educ->ed_focus_of_study,
+				);
+				
+				$page_data = array(
+				'user_name' => $getemail->account_username,
+				'given_name' => $getemail->account_gname,
+				'surname' => $getemail->account_sname,
+				'email' => $getemail->account_email,
+				'log_status' => $getemail->log_status,
+				'contact' => $getemail->account_contact,
+				'profile_pic' =>$getemail->account_img,
+				'about_me' => $getemail->about_user,
+				'email' =>$getemail->account_email,
+				);
+				$page_data3 = array(
+					'skill' => $port->portfolio_skill_level,
+					'field' => $port->portfolio_skill,
+					'user_type' =>$port->portfolio_owner_type,
+				);
+
+				$this->session->set_userdata('user_name', $info->account_username);
+				$this->session->set_userdata('email',$info->account_email);
+				$this->session->set_userdata('log_status', $info->log_status);
+
+				$this->session->userdata('email', $email);
+				$this->session->set_userdata($page_data2);
+				$this->session->set_userdata($page_data);
+				$this->session->set_userdata($page_data3);
+				$this->load->view('freelance/header',$page_data , $page_data3 , $page_data2);
+				$this->load->view('freelance/profile',$data);
+				$this->load->view('freelance/footer');
+			}
+			else{
+				echo "Error";
+			}
+			
+		}
+			
 
 	}
 	
 
 
-	public function index()
+	public function home($username)
 	{
-
+		 $this->load->view('freelance/header');
+		$email =$this->session->userdata('email');
+		//echo $email;
+		// $this->load->view('freelance/header');
+		 $this->load->view('freelance/home');
+		$this->load->view('freelance/footer');
+		// $this->session->set_userdata('email', $email);	
+		
 	}
+
+	public function thread()
+	{
+		 $this->load->view('freelance/header');
+		$email =$this->session->userdata('email');
+		//echo $email;
+	
+		$search = $this->input->post('search');
+		$thread = array(
+			'data' => $this->User_Model->get_thread($search),
+		);
+		// echo "<pre>";
+		// print_r($thread);
+		// echo "</pre>";
+		$this->session->set_userdata('email');	
+		//$this->load->view('freelance/header');
+		$this->load->view('freelance/thread', $thread);
+		$this->load->view('freelance/footer');
+	}
+
+			
+	
 	
 	public function profile_personal()
 	{
@@ -239,30 +334,7 @@ class Users extends CI_Controller{
 
 	}
 	
-	public function thread()
-	{
-		
-		$email = $this->session->userdata('email');
-		$info = $this->User_Model->get_account_info($email);
-
-		$page_data = array(
-		'email' => $info->account_email,
-		'log_status' => $info->log_status,
-		);
-
-
-		$search = $this->input->post('search');
-
-
-		$thread = array(
-			'data' => $this->User_Model->get_thread($search),
-		);
-		
-
-		$this->load->view('freelance/header',$page_data);
-		$this->load->view('freelance/thread', $thread);
-		$this->load->view('freelance/footer');
-	}
+	
 
 	public function projects()
 	{
@@ -308,7 +380,6 @@ class Users extends CI_Controller{
 		'offer' => $this->session->userdata('offer'),
 		'delivery' => $this->session->userdata('delivery'),
 		'type' => $this->session->userdata('type'),
-		'description' => $this->session->userdata('description'),
 		'requirements' => $this->session->userdata('requirements'),
 		'price' => $this->session->userdata('price'),
 		'search' => $this->session->userdata('search'),
@@ -388,9 +459,8 @@ class Users extends CI_Controller{
 		$this->session->set_userdata('title', $this->input->post('title'));
 		$this->session->set_userdata('search', $this->input->post('search'));
 		$this->session->set_userdata('category', $cg);
-	
 		$this->session->set_userdata('subcategory',$this->input->post('subcategory'));
-		//$this->session->set_userdata('service', $this->input->post('service'));
+		$this->session->set_userdata('service', $this->input->post('service'));
 		$this->session->set_userdata('offer', $this->input->post('offer'));
 		$this->session->set_userdata('delivery', $this->input->post('delivery'));
 		$this->session->set_userdata('search', $this->input->post('search'));
@@ -407,7 +477,7 @@ class Users extends CI_Controller{
 			'title' => $this->session->userdata('title'),
 			'category' => $this->session->userdata('category'),
 			'subcategory' => $this->session->userdata('subcategory'),
-			//'service' => $this->session->userdata('service'),
+			'service' => $this->session->userdata('service'),
 			'offer' => $this->session->userdata('offer'),
 			'delivery' => $this->session->userdata('delivery'),
 			'type' => $this->session->userdata('type'),
@@ -433,7 +503,7 @@ class Users extends CI_Controller{
 			'title' => $this->session->userdata('title'),
 			'category' => $this->session->userdata('category'),
 			'subcategory' => $this->session->userdata('subcategory'),
-			//'service' => $this->session->userdata('service'),
+			'service' => $this->session->userdata('service'),
 			'offer' => $this->session->userdata('offer'),
 			'delivery' => $this->session->userdata('delivery'),
 			'type' => $this->session->userdata('type'),
@@ -461,7 +531,6 @@ class Users extends CI_Controller{
 		'offer' => $this->session->userdata('offer'),
 		'delivery' => $this->session->userdata('delivery'),
 		'type' => $this->session->userdata('type'),
-		'description' => $this->session->userdata('description'),
 		'requirements' => $this->session->userdata('requirements'),
 		'price' => $this->session->userdata('price'),
 		'search' => $this->session->userdata('search'),
@@ -564,7 +633,7 @@ class Users extends CI_Controller{
 
 			);
 
-			$project_info = array(
+			$project_info1 = array(
 				'project_publisher' => $this->session->userdata('email'),
 				'project_username' => $this->session->userdata('user_name'),
 				'project_publisher_type' => $this->session->userdata('user_type'),
@@ -573,7 +642,7 @@ class Users extends CI_Controller{
 				'project_category' => $this->session->userdata('category'),
 				'project_subcategory' => $this->session->userdata('subcategory'),
 				'project_service_type' => $this->session->userdata('service'),
-				'project_type' => $this->session->userdata('type'),
+				//'project_type' => $this->session->userdata('type'),
 				'project_offer' => $this->session->userdata('offer'),
 				'project_delivery' => $this->session->userdata('delivery'),
 				'project_requirements' => $this->session->userdata('requirements'),
@@ -586,10 +655,17 @@ class Users extends CI_Controller{
 
 			$this->session->set_userdata($page_data);
 			$this->load->model('User_Model');
-			$this->User_Model->create_project($project_info);
-			$this->load->view('freelance/header',$page_data);
-			$this->load->view('freelance/success-profile-projects',$data);
-			$this->load->view('freelance/footer');
+			
+			if($this->User_Model->create_project($project_info1)==true)
+			{
+				$this->load->view('freelance/header',$page_data);
+				$this->load->view('freelance/success-profile-projects',$data);
+				$this->load->view('freelance/footer');
+			}
+			else
+			{
+				echo "Mali";
+			}
 		}
 	}
 

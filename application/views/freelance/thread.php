@@ -80,21 +80,40 @@
 		
 			<div class="col-md-3" style="padding: 8px;">
 				<div class="card">
-				  <a href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug.$row->id?>">
+				  <a href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>">
 				  	<img style="height: 150px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>"  alt="Card image"></a>
 
 
-				  <div class="card-body" style="padding: 2px;">
-				    <a class="card-link" href="<?php echo base_url()?>">
-				    	
-				    	<?php echo $row->project_username;?></a>
-
-				    <input type="hidden" name="projid" value="<?php echo $row->id;?>">
-				    <p class="text-muted"><?php $date = $row->project_date_posted; echo date("M j, Y, g:i",strtotime($date))?></p>
-				   	<a class="card-link" href="<?php base_url()?>"><?php echo $row->project_title;?></a>
+				  <div class="card-body" style="padding: 10px;">
+				    
+				    	<div class="row">
+				    		<div class="col-md-4">
+				    			<img src="">&nbsp;
+				    		</div>
+				    		<div class="col-md-4" style="padding: 0px;">
+				    			<a  href="#"><?php echo $row->project_username;?></a>
+				    			 <input type="hidden" name="projid" value="<?php echo $row->id;?>">
+				    		</div>
+				    		<div class="col-md-4" style="padding-right:9px;">
+				    			 <p class="text-muted text-right " style="margin-bottom: 0px; padding: 0px;"><?php $date = $row->project_date_posted; echo date("M 'y",strtotime($date))?></p>
+				    		</div>
+				    	</div>   
+				   	<p style="margin:0px;" class="text-primary"><a  href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>"><?php echo $row->project_title;?></a></p>
 				  </div>
-				  <div class="card-footer">
+				  <div class="card-footer" style="padding: 5px;">
 				  	
+				  	<div class="row">
+				  		<div class="col-md-4">
+				  			<h4 class="text-success" style="margin: 0px;"> ₱<?php echo $row->project_price ?></h4>
+				  		</div>
+				  		<div class="col-md-4">
+				  			&nbsp;
+				  		</div>
+				  		<div class="col-md-4" style="padding-left: 40px; margin: 0px;">
+				  			<!-- <img src="<?php echo site_url("uploads/icons/gray-heart.png"); ?>" style="height: 15px;width:18px; ;"> -->
+
+				  		</div>
+				  	</div>
 				  </div>
 				 
 				</div>

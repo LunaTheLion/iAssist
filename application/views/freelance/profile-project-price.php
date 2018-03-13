@@ -205,7 +205,7 @@
 						  	    </tr>
 						  	    <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    		<textarea class="form-control" type="text"  name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    		<textarea class="form-control" type="text"  name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style=" padding: 0px;">
 						  	    		<div class="form-check">
@@ -231,7 +231,7 @@
 						  	    </tr>
 						  	    <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control tx" type="text" name="offer2" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control tx" type="text" name="offer2" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
@@ -257,7 +257,7 @@
 						  	    </tr>
 						  	    <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control" type="text" id="tx" name="offer3" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control" type="text" id="tx" name="offer3" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
@@ -283,7 +283,7 @@
 						  	    </tr>
 						  	     <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control" type="text" id="tx" name="offer4" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control" type="text" id="tx" name="offer4" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
@@ -309,7 +309,7 @@
 						  	    </tr>
 						  	     <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control" type="text" id="tx" name="offer5" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control" type="text" id="tx" name="offer5" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">
@@ -335,7 +335,7 @@
 						  	    </tr>
 						  	     <tr>
 						  	    	<td style="padding: 0px; ">
-						  	    			<textarea class="form-control" type="text" id="tx" name="offer6" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	    			<textarea class="form-control" type="text" id="tx" name="offer6" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
 						  	    	<td style="padding: 0px; ">
 						  	    		<div class="form-check">

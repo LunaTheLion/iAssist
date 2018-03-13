@@ -7,7 +7,20 @@ class Login_model extends CI_Model{
 		parent::__construct();	
 	}
 
-	
+	public function get_username($email)
+	{
+		if(!empty($email))
+	 	{
+	 		$this->db->where('account_email', $email);	
+	 		$query= $this->db->get('account_tbl'); 		
+	 		    if($query->num_rows() == 1)
+	 		    {
+	 		        return $query->row();
+	 		    }
+	 		    return false;
+
+	 	}
+	}
 
 	public function signin($email,$password)// check if the user has signed up
 	{	

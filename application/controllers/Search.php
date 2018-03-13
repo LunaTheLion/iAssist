@@ -9,7 +9,25 @@ class Search extends CI_Controller{
 		$this->load->model('Search_Model');
 		
 	}
+	public function order_project($slug)
+	{
+		$id = substr($slug, -2);
 
+		$post = $this->Search_Model->get_email($id);
+		// print_r($post);
+		$email = $post->project_publisher;
+		
+		$view = array (
+			'view' 			=>	$this->Search_Model->get_post($id),
+			'publisher' 	=>	$this->Search_Model->get_owner($email), 
+			'proj'			=>  $this->Search_Model->get_more_proj($email),
+		);
+
+
+		$this->load->view('freelance/header');
+		$this->load->view('freelance/project-order', $view);
+		$this->load->view('freelance/footer');
+	}
 
 	public function find()
 	{
@@ -24,7 +42,10 @@ class Search extends CI_Controller{
 	{	
 
 		$id = substr($slug, -2);
+	
+
 		$post = $this->Search_Model->get_email($id);
+		// print_r($post);
 		$email = $post->project_publisher;
 		
 		$view = array (

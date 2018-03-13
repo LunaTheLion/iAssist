@@ -47,7 +47,7 @@
 								        <option value="MAA">Music &amp; Audio</option>
 								        <option value="PAT">Programming &amp; Tech</option>
 								        <option value="BUS">Business</option>
-								        <option value="FAL">Fun &amp; Lifestyel</option>
+								        <option value="FAL">Fun &amp; Lifestyle</option>
 								      </select>
 								    </div>
 

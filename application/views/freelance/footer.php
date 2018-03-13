@@ -33,22 +33,22 @@
  -->
     <!-- <script src="<?php echo base_url('assets/js/tags-input.js')?>"></script> -->
 
-    <script src="<?php echo base_url('assets/js/bootstrap-tokenfield.js')?>">
+    <!-- <script src="<?php echo base_url('assets/js/bootstrap-tokenfield.js')?>"></script> -->
 
 
 
 
     <script type="text/javascript"> //for disabled
-        $(document).ready(function(){
-            $('#search').tokenfield({
-                autocomplete:{
-                    source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
-                    delay:100
-                },
-                showAutocompleteOnFocus: true
-            });
+        // $(document).ready(function(){
+        //     $('#search').tokenfield({
+        //         autocomplete:{
+        //             source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
+        //             delay:100
+        //         },
+        //         showAutocompleteOnFocus: true
+        //     });
 
-        });
+        // });
     
 
         $(document).on('ready', function() {

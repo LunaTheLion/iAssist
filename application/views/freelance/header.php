@@ -163,59 +163,37 @@
       .slider.round:before {
         border-radius: 50%;
       }
-
-
-
-
       
-    </style>
-
-     
-
-    
+    </style> 
 
   </head>
   <body>
 
       <div class="bs-component">
+       
              <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-               <a class="navbar-brand" href="<?php echo base_url('/home')?>">iAssist</a>
+
+               <a class="navbar-brand" href="<?php echo base_url('users/home/'.$this->session->userdata('user_name'))?>">iAssist</a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
                  <span class="navbar-toggler-icon"></span>
                </button>
-
                <div class="collapse navbar-collapse" id="navbarColor01">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
                      <a class="nav-link" href="<?php echo base_url('users/thread');?>">Thread <span class="sr-only">(current)</span></a>
-                   </li>
-                   
-                   <li class="nav-item">
-                     <a class="nav-link" href="#">Notification</a>
-                   </li>
-                   
-                   
+                   </li>               
                  </ul>
-                 
                   <div>
                    <ul class="navbar-nav mr-auto">
                     <li>
                       <a class="nav-link" href="<?php echo base_url('pm/messages')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                     </li>
                     <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php echo base_url('users/profile');?>"><?php 
-
+                      <a class="nav-link" href="<?php echo base_url('users/profile/'.$this->session->userdata('user_name'));?>"><?php 
                       echo $this->session->userdata('user_name');
-
-
                       ?>
-
                       </a>
-
                     </li>
-
-                   
-
                   <li>
                     <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
                   </li>
@@ -230,11 +208,8 @@
                          <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
                        </div>
                      </li> 
-                    
                   </ul>
                 </div>
-                
-                 
                </div>
              </nav>
       </div>    
