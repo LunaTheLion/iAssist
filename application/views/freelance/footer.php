@@ -49,6 +49,9 @@
         //     });
 
         // });
+
+
+        
     
 
         $(document).on('ready', function() {
@@ -63,10 +66,17 @@
           $('#front_set').setLabel();
         });
 
+
+        // if($("#package").is(':checked'))
+        //  {   document.getElementById('iam').style.display='none'; } // checked
+        // else
+        //   {  document.getElementById('iam').style.display='block';}
+        
         $("#package").on("change", function(event) {
              if($(this).is(":checked")) {
 
                 document.getElementById('iam').style.display='none';
+                
              }
             else
             {
@@ -97,53 +107,53 @@
         });
 
 
-        $(document).on('submit','#user_form', function(event)
-        {
-            event.preventDefault();
-            var pass = $('#password').val();
-            var user = $('#username').val();
+        // $(document).on('submit','#user_form', function(event)
+        // {
+        //     event.preventDefault();
+        //     var pass = $('#password').val();
+        //     var user = $('#username').val();
 
-            if(pass != '')
-            {
-                $.ajax({
+        //     if(pass != '')
+        //     {
+        //         $.ajax({
                     
-                    type: "POST",
-                    url: "<?php echo base_url().'users/update_project'?>",
-                    data: new FormData(this),
+        //             type: "POST",
+        //             url: "<?php echo base_url().'users/update_project'?>",
+        //             data: new FormData(this),
 
-                    contentType: false,
-                    processData: false,
-                    success:function(data)
-                    {
-                        alert(data);
+        //             contentType: false,
+        //             processData: false,
+        //             success:function(data)
+        //             {
+        //                 alert(data);
 
-                        if(data == "Account Exist!")
-                        {
+        //                 if(data == "Account Exist!")
+        //                 {
 
-                            window.location.href="http://localhost/iAssist/users/validate_update";
-                            $('#user_form')[0].reset();
-                            $('#updateProject').modal('hide'); 
-                        }
-                        else
-                        {
-                           $('#user_form')[0].reset();     
-                        }
-                    }
-                });
+        //                     window.location.href="http://localhost/iAssist/users/validate_update";
+        //                     $('#user_form')[0].reset();
+        //                     $('#updateProject').modal('hide'); 
+        //                 }
+        //                 else
+        //                 {
+        //                    $('#user_form')[0].reset();     
+        //                 }
+        //             }
+        //         });
                 
-            }
-            else
-            {
-                alert("Password is required");
-            }
-        });
+        //     }
+        //     else
+        //     {
+        //         alert("Password is required");
+        //     }
+        // });
 
 
         $(document).on('submit','#remove_form', function(event)
         {
             event.preventDefault();
-            var pass = $('#password').val();
-            var user = $('#username').val();
+            var pass = $('#pass').val();
+            var user = $('#user').val();
             var id = $('id').val();
 
             if(pass != '')
@@ -151,7 +161,7 @@
                 $.ajax({
                     
                     type: "POST",
-                    url: "<?php echo base_url().'users/update_project'?>",
+                    url: "<?php echo base_url().'users/confirm_acc_rem'?>",
                     data: new FormData(this),
 
                     contentType: false,
@@ -163,8 +173,6 @@
                         if(data == "Account Exist!")
                         {
                             window.location.href="http://localhost/iAssist/users/remove_project";
-                            // url:"<?php echo base_url().'users/validate_update'?>";
-                           //  window.location.href="http://localhost/iAssist/users/validate_update";
                             $('#remove_form')[0].reset();
                            $('#removeProject').modal('hide'); 
                         }
@@ -174,7 +182,7 @@
                         }
                     }
                 });
-                
+
             }
             else
             {
@@ -223,7 +231,19 @@
             
         });
 
-
+        $(document).ready(function(){
+            $("select[name=category]").change(function(){
+                $(this).find("option:selected").each(function(){
+                    var optionValue = $(this).attr("value");
+                    if(optionValue){
+                        $(".hide").not("." + optionValue).hide();                        
+                        $("." + optionValue).show();
+                    } else{
+                        $(".hide").hide();
+                    }
+                });
+            }).change();
+        });
 
     </script>
 

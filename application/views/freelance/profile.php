@@ -183,7 +183,7 @@
 
 				  <div class="card-body" style="padding-top: 10px;">
 				     <p class="card-text text-center" style="margin:2px;">
-				    	<?php $date = $row->project_date_posted; echo date("M j, Y, g:i",strtotime($date))?></p>
+				    	<?php $date = $row->project_date_created; echo date("M j, Y, g:i",strtotime($date))?></p>
 				  
 				   	<h6 class="text-center text-primary" style="margin:3px";><?php echo $row->project_title;?></h6>
 				  </div>

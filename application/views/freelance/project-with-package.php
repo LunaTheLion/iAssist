@@ -16,13 +16,13 @@
 				  	      <th rowspan="3"><p class="text-primary text-center">&nbsp;</p></th>
 				  	      
 				  	      <td style="padding: 0px;">
-				  	      	<textarea class="form-control" type="text" id="tx" disabled="" name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+				  	      	<textarea class="form-control" type="text" id="tx" disabled="" name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $row->project_basic_offer?></textarea>
 				  	      </td>
 				  	      <td style="padding: 0px;">
-				  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title2" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"></textarea>
+				  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title2" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"> <?php echo $row->project_standard_offer?></textarea>
 				  	      </td>
 				  	      <td style="padding: 0px;">
-				  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title3" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package"></textarea></td>
+				  	      	<textarea class="form-control" rows="4" id="tx" disabled="" cols="3" name="title3" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package"><?php echo $row->project_premium_offer?></textarea></td>
 				  	      	
 
 				  	    </tr>
@@ -32,13 +32,13 @@
 				  	      <!-- <th scope="row">3</th> -->
 				  	      
 				  	      <td style="padding: 0px;">
-				  	      	<textarea class="form-control" rows="8" id="tx" disabled="" name="offer" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('offer')?></textarea>
+				  	      	<textarea class="form-control" rows="8" id="tx" disabled="" name="offer" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $row->project_basic_description1?></textarea>
 				  	      </td>
 				  	      <td style="padding: 0px;">
-				  	      	<textarea class="form-control" rows="8" id="tx" disabled="" name="offer2" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+				  	      	<textarea class="form-control" rows="8" id="tx" disabled="" name="offer2" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"> <?php echo $row->project_standard_description1?></textarea>
 				  	      </td>
 				  	      <td style="padding: 0px;">
-				  	      <textarea class="form-control" rows="8" id="tx" disabled="" name="offer3" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+				  	      <textarea class="form-control" rows="8" id="tx" disabled="" name="offer3" cols="5" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"><?php echo $row->project_premium_description1?></textarea>
 				  	  		</td>
 
 				  	    </tr>

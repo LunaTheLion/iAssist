@@ -8910,18 +8910,6 @@ th {
 }
 
 
-.iam{
-  background-color: #A9A9A9;
-  position: absolute; 
-  z-index:1001;
-  top: 16%; 
-     left: 45%; 
-     width: 52%; 
-     height: 80%; 
-     opacity:.5; 
-
-}
-
 
 div.textarea-container {
     border: solid 1px #808080;

@@ -72,7 +72,7 @@
 		 		<div class="card border-success" style="">
 		 		 
 		 		  <div class="card-body text-center">
-		 		 	<a class="btn btn-info btn-block" href="<?php echo base_url('users/projects')?>">sdfsd</a>
+		 		 	<a class="btn btn-info btn-block" href="<?php echo base_url('users/projects')?>">Done</a>
 		 		 	
 		 		  </div>
 		 		

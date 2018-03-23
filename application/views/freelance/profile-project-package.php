@@ -10,21 +10,13 @@
 <div class="jumbotron">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				
-					<form action="<?php echo site_url('users/validate_project_pricing')?>" method="POST">
-						
+					<form action="<?php echo site_url('users/validate_project_package')?>" method="POST">
 						<div class="card border-primary mb-5">
-							 
 						  <div class="card-body">
-						  	
-
 						  	<!-- Rounded switch -->
 						  	<div class="card-head">
-						  			
-
-
-
 						  		<div class="row">
 						  			<div class="col-md-6">
 						  				<h4>Activate Package</h4>
@@ -37,11 +29,18 @@
 						  			
 						  			</div>
 						  			<div class="col-md-2">
-						  				<label class="switch" >
+						  				<!-- <label class="switch" >
 						  		  			<input type="checkbox" id="package">
+						  		  			<input id="test_id" type="checkbox"  checked data-toggle="toggle">
+						  		  			<span class="slider round"></span>
+						  				</label> -->
+						  				<div class="form-check">
+						  				  <label class="switch" >
+						  		  			<input type="checkbox" id="package" name="package" value="1">
 						  		  			<!-- <input id="test_id" type="checkbox"  checked data-toggle="toggle"> -->
-						  		  			<span class="slider round"></span>s
-						  				</label>
+						  		  			<span class="slider round"></span>
+						  				</label> 
+						  				</div>
 
 						  			</div>
 						  		</div>
@@ -50,46 +49,53 @@
 
 						  	<table class="table table-bordered" >
 						  	  <thead>
+						  	  	<tr>
+						  	  	</tr>
+						  	  	<tr>
+						  	  		<th><h5 class="text-primary text-center"> Title</h5></th>
+						  	  		<th colspan="3" style="padding: 10px;"> <h3 class="text-primary text-center"> <?php echo $this->session->userdata('title')?></h3>
+						  	  			
+						  	  		</th>
+						  	  	</tr>
 						  	    <tr>
 						  	      <th></th>
-						  	      
+						  	     
 						  	      <th><h5 class="text-center">Basic</h5></th>
 						  	      <th><h5 class="text-center">Standard</h5></th>
 						  	      <th><h5 class="text-center">Premium</h5></th>
 						  	    </tr>
 						  	  </thead>
 						  	  <tbody>
+						  	  	
 						  	    <tr>
 						  	      <th rowspan="3"><p class="text-primary text-center">&nbsp;</p></th>
 						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control tx" type="text"  name="title" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="" ><?php echo $this->session->userdata('title')?></textarea>
+						  	      	<textarea class="form-control tx" type="text"  name="offering1" rows="4" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Offers of your Package" ><?php echo $this->session->userdata('offer')?></textarea>
 						  	      </td>
 						  	      <div class="iam" id="iam">
 
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control tx" rows="4" cols="3" name="title2" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your Package"></textarea>
+						  	      	<textarea class="form-control tx" rows="4" cols="3" name="offering2" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Offers of your Package"></textarea>
 						  	      </td>
 
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control tx" rows="4" cols="3" name="title3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Name of your package"></textarea></td>
+						  	      	<textarea class="form-control tx" rows="4" cols="3" name="offering3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Offers of your package"></textarea></td>
 						  	      </div>
 						  	      
 
 						  	    </tr>
 
 						  	  
-						  	    <tr>
-						  	      <!-- <th scope="row">3</th> -->
-						  	      
+						  	    <tr>						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control tx" rows="4"  name="offer" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('offer')?></textarea>
+						  	      	<textarea class="form-control tx" rows="7"  name="description1" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder=""><?php echo $this->session->userdata('service')?></textarea>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<textarea class="form-control tx" rows="4" id="hideme" name="offer2" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	      	<textarea class="form-control tx" rows="7" id="hideme" name="description2" cols="3" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      <textarea class="form-control tx" rows="4" name="offer3" cols="3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
+						  	      <textarea class="form-control tx" rows="7" name="description3" cols="3" id="hideme" style="padding: 8px; background-color: #ffffff;" placeholder="Describe the details of your offering"></textarea>
 						  	  		</td>
 
 						  	    </tr>
@@ -97,79 +103,78 @@
 						  	    <tr>
 						  	      
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control tx" name="delivery" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control tx" name="delivery1" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="" value="<?php echo $this->session->userdata('delivery')?>"><?php echo $this->session->userdata('delivery')?></option>
-						  	      	 <option value="1 Days">1 Day </option>
-								       <option value="2 Days">2 Days </option>
-								       <option value="3 Days">3 Days </option>
-								       <option value="4 Days">4 Days </option>
-								       <option value="5 Days">5 Days </option>
-								       <option value="6 Days">6 Days </option>
-								       <option value="7 Days">7 Days </option>
-								       <option value="8 Days">8 Days </option>
-								       <option value="9 Days">9 Days </option>
-								       <option value="10 Dasy">10 Days </option>
-								       <option value="11 Days">11 Days </option>
-								       <option value="12 Days">12 Days </option>
-								       <option value="13 Days">13 Days </option>
-								       <option value="14 Days">14 Days </option>
-								       <option value="15 Days">15 Days </option>
-								       <option value="16 Days">16 Days </option>
-								       <option value="17 Days">17 Days </option>
-								       <option value="18 Days">18 Days </option>
-								       <option value="19 Days">19 Days </option>
-								       <option value="20 Days">20 Days </option>
-								       <option value="21 Days">21 Days </option>
-								       <option value="22 Days">22 Days </option>
-								       <option value="23 Days">23 Days </option>
-								       <option value="24 Days">14 Days </option>
-								       <option value="25 Days">25 Days </option>
-								       <option value="26 Days">26 Days </option>
-								       <option value="27 Days">27 Days </option>
-								       <option value="28 Days">28 Days </option>
-								       <option value="29 Days">29 Days </option>
-
+						  	         	 <option value="1 Day">1 Day Delivery</option>
+								       <option value="2 Days">2 Days Delivery</option>
+								       <option value="3 Days">3 Days Delivery</option>
+								       <option value="4 Days">4 Days Delivery</option>
+								       <option value="5 Days">5 Days Delivery</option>
+								       <option value="6 Days">6 Days Delivery</option>
+								       <option value="7 Days">7 Days Delivery</option>
+								       <option value="8 Days">8 Days Delivery</option>
+								       <option value="9 Days">9 Days Delivery</option>
+								       <option value="10 Dasy">10 Days Delivery</option>
+								       <option value="11 Days">11 Days Delivery</option>
+								       <option value="12 Days">12 Days Delivery</option>
+								       <option value="13 Days">13 Days Delivery</option>
+								       <option value="14 Days">14 Days Delivery</option>
+								       <option value="15 Days">15 Days Delivery</option>
+								       <option value="16 Days">16 Days Delivery</option>
+								       <option value="17 Days">17 Days Delivery</option>
+								       <option value="18 Days">18 Days Delivery</option>
+								       <option value="19 Days">19 Days Delivery</option>
+								       <option value="20 Days">20 Days Delivery</option>
+								       <option value="21 Days">21 Days Delivery</option>
+								       <option value="22 Days">22 Days Delivery</option>
+								       <option value="23 Days">23 Days Delivery</option>
+								       <option value="24 Days">14 Days Delivery</option>
+								       <option value="25 Days">25 Days Delivery</option>
+								       <option value="26 Days">26 Days Delivery</option>
+								       <option value="27 Days">27 Days Delivery</option>
+								       <option value="28 Days">28 Days Delivery</option>
+								       <option value="29 Days">29 Days Delivery</option>
 
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
 						  	      	<select class="form-control" name="delivery2" id="hideme" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Delivery Time</option>
-						  	      		 <option value="1 Days">1 Day </option>
-								       <option value="2 Days">2 Days </option>
-								       <option value="3 Days">3 Days </option>
-								       <option value="4 Days">4 Days </option>
-								       <option value="5 Days">5 Days </option>
-								       <option value="6 Days">6 Days </option>
-								       <option value="7 Days">7 Days </option>
-								       <option value="8 Days">8 Days </option>
-								       <option value="9 Days">9 Days </option>
-								       <option value="10 Dasy">10 Days </option>
-								       <option value="11 Days">11 Days </option>
-								       <option value="12 Days">12 Days </option>
-								       <option value="13 Days">13 Days </option>
-								       <option value="14 Days">14 Days </option>
-								       <option value="15 Days">15 Days </option>
-								       <option value="16 Days">16 Days </option>
-								       <option value="17 Days">17 Days </option>
-								       <option value="18 Days">18 Days </option>
-								       <option value="19 Days">19 Days </option>
-								       <option value="20 Days">20 Days </option>
-								       <option value="21 Days">21 Days </option>
-								       <option value="22 Days">22 Days </option>
-								       <option value="23 Days">23 Days </option>
-								       <option value="24 Days">14 Days </option>
-								       <option value="25 Days">25 Days </option>
-								       <option value="26 Days">26 Days </option>
-								       <option value="27 Days">27 Days </option>
-								       <option value="28 Days">28 Days </option>
-								       <option value="29 Days">29 Days </option>
+						  	      	 <option value="1 Day">1 Day Delivery</option>
+								       <option value="2 Days">2 Days Delivery</option>
+								       <option value="3 Days">3 Days Delivery</option>
+								       <option value="4 Days">4 Days Delivery</option>
+								       <option value="5 Days">5 Days Delivery</option>
+								       <option value="6 Days">6 Days Delivery</option>
+								       <option value="7 Days">7 Days Delivery</option>
+								       <option value="8 Days">8 Days Delivery</option>
+								       <option value="9 Days">9 Days Delivery</option>
+								       <option value="10 Dasy">10 Days Delivery</option>
+								       <option value="11 Days">11 Days Delivery</option>
+								       <option value="12 Days">12 Days Delivery</option>
+								       <option value="13 Days">13 Days Delivery</option>
+								       <option value="14 Days">14 Days Delivery</option>
+								       <option value="15 Days">15 Days Delivery</option>
+								       <option value="16 Days">16 Days Delivery</option>
+								       <option value="17 Days">17 Days Delivery</option>
+								       <option value="18 Days">18 Days Delivery</option>
+								       <option value="19 Days">19 Days Delivery</option>
+								       <option value="20 Days">20 Days Delivery</option>
+								       <option value="21 Days">21 Days Delivery</option>
+								       <option value="22 Days">22 Days Delivery</option>
+								       <option value="23 Days">23 Days Delivery</option>
+								       <option value="24 Days">14 Days Delivery</option>
+								       <option value="25 Days">25 Days Delivery</option>
+								       <option value="26 Days">26 Days Delivery</option>
+								       <option value="27 Days">27 Days Delivery</option>
+								       <option value="28 Days">28 Days Delivery</option>
+								       <option value="29 Days">29 Days Delivery</option>
 
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px; "><select class="form-control" id="hideme" name="delivery3" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Delivery Time</option>
-						  	      		 <option value="1 Days">1 Day Delivery</option>
+						  	      		 <option value="1 Day">1 Day Delivery</option>
 								       <option value="2 Days">2 Days Delivery</option>
 								       <option value="3 Days">3 Days Delivery</option>
 								       <option value="4 Days">4 Days Delivery</option>
@@ -203,7 +208,7 @@
 						  	      	</select></td>
 
 						  	    </tr>
-						  	    <tr>
+						  	 <!--    <tr>
 						  	    	<td style="padding: 0px; ">
 						  	    		<textarea class="form-control" type="text"  name="offer1" rows="2" cols="2" style="padding: 8px; background-color: #ffffff;" placeholder="Included Offers" ></textarea>
 						  	    	</td>
@@ -358,11 +363,11 @@
 											</label>
 						  	    		</div>
 						  	    	</td>
-						  	    </tr>
+						  	    </tr> -->
 						  	    <tr>
 						  	      <td style="padding-bottom: 0px;"><h6 class="text-primary text-center">Revisions</h6></td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" name="revision1" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Select</option>
 						  	      		<option value="0">0</option>
 						  	      		<option value="1">1</option>
@@ -379,7 +384,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" id="hideme" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" id="hideme" name="revision2" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Select</option>
 						  	      		<option value="0">0</option>
 						  	      		<option value="1">1</option>
@@ -397,7 +402,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" id="hideme" style="background-color: #ffffff; padding: 5px;">
+						  	      	<select class="form-control" id="hideme" name="revision3" style="background-color: #ffffff; padding: 5px;">
 						  	      		<option selected="">Select</option>
 						  	      		<option value="0">0</option>
 						  	      		<option value="1">1</option>
@@ -420,7 +425,7 @@
 						  	      
 						  	      <td style="padding-bottom: 0px;"><h6 class="text-primary text-center">Price</h6></td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" >
+						  	      	<select class="form-control" name="price1" style="background-color: #ffffff; padding: 5px;" >
 						  	      		<option selected="" value="<?php echo $this->session->userdata('price')?>">Php <?php echo $this->session->userdata('price')?></option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -466,7 +471,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;" >
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" id="hideme">
+						  	      	<select class="form-control"  name="price2" style="background-color: #ffffff; padding: 5px;" id="hideme">
 						  	      		<option selected="">Php</option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -512,7 +517,7 @@
 						  	      	</select>
 						  	      </td>
 						  	      <td style="padding: 0px;">
-						  	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;" id="hideme">
+						  	      	<select class="form-control" name="price3" style="background-color: #ffffff; padding: 5px;" id="hideme">
 						  	      		<option selected="">Php</option>
 						  	      		<option value="5">Php 5</option>
 						  	      		<option value="5">Php 10</option>
@@ -570,7 +575,7 @@
 								 <div class="card-body">
 								 	<div class="form-check">
 								 	     <label class="form-check-label">
-								 	       <input type="checkbox" class="form-check-input">
+								 	       <input type="checkbox" name="ExtraDelivery" class="form-check-input">
 								 	       <p class="text-primary">Extra Fast Delivery</p>
 								 	     </label>
 								 	     <div>
@@ -581,7 +586,7 @@
 								 	     	      <th scope="row" style="padding-right:2px;"><H6>BASIC</H6></th>
 								 	     	      <td style="padding-right:0px;padding-left:2px;"><p class="text-primary text-right"> I'll deliver only </p></td>
 								 	     	      <td style="padding-bottom: 4px; padding-right: 2px;padding-left:2px;">
-								 	     	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	     	      	<select class="form-control" name="ExtraTime1" style="background-color: #ffffff; padding: 5px;">
 								 	     	      		<option selected="">Select</option>
 								 	     	      		<option value="1 Day">1 Day</option>
 								 	     	      		<option value="2 Days">2 Days</option>
@@ -593,7 +598,7 @@
 								 	     	      </td>
 								 	     	      <td style="padding-left:2px; padding-right:2px;"><p class="text-primary text-right">for an extra</p></td>
 								 	     	     <td style="padding-bottom: 4px; padding-right: 2px; padding-left:2px;">
-								 	     	     	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	     	     	<select class="form-control" name="ExtraPrice1" style="background-color: #ffffff; padding: 5px;">
 								 	     	     		<option selected="">P</option>
 								 	     	     		<option value="5">Php 5</option>
 								 	     	     		<option value="5">Php 10</option>
@@ -643,7 +648,7 @@
 								 	     	      <th scope="row" style="padding-right:2px;"><H6>Standard</H6></th>
 								 	     	      <td style="padding-right:0px;"><p class="text-primary text-right"> I'll deliver only </p></td>
 								 	     	      <td style="padding-bottom: 4px; padding-right: 2px; padding-left:2px; ">
-								 	     	      	<select class="form-control" style="background-color: #ffffff; padding: 2px;">
+								 	     	      	<select class="form-control" name="ExtraTime2" style="background-color: #ffffff; padding: 2px;">
 								 	     	      		<option selected="">Select</option>
 								 	     	      		<option value="1 Day">1 Day</option>
 								 	     	      		<option value="2 Days">2 Days</option>
@@ -655,7 +660,7 @@
 								 	     	      </td>
 								 	     	      <td style="padding-left:2px; padding-right:2px;"><p class="text-primary text-right">for an extra</p></td>
 								 	     	      <td style="padding-bottom: 4px; padding-right: 2px; padding-left:2px;">
-								 	     	      	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	     	      	<select class="form-control" name="ExtraPrice2" style="background-color: #ffffff; padding: 5px;">
 								 	     	     		<option selected="">P</option>
 								 	     	     		<option value="5">Php 5</option>
 								 	     	     		<option value="5">Php 10</option>
@@ -705,7 +710,7 @@
 								 	     	      <th scope="row" style="padding-right:2px;"><H6>Premium</H6></th>
 								 	     	      <td style="padding-right:0px;" ><p class="text-primary text-right"> I'll deliver only </p></td>
 								 	     	      <td style="padding-bottom: 4px; padding-right: 2px;padding-left:2px;">
-								 	     	      	<select class="form-control" style="background-color: #ffffff; padding: 2px;">
+								 	     	      	<select class="form-control" name="ExtraTime3" style="background-color: #ffffff; padding: 2px;">
 								 	     	      		<option selected="">Select</option>
 								 	     	      		<option value="1 Day">1 Day</option>
 								 	     	      		<option value="2 Days">2 Days</option>
@@ -717,7 +722,7 @@
 								 	     	      </td>
 								 	     	       <td style="padding-left:2px; padding-right:2px;"><p class="text-primary text-right">for an extra</p></td>
 								 	     	       <td style="padding-bottom: 4px; padding-right: 2px; padding-left:2px;">
-								 	     	       	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	     	       	<select class="form-control" name="ExtraPrice3" style="background-color: #ffffff; padding: 5px;">
 								 	     	     		<option selected="">P</option>
 								 	     	     		<option value="5">Php 5</option>
 								 	     	     		<option value="5">Php 10</option>
@@ -769,7 +774,7 @@
 								 	</div>
 								 	<div class="form-check">
 								 	<label class="form-check-label">
-								 	       <input type="checkbox" class="form-check-input">
+								 	       <input type="checkbox" class="form-check-input" name="ExtraRevision">
 								 	       <p class="text-primary" style="padding-right: 180px;">Additional Revision</p>
 								 	 </label>
 								 	 <table class="table">
@@ -777,7 +782,7 @@
 								 	     <tr>
 								 	       <th scope="col"><p class="text-primary text-right"> for an extra</p></th>
 								 	       <th scope="col">
-								 	       	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	       	<select class="form-control" name="RevisionPrice" style="background-color: #ffffff; padding: 5px;">
 								 	       		<option selected="">P</option>
 								 	       		<option value="5">Php 5</option>
 								 	       		<option value="5">Php 10</option>
@@ -824,7 +829,7 @@
 								 	       </th>
 								 	       <th scope="col"  ><p class="text-primary text-right"> and additional</p></th>
 								 	       <th scope="col" >
-								 	       	<select class="form-control" style="background-color: #ffffff; padding: 0px;">
+								 	       	<select class="form-control" name="RevisionTime" style="background-color: #ffffff; padding: 0px;">
 								 	     	      		<option selected="">Select</option>
 								 	     	      		<option value="1 Day">1 Day</option>
 								 	     	      		<option value="2 Days">2 Days</option>
@@ -853,7 +858,7 @@
 								 	 	      		
 								 	 	      </th>
 								 	 	      <td style="padding: 0px;" colspan="3">
-								 	 	      	<input class="form-control form-control-sm" type="text" name="+title" placeholder="Title of your Extra Service"></td>
+								 	 	      	<input  class="form-control form-control-sm" type="text" name="+title" placeholder="Title of your Extra Service"></td>
 								 	 	      <td style="padding: 0px;  padding-left: 3px;"><label class="text-center">Recommended to use 20 characters</label></td>
 								 	 	      <td style="padding: 0px">&nbsp;</td>
 								 	 	      
@@ -875,7 +880,7 @@
 								 	 	      </th>
 								 	 	      <td style="padding: 0px">
 								 	 	      	 
-								 	     	     	<select class="form-control" style="background-color: #ffffff; padding: 5px;">
+								 	     	     	<select class="form-control" name="+extraPrice" style="background-color: #ffffff; padding: 5px;">
 								 	     	     		<option selected="">P</option>
 								 	     	     		<option value="5">Php 5</option>
 								 	     	     		<option value="5">Php 10</option>
@@ -924,7 +929,7 @@
 								 	 	      <td style="padding: 0px" colspan="1"><br><p class="text-primary text-right">and additional</p></td>
 								 	 	      
 								 	 	       <td style="padding: 0px" colspan="1">
-								 	 	       	<select class="form-control" style="background-color: #ffffff; padding: 2px;">
+								 	 	       	<select class="form-control" name="+extraTime" style="background-color: #ffffff; padding: 2px;">
 								 	 	       		<option selected="">Select</option>
 								 	 	       		<option value="1 Day">1 Day</option>
 								 	 	       		<option value="2 Days">2 Days</option>
@@ -945,7 +950,7 @@
 					
 				
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				
 				
 						

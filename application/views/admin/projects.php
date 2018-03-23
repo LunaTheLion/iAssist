@@ -16,13 +16,13 @@
     	                                            <i class="fa fa-lg fa-sort-amount-asc" aria-hidden="true"></i>
     	                                        </th>
     	                                        <th>
-    	                                            <i class="fa fa-lg fa-envelope" aria-hidden="true"></i> DFGDF
+    	                                            <i class="fa fa-lg fa-envelope" aria-hidden="true"></i> Username
     	                                        </th>
     	                                        <th>
-    	                                            <i class="fa fa-lg fa-user" aria-hidden="true"></i> DFGD
+    	                                            <i class="fa fa-lg fa-user" aria-hidden="true"></i> Project Title
     	                                        </th>
     	                                        <th>
-    	                                            <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> DFGDFGD
+    	                                            <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> User Type
     	                                        </th>
     	                                        <th>
     	                                            <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> DFGDFGD
@@ -40,8 +40,8 @@
     	                                            <td><?php echo $row->project_title; ?></td>
     	                                            <td><?php echo $row->project_publisher_type; ?></td>
     	                                            <td><?php echo $row->project_category; ?></td>
-    	                                            <td><a class="btn btn-success" href="<?php base_url('admin/')?>">Allow</a>&nbsp;<a class="btn btn-primary" href="">View</a><a href="" class="btn btn-danger"></a></td>
-
+    	                                            <td><a class="btn btn-success" href="<?php base_url('admin/')?>">Allow</a>&nbsp;<a class="btn btn-primary" href="">View</a> <a href="" class="btn btn-danger">Delete</a></td>
+                                                   
     	                                        </tr>
     	                                    <?php endforeach; ?>
     	                                </tbody>

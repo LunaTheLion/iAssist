@@ -57,7 +57,7 @@
 									<div class="form-group">
 								 	<label for="subcategory">Sub-Category</label>
 								      <select class="form-control form-control-sm hide VAA" name="subcategory" id="VAA"  style="padding-right: 20px;padding-left: 20px;">
-								      	<option value="" selecteD>
+								      	<option value="">
 								      		<?php
 								      			$sub = $this->session->userdata('subcategory');
 								      			if(!empty($sub))
@@ -386,9 +386,9 @@
 				</div>
 				<div class="col-lg-3">
 					
-					<button class="btn btn-success btn-outline btn-block" type="submit">Next</button>
+					<button class="btn btn-success btn-outline btn-block" name="submit" value="Next">Next</button>
 					<!-- <a class="btn btn-success btn-outline btn-block" href="<?php echo site_url('users/ye')?>" type="submit">ye</a> -->
-				</form>
+				
 
 
 				</div>
@@ -397,7 +397,10 @@
 		</div>
 		<div class="col-lg-3">	
 		<div class="container ">
-			<a class="btn btn-success btn-block" href="<?php echo site_url('users/project_pricing')?>" >Make a Package</a>
+			<!-- <a class="btn btn-success btn-block" href="<?php echo site_url('users/project_package')?>" >Make a Package</a> -->
+			<!-- <input class="btn btn-success btn-block" value="Make a Package" name="package" type="submit"></input> -->
+			<button class="btn btn-success btn-outline btn-block" name="submit" value="Package">Make a package</button>
+			</form>
 		</div>		
 		</div>
 	</div>

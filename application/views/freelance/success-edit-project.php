@@ -16,48 +16,52 @@
 		 
 		  <table class="table table-striped table-hover table-bordered">
 		    <tbody>
-		    	<form action="<?php echo base_url('users/update_project')?>" method="POST">
+		    	<form  method="POST" action="<?php echo base_url('users/projects') ?>>
 		      <tr>
 		        <td><b class="text-primary"><p></p>Title</b></td>
 		        <td class="col-2">
-		        	<input class="form-control" type="text" name="title" value="<?php echo $this->session->userdata('title')?>"></td>
+		        	<input class="form-control" type="text" name="title" readonly value="<?php echo $this->session->userdata('new-title')?>"></td>
 		      </tr>
 		      <tr>
 		        <td><b class="text-primary"><p></p>Service</b></td>
-		        <td><input class="form-control" type="text" name="service" value=""></td>
+		        <td><input class="form-control" type="text" name="service" readonly value="<?php ?>"></td>
 		      </tr>
 		      <tr>
 		        <td><b class="text-primary"><p></p>Category</b></td>
-		        <td><input class="form-control" type="text" name="category" value=""></td>
+		        <td><input class="form-control" type="text" name="category" readonly value=" <?php echo $this->session->userdata('new-category') ?>"></td>
 		      </tr>
 		      <tr>
 		        <td><b class="text-primary"><p></p>Sub-Category</b></td>
-		        <td><input class="form-control" type="text" name="subcategory" value=""></td>
+		        <td><input class="form-control" type="text" name="subcategory" readonly value="<?php echo $this->session->userdata('new-subcategory') ?>"></td>
 		      </tr>
 		      <tr >
 		        <td><b class="text-primary"><p></p>Offer</b></td>
-		        <td><input class="form-control" type="text" name="offer" value=""></td>
+		        <td><input class="form-control" type="text" name="offer" readonly value="<?php echo $this->session->userdata('new-offer') ?>"></td>
 		        
 		      </tr>
 		      <tr >
 		        <td><b class="text-primary"><p></p>Price</b></td>
-		        <td><input class="form-control" type="text" name="price" value=""></td>
+		        <td><input class="form-control" type="text" name="price" readonly value="<?php echo $this->session->userdata('new-price') ?>"></td>
 		        
 		      </tr>
 		      <tr >
 		        <td><b class="text-primary"><p></p>Delivery</b></td>
-		        <td><input class="form-control" type="text" name="delivery" value=""></td>
+		        <td><input class="form-control" type="text" name="delivery" readonly value="<?php echo $this->session->userdata('new-delivery')  ?>"></td>
 		       
 		      </tr>
 		      <tr>
 		        <td><b class="text-primary"><p></p>Description</b></td>
-		        <td><input class="form-control" type="text" name="description" value=""></td>
+		        <td>
+		        	<textarea rows="5" cols="3" class="form-control" name="description" readonly>
+		        	  	<?php echo $this->session->userdata('new-description') ?>
+		        	  </textarea>
+		        </td>
 		      
 		        
 		      </tr>
 		      <tr >
 		        <td><b class="text-primary"><p></p>Requirements</b></td>
-		        <td><input class="form-control" type="text" name="requirements" value=""></td>
+		        <td><input class="form-control" type="text" name="requirements" readonly value="<?php echo $this->session->userdata('new-requirements') ?>"></td>
 		      
 		        
 		      </tr>
@@ -100,31 +104,7 @@
 		 	
 
 
-		 	  <div class="modal fade" id="updateProject" tabindex="-1" role="dialog">
-		 	    <div class="modal-dialog" role="document">
-		 	    	<!-- <form method="POST" action="<?php echo base_url()?>users/update_project" id="user_form"> -->
-		 	    		<form method="POST" id="user_form">
-		 	      <div class="modal-content">
-		 	        <div class="modal-header">
-		 	          <h5 class="modal-title text-center">Update Project</h5>
-		 	          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		 	            <span aria-hidden="true">&times;</span>
-		 	          </button>
-		 	        </div>
-		 	        <div class="modal-body">
-		 	          <p class="text-primary">Please input your password to continue</p>
-		 	          <input class="form-control p-1 mb-1" type="text" id="username" name="username" value="<?php echo $this->session->userdata('email');?>">
-		 	          <input class="form-control mb-1" type="password" required="true" id="password" name="password" placeholder="password">
-		 	        </div>
-		 	        <div class="modal-footer">
-		 	          <input type="submit" class="btn btn-primary" name="action" value="Proceed">
-		 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		 	        </div>
-		 	      </div>
-
-		 	      </form><!-- end form -->
-		 	    </div>
-		 	</div>
+		 	
 
 		  </div>
 		

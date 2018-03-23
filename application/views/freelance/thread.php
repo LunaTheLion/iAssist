@@ -95,7 +95,7 @@
 				    			 <input type="hidden" name="projid" value="<?php echo $row->id;?>">
 				    		</div>
 				    		<div class="col-md-4" style="padding-right:9px;">
-				    			 <p class="text-muted text-right " style="margin-bottom: 0px; padding: 0px;"><?php $date = $row->project_date_posted; echo date("M 'y",strtotime($date))?></p>
+				    			 <p class="text-muted text-right " style="margin-bottom: 0px; padding: 0px;"><?php $date = $row->project_date_created; echo date("M 'y",strtotime($date))?></p>
 				    		</div>
 				    	</div>   
 				   	<p style="margin:0px;" class="text-primary"><a  href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>"><?php echo $row->project_title;?></a></p>

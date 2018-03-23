@@ -6,6 +6,10 @@ class Admin_model extends CI_Model{
 	public function __construct(){
 		parent::__construct();	
 	}
+	public function get_project_requests()
+	{
+		
+	}
 
 	public function review_project()
 	{
@@ -17,6 +21,13 @@ class Admin_model extends CI_Model{
 	public function get_users()
 	{
 			$this->db->limit(10);
+			$this->db->order_by('account_id', 'DESC');
+			$query = $this->db->get('account_tbl');
+			return $query->result();
+	}
+	public function get_all_users()
+	{
+			
 			$this->db->order_by('account_id', 'DESC');
 			$query = $this->db->get('account_tbl');
 			return $query->result();

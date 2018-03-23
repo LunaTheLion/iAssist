@@ -106,14 +106,48 @@
 		<!-- <?php print_r($proj)?> -->
 			<div class="col-md-3" style="padding: 8px;">
 				<div class="card">
-				  <img style="height: 200px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>" " alt="Card image">
 
-				  <div class="card-body" style="padding-top: 10px;">
-				     <p class="card-text text-center" style="margin:2px;">
-				    	<?php $date = $row->project_date_posted; echo date("M j, Y, g:i",strtotime($date))?></p>
+					<a href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>">
+						<img style="height: 150px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>"  alt="Card image"></a>
+
+
+				
+
+				  <?php
+				    		$string = $row->project_title;
+				    		$num = strlen($string);
+				    	 if( $num <= 42 )
+				    	 {
+
+				    	 	echo '<div class="card-body" style="padding-top: 10px;">
+				     <p class="card-text text-center" style="margin:2px;">';
+				    	 $date = $row->project_date_created; echo date("M j, Y, g:i",strtotime($date));
+				    	 echo '</p>';
+				  			echo "<h6 class='text-center text-primary' style='margin:0px';>". $row->project_title."</h6>";
 				  
-				   	<h6 class="text-center text-primary" style="margin:3px";><?php echo $row->project_title;?></h6>
-				  </div>
+
+							  echo '</div>';
+
+
+				    	 	
+				    	 }
+				    	 else
+				    	 {
+
+				    	 	echo '<div class="card-body" style="padding-top: 10px; padding-bottom: 15px; padding-right: 3px;padding-left: 3px;">
+				     <p class="card-text text-center" style="margin:2px;">';
+				    	 $date = $row->project_date_created; echo date("M j, Y, g:i",strtotime($date));
+				    	 echo '</p>';
+				  	echo "<h6 class='text-center text-primary' style='margin:3px';>". $row->project_title."</h6>";
+				  
+
+							echo'</div>';
+				    	 	
+				    	 }
+
+				    	 ?>
+
+
 				 
 				</div>
 			</div>

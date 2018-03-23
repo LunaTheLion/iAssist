@@ -6,6 +6,30 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('Admin_model');
 	}
+
+	public function project_requests()
+	{
+		$requests = array(
+			'all' => $this->Admin_model->get_all_users(),
+		);
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/template/nav');	
+		$this->load->view('admin/users',$allusers);
+		$this->load->view('admin/template/footer');
+	}
+
+	public function users()
+	{
+		$allusers = array(
+			'all' => $this->Admin_model->get_all_users(),
+		);
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/template/nav');	
+		$this->load->view('admin/users',$allusers);
+		$this->load->view('admin/template/footer');
+	}
+
+
 	public function projects()
 	{
 		

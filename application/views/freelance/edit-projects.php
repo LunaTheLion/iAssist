@@ -5,6 +5,7 @@
 <div class="row">
 	<div class="col-md-7">
 		<div class="card border-success mb-3" style="max-width: 80rem;">
+			
 		 <?php foreach ($view as $row):?>
 		   <div class="card-body text-success">
 		    <h5 class="card-title"><?php echo $row->project_title?></h5>
@@ -12,19 +13,20 @@
 		    <hr>
 		  
 			  </div>
-			  <form method="POST" action="<?php echo base_url('users/validate_update')?>">
+			  <form method="POST" action="<?php echo base_url('users/validate_update/'.$this->session->userdata('new-slug')."0".$row->id)?>">
 		  <table class="table table-striped table-hover table-bordered">
 		    <tbody>
 		    
 		      <tr>
+		      	<input class="form-control" type="text" name="id" hidden="" value="<?php echo $row->id;?>">
 		        <td><b class="text-primary"><p></p>Title</b></td>
 		        <td class="col-2">
 		        	<input class="form-control" type="text" name="title" value="<?php echo $row->project_title;?>"></td>
 		      </tr>
-		      <tr>
+		      <!-- <tr>
 		        <td><b class="text-primary"><p></p>Service</b></td>
 		        <td><input class="form-control" type="text" name="service" value="<?php echo $row->project_service_type?>"></td>
-		      </tr>
+		      </tr> -->
 		      <tr>
 		        <td><b class="text-primary"><p></p>Category</b></td>
 		        <td><input class="form-control" type="text" name="category" value="<?php echo $row->project_category?>"></td>
@@ -46,13 +48,17 @@
 		      <tr >
 		        <td><b class="text-primary"><p></p>Delivery</b></td>
 		        <td><input class="form-control" type="text" name="delivery" value="<?php echo $row->project_delivery?>"></td>
+		        
 		       
 		      </tr>
+		      
 		      <tr>
 		        <td><b class="text-primary"><p></p>Description</b></td>
-		        <td><input class="form-control" type="text" name="description" value="<?php echo $row->project_description?>"></td>
-		      
-		        
+		        <td><!-- <input class="form-control" type="text" name="description" value="<?php echo $row->project_description?>"> -->
+		      <textarea rows="5" cols="3" class="form-control" name="description">
+		        	<?php echo $row->project_description?>
+		        </textarea>
+		        </td>
 		      </tr>
 		      <tr >
 		        <td><b class="text-primary"><p></p>Requirements</b></td>
@@ -83,38 +89,16 @@
 		 
 		  <div class="card-body text-center">
 		 
-		 	 <input type="button"  class="btn btn-info" data-toggle="modal" data-target="#updateProject" value="Update">
+		 	 <!-- <input type="button"  class="btn btn-info" data-toggle="modal" data-target="#updateProject" value="Update"> -->
+		 	<button class="btn btn-info" type="submit">Update</button>
 		 	<input type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeProject"  value="Remove">
 
 
 		 	</form>
 
 
-
-		 	  <div class="modal fade" id="updateProject" role="dialog">
-		 	    <div class="modal-dialog" role="document">
-		 	    		<form method="POST" id="user_form">
-		 	      <div class="modal-content">
-		 	        <div class="modal-header">
-		 	          <h5 class="modal-title text-center">Update Project</h5>
-		 	          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		 	            <span aria-hidden="true">&times;</span>
-		 	          </button>
-		 	        </div>
-		 	        <div class="modal-body">
-		 	          <p class="text-primary">Please input your password to continue</p>
-		 	          <input class="form-control p-1 mb-1" type="text" id="username" name="username" value="<?php echo $this->session->userdata('email');?>" hidden="">
-		 	          <input class="form-control mb-1" type="password" required="true" id="password" name="password" placeholder="password">
-		 	        </div>
-		 	        <div class="modal-footer">
-		 	          <input type="submit" class="btn btn-primary" name="action" value="Proceed">
-		 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		 	        </div>
-		 	      </div>
-
-		 	       </form>
-		 	    </div>
-		 	</div>
+<!-- 
+		 	   -->
 
 		  </div>
 		
@@ -129,12 +113,16 @@
 		      	        <span aria-hidden="true">&times;</span>
 		      	      </button>
 		      	    </div>
+		      	 
+
 		      	    <div class="modal-body">
 		      	      <p class="text-primary">Please input your password to continue</p>
-		      	      <input class="form-control p-1 mb-1" type="text" id="username" name="username" value="<?php echo $this->session->userdata('email');?>" hidden="">
-		      	      <input class="form-control p-1 mb-1" type="text"  name="id" value="<?php echo $row->project_id?>">
-		      	      <input class="form-control mb-1" type="password" required="true" id="password" name="password" placeholder="password">
+		      	      <input class="form-control p-1 mb-1" type="text" id="username" name="user" value="<?php echo $this->session->userdata('email');?>" >
+		      	      <input class="form-control p-1 mb-1" type="text"  name="id" value="<?php echo $row->id?>">
+		      	      <input class="form-control mb-1" type="password" required="true" id="password" name="pass" placeholder="password">
 		      	    </div>
+
+
 		      	    <div class="modal-footer">
 		      	      <input type="submit" class="btn btn-primary" name="action" value="Proceed">
 		      	      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

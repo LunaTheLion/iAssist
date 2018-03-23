@@ -1,4 +1,5 @@
-<title>Order Details</title>
+<title>IAssist | Payment</title>
+
 <div class="container p-5">
 
 	

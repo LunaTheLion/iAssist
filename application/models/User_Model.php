@@ -8,6 +8,8 @@ class User_Model extends CI_Model{
 		
 	}
 
+
+
 	public function get_email_by_username($username)
 	{
 		if(!empty($username))
@@ -29,6 +31,7 @@ class User_Model extends CI_Model{
 			$this->db->limit(3);
 			$this->db->order_by('id', 'DESC');
 			$this->db->where('project_publisher', $email);
+			$this->db->where('project_removed_by_user', 0);
 			$q = $this->db->get('freelance_project_tbl');
 			return $q->result();
 		}
@@ -112,6 +115,7 @@ class User_Model extends CI_Model{
 	 	if(!empty($id))
 	 	{
 	 		$this->db->where('id', $id);
+	 		$this->db->where('project_removed_by_user' , 0);
 	 		$query= $this->db->get('freelance_project_tbl'); 		
 	 		return $query->row();
 	 	}
@@ -121,6 +125,7 @@ class User_Model extends CI_Model{
 	 	if(!empty($id))
 	 	{
 	 		$this->db->where('id', $id);
+	 		$this->db->where('project_removed_by_user' , 0);
 	 		$q = $this->db->get('freelance_project_tbl');
 	 		return $q->result();
 	 	}
@@ -141,6 +146,7 @@ class User_Model extends CI_Model{
 	   	{
 	   		$this->db->limit(4);
 	   		$this->db->order_by('id', 'DESC');
+	   		$this->db->where('project_removed_by_user' , 0);
 	   		$this->db->where('project_publisher', $email);
 	   		$q = $this->db->get('freelance_project_tbl');
 	   		return $q->result();
@@ -189,17 +195,20 @@ class User_Model extends CI_Model{
 	  	if(!empty($email))
 	  	{
 	 		$this->db->where('project_publisher', $email);
-	 		$this->db->order_by('project_date_posted', 'DESC');
+	 		$this->db->where('project_removed_by_user' , 0);
+	 		$this->db->order_by('project_date_created', 'DESC');
 	 		$query2 = $this->db->get('freelance_project_tbl');	
 	 		
+
 	  		if(!empty($query2) && $query2->num_rows() > 0)
 	  		{
 	  			return $query2->result();
-
+	  			
 	  		}
 	  		else
 	  		{
 	  			"No Result";
+
 	  		}
 	  	}
 	  }
@@ -211,9 +220,7 @@ class User_Model extends CI_Model{
 	  		$this->db->insert('freelance_project_tbl',$project_info);
 	  		if ($this->db->affected_rows()==1)
 	  		{
-	  			// echo "<pre>";
-	  			// print_r($project_info);
-	  			// echo "</pre>";
+	  		
 	  			return true;
 	  		}
 	  		else
@@ -265,13 +272,12 @@ class User_Model extends CI_Model{
 
 		if(empty($search))
 		{
-
+			$this->db->where('project_removed_by_user' , 0);
 			$query2 = $this->db->get('freelance_project_tbl');	
 	 		
 	  		if(!empty($query2) && $query2->num_rows() > 0)
 	  		{
 	  			return $query2->result();
-
 	  		}
 	  		else
 	  		{
@@ -281,6 +287,7 @@ class User_Model extends CI_Model{
 	  	elseif(!empty($search))
 	  	{
 	  		$this->db->where('project_search', $search);
+	  		$this->db->where('project_removed_by_user' , 0);
 	  		$query2 = $this->db->get('freelance_project_tbl');	
 	 		
 	  		if(!empty($query2) && $query2->num_rows() > 0)
@@ -299,7 +306,7 @@ class User_Model extends CI_Model{
 
 	 
 
-	  public function update($password, $username)
+	  public function check_email($password, $username)
 	  {
 
 	  	if(!empty($username))
@@ -320,15 +327,51 @@ class User_Model extends CI_Model{
 	  		}
 	  	}
 	  }
+	  	public function remove_proj($id)
+		{
+			
+		$this->db->where('id', $id);
+		$this->db->set('project_removed_by_user', 1 );
+		$this->db->update('freelance_project_tbl');
+		//return $this->db->affected_rows() > 0;
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			ECHO "nope";
+		}
+
+		}
+
+
 	  public function update_proj($page_data)
 	  {
-	  	print_r($page_data);
-	  	// $email =$this->session->userdata('email');
-	  	// $this->db->where('project_publisher', $email);
-	  	// $this->db->update('freelance_project_tbl', $page_data);
+	  	// echo "<pre>";
 	  	// print_r($page_data);
-	  	// return $this->db->affected_rows() > 0;
+	  	// echo "</pre>";
+
+	  	 $email =$this->session->userdata('email');
+	  	 $proj = $this->session->userdata('proj-id');
+	  	 // echo $proj;
+	  	 // echo $email;
+	  	$this->db->where('project_publisher', $email);
+	  	$this->db->where('id', $proj);
+	  	$this->db->update('freelance_project_tbl', $page_data);
+	  	if( $this->db->affected_rows() > 0)
+	  	{
+	  		return true;
+	  		// echo "nice";
+	  	}
+	  	else
+	  	{
+	  		return false;
+	  	}
+	  	
 	  }
+
+	  
 
 	  public function insert_about($a, $b)
 	  {
@@ -341,46 +384,6 @@ class User_Model extends CI_Model{
 			return $this->db->affected_rows() > 0;
 	  	}
 	  }
-
-	// public function account($save_data)
-	// {
-
-	 // $this->db->set('email', $email);
-	 // $this->db->set('account_username', $username);
-	 // $this->db->set('account_gname', $sname);
-	 // $this->db->set('account_sname', $gname);
-	 // $this->db->set('account_contact', $contact);
-	 // $this->db->insert('account_info_tbl');
-
-
-
-	// 	if(!empty($save_data))
-	// 	{
-	// 		//print_r($save_data);
-
-	// 		$this->db->insert('account_info_tbl', $save_data);
-	// 	}
-	// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
