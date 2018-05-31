@@ -38,7 +38,7 @@
                       <a class="nav-link" href="<?php echo base_url('/home');?>">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Features</a>
+                      <a class="nav-link" href="#features" >Features</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url('/about');?>">About</a>

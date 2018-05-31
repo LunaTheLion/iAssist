@@ -12,9 +12,76 @@ class Messaging extends CI_Controller{
 
 	public function message()
 	{
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/messaging/list');
-		$this->load->view('freelance/footer');
+		// $this->load->view('freelance/header');
+		// $this->load->view('freelance/messaging/list');
+
+		// $this->load->view('freelance/footer');
+
+		$email = $this->session->userdata('email');
+		if($this->Message_model->get_msg_info($email))
+		{			
+
+			$get = array(
+				'sent' => $this->Message_model->get_msg_info($email),
+			);
+
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/sent', $get);
+			$this->load->view('freelance/footer');
+
+		}
+		else
+		{	
+			$get = array(
+				'sent' => $this->Message_model->get_msg_info($email),
+			);
+
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/sent', $get);
+			$this->load->view('freelance/footer');
+		}
+
+
+	}
+	public function read($id)
+	{
+		if($this->Message_model->read_msg($id))
+		{
+			$view = array(
+				'msg' =>$this->Message_model->read_msg($id),
+			);
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/read', $view);
+			$this->load->view('freelance/footer');
+		}
+		else
+		{
+
+		}
+
+		
+	}
+	public function view($id)
+	{
+		if($this->Message_model->view_msg($id))
+		{
+			$view = array(
+				'msg' =>$this->Message_model->view_msg($id),
+			);
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/view', $view);
+			$this->load->view('freelance/footer');
+		}
+		else
+		{
+
+		}
+
+		
 	}
 
 	public function compose()
@@ -24,9 +91,8 @@ class Messaging extends CI_Controller{
 		$this->load->view('freelance/messaging/compose');
 		$this->load->view('freelance/footer');
 	}
-	public function sent()
+	public function validate_message()
 	{
-
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('receiver', 'Email', 'required');
@@ -50,7 +116,8 @@ class Messaging extends CI_Controller{
 				'msg_sender' => $this->session->userdata('email'),
 				'msg_receiver' =>$this->session->userdata('msg-sent-to'),
 				'msg_read' => 0,
-				'msg_date' => date('Y-m-d H:i:s'),
+				'msg_read_date' => date('Y-m-d H:i:s'),
+				'msg_block' => 0,
 			);
 			$msgInfo = array(
 				'msg_author' => $this->session->userdata('email'),
@@ -58,6 +125,7 @@ class Messaging extends CI_Controller{
 				'msg_date' => date('Y-m-d H:i:s'),
 				'msg_subject' => $this->session->userdata('msg-subject'),
 				'msg_body' => $this->session->userdata('msg-body'),
+		
 			);
 
 
@@ -70,7 +138,6 @@ class Messaging extends CI_Controller{
 
 					$get = array(
 						'sent' => $this->Message_model->get_msg_info($email),
-					
 					);
 
 					$this->load->view('freelance/header', $msg);
@@ -83,10 +150,6 @@ class Messaging extends CI_Controller{
 				{	
 					echo "Not getting the Mails";
 				}
-
-
-
-
 
 				// $this->load->view('freelance/header', $msg);
 				// $this->load->view('freelance/messaging/list');
@@ -102,35 +165,70 @@ class Messaging extends CI_Controller{
 				$this->load->view('freelance/footer');
 
 			}
-
-			// if($this->Message_model->msg_info($msgInfo) )
-			// {
-			// 	echo "Message Saved";
-			// }
-			// else
-			// {
-			// 	echo "Message Not Saved";
-			// }
-			//$this->Message_model->msg_info($msgInfo);
-
-			
 		}
-
 		else
 		{
 			echo "Something is wrong";
 		}
 
+	}
+	public function sent()
+	{
+		$email = $this->session->userdata('email');
+		if($this->Message_model->get_msg_info($email))
+		{			
 
+			$get = array(
+				'sent' => $this->Message_model->get_msg_info($email),
+			);
+
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/sent', $get);
+			$this->load->view('freelance/footer');
+
+		}
+		else
+		{	
+			$get = array(
+				'sent' => $this->Message_model->get_msg_info($email),
+			);
+
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/sent', $get);
+			$this->load->view('freelance/footer');
+		}
+	
 		
 	}
 
 	public function inbox()
 	{
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/messaging/list');
-		$this->load->view('freelance/messaging/inbox');
-		$this->load->view('freelance/footer');
+		$email = $this->session->userdata('email');
+		// if($this->Message_model->receive_msg($email))
+		// {
+			$get = array(
+				'rcv' => $this->Message_model->receive_msg($email),
+			);
+			
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/messaging/list');
+			$this->load->view('freelance/messaging/inbox',$get);
+			$this->load->view('freelance/footer');
+		// }
+		// else#no message received yet
+		// {
+		// 	$get = array(
+		// 		'rcv' => $this->Message_model->receive_msg($email),
+		// 	);
+			
+		// 	$this->load->view('freelance/header');
+		// 	$this->load->view('freelance/messaging/list');
+		// 	$this->load->view('freelance/messaging/inbox',$get);
+		// 	$this->load->view('freelance/footer');
+		// }
+	
 	}
 	
 	public function trash()

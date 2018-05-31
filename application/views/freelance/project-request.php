@@ -18,7 +18,7 @@
 			    <p class="text-primary">Choose your Category:</p>
 			    <div class="row">
 			    	<div class="col-md-6" >
-			    		<select class="form-control form-control-sm" id="category" name="category" >
+			    		<select class="form-control form-control-sm" id="Category" name="Category" >
 			    		<!-- <option value="<?php
 			    				$cat = $this->session->userdata('request-category');
 			    				if(!empty($cat))
@@ -51,7 +51,7 @@
 			    		  <option value="MAA">Music &amp; Audio</option>
 			    		  <option value="PAT">Programming &amp; Tech</option>
 			    		  <option value="BUS">Business</option>
-			    		  <option value="FAL">Fun &amp; Lifestyel</option>
+			    		  <option value="FAL">Fun &amp; Lifestyle</option>
 			    		</select>
 			    	</div>
 			    	<div class="col-md-6">

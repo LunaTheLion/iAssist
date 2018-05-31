@@ -51,7 +51,7 @@
         // });
 
 
-        
+
     
 
         $(document).on('ready', function() {
@@ -84,7 +84,20 @@
  
              }
         });
+
+        $("#messaging").click(function()
+        {
+            
+            var subj = $('#subject').val();
+            window.location.href=('http://localhost/iAssist/messaging/view/' + subj);
+        });
   
+        $("#readMe").click(function()
+        {
+            
+            var subj = $('#subject').val();
+            window.location.href=('http://localhost/iAssist/messaging/read/' + subj);
+        });
 
 
         $("#copy").click(function() { 

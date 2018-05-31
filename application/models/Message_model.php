@@ -7,12 +7,72 @@ class Message_model extends CI_Model{
 		parent::__construct();	
 		
 	}
+	public function receive_msg($email)
+	{
+		if(!empty($email))
+		{
+			$this->db->where('msg_receiver', $email );
+			$sql = $this->db->get('freelance_msg_info_tbl');
+			return $sql->result();
+			if(!empty($sql) && $sql->num_rows() > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+	}
+	public function read_msg($id)
+	{
+		if(!empty($id))
+		{
+			$this->db->where('id', $id);
+			$sql = $this->db->get('freelance_msg_info_tbl');
+			return $sql->result();
+			if(!empty($sql) && $sql->num_rows() > 0)
+			{
+				return true;
+				echo "YES";
+			}
+			else
+			{
+				return false;
+				echo "Nope";
+			}
+		}
+
+
+	}
+	public function view_msg($id)
+	{
+		if(!empty($id))
+		{
+			$this->db->where('id', $id);
+			$sql = $this->db->get('freelance_msg_info_tbl');
+			return $sql->result();
+			if(!empty($sql) && $sql->num_rows() > 0)
+			{
+				return true;
+				echo "YES";
+			}
+			else
+			{
+				return false;
+				echo "Nope";
+			}
+		}
+
+
+	}
 	public function get_msg($email)
 	{
 		if(!empty($email))
 		{
 			$this->db->where('msg_sender' , $email);
-			$sql = $this->db->get('message_destination_tbl');
+			$sql = $this->db->get('freelance_msg_dest_tbl');
 			return $sql->result();
 			if(!empty($sql) && $sql->num_rows() > 0)
 			{
@@ -31,7 +91,8 @@ class Message_model extends CI_Model{
 		if(!empty($email))
 		{
 			$this->db->where('msg_author' , $email);
-			$sql = $this->db->get('message_info_tbl');
+			$this->db->order_by('id', 'DESC');
+			$sql = $this->db->get('freelance_msg_info_tbl');
 			return $sql->result();
 			if(!empty($sql) && $sql->num_rows() > 0)
 			{
@@ -41,7 +102,7 @@ class Message_model extends CI_Model{
 			else
 			{
 				return false;
-				echo "Nope";
+				echo "NO";
 			}
 		}
 	}
@@ -51,13 +112,14 @@ class Message_model extends CI_Model{
 	{	
 		if(!empty($sendMsg))
 		{
-			$this->db->insert('message_destination_tbl',$sendMsg);
+			$this->db->insert('freelance_msg_dest_tbl',$sendMsg);
 			if ($this->db->affected_rows()==1)
 			{
 				return true;
 			}
 			else
 			{
+				echo "msg_dest<br>";
 				echo "<pre>";
 				print_r($sendMsg);
 				echo "</pre>";
@@ -71,13 +133,14 @@ class Message_model extends CI_Model{
 	{
 		if(!empty($msgInfo))
 		{
-			$this->db->insert('message_info_tbl',$msgInfo);
+			$this->db->insert('freelance_msg_info_tbl',$msgInfo);
 			if ($this->db->affected_rows()==1)
 			{
 				return true;
 			}
 			else
 			{
+				echo "msg_info<br>";
 				echo "<pre>";
 				print_r($msgInfo);
 				echo "</pre>";
