@@ -62,6 +62,7 @@
 							  </div>
 							  <p></p>
 							  <a href="#">View details</a>
+							  
 							  <div>
 							  		
 							  </div>

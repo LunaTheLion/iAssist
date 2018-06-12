@@ -130,7 +130,7 @@
 				<div class="card">
 				 
 				  <div class="card-body">
-				    <h5 class="card-title text-center">Myhrelle Delo Santos</h5>
+				    <h5 class="card-title text-center">Myhrelle Delos Santos</h5>
 				    <h6 class="card-subtitle text-muted text-center">Content Manager</h6>
 				  </div>
 				  <img style="height: 220px; width: 100%; display: block;" src="<?php echo base_url('assets/img/ye.jpg');?>" alt="Card image">

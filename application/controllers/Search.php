@@ -44,6 +44,7 @@ class Search extends CI_Controller{
 		$this->load->view('freelance/thread');
 		$this->load->view('freelance/footer');
 
+		 
 	}
 	public function view_projects($slug)
 	{	
@@ -68,6 +69,8 @@ class Search extends CI_Controller{
 	
 	public function request_service()
 	{
+
+	
 		$request = array(
 				'request'=> $this->session->userdata('request'),
 				'request-category' => $this->session->userdata('request-category'),
@@ -80,6 +83,12 @@ class Search extends CI_Controller{
 		$this->load->view('freelance/header', $request);
 		$this->load->view('freelance/project-request');
 		$this->load->view('freelance/footer');
+
+
+
+
+
+
 	}
 	public function validate_request_service()
 	{
@@ -92,44 +101,44 @@ class Search extends CI_Controller{
 		$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
 
 		$cat = $this->input->post('category');
-
+		$ci = "";
 		if($cat == "VAA")
 		{
-			$cg = "Video & Animation";
+			$ci = "Video & Animation";
 		}
 		elseif($cat == "GAD")
 		{
-			$cg = "Graphics & Design";
+			$ci = "Graphics & Design";
 		}
 		elseif($cat == "DM")
 		{
-			$cg = "Digital Marketing";
+			$ci = "Digital Marketing";
 		}
 		elseif($cat == "WAT")
 		{
-			$cg = "Writing & Translation";
+			$ci = "Writing & Translation";
 		}
 		elseif($cat == "MAA")
 		{
-			$cg = "Music & Audio";
+			$ci = "Music & Audio";
 		}
 		elseif($cat == "PAT")
 		{
-			$cg = "Programming & Tech";
+			$ci = "Programming & Tech";
 		}
 		elseif($cat == "BUS")
 		{
-			$cg = "Business";
+			$ci = "Business";
 		}
 		elseif($cat == "FAL")
 		{
-			$cg = "Fun & Lifestyle";
+			$ci = "Fun & Lifestyle";
 		}
 
 
 
 		$this->session->set_userdata('request', $this->input->post('find'));
-		$this->session->set_userdata('request-category', $cg);
+		$this->session->set_userdata('request-category', $ci);
 		$this->session->set_userdata('request-subcategory', $this->input->post('sub-category'));
 		$this->session->set_userdata('request-delivery', $this->input->post('time'));
 		$this->session->set_userdata('request-amount', $this->input->post('amount'));

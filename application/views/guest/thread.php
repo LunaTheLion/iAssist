@@ -65,13 +65,7 @@
 			<div class="card" style="background-color: #FFFFFF;">
 				<h4 class="card-header">Custom Search</h4>
 				<div class="card-body">
-					<p class="text-primary font-weight-bold"> Hi, <?php
-						if(!empty($this->session->userdata('user_name')))
-						{	
-							echo $this->session->userdata('user_name');
-						}
-						else
-							echo "Guest"?></p>
+					<p class="text-primary font-weight-bold"> Hi, <?php echo $this->session->userdata('user_name')?></p>
 					<p class="text-primary"> Looking for a specific skill that fits your need?</p>
 					<a class="btn btn-success btn-block" href="<?php base_url()?>/iAssist/search/request_service">Post a request</a>
 				</div>
@@ -82,14 +76,7 @@
 		<div class="col-md-9">
 		
 		<div class="row">
-
-		<?php if(empty($data))
-		{ 
-			echo "Hi!";
-		} 
-		elseif(!empty($data))
-			{
-				 foreach($data as $row):?>
+		<?php foreach($data as $row):?>
 		
 			<div class="col-md-3" style="padding: 8px;">
 				<div class="card">
@@ -132,8 +119,7 @@
 				</div>
 			</div>
 
-		<?php endforeach;
-		} ?>
+		<?php endforeach; ?>
 		</div>
 		</div>
 
