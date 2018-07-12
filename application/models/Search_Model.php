@@ -11,6 +11,7 @@ class Search_Model extends CI_Model{
 	public function result()
 	{
 		echo $this->input->post('search');
+		
 	}
 	public function get_email($id)
 	{

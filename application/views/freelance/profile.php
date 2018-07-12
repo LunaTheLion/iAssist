@@ -175,8 +175,9 @@
 	<h3 class="text-center" style="font-style: initial;">- <a href="<?php echo base_url('users/projects');?>">My Projects</a> -</h3>
 	<br><br>
 	<div class="row">
-		<?php foreach($proj as $row):?>
-		<!-- <?php print_r($proj)?> -->
+	<!--  <?php print_r($proj)?>  -->
+	<?php foreach($proj as $row):?>
+		
 			<div class="col-md-4" style="padding: 8px;">
 				<div class="card">
 				  <img style="height: 250px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>" " alt="Card image">

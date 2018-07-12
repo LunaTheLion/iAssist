@@ -13,7 +13,7 @@ class Search extends CI_Controller{
 	public function order_project($slug)
 	{
 		$id = substr($slug, -2);
-
+		
 		$post = $this->Search_Model->get_email($id);
 		// print_r($post);
 		$email = $post->project_publisher;
@@ -27,7 +27,7 @@ class Search extends CI_Controller{
 
 		$this->load->view('freelance/header');
 		$this->load->view('freelance/project-order', $view);
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/footer');	
 	}
 	public function payment()
 	{		

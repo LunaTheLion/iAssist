@@ -5,10 +5,41 @@ class User_Model extends CI_Model{
 
 	public function __construct(){
 		parent::__construct();	
-		
 	}
+	public function get_profile($email)
+	{
+		$this->db->select("*");
+		$this->db->where('account_email' , $email);
+		$this->db->from('account_tbl');
+		$this->db->join('freelance_portfolio_tbl', 'portfolio_owner = account_email', 'right');
+		$this->db->join('freelance_education_tbl', 'ed_account_email = account_email' , 'right');
+		 $query = $this->db->get();
 
-
+		    if($query->num_rows() != 0)
+		    {
+		        return $query->result();
+		    }
+		    else
+		    {
+		        return false;
+		    }
+	}	
+	public function get_projects_to_profile($email)
+	{
+		
+		$this->db->limit(3);
+		$this->db->select('project_title, project_title_slug, project_image,project_date_created');
+		$this->db->where('project_publisher' , $email);
+		$gptp = $this->db->get('freelance_project_tbl');
+		if($gptp->num_rows() !=0)
+		{
+			return $gptp->result();
+		}
+		else 
+		{
+			return false;
+		}
+	}
 
 	public function get_email_by_username($username)
 	{
@@ -268,28 +299,36 @@ class User_Model extends CI_Model{
 
 	  public function get_thread($search)
 	{
-			
-
 		if(empty($search))
 		{
-			$this->db->where('project_removed_by_user' , 0);
-			$query2 = $this->db->get('freelance_project_tbl');	
-	 		
-	  		if(!empty($query2) && $query2->num_rows() > 0)
-	  		{
-	  			return $query2->result();
-	  		}
-	  		else
-	  		{
-	  			"No Result";
-	  		}
-	  	}
+			//get the data from account_table to join in freelance project to avoid redundancy.
+			$this->db->select("*");
+		    $this->db->from('account_tbl');
+		    $this->db->join('freelance_project_tbl', 'project_publisher = account_email', 'inner');
+		    $this->db->where('project_removed_by_user' , 0);
+		      $query = $this->db->get();
+
+		    if($query->num_rows() != 0)
+		    {
+		        return $query->result();
+		    }
+		    else
+		    {
+		        return false;
+		    }
+		}
+
 	  	elseif(!empty($search))
-	  	{
+	  	{	
+
+	  		$this->db->select("");
+		    $this->db->from('account_tbl');
+		    $this->db->join('freelance_project_tbl', 'project_publisher = account_email', 'inner');
+		    $this->db->where('project_removed_by_user' , 0);
 	  		$this->db->where('project_search', $search);
-	  		$this->db->where('project_removed_by_user' , 0);
+	  	
 	  		$query2 = $this->db->get('freelance_project_tbl');	
-	 		
+
 	  		if(!empty($query2) && $query2->num_rows() > 0)
 	  		{
 	  			return $query2->result();
@@ -302,7 +341,7 @@ class User_Model extends CI_Model{
 	  	}
 
 
-	  }
+	  }//end of get_thread
 
 	 
 

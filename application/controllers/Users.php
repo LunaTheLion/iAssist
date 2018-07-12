@@ -9,7 +9,26 @@ class Users extends CI_Controller{
 		$this->load->model('User_Model');
 		
 	}
-	
+
+	public function general()
+	{
+		$email = $this->session->userdata('email');
+
+		echo $email;
+		$data = $this->User_Model->get_profile($email); 
+		
+		$data1 = array(
+			'proj' =>$this->User_Model->get_projects_to_profile($email),
+		);
+		
+		// echo "<pre>";
+		// print_r($proj);
+		// echo "<pre>";
+		$this->load->view('freelance/header', $data);
+		$this->load->view('freelance/profile', $data1);
+		$this->load->view('freelance/footer');
+
+	}
 	public function profile($username)
 	{
 		$email = $this->session->userdata('email');
@@ -23,7 +42,7 @@ class Users extends CI_Controller{
 				$port = $this->User_Model->get_port_info($email);
 
 				$data = array(
-					'proj'     =>$this->User_Model->get_user_project($email),
+					'proj' =>$this->User_Model->get_user_project($email),
 				);
 
 				$page_data2 = array(
@@ -62,6 +81,9 @@ class Users extends CI_Controller{
 				$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
 				$this->load->view('freelance/profile',$data);
 				$this->load->view('freelance/footer');
+				// $this->load->view('freelance/header', $page_data);
+				// $this->load->view('freelance/profile',$data);
+				// $this->load->view('freelance/footer');
 		}
 		elseif(!empty($username))
 		{
@@ -140,24 +162,25 @@ class Users extends CI_Controller{
 
 	public function thread()
 	{
+
 		 $this->load->view('freelance/header');
 		$email =$this->session->userdata('email');
 		//echo $email;
 	
-		$search = $this->input->post('search');
-		$thread = array(
+		 $search = $this->input->post('search');
+
+		 $thread = array(
 			'data' => $this->User_Model->get_thread($search),
 		);
 		// echo "<pre>";
 		// print_r($thread);
 		// echo "</pre>";
-		// $this->session->set_userdata('email');	
-		//$this->load->view('freelance/header');
+		$this->session->set_userdata('email');	
+		// $this->load->view('freelance/header');
 		$this->load->view('freelance/thread', $thread);
 		$this->load->view('freelance/footer');
 	}
 
-			
 	
 	
 	public function profile_personal()

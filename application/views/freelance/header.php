@@ -52,9 +52,14 @@
                      <li class="nav-item active">
                        <a class="nav-link" href="<?php echo base_url('users/thread');?>">Thread <span class="sr-only">(current)</span></a>
                      </li>
-                    <!--  <li class="nav-item">
-                       <a class="nav-link" href="#">Notification</a>
-                     </li>  -->                
+                     <!-- Paypal Integration part -->
+                     <li class="nav-item">
+                       <a class="nav-link" href="<?php echo base_url('users/paypal')?>">Paypal</a>
+                     </li>  
+                     <!---->
+                     <li class="nav-item">
+                       <a class="nav-link" href="<?php echo base_url('users/general')?>">General</a>
+                     </li>                
                    </ul>
                     <div>
                      <ul class="navbar-nav mr-auto">

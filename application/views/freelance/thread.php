@@ -40,24 +40,22 @@
 
 <div class="jumbotron m-0 pt-0 " >
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover258369">Graphics &amp; Design</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover258369">Graphics &amp; Design</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover907357">Digital Marketing</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover907357">Digital Marketing</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
 		sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Writing &amp; Translation</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Video &amp; Animation</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Video &amp; Animation</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Video &amp; Animation</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Music &amp; Audio</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Music &amp; Audio</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Programming &amp; Tech</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Programming &amp; Tech</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Business</button>
 
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Business</button>
-
-		<button type="button" class="btn btn-secondary pr-2 pl-2" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Fun &amp; Lifestyle</button>
+		<button type="button" class="btn btn-secondary pr-3 pl-3" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Fun &amp; Lifestyle</button>
 
 	<div class="row">
 
@@ -96,18 +94,18 @@
 				  <a href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>">
 				  	<img style="height: 150px; width: 100%; display: block;" src="<?php echo site_url("uploads/$row->project_image"); ?>"  alt="Card image"></a>
 
-
+				  	
 				  <div class="card-body" style="padding: 10px;">
 				    
 				    	<div class="row">
-				    		<div class="col-md-4">
-				    			<img src="">&nbsp;
+				    		<div class="col-md-3">
+				    			<img class="img-circle" src="<?php echo site_url("uploads/$row->account_img");?>" width="33" height="28">
 				    		</div>
-				    		<div class="col-md-4" style="padding: 0px;">
+				    		<div class="col-md-3" style="padding: 0px;">
 				    			<a  href="#"><?php echo $row->project_username;?></a>
 				    			 <input type="hidden" name="projid" value="<?php echo $row->id;?>">
 				    		</div>
-				    		<div class="col-md-4" style="padding-right:9px;">
+				    		<div class="col-md-6" style="padding-right:9px;">
 				    			 <p class="text-muted text-right " style="margin-bottom: 0px; padding: 0px;"><?php $date = $row->project_date_created; echo date("M 'y",strtotime($date))?></p>
 				    		</div>
 				    	</div>   

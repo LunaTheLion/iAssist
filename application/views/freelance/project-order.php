@@ -106,8 +106,12 @@
 					</div>
 
 				</div>
-				<button class="btn btn-success" type="submit">Proceed to Payment</button>
-
+				
+				<a class="btn btn-success" href="<?php base_url()?>/iAssist/search/view_projects/<?php echo $row->project_title_slug."0".$row->id?>">Proceed to Payment</a>
+				<a class="nav-link" href="<?php echo base_url('users/thread');?>">
+					<a class="nav-link" href="<?php echo base_url('Paypal/')?>">
+				<!--to paypal controller 
+				-->
 			</div>
 		</div>
 	</div>
