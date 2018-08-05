@@ -58,7 +58,10 @@
                      </li>  
                      <!---->
                      <li class="nav-item">
-                       <a class="nav-link" href="<?php echo base_url('users/general')?>">General</a>
+                       <a class="nav-link" href="<?php echo base_url('users/general/')?>">General</a>
+                     </li>
+                      <li class="nav-item">
+                       <a class="nav-link" href="<?php echo base_url('tools/send_email')?>">Send to Email</a>
                      </li>                
                    </ul>
                     <div>
@@ -67,8 +70,11 @@
                         <a class="nav-link" href="<?php echo base_url('messaging/message')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                       </li>
                       <li class="nav-item nav-">
-                        <a class="nav-link" href="<?php echo base_url('users/profile/'.$this->session->userdata('user_name'));?>"><?php 
-                        echo $this->session->userdata('user_name');
+                        <a class="nav-link" href="<?php echo base_url('users/general/')?>"><?php 
+                        echo $this->session->userdata('username');
+
+
+
                         ?>
                         </a>
                       </li>

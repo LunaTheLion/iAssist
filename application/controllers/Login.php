@@ -25,11 +25,6 @@ class Login extends CI_Controller{
 				$this->session->set_userdata('Account_Status', $astatus);
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
 				{
-					//create an html file for creating and showing the data from the database
-					//then proceed to getting the data from database.
-					//show an html first to test the connection. 
-					//create an html wherein the user while be advised to complete his/her profile. 
-					//show info
 					
 					$this->session->set_userdata('email',$email);
 					$get_user = $this->Login_model->get_username($email);
@@ -37,7 +32,7 @@ class Login extends CI_Controller{
 					{
 						$user = $get_user->account_username;
 						$this->session->set_userdata('log_status',1);
-						redirect(base_url().'users/profile/'.$user);
+						redirect(base_url().'users/general');
 					}
 					else{
 						echo "Error";

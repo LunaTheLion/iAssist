@@ -1,5 +1,6 @@
 <title>Profile</title>
 <div class="jumbotron" style="padding-top: 100px; padding-bottom: 100px; margin: 0px;">
+	
 	<div class="row">
 		<div class="col-lg-1"></div>
 	<div class="col-lg-10">
@@ -14,6 +15,7 @@
 	</div>
 	<div class="col-lg-1"></div>
 	</div>
+
 </div>
 
 <div class="jumbotron p-5" style="background-color: #D3D3D3; margin: 0px;">

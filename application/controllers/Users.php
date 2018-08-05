@@ -9,23 +9,25 @@ class Users extends CI_Controller{
 		$this->load->model('User_Model');
 		
 	}
+	
 
 	public function general()
 	{
 		$email = $this->session->userdata('email');
+		//echo $email;
+		$get = array(
+		'data' => $this->User_Model->get_profile($email),
+		);
 
-		echo $email;
-		$data = $this->User_Model->get_profile($email); 
-		
 		$data1 = array(
 			'proj' =>$this->User_Model->get_projects_to_profile($email),
 		);
 		
+		// echo "<pre>"; 
+		// print_r($data);
 		// echo "<pre>";
-		// print_r($proj);
-		// echo "<pre>";
-		$this->load->view('freelance/header', $data);
-		$this->load->view('freelance/profile', $data1);
+		$this->load->view('freelance/header', $get);
+		$this->load->view('freelance/profile1',$data1, $get);
 		$this->load->view('freelance/footer');
 
 	}
@@ -162,23 +164,25 @@ class Users extends CI_Controller{
 
 	public function thread()
 	{
+		$this->load->view('freelance/header');
 
-		 $this->load->view('freelance/header');
-		$email =$this->session->userdata('email');
-		//echo $email;
+
+		//  $this->load->view('freelance/header');
+		// $email =$this->session->userdata('email');
+		// //echo $email;
 	
-		 $search = $this->input->post('search');
+		//  $search = $this->input->post('search');
 
-		 $thread = array(
-			'data' => $this->User_Model->get_thread($search),
-		);
-		// echo "<pre>";
-		// print_r($thread);
-		// echo "</pre>";
-		$this->session->set_userdata('email');	
-		// $this->load->view('freelance/header');
-		$this->load->view('freelance/thread', $thread);
-		$this->load->view('freelance/footer');
+		//  $thread = array(
+		// 	'data' => $this->User_Model->get_thread($search),
+		// );
+		// // echo "<pre>";
+		// // print_r($thread);
+		// // echo "</pre>";
+		// $this->session->set_userdata('email');	
+		// // $this->load->view('freelance/header');
+		// $this->load->view('freelance/thread', $thread);
+		// $this->load->view('freelance/footer');
 	}
 
 	

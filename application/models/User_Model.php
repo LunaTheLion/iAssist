@@ -28,7 +28,7 @@ class User_Model extends CI_Model{
 	{
 		
 		$this->db->limit(3);
-		$this->db->select('project_title, project_title_slug, project_image,project_date_created');
+		$this->db->select('id,project_title, project_title_slug, project_image,project_offer,project_date_created');
 		$this->db->where('project_publisher' , $email);
 		$gptp = $this->db->get('freelance_project_tbl');
 		if($gptp->num_rows() !=0)
