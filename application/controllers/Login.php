@@ -15,6 +15,9 @@ class Login extends CI_Controller{
 
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
+			$cpassword =$this->input->post('cpassword');
+
+
 
 			
 			if($this->Login_model->signin($email,$password))
@@ -36,10 +39,7 @@ class Login extends CI_Controller{
 					}
 					else{
 						echo "Error";
-					}
-
-
-					
+					}	
 				}
 				else
 				{
@@ -72,32 +72,47 @@ class Login extends CI_Controller{
 			$this->load->view('templates/footer');
 	}
 	public function sign_up_validation(){
+		$this->load->helper('form');
+		$this->load->helper('url');
 		$this->load->library('form_validation');
+		// $this->form_validation->set_rules()
 		$this->form_validation->set_rules('email','Email', 'required');
 		$this->form_validation->set_rules('password','Password', 'required');
 		$this->form_validation->set_rules('cpassword','Confirm Password', 'required|matches[password]');
+
 		$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
 
-		 if($this->form_validation->run())
-		 {
+		if($this->form_validation->run() == FALSE)
+		{
+			Echo "Hello";
 			$email = $this->input->post('email');
-			$password = $this->input->post('password');
-			
-			if($this->Login_model->signup($email,$password))//if the model function is true.
-			{
-				redirect(base_url().'login/sign_in');
+			$pass = $this->input->post('password');
+			$cpass = $this->input->post('cpassword');
 
-				//echo $email ; echo $password;
-			}
-			else
-			{
-				redirect(base_url().'login/sign_up');
-			}
 		}
-		else
-		{		
-			redirect(base_url().'login/sign_up');	
+		else{
+			Echo "Show me whats wrong";
+			// redirect(base_url().'login/sign_up');
 		}
+		//  if($this->form_validation->run())
+		//  {
+		
+		// 	// if($this->Login_model->signup($email,$password))//if the model function is true.
+		// 	// {
+		// 	// 	redirect(base_url().'login/sign_in');
+
+		// 	// 	//echo $email ; echo $password;
+		// 	// }
+		// 	// else
+		// 	// {
+		// 	// 	redirect(base_url().'login/sign_up');
+		// 	// }
+		// }
+		// else
+		// {		
+		// 	echo "Repeat";
+		// 	// redirect(base_url().'login/sign_up');	
+		// }
 
 	}
 

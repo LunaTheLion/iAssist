@@ -33,10 +33,21 @@
          height: 60%; 
          opacity:.5; 
     }
+    html{
+      height:100%;
+    }
+    body{
+      min-height:100%; 
+      position:relative;
+      height: 100%;
+       margin: 0;
+       padding: 0;
+       
+    }
     </style> 
 
   </head>
-  <body>
+  <body id="main">
 
       <div class="bs-component">
        
@@ -72,9 +83,6 @@
                       <li class="nav-item nav-">
                         <a class="nav-link" href="<?php echo base_url('users/general/')?>"><?php 
                         echo $this->session->userdata('username');
-
-
-
                         ?>
                         </a>
                       </li>

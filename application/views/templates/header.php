@@ -15,7 +15,19 @@
     <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
     <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-
+    <style type="text/css">
+     html{
+       height:100%;
+     }
+     body{
+       min-height:100%; 
+       position:relative;
+       height: 100%;
+      margin: 0;
+      padding: 0;
+        
+     }
+    </style>
   
   </head>
   <body>
@@ -57,8 +69,6 @@
                         {
                            echo base_url('/sign-in');
                         }
-
-
                       ?>">Sign In</a>
                     </li>
                     <li class="nav-item nav-">
