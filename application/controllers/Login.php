@@ -72,28 +72,49 @@ class Login extends CI_Controller{
 			$this->load->view('templates/footer');
 	}
 	public function sign_up_validation(){
-		$this->load->helper('form');
-		$this->load->helper('url');
+		$this->load->helper(array('form', 'url'));
+
 		$this->load->library('form_validation');
-		// $this->form_validation->set_rules()
-		$this->form_validation->set_rules('email','Email', 'required');
-		$this->form_validation->set_rules('password','Password', 'required');
-		$this->form_validation->set_rules('cpassword','Confirm Password', 'required|matches[password]');
-
-		$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
-
-		if($this->form_validation->run() == FALSE)
+		
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		
+		if ($this->form_validation->run() == FALSE)
 		{
-			Echo "Hello";
-			$email = $this->input->post('email');
-			$pass = $this->input->post('password');
-			$cpass = $this->input->post('cpassword');
+		        //$this->load->view('pages/myform');
+		        redirect(base_url().'login/sign_up_validation');
+		}
+		else
+		{
+				redirect(base_url().'login/sign_up');
+		        //$this->load->view('pages/formsuccess');
+		}
 
-		}
-		else{
-			Echo "Show me whats wrong";
-			// redirect(base_url().'login/sign_up');
-		}
+
+		// $this->load->helper(array('form', 'url'));
+		// $this->load->library('form_validation');
+
+		// $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		// $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+		// $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
+
+		// //$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
+
+		// if($this->form_validation->run() == FALSE)
+		// {
+		// 	redirect(base_url().'login/sign_up');
+		// 	// Echo "Hello";
+		// 	// $email = $this->input->post('email');
+		// 	// $pass = $this->input->post('password');
+		// 	// $cpass = $this->input->post('cpassword');
+
+		// }
+		// else{
+		// 	Echo "Hooray";
+		// 	// redirect(base_url().'login/sign_up');
+		// }
 		//  if($this->form_validation->run())
 		//  {
 		
