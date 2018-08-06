@@ -11,24 +11,33 @@ class Users extends CI_Controller{
 	}
 	
 
-	public function general()
-	{
-		$email = $this->session->userdata('email');
-		//echo $email;
-		$get = array(
-		'data' => $this->User_Model->get_profile($email),
-		);
 
-		$data1 = array(
-			'proj' =>$this->User_Model->get_projects_to_profile($email),
-		);
+	public function general($email)
+	{
+		//$this->session->set_userdata('email', $email);
+		//echo $email;
+		// $get = array(
+		// 'data' => $this->User_Model->get_profile($email),
+		// );
+
+		// $data1 = array(
+		// 	'proj' =>$this->User_Model->get_projects_to_profile($email),
+		// );
 		
-		// echo "<pre>"; 
-		// print_r($data);
-		// echo "<pre>";
-		$this->load->view('freelance/header', $get);
-		$this->load->view('freelance/profile1',$data1, $get);
-		$this->load->view('freelance/footer');
+		// // echo "<pre>"; 
+		// // print_r($data);
+		// // echo "<pre>";
+
+		// if(empty($this->User_Model->get_profile($email)))
+		// {
+		// 	echo " hello";
+		// }
+		// else {
+		// 	$this->load->view('freelance/header', $get);
+		// 	$this->load->view('freelance/profile1',$data1, $get);
+		// 	$this->load->view('freelance/footer');
+		// }
+		
 
 	}
 	public function profile($username)

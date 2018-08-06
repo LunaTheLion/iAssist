@@ -9,6 +9,38 @@ class Login extends CI_Controller{
 		$this->load->library('session');
 		
 	}
+	public function validate()
+	{
+	        $this->load->helper(array('form'));
+	        $this->load->library('form_validation');
+	        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+	        $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
+	        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+	        
+	        if ($this->form_validation->run() == FALSE)
+	        {
+	        		$this->load->view('templates/header');
+	                $this->load->view('pages/sign-up');
+	                $this->load->view('templates/footer');
+	        }
+	        else
+	        {	
+	        		$email = $this->input->post('email');
+	        		$this->session->set_userdata('email', $email);	
+	        		redirect(base_url().'Tools/send_email/'.$email);
+					// $password = $this->input->post('password');
+					// $cpassword =$this->input->post('cpassword');
+
+	    //     		$this->load->view('templates/header');
+	    //     	    // $this->load->view('freelance/confirmation');
+	    //     	    echo $email;
+	    //     	    echo $password;
+	    //     	    echo $cpassword;
+	    //     	    $this->load->view('templates/footer');
+	                
+
+	        }
+	}
 
 
 	public function sign_in(){
@@ -16,15 +48,11 @@ class Login extends CI_Controller{
 		 	$email = $this->input->post('email');
 			$password = $this->input->post('password');
 			$cpassword =$this->input->post('cpassword');
-
-
-
 			
 			if($this->Login_model->signin($email,$password))
 			{
 				$astatus = $this->Login_model->accountstatus($this->session->userdata('email'));
 				// upon signing in you are logged in. until you click the logout.
-				//
 				$this->session->set_userdata('Account_Status', $astatus);
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
 				{
@@ -71,72 +99,7 @@ class Login extends CI_Controller{
 			$this->load->view('pages/sign-up');
 			$this->load->view('templates/footer');
 	}
-	public function sign_up_validation(){
-		$this->load->helper(array('form', 'url'));
-
-		$this->load->library('form_validation');
-		
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
-		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		
-		if ($this->form_validation->run() == FALSE)
-		{
-		        //$this->load->view('pages/myform');
-		        redirect(base_url().'login/sign_up_validation');
-		}
-		else
-		{
-				redirect(base_url().'login/sign_up');
-		        //$this->load->view('pages/formsuccess');
-		}
-
-
-		// $this->load->helper(array('form', 'url'));
-		// $this->load->library('form_validation');
-
-		// $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		// $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
-		// $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
-
-		// //$this->form_validation->set_error_delimiters('<small class="text-danger">', '</small>');
-
-		// if($this->form_validation->run() == FALSE)
-		// {
-		// 	redirect(base_url().'login/sign_up');
-		// 	// Echo "Hello";
-		// 	// $email = $this->input->post('email');
-		// 	// $pass = $this->input->post('password');
-		// 	// $cpass = $this->input->post('cpassword');
-
-		// }
-		// else{
-		// 	Echo "Hooray";
-		// 	// redirect(base_url().'login/sign_up');
-		// }
-		//  if($this->form_validation->run())
-		//  {
-		
-		// 	// if($this->Login_model->signup($email,$password))//if the model function is true.
-		// 	// {
-		// 	// 	redirect(base_url().'login/sign_in');
-
-		// 	// 	//echo $email ; echo $password;
-		// 	// }
-		// 	// else
-		// 	// {
-		// 	// 	redirect(base_url().'login/sign_up');
-		// 	// }
-		// }
-		// else
-		// {		
-		// 	echo "Repeat";
-		// 	// redirect(base_url().'login/sign_up');	
-		// }
-
-	}
-
+	
 	
 
 }

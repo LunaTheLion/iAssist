@@ -11,9 +11,9 @@
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
 
-    <link rel="stylesheet" href="./Bootswatch_ Lux_files/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="./Bootswatch_ Lux_files/custom.min.css">
-    <script type="text/javascript" async="" src="./Bootswatch_ Lux_files/ga.js.download"></script>
+ <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux_variables.css')?>" media="screen">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux-bootswatch.css')?>">
+  
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
     <style type="text/css">
      html{

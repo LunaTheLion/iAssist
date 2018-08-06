@@ -1,7 +1,13 @@
 <title>Profile</title>
 <div class="jumbotron" style="padding-right: 350px; padding-left: 100px;">
 	<?php foreach ($data as $main):?>
-		
+		<?php if(empty($data))
+				{
+					echo "hello";
+				}
+
+
+		 ?>
 			<div class="card" style="background-color:  #FDEBD0; padding: 20px;">
 			<div class="row">
 				<div class="col-sm-2">

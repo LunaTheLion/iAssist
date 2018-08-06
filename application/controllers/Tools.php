@@ -9,8 +9,9 @@ class Tools extends CI_Controller{
 	
 		
 	}
+
 	
-	function send_email(){
+	function send_email($email){
 
 		$config = Array(
 			'protocol' => 'smtp',
@@ -25,10 +26,11 @@ class Tools extends CI_Controller{
 
 		$this->load->library('email', $config);
 		$this->email->from('iassistumak@gmail.com');
-		$this->email->to('elonasquared@gmail.com');
-		$this->email->subject('Sample Subject');
+		$this->email->to($email);
+		$this->email->subject('Welcome to the community!');
+		$verification_code = "AAABBB";
 		//$msg = 'Click on this link to sign in - <a></a>'
-		$msg = "Thank you for signing up ! <a href='http://localhost/iAssist/users/general/''>Click me to register to iAssist</a>";
+		$msg = "Thank you for signing up ! <a href='http://localhost/iAssist/users/general/".$verification_code.">Click me to register to iAssist</a>";
 		$this->email->message($msg);
 		$this->email->set_newline("\r\n");
 
@@ -38,7 +40,7 @@ class Tools extends CI_Controller{
 		// $this->email->print_debugger();
 
 		if($this->email->send()){
-		    echo 'Email Send';
+		    echo $email;
 		    $this->load->view('templates/header');
 		    $this->load->view('freelance/Confirmation');
 		    $this->load->view('templates/footer');

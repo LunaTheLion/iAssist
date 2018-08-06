@@ -1,19 +1,55 @@
-<?php echo validation_errors(); ?>
+<div class="container mt-5">
+	
+	<div class="row">
 
-<?php echo form_open('/Login/sign_up_validation'); ?>
+		<div class="col-lg-3 col-ls-2"></div>
 
-<h5>Username</h5>
-<input type="text" name="username" value="" size="50" />
+		<div class="col-lg-5 col-ls-5">
+			<div class="card" style="margin: 5px;">
+			<div class="form-group" style="padding: 10px;">
+			
+				
 
-<h5>Password</h5>
-<input type="password" name="password" value="" size="50" />
+				<?php //echo form_open('/Form/frm'); ?>
+				<form method="POST" action="<?php echo base_url('/Login/validate')?>">
+				<p></p>
+				<input class="form-control" type="email" name="email" value="" size="50" placeholder="Email Address" />
+				<?php echo form_error('email'); ?> 
+				<div class="valid-feedback">Success! You've done it.</div>
+				<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
+				<p></p>
+				<input class="form-control" type="password" name="password" value="" size="50" placeholder="Password" id="myInput" />
+				<?php echo form_error('password'); ?> 
+				<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
+				<p></p>
+				<input class="form-control" type="password" name="cpassword" value="" size="50" placeholder="Confirm Password" id="myInputt" />
+				<?php echo form_error('cpassword'); ?> 
+				<p>
+					<?php //echo validation_errors(); ?>
+				</p>
+				<input type="checkbox" onclick="myFunction()">Show Password
+				<div><p></p>
+					<div class="row">
+						<div class="col-lg-4 col-ls-4">
+							<a class="btn btn-primary btn-block" href="javascript:window.history.go(-1);" data-placement="back" title="" data-original-title="Back to Sign In">Back</a>
+						</div>
+						<div class="col-lg-4 col-ls-4">
+							
+						</div>
+						<div class="col-lg-4 col-ls-4">
+							<input class="btn btn-success" type="submit" value="Submit" />
+						</div>
+					</div>
+					
+				</div>
 
-<h5>Password Confirm</h5>
-<input type="password" name="cpassword" value="" size="50" />
+				</form>
+			</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-ls-2"></div>
+	</div>
+</div>
 
-<h5>Email Address</h5>
-<input type="email" name="email" value="" size="50" />
 
-<div><input type="submit" value="Submit" /></div>
 
-</form>
