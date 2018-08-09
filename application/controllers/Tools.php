@@ -10,9 +10,12 @@ class Tools extends CI_Controller{
 		
 	}
 
-	
-	function send_email($email){
 
+	
+	function send_email($email, $pass){
+
+		// echo $email; 
+		// echo $pass;
 		$config = Array(
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -30,7 +33,8 @@ class Tools extends CI_Controller{
 		$this->email->subject('Welcome to the community!');
 		$verification_code = "AAABBB";
 		//$msg = 'Click on this link to sign in - <a></a>'
-		$msg = "Thank you for signing up ! <a href='http://localhost/iAssist/users/general/".$verification_code.">Click me to register to iAssist</a>";
+		$msg = 'Thank you for signing up ! <a href="'.base_url().'users/general/'.$email.'/'.$pass.'">Click me to register to iAssist</a>';
+		//http://localhost/iAssist/users/general/
 		$this->email->message($msg);
 		$this->email->set_newline("\r\n");
 

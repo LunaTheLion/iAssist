@@ -10,33 +10,47 @@ class Users extends CI_Controller{
 		
 	}
 	
-
-
 	public function general($email)
 	{
-		//$this->session->set_userdata('email', $email);
-		//echo $email;
-		// $get = array(
-		// 'data' => $this->User_Model->get_profile($email),
-		// );
+		$this->session->set_userdata('email', $email);
+		if(empty($this->User_Model->get_profile($email)))
+		{
+			//echo $email;
+			// $data = $this->User_Model->create_profile($email);
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
 
-		// $data1 = array(
-		// 	'proj' =>$this->User_Model->get_projects_to_profile($email),
-		// );
-		
-		// // echo "<pre>"; 
-		// // print_r($data);
-		// // echo "<pre>";
+			$fetch = array(
+				'data' => $this->User_Model->create_profile($email),
+				);
 
-		// if(empty($this->User_Model->get_profile($email)))
-		// {
-		// 	echo " hello";
-		// }
-		// else {
-		// 	$this->load->view('freelance/header', $get);
-		// 	$this->load->view('freelance/profile1',$data1, $get);
-		// 	$this->load->view('freelance/footer');
-		// }
+			
+
+			$this->load->view('freelance/header');
+			$this->load->view('freelance/new-profile', $fetch);
+			$this->load->view('freelance/footer');
+
+		}
+		else {
+			$get = array(
+			'data' => $this->User_Model->get_profile($email),
+			);
+			//$data = $this->User_Model->get_profile($email);
+
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
+
+
+			$data1 = array(
+				'proj' =>$this->User_Model->get_projects_to_profile($email),
+			);
+			$this->load->view('freelance/header', $get);
+			$this->load->view('freelance/profile1',$data1, $get);
+			$this->load->view('freelance/footer');
+
+		}
 		
 
 	}

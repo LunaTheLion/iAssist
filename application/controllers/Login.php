@@ -9,6 +9,9 @@ class Login extends CI_Controller{
 		$this->load->library('session');
 		
 	}
+
+
+
 	public function validate()
 	{
 	        $this->load->helper(array('form'));
@@ -26,8 +29,35 @@ class Login extends CI_Controller{
 	        else
 	        {	
 	        		$email = $this->input->post('email');
-	        		$this->session->set_userdata('email', $email);	
-	        		redirect(base_url().'Tools/send_email/'.$email);
+	        		$password = $this->input->post('password');
+
+	        		$chars = "abcdefghijkmnopqrstuvwxyz023456789"; 
+	        		srand((double)microtime()*1000000); 
+	        		$i = 0; 
+	        		$pass = '' ; 
+
+	        		while ($i <= 7) { 
+	        		    $num = rand() % 33; 
+	        		    $tmp = substr($chars, $num, 1); 
+	        		    $pass = $pass . $tmp; 
+	        		    $i++; 
+	        		} 
+
+	        		if($this->Login_model->signup($email,$password,$pass))
+	        		{
+
+	        			$this->session->set_userdata('email', $email);		
+	        			redirect(base_url().'Tools/send_email/'.$email.'/'.$pass);
+	        		}
+	        		else
+	        		{
+	        			
+	        			$this->load->view('templates/header');
+	        	        $this->load->view('pages/sign-up');
+	       		        $this->load->view('templates/footer');
+	        		}
+
+	        		
 					// $password = $this->input->post('password');
 					// $cpassword =$this->input->post('cpassword');
 
@@ -42,6 +72,7 @@ class Login extends CI_Controller{
 	        }
 	}
 
+	
 
 	public function sign_in(){
 
@@ -55,8 +86,8 @@ class Login extends CI_Controller{
 				// upon signing in you are logged in. until you click the logout.
 				$this->session->set_userdata('Account_Status', $astatus);
 				if($this->Login_model->accountstatus($email)) // if user has completed the profile
-				{
-					
+				{	
+
 					$this->session->set_userdata('email',$email);
 					$get_user = $this->Login_model->get_username($email);
 					if(!empty($get_user))
@@ -75,7 +106,7 @@ class Login extends CI_Controller{
 					$this->session->set_userdata('email',$email);
 					$this->session->set_userdata('log_status',1);
 					//$this->session->set_userdata('',);
-					redirect(base_url().'login/success_sign');
+					redirect(base_url().'users/general/'.$email);
 				}	
 			}
 			else

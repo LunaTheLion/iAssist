@@ -1,7 +1,7 @@
 <title>Profile</title>
 <div class="jumbotron" style="padding-right: 350px; padding-left: 100px;">
 
-		<?php foreach (($data ? $data : array()) as $main): ?>
+		<?php foreach ($data as $main): ?>
 			<div class="card" style="background-color:  #FDEBD0; padding: 20px;">
 			<div class="row">
 				<div class="col-sm-2">
@@ -20,7 +20,7 @@
 									
 					width="110" height="120">
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-2">A
 					<p><?php echo $main->account_username;
 						$this->session->set_userdata('username', $main->account_username);
 					 ?></p>
@@ -36,10 +36,10 @@
 		<div class="card" style=" padding: 10px;">
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+			    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link active" data-toggle="tab" href="#home">Projects</a>
+			    <a class="nav-link" data-toggle="tab" href="#home">Projects</a>
 			  </li>
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://bootswatch.com/lux/#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -53,7 +53,7 @@
 			  </li>
 			</ul>
 			<div id="myTabContent" class="tab-content">
-			  <div class="tab-pane fade show active" id="home" style="padding-top: 10px;">
+			  <div class="tab-pane fade" id="home" style="padding-top: 10px;">
 
 			  	<div class="card border-secondary mb-3" style="max-width: 65rem;">
 			  		  <div class="card-body" style="padding:0px;">
@@ -63,7 +63,7 @@
 
 			  		</div>
 			  	
-			  	<?php foreach ($proj as $row):?>
+			  	<!-- <?php foreach (($proj ? $proj : array()) as $row):?>
 
 			  		<div class="card border-secondary mb-3" style="max-width: 65rem;">
 			  		  <div class="card-body">
@@ -90,16 +90,24 @@
 
 			  		</div>
 			  	
-			  	<?php endforeach; ?>
+			  	<?php endforeach; ?> -->
 			  	
 			  	<br>
 
 			  
 	
 			  </div>
-			  <div class="tab-pane fade" id="profile" style="padding-top: 10px;"
+			  <div class="tab-pane fade  show active" id="profile" style="padding-top: 10px;"
 			  >
 			   <div class="card" style="padding: 10px;">
+			   	<div class="card-header">Interests</div>
+			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+			  	</div>
+			  	<div class="card" style="padding: 10px;">
+			   	<div class="card-header">Interests</div>
+			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+			  	</div>
+			  	<div class="card" style="padding: 10px;">
 			   	<div class="card-header">Interests</div>
 			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
 			  	</div>
