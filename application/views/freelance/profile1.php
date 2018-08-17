@@ -5,6 +5,7 @@
 			<div class="card" style="background-color:  #FDEBD0; padding: 20px;">
 			<div class="row">
 				<div class="col-sm-2">
+					
 					<img  src="<?php 
 									$pic = $main->account_img;
 									if( !empty($pic))
@@ -28,7 +29,7 @@
 					<!-- <button type="button" class="btn btn-success">Request Resume</button> -->
 				</div>
 				<div class="col-sm-4">C</div>
-				<div class="col-sm-4">D</div>
+				<div class="col-sm-4">Ddsfgdfgs</div>
 			</div>
 			
 
@@ -44,11 +45,11 @@
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://bootswatch.com/lux/#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#dropdown1">Action</a>
+			      <!-- <a class="dropdown-item" href="#dropdown1">Action</a>
 			      <a class="dropdown-item" href="#dropdown2">Another action</a>
 			      <a class="dropdown-item" href="https://bootswatch.com/lux/#">Something else here</a>
 			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
+			      <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a> -->
 			    </div>
 			  </li>
 			</ul>
@@ -112,6 +113,26 @@
 			  </div>
 			</div>
 		</div>
+
+		<div class="modal fade" role="modal-dialog" id="myModal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <p>Modal body text goes here.</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		<!-- <div class="row" style="background-color:  #FDEBD0;">
 			<div class="col-sm-4">A</div>
 			<div class="col-sm-4">B</div>
@@ -126,4 +147,5 @@
 		<hr> -->
 
 <?php endforeach; ?>
+
 </div>

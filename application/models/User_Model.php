@@ -24,6 +24,24 @@ class User_Model extends CI_Model{
 		   }
 	}
 
+	public function get_important($email)
+	{
+		
+		$this->db->select('account_email,account_status,account_username,account_img');
+		$this->db->where('account_email' , $email);
+		$query = $this->db->get('account_tbl');
+
+
+		if(!empty($query) && $query->num_rows() == 1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			"No Result";
+			
+		}
+	}
 	public function get_profile($email)
 	{
 		$this->db->select("*");

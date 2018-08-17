@@ -10,12 +10,11 @@ class Login extends CI_Controller{
 		
 	}
 
-
-
 	public function validate()
 	{
 	        $this->load->helper(array('form'));
 	        $this->load->library('form_validation');
+	        $this->form_validation->set_rules('username', 'User Name', 'trim|required|min_length[8]');
 	        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 	        $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
 	        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
@@ -30,7 +29,7 @@ class Login extends CI_Controller{
 	        {	
 	        		$email = $this->input->post('email');
 	        		$password = $this->input->post('password');
-
+	        		$username = $this->input->post('username');
 	        		$chars = "abcdefghijkmnopqrstuvwxyz023456789"; 
 	        		srand((double)microtime()*1000000); 
 	        		$i = 0; 
@@ -43,7 +42,7 @@ class Login extends CI_Controller{
 	        		    $i++; 
 	        		} 
 
-	        		if($this->Login_model->signup($email,$password,$pass))
+	        		if($this->Login_model->signup($username,$email,$password,$pass))
 	        		{
 
 	        			$this->session->set_userdata('email', $email);		
@@ -51,24 +50,12 @@ class Login extends CI_Controller{
 	        		}
 	        		else
 	        		{
-	        			
+	        			$username = $this->input->post('username');
+	        			$email = $this->input->post('email');
 	        			$this->load->view('templates/header');
 	        	        $this->load->view('pages/sign-up');
 	       		        $this->load->view('templates/footer');
 	        		}
-
-	        		
-					// $password = $this->input->post('password');
-					// $cpassword =$this->input->post('cpassword');
-
-	    //     		$this->load->view('templates/header');
-	    //     	    // $this->load->view('freelance/confirmation');
-	    //     	    echo $email;
-	    //     	    echo $password;
-	    //     	    echo $cpassword;
-	    //     	    $this->load->view('templates/footer');
-	                
-
 	        }
 	}
 

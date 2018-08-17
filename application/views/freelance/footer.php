@@ -39,17 +39,6 @@
 
 
     <script type="text/javascript"> //for disabled
-        // $(document).ready(function(){
-        //     $('#search').tokenfield({
-        //         autocomplete:{
-        //             source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
-        //             delay:100
-        //         },
-        //         showAutocompleteOnFocus: true
-        //     });
-
-        // });
-
 
 
     
@@ -67,10 +56,6 @@
         });
 
 
-        // if($("#package").is(':checked'))
-        //  {   document.getElementById('iam').style.display='none'; } // checked
-        // else
-        //   {  document.getElementById('iam').style.display='block';}
         
         $("#package").on("change", function(event) {
              if($(this).is(":checked")) {
@@ -120,47 +105,7 @@
         });
 
 
-        // $(document).on('submit','#user_form', function(event)
-        // {
-        //     event.preventDefault();
-        //     var pass = $('#password').val();
-        //     var user = $('#username').val();
-
-        //     if(pass != '')
-        //     {
-        //         $.ajax({
-                    
-        //             type: "POST",
-        //             url: "<?php echo base_url().'users/update_project'?>",
-        //             data: new FormData(this),
-
-        //             contentType: false,
-        //             processData: false,
-        //             success:function(data)
-        //             {
-        //                 alert(data);
-
-        //                 if(data == "Account Exist!")
-        //                 {
-
-        //                     window.location.href="http://localhost/iAssist/users/validate_update";
-        //                     $('#user_form')[0].reset();
-        //                     $('#updateProject').modal('hide'); 
-        //                 }
-        //                 else
-        //                 {
-        //                    $('#user_form')[0].reset();     
-        //                 }
-        //             }
-        //         });
-                
-        //     }
-        //     else
-        //     {
-        //         alert("Password is required");
-        //     }
-        // });
-
+      
 
         $(document).on('submit','#remove_form', function(event)
         {

@@ -10,6 +10,10 @@
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
+<!--     <link rel="stylesheet" href="<?php echo base_url('assets/css/Bootswatch-lux-files.bootstrap.css') ?>" media="screen">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/Bootswatch-lux-files.bootstrap.custom.min.css') ?>" media="screen"> -->
+
+
 
  <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux_variables.css')?>" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux-bootswatch.css')?>">

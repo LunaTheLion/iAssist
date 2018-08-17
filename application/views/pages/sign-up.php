@@ -5,7 +5,7 @@
 		<div class="col-lg-3 col-ls-2"></div>
 
 		<div class="col-lg-5 col-ls-5">
-			<div class="card" style="margin: 5px;">
+			<div class="card" style="margin: 10px; padding: 20px;">
 			<div class="form-group" style="padding: 10px;">
 			
 				
@@ -13,7 +13,10 @@
 				<?php //echo form_open('/Form/frm'); ?>
 				<form method="POST" action="<?php echo base_url('/Login/validate')?>">
 				<p></p>
-				<input class="form-control" type="email" name="email" value="" size="50" placeholder="Email Address" />
+				<input class="form-control" type="text" name="username" value="<?php  echo $_POST['username'] ?>" size="50" placeholder="User Name" />
+				<?php echo form_error('username'); ?> 
+				<p></p>	
+				<input class="form-control" type="email" name="email" value="<?php  echo $_POST['email'] ?>" size="50" placeholder="Email Address" />
 				<?php echo form_error('email'); ?> 
 				<div class="valid-feedback">Success! You've done it.</div>
 				<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
@@ -22,12 +25,23 @@
 				<?php echo form_error('password'); ?> 
 				<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
 				<p></p>
-				<input class="form-control" type="password" name="cpassword" value="" size="50" placeholder="Confirm Password" id="myInputt" />
+				<input class="form-control" type="password" name="cpassword"  size="50" placeholder="Confirm Password" id="myInputt" />
 				<?php echo form_error('cpassword'); ?> 
 				<p>
 					<?php //echo validation_errors(); ?>
 				</p>
-				<input type="checkbox" onclick="myFunction()">Show Password
+				
+				<div class="row">
+					<div class="col-lg-6 col-ls-4">
+						<input type="checkbox" onclick="myFunction()" >Show Password
+					</div>
+					<!-- <div class="col-lg-1 col-ls-1"></div> -->
+					<div class="col-lg-5 col-ls-8">
+						
+					</div>
+				</div>
+
+
 				<div><p></p>
 					<div class="row">
 						<div class="col-lg-4 col-ls-4">

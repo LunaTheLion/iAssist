@@ -1,4 +1,4 @@
-<title>iAssist 	| Home</title>
+<title>iAssist | Home</title>
 <div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk2.jpg'); ?>); background-size: cover; ">
 <?php
 

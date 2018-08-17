@@ -16,13 +16,21 @@
 			    	  <fieldset>
 			    	    <legend class="text-center">Log In</legend>
 			    	    <div class="form-group">
-			    	      <label for="exampleInputEmail1">Email address</label>
-			    	      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required="true" autofocus="true">
+			    	     <!--  <label for="exampleInputEmail1">Email address</label> -->
+			    	      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php 
+			    	      if(empty($_POST['email']))
+			    	      {
+			    	      	echo "";
+			    	      }
+			    	      else{
+			    	      	echo $_POST['email'];
+			    	      }
+			    	       ?>" required="true" autofocus="true">
 			    	      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 			    	    </div>
 			    	    <div class="form-group">
-			    	      <label for="exampleInputPassword1">Password</label>
-			    	      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="true">
+			    	     <!--  <label for="exampleInputPassword1">Password</label> -->
+			    	      <input type="password" name="password" class="form-control" id="InputPassword1" placeholder="Password"  required="true">
 			    	      	<label class="text-danger">
 			    	            <?php 
 			    	            	$error = $this->session->flashdata('error');
@@ -34,17 +42,14 @@
 			    	            	else
 			    	            		{echo "";
 			    	            		}
-
-
-
 			    	             ?>
 			    	        </label>
 			    	    </div>   
-			    	    
 			    	    <div class="form-check">
 			    	      <label class="form-check-label">
-			    	        <input type="checkbox" class="form-check-input">
-			    	        Keep me Logged On
+			    	        <input type="checkbox" id="Signin" class=""
+			    	        onchange="document.getElementById('InputPassword1').type = this.checked ? 'text' : 'password'">Show Password
+			    	
 			    	      </label>
 			    	    </div>
 			    	    

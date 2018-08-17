@@ -11,6 +11,12 @@
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
     <!-- <script type="text/javascript" async="" src="<?php echo base_url('assets/js/bootswatch.lux.js')?>"></script> -->
+
+   <!--  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.js') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js') ?>">
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput-angular.min.js') ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput-angular.js') ?>"> -->
+
       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
@@ -48,7 +54,8 @@
 
   </head>
   <body id="main">
-
+<?php 
+//header("Refresh:"); ?>
       <div class="bs-component">
        
              <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -67,13 +74,7 @@
                      <li class="nav-item">
                        <a class="nav-link" href="<?php echo base_url('users/paypal')?>">Paypal</a>
                      </li>  
-                     <!---->
-                     <li class="nav-item">
-                       <a class="nav-link" href="<?php echo base_url('users/general/')?>">General</a>
-                     </li>
-                      <li class="nav-item">
-                       <a class="nav-link" href="<?php echo base_url('tools/send_email')?>">Send to Email</a>
-                     </li>                
+                                    
                    </ul>
                     <div>
                      <ul class="navbar-nav mr-auto">
@@ -81,7 +82,7 @@
                         <a class="nav-link" href="<?php echo base_url('messaging/message')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                       </li>
                       <li class="nav-item nav-">
-                        <a class="nav-link" href="<?php echo base_url('users/general/')?>"><?php 
+                        <a class="nav-link" href="<?php echo base_url('users/general/'.$this->session->userdata('accnt_email'))?>"><?php 
                         echo $this->session->userdata('username');
                         ?>
                         </a>

@@ -44,7 +44,7 @@ class Tools extends CI_Controller{
 		// $this->email->print_debugger();
 
 		if($this->email->send()){
-		    echo $email;
+		  //  echo $email;
 		    $this->load->view('templates/header');
 		    $this->load->view('freelance/Confirmation');
 		    $this->load->view('templates/footer');

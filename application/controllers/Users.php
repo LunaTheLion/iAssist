@@ -1,6 +1,7 @@
 <?php
  if(!defined('BASEPATH'))exit('No direct script access allowed');
-
+ // session_set_cookie_params(0);
+ // session_start();
 class Users extends CI_Controller{
 
 	public function __construct(){
@@ -9,51 +10,102 @@ class Users extends CI_Controller{
 		$this->load->model('User_Model');
 		
 	}
-	
+	public function create_()
+	{
+		$this->session->set_userdata('email', $this->session->userdata('accnt_email'));
+		$important = array (
+			'accnt_email' => $this->session->userdata('accnt_email'),
+			'accnt_username' => $this->session->userdata('accnt_username'),
+			'accnt_status' => $this->session->userdata('accnt_status'),
+			'accnt_img' => $this->session->userdata('accnt_img'),
+		);
+		$this->session->set_userdata($important);
+		$this->load->view('freelance/header', $important);
+		$this->load->view('freelance/profile1-1');
+		$this->load->view('freelance/footer');
+	}
+	public function hello(){
+		$this->session->set_userdata('email', $this->session->userdata('accnt_email'));
+		$important = array (
+			'accnt_email' => $this->session->userdata('accnt_email'),
+			'accnt_username' => $this->session->userdata('accnt_username'),
+			'accnt_status' => $this->session->userdata('accnt_status'),
+			'accnt_img' => $this->session->userdata('accnt_img'),
+		);
+		$this->session->set_userdata($important);
+		$this->load->view('freelance/header', $important);
+		// $this->load->view('freelance/profile1-1');
+		$this->load->view('freelance/footer');
+		echo "Hello";
+	}
+	public function nobody()
+	{
+		echo $this->session->usedata('username');
+		$string = 'foo';
+
+		if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $string))
+		{
+		    // one or more of the 'special characters' found in $string
+		}
+	}
+
 	public function general($email)
 	{
-		$this->session->set_userdata('email', $email);
-		if(empty($this->User_Model->get_profile($email)))
+		if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $email))
 		{
-			//echo $email;
-			// $data = $this->User_Model->create_profile($email);
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
+			// echo "email has  @";
+			$this->session->set_userdata('email', $email);
+			
+			$account = $this->User_Model->get_important($email);
+			$important = array (
+				'accnt_email' => $account->account_email,
+				'accnt_username' => $account->account_username,
+				'accnt_status' => $account->account_status,
+				'accnt_img' => $account->account_img,
+			);
+				$this->session->set_userdata($important);
+				
+					$fetch = array(
+						'data' => $this->User_Model->create_profile($email),
+						);
+				$this->load->view('freelance/header');
+				$this->load->view('freelance/new-profile', $fetch);
+				$this->load->view('freelance/footer');
+		}	
+		else
+		{
+			echo "is it a username?";
+		}
 
-			$fetch = array(
-				'data' => $this->User_Model->create_profile($email),
-				);
-
+	
+		// if(empty($this->User_Model->get_profile($email)))
+		// {			
 			
 
-			$this->load->view('freelance/header');
-			$this->load->view('freelance/new-profile', $fetch);
-			$this->load->view('freelance/footer');
-
-		}
-		else {
-			$get = array(
-			'data' => $this->User_Model->get_profile($email),
-			);
-			//$data = $this->User_Model->get_profile($email);
-
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
-
-
-			$data1 = array(
-				'proj' =>$this->User_Model->get_projects_to_profile($email),
-			);
-			$this->load->view('freelance/header', $get);
-			$this->load->view('freelance/profile1',$data1, $get);
-			$this->load->view('freelance/footer');
-
-		}
+		// 	$fetch = array(
+		// 		'data' => $this->User_Model->create_profile($email),
+		// 		);
 		
+		// 	//$this->session->set_userdata($important);
+		// 	$this->load->view('freelance/header');
+		// 	$this->load->view('freelance/new-profile', $fetch);
+		// 	$this->load->view('freelance/footer');
+		// // }
+		// else {
+		// 	$get = array(
+		// 	'data' => $this->User_Model->get_profile($email),
+		// 	);
 
+		// 	$data1 = array(
+		// 		'proj' =>$this->User_Model->get_projects_to_profile($email),
+		// 	);
+		// 	$this->load->view('freelance/header', $get);
+		// 	$this->load->view('freelance/profile1',$data1, $get);
+		// 	$this->load->view('freelance/footer');
+
+		// }
 	}
+
 	public function profile($username)
 	{
 		$email = $this->session->userdata('email');
@@ -106,13 +158,11 @@ class Users extends CI_Controller{
 				$this->load->view('freelance/header', $page_data, $page_data2,$page_data3);
 				$this->load->view('freelance/profile',$data);
 				$this->load->view('freelance/footer');
-				// $this->load->view('freelance/header', $page_data);
-				// $this->load->view('freelance/profile',$data);
-				// $this->load->view('freelance/footer');
+		
 		}
 		elseif(!empty($username))
 		{
-			//$get= $this->User_Model->get_username($username);
+
 			$getemail = $this->User_Model->get_email_by_username($username);
 
 			if(!empty($getemail))
@@ -187,25 +237,25 @@ class Users extends CI_Controller{
 
 	public function thread()
 	{
-		$this->load->view('freelance/header');
+		//$this->load->view('freelance/header');
 
 
-		//  $this->load->view('freelance/header');
-		// $email =$this->session->userdata('email');
-		// //echo $email;
+		 $this->load->view('freelance/header');
+		$email =$this->session->userdata('email');
+		//echo $email;
 	
-		//  $search = $this->input->post('search');
+		 $search = $this->input->post('search');
 
-		//  $thread = array(
-		// 	'data' => $this->User_Model->get_thread($search),
-		// );
-		// // echo "<pre>";
-		// // print_r($thread);
-		// // echo "</pre>";
-		// $this->session->set_userdata('email');	
-		// // $this->load->view('freelance/header');
-		// $this->load->view('freelance/thread', $thread);
-		// $this->load->view('freelance/footer');
+		 $thread = array(
+			'data' => $this->User_Model->get_thread($search),
+		);
+		// echo "<pre>";
+		// print_r($thread);
+		// echo "</pre>";
+		$this->session->set_userdata('email');	
+		// $this->load->view('freelance/header');
+		$this->load->view('freelance/thread', $thread);
+		$this->load->view('freelance/footer');
 	}
 
 	
@@ -288,6 +338,9 @@ class Users extends CI_Controller{
 			redirect(base_url('users/profile_personal'));
 		}
 	}
+
+	
+
 	public function profile_educational()
 	{
 		$page_data = array(

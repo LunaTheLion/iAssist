@@ -55,11 +55,12 @@ class Login_model extends CI_Model{
 	}
 
 
-	public function signup($email,$password, $pass)
+	public function signup($username,$email,$password, $pass)
 	{
 		$data = array(
 			'account_type' => 'freelance',
 			'log_status' =>1,
+			'account_username' => $username,
 			'account_email' => $email,
 			'account_password' => $password,
 			'account_date_joined' => date('Y-m-d H:i:s'),

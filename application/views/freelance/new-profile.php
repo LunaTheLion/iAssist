@@ -57,13 +57,13 @@
 
 			  	<div class="card border-secondary mb-3" style="max-width: 65rem;">
 			  		  <div class="card-body" style="padding:0px;">
-			  		  	<a class="btn btn-secondary" href="<?php echo base_url('users/create_projects')?>" >Create Post</a>
+			  		  	<a class="btn btn-secondary" href="<?php echo base_url('users/create_')?>" >Create Post</a>
 						
 			  		  </div>
 
 			  		</div>
-			  	
-			  	<!-- <?php foreach (($proj ? $proj : array()) as $row):?>
+			 <!--  	
+			  	<?php foreach (($proj ? $proj : array()) as $row):?>
 
 			  		<div class="card border-secondary mb-3" style="max-width: 65rem;">
 			  		  <div class="card-body">
@@ -90,8 +90,8 @@
 
 			  		</div>
 			  	
-			  	<?php endforeach; ?> -->
-			  	
+			  	<?php endforeach; ?>
+			  	 -->
 			  	<br>
 
 			  
@@ -104,11 +104,11 @@
 			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
 			  	</div>
 			  	<div class="card" style="padding: 10px;">
-			   	<div class="card-header">Interests</div>
+			   	<div class="card-header">Porfolio</div>
 			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
 			  	</div>
 			  	<div class="card" style="padding: 10px;">
-			   	<div class="card-header">Interests</div>
+			   	<div class="card-header">Skills</div>
 			  		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
 			  	</div>
 			  </div>
@@ -134,4 +134,34 @@
 		<hr> -->
 
 <?php endforeach; ?>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+</div>
+
+<script type="text/javascript">
+	
+    // $(window).on('load',function(){
+    //     $('#myModal').modal('show');
+    // });
+</script>
+
+
+

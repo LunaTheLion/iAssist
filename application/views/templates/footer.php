@@ -20,18 +20,27 @@
         </div>
     </div>
 </div>
-  <script type="text/javascript">
+
+  <input class="form-check-input" type="checkbox" onclick="myFunction()" id="Signup" class="form-check-input"
+        >Show Password
+
+  <script type="text/javascript"  >
     function myFunction() {
     var x = document.getElementById("myInput");
     var y = document.getElementById("myInputt");
+    
     if (x.type === "password" && y.type ==="password" ) {
         x.type = "text";
         y.type = "text";
-    } else {
+        }
+
+    else if (x.type === "text" && y.type ==="text") {
         x.type = "password";
         y.type = "password";
+        }
+
     }
-}
+
   </script>
     <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
