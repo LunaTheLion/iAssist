@@ -59,8 +59,6 @@ class Login extends CI_Controller{
 	        }
 	}
 
-	
-
 	public function sign_in(){
 
 		 	$email = $this->input->post('email');
@@ -81,7 +79,7 @@ class Login extends CI_Controller{
 					{
 						$user = $get_user->account_username;
 						$this->session->set_userdata('log_status',1);
-						redirect(base_url().'users/general');
+						redirect(base_url().'user/general');
 					}
 					else{
 						echo "Error";
@@ -93,7 +91,7 @@ class Login extends CI_Controller{
 					$this->session->set_userdata('email',$email);
 					$this->session->set_userdata('log_status',1);
 					//$this->session->set_userdata('',);
-					redirect(base_url().'users/general/'.$email);
+					redirect(base_url().'user/general/'.$email);
 				}	
 			}
 			else

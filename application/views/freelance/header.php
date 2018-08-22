@@ -50,6 +50,9 @@
        padding: 0;
        
     }
+    .borderless td, .borderless th {
+    border: none;
+}
     </style> 
 
   </head>
@@ -82,7 +85,7 @@
                         <a class="nav-link" href="<?php echo base_url('messaging/message')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                       </li>
                       <li class="nav-item nav-">
-                        <a class="nav-link" href="<?php echo base_url('users/general/'.$this->session->userdata('accnt_email'))?>"><?php 
+                        <a class="nav-link" href="<?php echo site_url('users/general/'.$this->session->userdata('email'))?>"><?php 
                         echo $this->session->userdata('username');
                         ?>
                         </a>
