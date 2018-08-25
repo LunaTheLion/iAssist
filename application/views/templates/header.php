@@ -50,7 +50,7 @@
                     </li>
                     <!-- Paypal Integration part -->
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url('/')?>">Paypal</a>
+                      <a class="nav-link" href="<?php echo base_url('crud/index')?>">Crud</a>
                     </li>  
                     <!----> 
                     <li class="nav-item">

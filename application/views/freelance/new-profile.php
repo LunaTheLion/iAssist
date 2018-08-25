@@ -81,6 +81,7 @@
 			  		   			 <hr>
 			  		  		</div>
 			  		  		<div class="col-sm-1" style="padding: 0px;">
+			  		  			
 			  		  			<button type="button" class="btn btn-secondary btn-sm" style="display: inline-block; vertical-align: middle;" data-toggle="modal" data-target="#edit">Edit</button>
 			  		  		</div>
 			  		  		<div class="col-sm-1" style="padding: 0px; align-content: right">
@@ -115,7 +116,7 @@
 			   	<p></p>
 			   	<hr>
 			   	<div class="card-body" style="padding: 0px;">
-			   		<a href="#" class="btn btn-success" >Add Skills</a>
+			   		<a href="<?php echo base_url('user/Skill') ?>" class="btn btn-success" >Add Skills</a>
 			   	</div>
 			  		
 			  	</div>
@@ -199,23 +200,23 @@
         			<small for="etitle" class="label-control">Title</small>
         	</div>
         	<div class="form-group">
-        			<textarea class="form-control" name="description" rows="5" required></textarea>
+        			<textarea class="form-control" name="edescription" rows="5" required></textarea>
         			<small for="etitle" class="label-control">Description</small>
         	</div>
         	<div class="form-group">
-        			<input type="text" name="etitle" class="form-control">
+        			<input type="text" name="erate" class="form-control">
         			<small for="etitle" class="label-control">Rate/Hour</small>
         	</div>
         	<div class="form-group">
-        			<input type="text" name="etitle" class="form-control">
+        			<input type="text" name="ebudget" class="form-control">
         			<small for="etitle" class="label-control">Budget</small>
         	</div>
         	<div class="form-group">
-        			<input type="text" name="etitle" class="form-control">
+        			<input type="text" name="eskill" class="form-control">
         			<small for="etitle" class="label-control">Skill</small>
         	</div>
         	<div class="form-group">
-        			<input type="text" name="etitle" class="form-control">
+        			<input type="text" name="ecategory" class="form-control">
         			<small for="etitle" class="label-control">Category</small>
         	</div>
 			
@@ -240,8 +241,41 @@
 <script type="text/javascript">
 	
    $('#saveEdit').click(function(){
-   			alert('test');
+   			//alert('test');
+   			var url = $('#myForm').attr('action');
+   			var data = $('#myFrom').serialize();
+   			//validate form
+   			var ntitle 		=$('input[name=etitle]');
+   			var ndescription=$('input[name=edescription]');
+   			var nskill 		=$('input[name=eskill]');
+   			var nrate 		=$('input[name=erate]');
+   			var nbudget 		=$('input[name=ebudget]');
+   			var ncategory		=$('input[name=ecategory]');
+   			
+
    });
+
+   $('#btnEdit').click(function(){
+   		var id= $(this).attr('data');
+   		alert($id);
+   })
+
+   function ViewVisaPopups(visaBr) {
+   var visaId = $("#visaId").val();
+   $(document).ready(function () {
+   $.ajax({
+   type: "POST",
+   url: "visa/ViewVisaPopup",
+   data: {visaId: visaId,visaBr: visaBr},
+   success: function (data) {
+   $('.ViewPkgPopup').html(data);
+   }
+   });
+   });
+
+
+   }
+
 </script>
 
 
