@@ -31,7 +31,7 @@ class User_Model extends CI_Model{
 	{
 		if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $email))
 		{
-			$this->db->select('account_id,account_email,account_status,account_username,account_img');
+			$this->db->select('account_id,account_email,account_username,account_img');
 			$this->db->where('account_email' , $email);
 			$query = $this->db->get('account_tbl');
 

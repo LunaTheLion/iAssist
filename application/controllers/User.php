@@ -27,7 +27,9 @@ class User extends CI_CONTROLLER{
 					'data' => $this->User_Model->create_profile($email),
 				);
 				$this->load->view('freelance/header', $sess_data);
-				$this->load->view('freelance/new-profile',$fetch);
+				$this->load->view('freelance/create-profile-side-nav');
+				$this->load->view('freelance/create-educt-profile');
+				// $this->load->view('freelance/new-profile',$fetch);
 				$this->load->view('freelance/footer');
 			}
 			
@@ -80,6 +82,7 @@ class User extends CI_CONTROLLER{
 		echo "This is account, change your password, username, add contact info";
 		$this->load->view('freelance/footer');
 	}
+
 
 	public function create_post()
 	{
@@ -223,9 +226,14 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/create-post');
 		$this->load->view('freelance/footer');
 	}
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('/home','refresh');
+	}
 
 
-	
+
 
 
 

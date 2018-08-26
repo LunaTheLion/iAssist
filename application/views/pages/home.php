@@ -1,15 +1,16 @@
 <title>iAssist | Home</title>
-<div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/blog-desk2.jpg'); ?>); background-size: cover; ">
-<?php
+<div class="jumbotron" style="background-image: url(<?php echo base_url('assets/img/boss/background.jpg'); ?>); background-size: cover; position: sticky; ">
 
- echo $this->session->sess_destroy();?>
+<?php echo $this->session->sess_destroy();?>
 
 <div class="row">
 	<div class="col-lg-3">
 		
 	</div>
 	<div class="col-lg-6">
-		<br><br><br><br><br>
+		<br>
+		<img src="<?php echo base_url('assets/img/boss/logo.png')?>" style="height: 120px; width:150px; text-align: center;">
+		<br><br><br><br><br><br>
 		<h1 class="text-center" style="font-size:3rem;">Create your team</h1><p></p>
 	 	<form action="<?php echo base_url('search/find')?>" method="POST"> 
 		<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need">
