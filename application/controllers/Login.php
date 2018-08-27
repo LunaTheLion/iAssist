@@ -61,46 +61,55 @@ class Login extends CI_Controller{
 
 	public function sign_in(){
 
-		 	$email = $this->input->post('email');
-			$password = $this->input->post('password');
-			$cpassword =$this->input->post('cpassword');
-			
-			if($this->Login_model->signin($email,$password))
-			{
-				$astatus = $this->Login_model->accountstatus($this->session->userdata('email'));
-				// upon signing in you are logged in. until you click the logout.
-				$this->session->set_userdata('Account_Status', $astatus);
-				if($this->Login_model->accountstatus($email)) // if user has completed the profile
-				{	
+		$data = $this->session->has_userdata('username');
+		if(empty($data))
+		{
+			 	$email = $this->input->post('email');
+				$password = $this->input->post('password');
+				$cpassword =$this->input->post('cpassword');
+				
+				if($this->Login_model->signin($email,$password))
+				{
+					$astatus = $this->Login_model->accountstatus($this->session->userdata('email'));
+					// upon signing in you are logged in. until you click the logout.
+					$this->session->set_userdata('Account_Status', $astatus);
+					if($this->Login_model->accountstatus($email)) // if user has completed the profile
+					{	
 
-					$this->session->set_userdata('email',$email);
-					$get_user = $this->Login_model->get_username($email);
-					if(!empty($get_user))
-					{
-						$user = $get_user->account_username;
-						$this->session->set_userdata('log_status',1);
-						redirect(base_url().'user/general');
+						$this->session->set_userdata('email',$email);
+						$get_user = $this->Login_model->get_username($email);
+						if(!empty($get_user))
+						{
+							$user = $get_user->account_username;
+							$this->session->set_userdata('log_status',1);
+							redirect(base_url().'user/general');
+						}
+						else{
+							echo "Error";
+						}	
 					}
-					else{
-						echo "Error";
+					else
+					{
+						//prompt profile completions
+						$this->session->set_userdata('email',$email);
+						$this->session->set_userdata('log_status',1);
+						//$this->session->set_userdata('',);
+						redirect(base_url().'user/general/'.$email);
 					}	
 				}
 				else
-				{
-					//prompt profile completions
-					$this->session->set_userdata('email',$email);
-					$this->session->set_userdata('log_status',1);
-					//$this->session->set_userdata('',);
-					redirect(base_url().'user/general/'.$email);
-				}	
-			}
-			else
-				{
-					$this->session->set_flashdata('error','Invalid email or password');
-					$this->load->view('templates/header');
-					$this->load->view('pages/sign-in');
-					$this->load->view('templates/footer');
-				}
+					{
+						$this->session->set_flashdata('error','Invalid email or password');
+						$this->load->view('templates/header');
+						$this->load->view('pages/sign-in');
+						$this->load->view('templates/footer');
+					}
+		}
+		elseif(!empty($data))
+		{
+			redirect('general/'.$this->session->userdata('username'));
+		}
+		
 	}
 	public function success_sign()
 	{

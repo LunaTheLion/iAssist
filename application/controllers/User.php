@@ -7,6 +7,114 @@ class User extends CI_CONTROLLER{
 		$this->load->model('User_Model');
 	}
 
+
+	public function new_user($email,$code)
+	{
+		//$code = substr($email, -8);
+		// echo $code;
+		// echo $email;
+		$verify = $this->User_Model->account_verified($email);
+		$confirm = $this->User_Model->code_match($email,$code);
+
+		if( $confirm == true)
+		{
+			$get = $this->User_Model->get_important($email);
+			if(!empty($get))
+			{
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+				);
+				$this->session->set_userdata($sess_data);
+				$fetch = array(
+					'data' => $this->User_Model->create_profile($email),
+				);
+				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/create-profile-side-nav');
+				$this->load->view('freelance/create-educ-profile');
+				// $this->load->view('freelance/new-profile',$fetch);
+				$this->load->view('freelance/footer');
+				// echo "<pre>";
+				// print_r($get);	
+				// echo "</pre>";
+			}
+			else
+			{
+				//echo "Empty";
+				show_404();
+			}
+		}
+		else if(!empty($verify))
+		{
+			$get = $this->User_Model->get_important($email);
+			if(!empty($get))
+			{
+
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+				);
+				$this->session->set_userdata($sess_data);
+				$fetch = array(
+					'data' => $this->User_Model->create_profile($email),
+				);
+				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/create-profile-side-nav');
+				$this->load->view('freelance/create-educ-profile');
+				// $this->load->view('freelance/new-profile',$fetch);
+				$this->load->view('freelance/footer');
+				// echo "<pre>";
+				// print_r($get);	
+				// echo "</pre>";
+			}
+			else
+			{
+				//echo "Empty";
+				show_404();
+			}
+		}
+		else
+		{
+			show_404();
+		}
+
+		
+	
+	}
+	public function educ()
+	{
+		$email= $this->session->userdata('email');
+		$get = $this->User_Model->get_important($email);
+			if(!empty($get))
+			{
+
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+				);
+				$this->session->set_userdata($sess_data);
+				$fetch = array(
+					'data' => $this->User_Model->create_profile($email),
+				);
+				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/create-profile-side-nav');
+				$this->load->view('freelance/create-educ-profile');
+				// $this->load->view('freelance/new-profile',$fetch);
+				$this->load->view('freelance/footer');
+				// echo "<pre>";
+				// print_r($get);	
+				// echo "</pre>";
+			}
+			else
+			{
+				//echo "Empty";
+				show_404();
+			}
+	}
+
 	public function general($email)
 	{
 		$get = $this->User_Model->get_important($email);
@@ -28,7 +136,7 @@ class User extends CI_CONTROLLER{
 				);
 				$this->load->view('freelance/header', $sess_data);
 				$this->load->view('freelance/create-profile-side-nav');
-				$this->load->view('freelance/create-educt-profile');
+				$this->load->view('freelance/create-educ-profile');
 				// $this->load->view('freelance/new-profile',$fetch);
 				$this->load->view('freelance/footer');
 			}
@@ -64,14 +172,12 @@ class User extends CI_CONTROLLER{
 		}
 
 	}//general
-	public function get()
-	{
-		
-	}
+	
 
 	public function account()
 	{
-		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$email = $this->session->userdata('email');
+		$get = $this->User_Model->get_important($email);
 		$sess_data = array(
 			'id' => $get->account_id,
 			'email' =>$get->account_email,

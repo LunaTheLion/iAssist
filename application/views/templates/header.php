@@ -65,9 +65,9 @@
                    <ul class="navbar-nav mr-auto">
                     <li class="nav-item nav-">
                       <a class="nav-link" href="<?php
-                        if($this->session->userdata('log_status') == 1)
+                        if(!empty($this->session->has_userdata('email')))
                         {
-                           echo base_url('users/profile');
+                           echo base_url('user/general/'.$this->session->userdata('email'));
                         }
                         else
                         {

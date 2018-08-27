@@ -22,7 +22,7 @@
 </div>
 
   <input class="form-check-input" type="checkbox" onclick="myFunction()" id="Signup" class="form-check-input"
-        >Show Password
+        >
 
   <script type="text/javascript"  >
     function myFunction() {

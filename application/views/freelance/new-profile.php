@@ -41,10 +41,10 @@
 		<div class="card" style=" padding: 10px;">
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link  " data-toggle="tab" href="#profile">Profile</a>
+			    <a class="nav-link active " data-toggle="tab" href="#profile">Profile</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link active " data-toggle="tab" href="#home">Posts</a>
+			    <a class="nav-link " data-toggle="tab" href="#home">Posts</a>
 			  </li>
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://bootswatch.com/lux/#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -58,7 +58,7 @@
 			  </li>
 			</ul>
 			<div id="myTabContent" class="tab-content">
-			  <div class="tab-pane fade  show active" id="home" style="padding-top: 10px;">
+			  <div class="tab-pane fade " id="home" style="padding-top: 10px;">
 
 			  	<div class="card border-secondary mb-3" style="max-width: 65rem;">
 			  		  <div class="card-body" style="padding:0px;">
@@ -108,8 +108,18 @@
 			  
 	
 			  </div>
-			  <div class="tab-pane fade " id="profile" style="padding-top: 10px;"
+			  <div class="tab-pane fade  show active" id="profile" style="padding-top: 10px;"
 			  >
+			     <div class="card" style="padding: 10px;">
+			     	<h4 style="position: absolute;">Educational</h4>
+			  <a href="#" class="btn btn-sm btn-secondary" style="position: absolute; right: 0;">Edit</a>
+			     	<p></p>
+			     	<hr>
+			     	<div class="card-body" style="padding: 0px;">
+			     		<a href="<?php echo base_url('user/educ') ?>" class="btn btn-success" >Add Skills</a>
+			     	</div>
+			    		
+			    	</div>
 			   <div class="card" style="padding: 10px;">
 			   	<h4 style="position: absolute;">Skills</h4>
 			<a href="#" class="btn btn-sm btn-secondary" style="position: absolute; right: 0;">Edit</a>

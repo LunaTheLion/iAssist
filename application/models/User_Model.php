@@ -31,7 +31,7 @@ class User_Model extends CI_Model{
 	{
 		if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $email))
 		{
-			$this->db->select('account_id,account_email,account_username,account_img');
+			$this->db->select('account_id,account_email,account_status,account_username,account_img');
 			$this->db->where('account_email' , $email);
 			$query = $this->db->get('account_tbl');
 
@@ -45,6 +45,7 @@ class User_Model extends CI_Model{
 				"No Result";
 				
 			}
+			
 		}	
 		else
 		{
@@ -127,7 +128,32 @@ class User_Model extends CI_Model{
 			//return false;
 		}
 	}
-}	
+	public function account_verified($email)
+	{
+		$this->db->select('account_email', $email);
+		$this->db->where('confirm_code', '');
+		$hey = $this->db->get('account_tbl');
+		return $hey->result();
+	}
+	public function code_match($email,$code)
+	{
+
+		$this->db->select('account_email', $email);
+		$this->db->where('verification_code', $code);
+		$this->db->set('confirm_code', 'review');
+		$this->db->update('account_tbl');
+		if($this->db->affected_rows() != 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+			//return false;
+		}
+	}
+
+}//END OF MODEL CONTROLLER
 
 
 ?>
