@@ -8934,9 +8934,9 @@ div.textarea-container textarea {
 
 
 .tagsinput{
-   border: 1px solid #333;
+   /*border: 1px solid #333;*/
    display: inline-block;
-
+   border: 1px solid #ced4da;
 }
 .tagsinput .tag{
   font-family: Arial;
@@ -8948,11 +8948,9 @@ div.textarea-container textarea {
   background-color: #ddd;
   transition: all 0.1s linear;
   cursor: pointer;
+
 }
-.taginsput .tag:hover{
-  background-color: #708090 ;
-  color: black;
-}
+
 .tagsinput .tag .close::after {
    content: 'x';
   font-weight: bold;
@@ -8962,14 +8960,35 @@ div.textarea-container textarea {
 }
 
 .tagsinput .tag .close:hover:after{
-  color:red;
+  color: red;
 }
 
 .tagsinput .main-input{
-  border: 0;
-  outline: 0;
-  padding: 0.25em 0.1em;
+  /*border: 0;
+  outline: 0;*/
+ /*/ padding: 0.25em 0.1em;*/
 
+ /* display: block;
+  width: 100%;*/
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #f7f7f9;
+ /* background-image: none;
+  background-clip: padding-box;*/
+  border: 1px solid #ced4da;
+  border-radius: 0;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+
+
+}
+.tagsinsput .tag:hover {
+  background-color: #3af ;
+  color: black;
 }
 
 .switch {

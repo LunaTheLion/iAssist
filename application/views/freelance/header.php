@@ -6,16 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
-
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
     <!-- <script type="text/javascript" async="" src="<?php echo base_url('assets/js/bootswatch.lux.js')?>"></script> -->
 
-   <!--  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.js') ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js') ?>">
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput-angular.min.js') ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput-angular.js') ?>"> -->
+
 
       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -52,6 +48,12 @@
     }
     .borderless td, .borderless th {
     border: none;
+
+     
+} 
+    .tagsinsput .tag:hover {
+  background-color: #f0ad4e ;
+  color: black;
 }
     </style> 
 

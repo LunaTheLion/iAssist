@@ -25,7 +25,7 @@
 						<div class="col-lg-10 col-sm-10">
 							<select class="form-control form-control-sm" id="colleges" name="College" required="required">
 				      	<option value="">-- SELECT COLLEGE --</option>
-				        <option value="COAS">COAHS - College of Allied Health and Studies</option>
+				        <option value="COAHS">COAHS - College of Allied Health and Studies</option>
 				        <option value="COS">COS - College of Science</option>
 				        <option value="CAL">CAL - College of Arts and Letters</option>
 				        <option value="CBFS">CBFS - College of Business Finance and Sciences</option>
@@ -268,12 +268,15 @@
 						</div>
 						<div class="col-lg-10 col-sm-10">
 							<!-- <input type="text" class="form-control" name="skill"> -->
-							<div class="tags-input" data-name="tags-input">
-								<span class="tag">CSS <span class="close"></span></span>
+							<div class="tagsinput" data-name="tags-input">
+								<!-- <span class="tag">CSS <span class="close"></span></span>
 								<span class="tag">Javascript <span class="close"></span></span>
-								<span class="tag">HTML <span class="close"></span></span>
-								<input type="text" name="tags">
+								<span class="tag">HTML <span class="close"></span></span> -->
+								<input type="hidden" name="tags-input">
+								<input type="text" class="main-input">
 							</div>
+
+							
 						</div>
 					</div>
 					<br>
