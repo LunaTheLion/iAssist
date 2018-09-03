@@ -11,14 +11,24 @@
 		</div>
 	</div> -->
 	<div class="col-lg-6 col-sm-6">
-		<div class="card">
+		<div class="card">	
 			<div class="card-header">Educational Profile</div>
-			<form method="POST" action="<?php echo base_url('user/validate_educ') ?>">
+			<form method="POST" action="<?php echo base_url('user/v_educ') ?>">
 			<div class="card-body">
 				
 					<div class="row">
+						<div class="col-lg-2 col-sm-2">
+						<center>School</center>
+						</div>
+						<div class="col-lg-10 col-sm-10">
+							<input type="text" readonly name="school" class="form-control form-control-sm" value="UNIVERSITY OF MAKATI">
+						</div>
+
+					</div>
+					<br>
+					<div class="row">
 						<div class="col-lg-2 col-sm-2"><center>
-							<br>College
+							College
 						</center>
 							
 						</div>
@@ -261,79 +271,62 @@
 				</div>
 
 					</div>
+			
+					
 					<br>
-					<div class="row">
-						<div class="col-lg-2 col-sm-2">
-							Skill/ Expertise
-						</div>
-						<div class="col-lg-10 col-sm-10">
-							<!-- <input type="text" class="form-control" name="skill"> -->
-							<div class="tagsinput" data-name="tags-input">
-								<!-- <span class="tag">CSS <span class="close"></span></span>
-								<span class="tag">Javascript <span class="close"></span></span>
-								<span class="tag">HTML <span class="close"></span></span> -->
-								<input type="hidden" name="tags-input">
-								<input type="text" class="main-input">
-							</div>
+					<a role="button" class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" > + Add Educational Attainment</a>
+				<br><br>
 
-							
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-lg-2 col-sm-2">
-							Rate/Hour:
-						</div>
-						<div class="col-lg-5 col-sm-5">
-							<select class="form-control" id="exampleSelect1" length="4" name="rate">
-							        <option value="1">1</option>
-							        <option value="1">2</option>
-							        <option value="1">3</option>
-							        <option value="1">4</option>
-							        <option value="1">5</option>
-							      </select>
-							      <br>
-						</div>
-						<div class="col-lg-5 col-sm-5">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-2 col-sm-2">
-							Minimum Budget:
-						</div>
-						<div class="col-lg-5 col-sm-5">
-							<input type="text" name="budget" class="form-control">
-							      <br>
-						</div>
-						<div class="col-lg-5 col-sm-5">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-2 col-sm-2">
-							Category
-						</div>
-						<div class="col-lg-5 col-sm-5">
-							<select class="form-control" id="exampleSelect1" length="4" name="category">
-							        <option value="1">1</option>
-							        <option value="1">2</option>
-							        <option value="1">3</option>
-							        <option value="1">4</option>
-							        <option value="1">5</option>
-							      </select>
-							      <br>
-						</div>
-						<div class="col-lg-5 col-sm-5">
-						</div>
-					</div>
+			<div class="collapse" id="collapseExample">
+			  <div class="row">
+			  	<div class="col-lg-2 col-sm-2">
+			  	<center>School</center>
+			  	</div>
+			  	<div class="col-lg-10 col-sm-10">
+			  		<input type="text"  name="aSchool" class="form-control form-control-sm" >
+			  		
+			  	</div>
+
+			  </div>
+			  <br>
+			  <div class="row">
+			  	<div class="col-lg-2 col-sm-2">
+			  	<center>College</center>
+			  	</div>
+			  	<div class="col-lg-10 col-sm-10">
+			  		<input type="text"  name="aCollege" class="form-control form-control-sm" >
+			  		
+			  	</div>
+
+			  </div>
+			  <br>
+			  <div class="row">
+			  	<div class="col-lg-2 col-sm-2">
+			  	<center>Major</center>
+			  	</div>
+			  	<div class="col-lg-10 col-sm-10">
+			  		<input type="text"  name="aMajor" class="form-control form-control-sm" >
+			  		
+			  	</div>
+
+			  </div>
+			    
+			 
+			</div>	
+					
 					
 				
 			</div>
+
+			
 			<div class="card-footer">
 				
-				<button type="submit" class="btn btn-info">Post</button>
+				<button type="submit" class="btn btn-info">Submit</button>
+				<a href="<?php echo base_url('user/skill') ?>" class="btn btn-danger">Skip</a>
 			</div>
 			</form>
 		</div>
+		
 	</div>
 </div>
 </div>

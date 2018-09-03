@@ -12,7 +12,7 @@
 	</div> -->
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
-			<div class="card-header"></div>
+			<div class="card-header">Projects</div>
 			<form method="POST" action="<?php echo base_url('user/validate_post') ?>">
 			<div class="card-body">
 				
@@ -94,6 +94,7 @@
 			<div class="card-footer">
 				
 				<button type="submit" class="btn btn-info">Validate</button>
+				<a href="<?php echo base_url('user/interest') ?>" class="btn btn-danger">Skip</a>
 			</div>
 			</form>
 		</div>

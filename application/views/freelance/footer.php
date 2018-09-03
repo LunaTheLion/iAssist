@@ -18,8 +18,9 @@
         </div>
     </div>
 </div>
+    <script src="<?php echo base_url('assets/js/tags.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/tags-input.js') ?>"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url('assets/js/tags-input.js') ?>"></script> -->
     <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -40,8 +41,11 @@
 
 
     <script type="text/javascript"> //for disabled
-
-
+   $('.collapse').removeClass('');
+    
+    // $('#myCollapsible').collapse({
+    //   toggle: false
+    // })
     
 
         $(document).on('ready', function() {
@@ -220,14 +224,22 @@
                 });
             }).change();
         });
+
+        // $(document).ready(function(){
+        //     $("select[name=Category]").change(function(){
+        //         $(this).find("option:selected").each(function(){
+        //             var optionValue = $(this).attr("value");
+        //             if(optionValue){
+        //                 $(".hide").not("." + optionValue).hide();                        
+        //                 $("." + optionValue).show();
+        //             } else{
+        //                 $(".hide").hide();
+        //             }
+        //         });
+        //     }).change();
+        // });
     </script>
-    <!-- <script type="text/javascript">
-        $(document).ready(function()
-        {
-            $('data-toggle="popover"').popover();        
-        });
-    </script>
- -->
+ 
 
         
 

@@ -32,7 +32,9 @@
 
 					<!-- <button type="button" class="btn btn-success">Request Resume</button> -->
 				</div>
-				<div class="col-sm-4">C</div>
+				<div class="col-sm-4">
+					<buttn class="btn btn-info" data-toggle="modal" data-target="#entry">Entry Modal</button>
+				</div>
 				<div class="col-sm-4">D</div>
 			</div>
 			
@@ -60,9 +62,9 @@
 			<div id="myTabContent" class="tab-content">
 			  <div class="tab-pane fade " id="home" style="padding-top: 10px;">
 
-			  	<div class="card border-secondary mb-3" style="max-width: 65rem;">
+			  	<div class="card border-secondary mb-3" style="max-width: 75rem;">
 			  		  <div class="card-body" style="padding:0px;">
-			  		  	<a class="btn btn-secondary" href="<?php echo base_url('user/create_post')?>" >Create Post</a><Br>
+			  		  	<a class="btn btn-secondary-sm" href="<?php echo base_url('user/create_post')?>" >Create Post</a><Br>
 						
 			  		  </div>
 
@@ -72,7 +74,7 @@
 			 <?php foreach ($data2 as $agila): ?>
 				
 				
-			  		<div class="card border-secondary mb-3" style="max-width: 65rem;">
+			  		<div class="card border-secondary mb-3" style="max-width: 75rem;">
 			  		  <div class="card-body">
 			  		  	<div class="row">
 			  		  		<div class="col-sm-10" >
@@ -104,7 +106,7 @@
 			  	<?php  endforeach; ?>
 			  	
 			  	<br>
-
+		
 			  
 	
 			  </div>
@@ -239,10 +241,35 @@
       </div>
       </form>
     </div>
+
+
   </div>
 </div>
 
+<div class="modal fade" id="entry" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Welcome to iAssist!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+	        	
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        
+      </div>
 
+    </div>
+
+    
+  </div>
+</div>
 
 
 
