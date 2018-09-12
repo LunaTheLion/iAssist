@@ -17,28 +17,32 @@
 
 			<form method="POST" action="<?php echo base_url('user/Project') ?>">
 			<div class="card-body">
-				<div class="container">
-				 <div class="row">
-				  <h2 align="center">Insert Bootstrap Tokenfield Tag Data using PHP Ajax</h2>
-				   <br />
-				   <div class="col-md-6" style="margin:0 auto; float:none;">
-				    <span id="success_message"></span>
+				 <span id="success_message"></span>
+
 				    <form method="post" id="programmer_form">
-				     <div class="form-group">
-				      <label>Enter Name</label>
-				      <input type="text" name="name" id="name" class="form-control" />
-				     </div>
-				     <div class="form-group">
-				      <label>Enter your Skill</label>
-				      <input type="text" name="skill" id="skill" class="form-control" />
-				     </div>
+				    	<div class="row">
+				    		<div class="col-lg-2 col-sm-2">
+				    			Skill
+				    		</div>
+				    		<div class="col-lg-10 col-sm-10">
+				    			<input type="text" name="name" id="name" class="form-control" />
+				    		</div>
+				    	</div>
+				    	<br>
+				    	<div class="row">
+				    		<div class="col-lg-2 col-sm-2">
+				    			Skill
+				    		</div>
+				    		<div class="col-lg-10 col-sm-10">
+				    			
+				    			<input type="text" name="skill" id="skill" class="form-control" />
+				    		</div>
+				    	</div>	
+				     
 				     <div class="form-group">
 				      <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
 				     </div>
 				    </form>
-				   </div>
-				  </div>
-				 </div>
 			<!-- 	<div class="row">
 						<div class="col-lg-2 col-sm-2">
 							<center>Skill/ Expertise</center>

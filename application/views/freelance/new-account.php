@@ -12,9 +12,6 @@
 		</div>
 	</div> -->
 
-	
-
-
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
 			<div class="card-header">Personal Information</div>
@@ -36,7 +33,8 @@
 								echo $_POST['name'];
 							}
 							 ?>">
-							<?php echo form_error('name'); ?>							
+							<?php echo form_error('name');?>
+
 						</div>
 						
 				</div>	

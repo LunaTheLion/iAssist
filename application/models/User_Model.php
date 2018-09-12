@@ -27,6 +27,32 @@ class User_Model extends CI_Model{
 		   }
 	}
 
+	public function create_personal_profile($email)
+	{
+		if(!empty($email))	
+		{
+
+			$this->db->where('account_email',$email);
+			$this->db->set('account_gname', $this->input->post('name'));
+			$this->db->set('account_mname', $this->input->post('middlename'));
+			$this->db->set('account_sname', $this->input->post('surname'));
+			$this->db->set('account_contact', $this->input->post('contact'));
+			$this->db->set('house_no', $this->input->post('houseNo'));
+			$this->db->set('street', $this->input->post('street'));
+			$this->db->set('barangay', $this->input->post('brngay'));
+			$this->db->set('municipal', $this->input->post('mncpl'));
+			$this->db->update('account_tbl');
+
+			if ($this->db->affected_rows()==1)
+			{
+				return true;
+			}
+			else
+				return false;
+		}
+
+	}
+
 	public function get_important($email)
 	{
 		if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $email))
@@ -66,6 +92,21 @@ class User_Model extends CI_Model{
 		}
 		
 	
+	}
+	public function insert_educ($educ_data)
+	{	
+		if(!empty($educ_data))
+		{
+			$this->db->insert('freelance_education_tbl',$educ_data);
+			if ($this->db->affected_rows()==1)
+			{//success insert	
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 
 	public function get_profile($email)

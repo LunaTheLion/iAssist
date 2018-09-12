@@ -125,11 +125,133 @@ class Admin_model extends CI_Model{
 			$this->db->update('account_tbl', $admin);
 			return $this->db->affected_rows() > 0;
 		}	
-
-
-
+	}
+	public function getAllCollege()
+	{
+		$this->db->select('*');
+		$this->db->where('delete_status', 0);
+		$this->db->order_by('date_created', 'desc');
+		$query = $this->db->get('college_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function add_college()
+		{
+			
+			$data = array(
+				'college_name' => $this->input->post('CollegeName'),
+				'college_acronym' => $this->input->post('CollegeCode'),
+				'date_created' => date('Y-m-d g:i'),
+				'status' => 0,
+			);
+			$this->db->insert('college_tbl', $data);
+			if($this->db->affected_rows() > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	public function edit_college()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('id', $id);
+		$query = $this->db->get('college_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function update_college()
+	{
+		$id = $this->input->post('txtId');
+		 $data = array(
+				'college_name' => $this->input->post('CollegeName'),
+				'college_acronym' => $this->input->post('CollegeCode'),
+				'date_updated' => date('Y-m-d g:i'),
+				
+			);	
+		$this->db->where('id', $id );
+		$this->db->update('college_tbl',$data);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
 
 	}
+	public function delete_college()
+	{
+		$id = $this->input->get('id');
+		//$date = date('Y-m-d g:i');
+		$this->db->where('id', $id);
+		$hell0 = array(
+			'delete_status' => 1,
+			'delete_date' =>date('Y-m-d g:i'),
+		);
+		// $this->db->set('delete_status', 1);
+		// $this->db->set('delete_date', $date);
+		$this->db->update('college_tbl', $hell0);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_college($code)
+	{
+		$this->db->get('college_name');
+		$this->db->where('college_acronym', $code);
+		$query = $this->db->get('college_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+	public function get_courses()
+	{
+		$col = $this->input->get('code');
+		$this->db->select('*');
+		$this->db->where('college', $col);
+		$this->db->where('delete_status', 0);
+		$this->db->order_by('date_created', 'desc');
+		$query = $this->db->get('major_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+
+
 
 
 	

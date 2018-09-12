@@ -241,6 +241,142 @@ class Admin extends CI_Controller
 		}
 
 	}
+	public function college()
+	{
+		$email = $this->session->userdata('email');
+		$this->load->model('Admin_model');
+		$info = $this->Admin_model->get_info($email);
+
+		$admin_data = array(
+			'email' =>$info->account_email,
+			'logged' =>$info->log_status,
+			'username' =>$info->account_username,
+		);
+		// echo $this->session->userdata('email');
+		// print_r($info);
+
+		// $admin_data = array(
+		// 	'email' =>$this->session->userdata('email'));
+
+
+		$nav_data = array
+		(
+			'active_nav'	=>	'active-menu',
+			'active_nav'	=>	'',
+			//'new_users'			=>	$this->Admin_model->get_users(),
+			'active_job'		=>	'',
+		);
+
+		$dash_data = array
+		(
+			'active_dashboard'	=>	'active-menu',
+			'active_applicant'	=>	'',
+			'new_users'			=>	$this->Admin_model->get_users(),
+			'active_job'		=>	'',
+
+		);
+		$this->session->set_userdata($admin_data);
+		$this->load->view('admin/template/header',$admin_data);
+		$this->load->view('admin/template/nav', $nav_data);	
+		$this->load->view('admin/college', $dash_data);
+		$this->load->view('admin/template/footer');
+		
+	}
+
+	public function showAllCollege()
+	{
+		$result =$this->Admin_model->getAllCollege();
+		echo json_encode($result);
+	} 
+
+	public function AddCollege()
+	{
+		$result = $this->Admin_model->add_college();
+		$msg['success'] = false;
+		$msg['type'] = 'added';
+		if($result){
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+		//echo "This is ADD COLLEGE";
+	}
+	public function EditCollege()
+	{
+		$result = $this->Admin_model->edit_college();
+		echo json_encode($result);
+	}
+	public function UpdateCollege()
+	{
+		$result = $this->Admin_model->update_college();
+		$msg['success'] = false;
+		$msg['type'] = 'updated';
+		if($result){
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+	public function DeleteCollege()
+	{
+		$result = $this->Admin_model->delete_college();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+
+	public function CourseTable()
+	{
+
+		$result =$this->Admin_model->get_courses();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+
+		echo json_encode($result);
+
+	}
+
+
+	public function AddCourse($code)
+	{
+
+			//$code;
+
+		$email = $this->session->userdata('email');
+		//$this->load->model('Admin_model');
+		$m = $this->Admin_model->get_college($code);
+		$title['title'] = array(
+			'clg_name' => $m->college_name,
+			'clg_code' => $m->college_acronym,
+			);
+		$info = $this->Admin_model->get_info($email);
+
+		$admin_data = array(
+			'email' =>$info->account_email,
+			'logged' =>$info->log_status,
+			'username' =>$info->account_username,
+		);
+
+		$nav_data = array
+		(
+			'active_nav'	=>	'active-menu',
+			'active_nav'	=>	'',
+			//'new_users'			=>	$this->Admin_model->get_users(),
+			'active_job'		=>	'',
+		);
+
+		
+		$this->session->set_userdata($admin_data);
+		$this->load->view('admin/template/header',$admin_data);
+		$this->load->view('admin/template/nav', $nav_data);	
+		$this->load->view('admin/courses', $title);
+		$this->load->view('admin/template/footer');
+	}
+
 
 }
 

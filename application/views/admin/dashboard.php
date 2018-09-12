@@ -45,7 +45,7 @@
                         </h3>
                     </div>
                     <div class="panel-footer">
-                        <a href=""><strong>Company</strong></a>
+                        <a href="<?php echo base_url('admin/college') ?>"><strong>College</strong></a>
                     </div>
                 </div>
             </div>

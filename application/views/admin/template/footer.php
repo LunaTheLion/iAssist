@@ -25,16 +25,34 @@
 	<!-- /. WRAPPER  -->
 	   <!-- JS Scripts-->
 	   <!-- jQuery Js -->
-	   <script src="<?php echo base_url('assets/admin/assets/js/jquery-1.10.2.js'); ?>"></script>
+	   
+
+     <!-- New Morris -->
+     <link  type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/morris/morris2/morris.css">
+     <link  type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/morris/morris2/jquery.min.js">
+     <link type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/morris/morris2/raphael.min.js">
+     <link  type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/morris/morris2/morris.min.js">
 	     <!-- Bootstrap Js -->
 	   <script src="<?php echo base_url('assets/admin/assets/js/bootstrap.min.js'); ?>"></script>
 	   <!-- Metis Menu Js -->
 	   <script src="<?php echo base_url('assets/admin/assets/js/jquery.metisMenu.js'); ?>"></script>
 	   <!-- Custom Js -->
-	   <script src="<?php echo base_url('assets/admin/assets/js/custom-scripts.js'); ?>"></script>
+	  
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/admin/assets/js/dataTables/dataTables.bootstrap.css">
+      
+      
 
-    <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+       
+   <!--   <script src="<?php echo base_url('assets/admin/assets/js/custom-scripts.js'); ?>"></script> -->
+     <link type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/custom-scripts.js">
+
+
+     <link type="text/css" href="<?php echo base_url() ?>assets/admin/assets/js/custom.js">
+
+
+  
+
     </body>
+   
+
 </html>

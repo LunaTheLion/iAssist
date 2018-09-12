@@ -1,4 +1,5 @@
 (function(){
+
   $(window).scroll(function () {
       var top = $(document).scrollTop();
       $('.splash').css({
@@ -58,5 +59,13 @@
 
     return lines;
   }
+
+      $('#add-college').on('click',function(){
+              $('#addModal').modal('show');
+              $('#addModal').find('.modal-title').text('Add New College');
+              $('#addForm').attr('action','<?php echo base_url() ?>admin/add_college');
+
+  });
+
 
 })();

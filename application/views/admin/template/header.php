@@ -11,11 +11,14 @@
     <!-- Custom Styles-->
     <link href="<?php echo base_url('assets/admin/assets/css/custom-styles.css'); ?>" rel="stylesheet">
      <!-- Google Fonts-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 
     <!-- Loading Icon -->
-   <link href="<?php echo base_url('assets/img/favicon.ico'); ?>" rel="shortcut icon">
-   
+   <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
+ <!--   <script src="<?php echo base_url('assets/admin/assets/js/jquery-1.10.2.js'); ?>"></script> -->
+   <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 <body>
 <div id="wrapper">

@@ -126,6 +126,7 @@ class User extends CI_CONTROLLER{
 		);
 		$this->session->set_userdata($sess_data);
 		
+		$this->form_validation->set_error_delimiters('<span class=error>', '</span>');
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -148,7 +149,19 @@ class User extends CI_CONTROLLER{
 		}
 		else
 		{	//success filling out the form
-			redirect('user/educ','refresh');
+			$email = $this->session->userdata('email');
+			if($this->User_Model->create_personal_profile($email))
+			{
+				redirect('user/educ','refresh');				
+			}
+			else
+			{
+				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/new-account-side-nav');
+				$this->load->view('freelance/new-account.php');
+				$this->load->view('freelance/footer');
+			}
+			
 		}
 
 
@@ -163,13 +176,21 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		echo $_POST['College'];
-		echo $_POST['Major'];
+		
 
-		// $this->load->helper(array('form'));
-		// $this->load->library('form_validation');
-		// $this->form_validation->set_rules('colleges', 'College', 'trim|required|min_length[8]');
-		// $this->form_validation->set_rules('Major', 'Major', 'trim|required');
+		$this->load->helper(array('form'));
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('colleges', 'College', 'trim|required|min_length[8]');
+		$this->form_validation->set_rules('Major', 'Major', 'trim|required');
+		if($this->form_validation->run() ==FALSE)
+		{
+			echo $_POST['College'];
+			echo $_POST['Major'];
+		}
+		else
+		{
+			 
+		}
 	
 	}
 
