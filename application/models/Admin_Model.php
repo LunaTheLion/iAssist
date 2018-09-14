@@ -218,17 +218,21 @@ class Admin_model extends CI_Model{
 	}
 	public function get_college($code)
 	{
-		$this->db->get('college_name');
+		// $this->db->select('*');
+		// $this->db->where('college_acronym', $code);
+		// $query = $this->db->get('college_tbl');
+		// if($query->num_rows() > 0)
+		// {
+		// 	 return $query->row();
+		// }
+		// else
+		// {
+		// 	return false;
+		// }
+		$this->db->select('college_name');
+		$this->db->from('college_tbl');
 		$this->db->where('college_acronym', $code);
-		$query = $this->db->get('college_tbl');
-		if($query->num_rows() > 0)
-		{
-			 return $query->row();
-		}
-		else
-		{
-			return false;
-		}
+		return  $this->db->get('college_tbl');
 
 	}
 	public function get_courses()

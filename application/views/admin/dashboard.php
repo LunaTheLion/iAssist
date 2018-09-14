@@ -123,7 +123,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>                                    
-                                    <?php foreach($new_users as $row): ?>                                                               
+                                    <?php foreach( $new_users as $row): ?>                                                               
                                         <tr>
                                             <td><?php echo $row->account_id; ?></td>
                                             <td><?php echo $row->account_email; ?></td>

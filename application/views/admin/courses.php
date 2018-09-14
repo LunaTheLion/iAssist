@@ -61,8 +61,13 @@
         <!-- /. ROW  -->
         <div class="row">
             <div class="col-md-12">
+              <!-- <?php foreach ( $page_title as $evs): 
+               echo $evs;
+
+              ?>
+              <?php endforeach; ?> -->
                 <h1 class="page-header" id="coursecode">
-                   <?php echo $title; ?> <small></small>
+                   <?php echo $title;?> <small></small>
                 </h1>
                 <div class="alert alert-success" style="display: none;">
                 </div>

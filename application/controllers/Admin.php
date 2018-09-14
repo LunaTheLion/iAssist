@@ -348,11 +348,17 @@ class Admin extends CI_Controller
 
 		$email = $this->session->userdata('email');
 		//$this->load->model('Admin_model');
-		$m = $this->Admin_model->get_college($code);
-		$title['title'] = array(
-			'clg_name' => $m->college_name,
-			'clg_code' => $m->college_acronym,
-			);
+		//$m = $this->Admin_model->get_college($code);
+
+		$title['title'] = $code;
+
+		 // $title = $this->Admin_model->get_college('$code')->row();
+			// $name = $title->college_name;
+			// echo $name;
+		// $title = array(
+		// 	'page_title' => $this->Admin_model->get_college($code),
+		// 	);
+		
 		$info = $this->Admin_model->get_info($email);
 
 		$admin_data = array(
@@ -374,7 +380,7 @@ class Admin extends CI_Controller
 		$this->load->view('admin/template/header',$admin_data);
 		$this->load->view('admin/template/nav', $nav_data);	
 		$this->load->view('admin/courses', $title);
-		$this->load->view('admin/template/footer');
+		$this->load->view('admin/template/footer'); 	
 	}
 
 
