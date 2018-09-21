@@ -298,7 +298,7 @@ class Admin extends CI_Controller
 			$msg['success'] = true;
 		}
 		echo json_encode($msg);
-		//echo "This is ADD COLLEGE";
+	
 	}
 	public function EditCollege()
 	{
@@ -326,39 +326,14 @@ class Admin extends CI_Controller
 		echo json_encode($msg);
 	}
 
-	public function CourseTable()
+
+
+	public function ViewCourse($code)
 	{
-
-		$result =$this->Admin_model->get_courses();
-		$msg['success'] = false;
-		if($result)
-		{
-			$msg['success'] = true;
-		}
-
-		echo json_encode($result);
-
-	}
-
-
-	public function AddCourse($code)
-	{
-
-			//$code;
-
 		$email = $this->session->userdata('email');
-		//$this->load->model('Admin_model');
-		//$m = $this->Admin_model->get_college($code);
-
-		$title['title'] = $code;
-
-		 // $title = $this->Admin_model->get_college('$code')->row();
-			// $name = $title->college_name;
-			// echo $name;
-		// $title = array(
-		// 	'page_title' => $this->Admin_model->get_college($code),
-		// 	);
-		
+		$result = array (
+			'clg' => $this->Admin_model->get_college($code),
+		);
 		$info = $this->Admin_model->get_info($email);
 
 		$admin_data = array(
@@ -374,13 +349,48 @@ class Admin extends CI_Controller
 			//'new_users'			=>	$this->Admin_model->get_users(),
 			'active_job'		=>	'',
 		);
-
-		
 		$this->session->set_userdata($admin_data);
 		$this->load->view('admin/template/header',$admin_data);
 		$this->load->view('admin/template/nav', $nav_data);	
-		$this->load->view('admin/courses', $title);
+		$this->load->view('admin/courses', $result);
 		$this->load->view('admin/template/footer'); 	
+	}
+
+	public function CourseTable()
+	{
+
+		 $result =$this->Admin_model->get_courses();
+		 echo json_encode($result);
+
+	}
+
+	public function AddCourse()
+	{
+		echo $this->input->post('ccode');
+		$result = $this->Admin_model->add_courses();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+
+
+	public function UpdateCourse()
+	{
+		$result = $this->Admin_model->update_college();
+		$msg['success'] = false;
+		$msg['type'] = 'updated';
+		if($result){
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+	public function EditCourse()
+	{
+		$result = $this->Admin_model->edit_course();	
+		echo json_encode($result);
 	}
 
 

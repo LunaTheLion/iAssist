@@ -14,7 +14,7 @@
 
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
-			<div class="card-header">Personal Information</div>
+			<div class="card-header">Personal InformationS</div>
 			<form method="POST" action="<?php echo base_url('user/v_personal') ?>">
 			<div class="card-body">
 				<div class="row">

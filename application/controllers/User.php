@@ -91,7 +91,7 @@ class User extends CI_CONTROLLER{
 		$get = $this->User_Model->get_important($email);
 			if(!empty($get))
 			{
-
+				$data['college']= $this->User_Model->get_college();
 				$sess_data = array(
 					'id' => $get->account_id,
 					'email' =>$get->account_email,
@@ -103,7 +103,7 @@ class User extends CI_CONTROLLER{
 				);
 				$this->load->view('freelance/header', $sess_data);
 				$this->load->view('freelance/new-account-side-nav');
-				$this->load->view('freelance/create-educ-profile');
+				$this->load->view('freelance/create-educ-profile',$data);
 				// $this->load->view('freelance/new-profile',$fetch);
 				$this->load->view('freelance/footer');
 				// echo "<pre>";
@@ -150,18 +150,8 @@ class User extends CI_CONTROLLER{
 		else
 		{	//success filling out the form
 			$email = $this->session->userdata('email');
-			if($this->User_Model->create_personal_profile($email))
-			{
-				redirect('user/educ','refresh');				
-			}
-			else
-			{
-				$this->load->view('freelance/header', $sess_data);
-				$this->load->view('freelance/new-account-side-nav');
-				$this->load->view('freelance/new-account.php');
-				$this->load->view('freelance/footer');
-			}
-			
+			$this->User_Model->create_personal_profile($email);
+			redirect('user/educ','refresh');				
 		}
 
 
@@ -181,17 +171,46 @@ class User extends CI_CONTROLLER{
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('colleges', 'College', 'trim|required|min_length[8]');
-		$this->form_validation->set_rules('Major', 'Major', 'trim|required');
+		$this->form_validation->set_rules('cmajor', 'Major', 'trim|required');
 		if($this->form_validation->run() ==FALSE)
 		{
-			echo $_POST['College'];
-			echo $_POST['Major'];
+			$educ_data = array(
+				'ed_account_email' => $this->session->userdata('email'),
+				'ed_college' => $this->input->post('College'),
+				'ed_focus_of_study' =>$this->input->post('cmajor'),
+			);
+			$save = $this->User_Model->insert_educ($educ_data);
+			if($save)
+			{
+
+				redirect('user/skill','refresh');
+			}
+			else
+			{
+				echo "Data not saved";
+			}
+			
+	
 		}
 		else
 		{
-			 
+			redirect('user/educ','refresh');
 		}
 	
+	}
+	public function get_major()
+	{
+		$college = $this->input->post('college_id');
+		$majors = $this->User_Model->get_major_id($college);
+		if(count($majors) > 0 )
+		{
+			$pro_select_box = '';
+			$pro_select_box .= '<option value="">Select Course';
+			foreach ($majors as $major) {
+				$pro_select_box .= "<option value='". $major->course_code ."'>".$major->course."";
+			}
+			echo json_encode($pro_select_box);
+		}
 	}
 
 	public function general($email)

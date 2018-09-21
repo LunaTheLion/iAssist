@@ -218,28 +218,25 @@ class Admin_model extends CI_Model{
 	}
 	public function get_college($code)
 	{
-		// $this->db->select('*');
-		// $this->db->where('college_acronym', $code);
-		// $query = $this->db->get('college_tbl');
-		// if($query->num_rows() > 0)
-		// {
-		// 	 return $query->row();
-		// }
-		// else
-		// {
-		// 	return false;
-		// }
-		$this->db->select('college_name');
-		$this->db->from('college_tbl');
+		$this->db->select('*');
 		$this->db->where('college_acronym', $code);
-		return  $this->db->get('college_tbl');
-
+		$query = $this->db->get('college_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
 	}
+
+
 	public function get_courses()
 	{
-		$col = $this->input->get('code');
+		//$col = $this->input->get('code');
 		$this->db->select('*');
-		$this->db->where('college', $col);
+		//$this->db->where('college', $col);
 		$this->db->where('delete_status', 0);
 		$this->db->order_by('date_created', 'desc');
 		$query = $this->db->get('major_tbl');
@@ -253,6 +250,65 @@ class Admin_model extends CI_Model{
 		}
 
 	}
+
+
+	public function add_courses()
+	{
+		$field = array(
+			'course_code' =>$this->input->post('ccode'),
+			'course' 	  =>$this->input->post('course'),
+			'college'	  =>$this->input->post('txtCollege'),
+			'date_created'=>date('Y-m-d g:i'),
+			'status'	  =>0,
+		);
+		$this->db->insert('major_tbl',$field);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+
+	public function update_course()
+	{
+		$id = $this->input->post('txtId');
+		 $data = array(
+				'course_code' => $this->input->post(''),
+				'course' => $this->input->post('CourseName'),
+				'date_updated' => date('Y-m-d g:i'),
+				
+			);	
+		$this->db->where('id', $id );
+		$this->db->update('major_tbl',$data);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+	}
+	public function edit_course()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('major_id', $id);
+		$query = $this->db->get('major_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 
 
 

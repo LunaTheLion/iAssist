@@ -67,7 +67,9 @@
                 <div class="alert alert-success" style="display: none;">
                 </div>
             </div>
-        </div> 
+
+
+        </div>
 
         <div class="row">
            
@@ -167,6 +169,8 @@
         
         showAllCollege();
 
+       
+         
         //Add new College
        $('#add-college').click(function(){
           $('#addModal').modal('show');
@@ -204,6 +208,7 @@
             }
             if(result == '12')
             {
+
                 $.ajax({
                     type: 'ajax',
                     method: 'post',
@@ -237,7 +242,6 @@
                     error: function()
                     {
                         alert('Could not add Data');
-
                     },
                 });
             }
@@ -305,7 +309,7 @@
                 async: true,
                 dataType: 'json',
                 success: function(data){
-                   // console.log(data);
+                   console.log(data);
                     var html = '';
                     var i;      
                     for(i=0; i<data.length; i++){
@@ -315,7 +319,7 @@
                                     '<td></td>'+
                                     '<td></td>'+
                                     '<td>'+
-                                    '<a href="<?php echo site_url()?>admin/AddCourse/'+data[i].college_acronym+'"  class="btn btn-default item-create" data="'+data[i].college_acronym+'" >Courses</a>'+
+                                    '<a href="<?php echo site_url()?>admin/ViewCourse/'+data[i].college_acronym+'"  class="btn btn-default item-create" data="'+data[i].college_acronym+'" >Courses</a>'+
                                     '</td>'+
                                     '<td>'+data[i].date_created+'</td>'+
                                     '<td>'+

@@ -32,23 +32,27 @@ class User_Model extends CI_Model{
 		if(!empty($email))	
 		{
 
-			$this->db->where('account_email',$email);
-			$this->db->set('account_gname', $this->input->post('name'));
-			$this->db->set('account_mname', $this->input->post('middlename'));
-			$this->db->set('account_sname', $this->input->post('surname'));
-			$this->db->set('account_contact', $this->input->post('contact'));
-			$this->db->set('house_no', $this->input->post('houseNo'));
-			$this->db->set('street', $this->input->post('street'));
-			$this->db->set('barangay', $this->input->post('brngay'));
-			$this->db->set('municipal', $this->input->post('mncpl'));
-			$this->db->update('account_tbl');
+			$field = array(
+				'account_gname' => $this->input->post('name'),
+				'account_mname' => $this->input->post('middlename'),
+				'account_sname' => $this->input->post('surname'),
+				'account_contact' => $this->input->post('contact'),
+				'house_no' => $this->input->post('houseNo'),
+				'street' => $this->input->post('street'),
+				'barangay' => $this->input->post('brngay'),
+				'municipal' => $this->input->post('mncpl'),
+			);
 
-			if ($this->db->affected_rows()==1)
+			$this->db->where('account_email',$email);
+			$this->db->update('account_tbl', $field);
+
+			if ($this->db->affected_rows() > 0)
 			{
 				return true;
 			}
-			else
+			else{
 				return false;
+			}
 		}
 
 	}
@@ -95,6 +99,7 @@ class User_Model extends CI_Model{
 	}
 	public function insert_educ($educ_data)
 	{	
+		print_r($educ_data);
 		if(!empty($educ_data))
 		{
 			$this->db->insert('freelance_education_tbl',$educ_data);
@@ -192,6 +197,18 @@ class User_Model extends CI_Model{
 			return false;
 			//return false;
 		}
+	}
+	public function get_college()
+	{
+		$this->db->select('*');
+		$this->db->where('delete_status', 0);
+		$query = $this->db->get('college_tbl');
+		return $query->result();
+	}
+	public function get_major_id($college)
+	{
+		$query =  $this->db->get_where('major_tbl', array('college' => $college));
+		return $query->result();
 	}
 
 }//END OF MODEL CONTROLLER
