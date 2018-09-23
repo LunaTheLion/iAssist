@@ -13,15 +13,15 @@
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
 			<div class="card-header">Projects</div>
-			<form method="POST" action="<?php echo base_url('user/validate_post') ?>">
+			<form method="POST" action="<?php echo base_url('user/v_project') ?>">
 			<div class="card-body">
 				
 					<div class="row">
 						<div class="col-lg-2 col-sm-2">
-							Title
+							Skill field
 						</div>
 						<div class="col-lg-10 col-sm-10">
-							<input type="text" class="form-control" name="title">
+							<input type="text" class="form-control" name="field">
 						</div>
 					</div>
 					<br>
@@ -48,7 +48,7 @@
 							Rate/Hour:
 						</div>
 						<div class="col-lg-5 col-sm-5">
-							<select class="form-control" id="exampleSelect1" length="4">
+							<select class="form-control" id="rate" length="4">
 							        <option>1</option>
 							        <option>2</option>
 							        <option>3</option>

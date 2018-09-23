@@ -234,9 +234,9 @@ class Admin_model extends CI_Model{
 
 	public function get_courses()
 	{
-		//$col = $this->input->get('code');
+		$col = $this->input->get('code');
 		$this->db->select('*');
-		//$this->db->where('college', $col);
+		$this->db->where('college', $col);
 		$this->db->where('delete_status', 0);
 		$this->db->order_by('date_created', 'desc');
 		$query = $this->db->get('major_tbl');
@@ -252,16 +252,10 @@ class Admin_model extends CI_Model{
 	}
 
 
-	public function add_courses()
+	public function add_courses($data_in)
 	{
-		$field = array(
-			'course_code' =>$this->input->post('ccode'),
-			'course' 	  =>$this->input->post('course'),
-			'college'	  =>$this->input->post('txtCollege'),
-			'date_created'=>date('Y-m-d g:i'),
-			'status'	  =>0,
-		);
-		$this->db->insert('major_tbl',$field);
+		
+		$this->db->insert('major_tbl',$data_in);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;
@@ -274,16 +268,31 @@ class Admin_model extends CI_Model{
 	}
 
 
+	public function edit_course()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('major_id', $id);
+		$query = $this->db->get('major_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function update_course()
 	{
 		$id = $this->input->post('txtId');
 		 $data = array(
-				'course_code' => $this->input->post(''),
-				'course' => $this->input->post('CourseName'),
+				'course_code' => $this->input->post('ccode'),
+				'course' => $this->input->post('course'),
+				'college' => $this->input->post('txtCollege'),
 				'date_updated' => date('Y-m-d g:i'),
 				
 			);	
-		$this->db->where('id', $id );
+		$this->db->where('major_id', $id );
 		$this->db->update('major_tbl',$data);
 		if($this->db->affected_rows() > 0)
 		{
@@ -293,15 +302,20 @@ class Admin_model extends CI_Model{
 		{
 			return false;
 		}
+
 	}
-	public function edit_course()
+	public function delete_course()
 	{
 		$id = $this->input->get('id');
 		$this->db->where('major_id', $id);
-		$query = $this->db->get('major_tbl');
-		if($query->num_rows() > 0)
+		$hell0 = array(
+			'delete_status' => 1,
+			'date_deleted' =>date('Y-m-d g:i'),
+		);
+		$this->db->update('major_tbl', $hell0);
+		if($this->db->affected_rows() > 0)
 		{
-			 return $query->row();
+			return true;
 		}
 		else
 		{

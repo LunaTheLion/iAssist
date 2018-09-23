@@ -41,6 +41,7 @@ class User_Model extends CI_Model{
 				'street' => $this->input->post('street'),
 				'barangay' => $this->input->post('brngay'),
 				'municipal' => $this->input->post('mncpl'),
+				'status' => 'complete',
 			);
 
 			$this->db->where('account_email',$email);
@@ -97,9 +98,20 @@ class User_Model extends CI_Model{
 		
 	
 	}
+
+	public function get_account_info($email)
+	{
+		$this->db->select('*');
+		$this->db->where('account_email', $email);
+		$this->db->where('status','complete');
+		$hey = $this->db->get('account_tbl');
+		return $hey->result();
+
+	}
+
 	public function insert_educ($educ_data)
 	{	
-		print_r($educ_data);
+		
 		if(!empty($educ_data))
 		{
 			$this->db->insert('freelance_education_tbl',$educ_data);
@@ -209,6 +221,22 @@ class User_Model extends CI_Model{
 	{
 		$query =  $this->db->get_where('major_tbl', array('college' => $college));
 		return $query->result();
+	}
+	public function insert_skill($skills)
+	{
+		// print_r($skills);
+		if(!empty($skills))
+		{
+			$this->db->insert('freelance_skill_table', $skills);
+			if ($this->db->affected_rows()==1)
+			{//success insert	
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 
 }//END OF MODEL CONTROLLER

@@ -15,38 +15,38 @@
 		<div class="card">
 			<div class="card-header">Skill Set</div>
 
-			<form method="POST" action="<?php echo base_url('user/Project') ?>">
+			<form method="POST" action="<?php echo base_url('user/v_skill') ?>">
 			<div class="card-body">
 				 <span id="success_message"></span>
-
-				    <form method="post" id="programmer_form">
-				    	<div class="row">
-				    		<div class="col-lg-2 col-sm-2">
-				    			Skill
-				    		</div>
-				    		<div class="col-lg-10 col-sm-10">
-				    			<input type="text" name="name" id="name" class="form-control" />
-				    		</div>
-				    	</div>
-				    	<br>
-				    	<div class="row">
-				    		<div class="col-lg-2 col-sm-2">
-				    			Skill
-				    		</div>
-				    		<div class="col-lg-10 col-sm-10">
-				    			
-				    			<input type="text" name="skill" id="skill" class="form-control" />
-				    		</div>
-				    	</div>	
-				     
-				     <div class="form-group">
-				      <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
-				     </div>
-				    </form>
-			<!-- 	<div class="row">
+				 <div class="form-group">
+				  <label for="name">Skill Category</label>
+				  <select class="form-control" name="category">
+				  	<option value="Crafts">Crafts</option>
+				  	<option value="Creative">Creative</option>
+				  </select>
+				 </div>
+				 <div class="form-group">
+				  <label>Enter your Skill</label>
+				  <input type="text" name="skill" id="skill" class="form-control" />
+				 </div>
+				  <!-- <form method="post" id="programmer_form">
+				        <div class="form-group">
+				         <label for="name">Skill Field</label>
+				         <input type="text" name="name" id="field" class="form-control" />
+				        </div>
+				        <div class="form-group">
+				         <label>Enter your Skill</label>
+				         <input type="text" name="skill" id="skill" class="form-control" />
+				        </div>
+				        <div class="form-group">
+				         <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+				        </div>
+				       </form> -->
+				<!-- <div class="row">
 						<div class="col-lg-2 col-sm-2">
-							<center>Skill/ Expertise</center>
+							<center>Skill</center>
 						</div>
+
 						<div class="col-lg-10 col-sm-10">
 							
 							<div class="tags-input" data-name="tags-input" name="title">
@@ -95,53 +95,6 @@
 <script>
 $(document).ready(function(){
  
- $('#skill').tokenfield({
-  autocomplete:{
-   source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
-   delay:100
-  },
-  showAutocompleteOnFocus: true
- });
 
- $('#programmer_form').on('submit', function(event){
-  event.preventDefault();
-  if($.trim($('#name').val()).length == 0)
-  {
-   alert("Please Enter Your Name");
-   return false;
-  }
-  else if($.trim($('#skill').val()).length == 0)
-  {
-   alert("Please Enter Atleast one Skill");
-   return false;
-  }
-  else
-  {
-   var form_data = $(this).serialize();
-   $('#submit').attr("disabled","disabled");
-   $.ajax({
-    url:"insert.php",
-    method:"POST",
-    data:form_data,
-    beforeSend:function(){
-     $('#submit').val('Submitting...');
-    },
-    success:function(data){
-     if(data != '')
-     {
-      $('#name').val('');
-      $('#skill').tokenfield('setTokens',[]);
-      $('#success_message').html(data);
-      $('#submit').attr("disabled", false);
-      $('#submit').val('Submit');
-     }
-    }
-   });
-   setInterval(function(){
-    $('#success_message').html('');
-   }, 5000);
-  }
- });
- 
 });
 </script>

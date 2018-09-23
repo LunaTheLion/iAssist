@@ -117,7 +117,7 @@ echo $row->college_acronym; ?></title>
               <div class="modal-body">
                     <form id="addCourseForm" action="" method="post" class="form-horizontal">
                         <input type="hidden" name="txtId" value="0">
-                       <input type="text" name="txtCollege" value="<?php echo $row->college_acronym?>">
+                       <input type="hidden" name="txtCollege" value="<?php echo $row->college_acronym?>">
                         <div class="form-group">
                             <label for="code" class="label-control col-md-3">Course Code</label>
                             <div class="col-md-4">
@@ -184,7 +184,6 @@ echo $row->college_acronym; ?></title>
        //validate the inputs
        var courseCode = $('input[name=ccode]');
        var courseName = $('input[name=course]');
-       // var college = $('input[name=txtCollege]');
 
        result = '';
        if(courseCode.val() == '')
@@ -214,12 +213,29 @@ echo $row->college_acronym; ?></title>
             data: data,
             async: false,
             dataType:'json',
-            success:function(data){
-              console.log(data);
+            success:function(response){
+            if(response.success)
+            {
+                $('#addCourseModal').modal('hide');
+                $('#addCourseForm')[0].reset();
+                if(response.type == 'added')
+                {
+                  var type = 'Added';
+                }
+                else if(response.type == 'updated')
+                {
+                  var type = 'Updated';
+                }
+                $('.alert-success').html('Course is '+type+' successfully').fadeIn().delay(4000).fadeOut('slow');
+                showcourses();
+            }
+            else
+            {
+              alert('Sorry');
+            }
             },
-            error: function(data){
-              console.log(data);
-              alert('Nope');
+            error: function(){
+              alert('Could not Add Course');
             }
           });
         }
@@ -248,8 +264,8 @@ echo $row->college_acronym; ?></title>
                                     
                                     '<td>'+data[i].date_created+'</td>'+
                                     '<td>'+
-                                        '<a href="javascript:;" class="btn btn-info item-edit" data="'+data[i].id+'">Edit</a>'+
-                                        '<a href="javascript:;" class="btn btn-danger item-delete " data="'+data[i].id+'">Delete</a>'+
+                                        '<a href="javascript:;" class="btn btn-info item-edit" data="'+data[i].major_id+'">Edit</a>'+
+                                        '<a href="javascript:;" class="btn btn-danger item-delete " data="'+data[i].major_id+'">Delete</a>'+
                                     '</td>'+
                                '</tr>';
                     }
@@ -275,8 +291,8 @@ echo $row->college_acronym; ?></title>
           async: false,
           dataType: 'json',
           success: function(data){
-            $('input[name=CourseCode]').val(data.course_code);
-            $('input[name=CourseName]').val(data.course);
+            $('input[name=ccode]').val(data.course_code);
+            $('input[name=course]').val(data.course);
             $('input[name=txtId]').val(data);
           },
           error: function()
@@ -284,6 +300,34 @@ echo $row->college_acronym; ?></title>
             alert('Could not edit data');
           }
         });
+    });
+    //Delete Course
+    $('#showtable').on('click', '.item-delete', function(){
+      var id = $(this).attr('data');
+      // alert(id);
+      $('#deleteCourseModal').modal('show');
+      $('#btnDelete').click(function(){
+        $.ajax({
+          type: 'ajax',
+          method: 'get',
+          async: false,
+          url: '<?php echo base_url() ?>admin/DeleteCourse',
+          data: {id,id},
+          dataType: 'json',
+          success: function(response){
+            if(response.success)
+            {
+              $('#deleteCourseModal').modal('hide');
+              $('.alert-success').html('Course Deleted successfully').fadeIn().delay(4000).fadeOut('slow');
+              showcourses();
+            }
+          },
+          error: function()
+          {
+            alert('Could not delete records');
+          }
+        });
+      })
     });
       
   });

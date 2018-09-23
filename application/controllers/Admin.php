@@ -366,31 +366,53 @@ class Admin extends CI_Controller
 
 	public function AddCourse()
 	{
-		echo $this->input->post('ccode');
-		$result = $this->Admin_model->add_courses();
+		//$msg['success'] = false;
+		$data_in['course_code'] =  $this->input->post('ccode');
+		$data_in['course'] =  $this->input->post('course');
+		$data_in['college'] = $this->input->post('txtCollege');
+		$data_in['date_created'] = date('Y-m-d g:i');
+		$data_in['status'] = 0;
+		
+		// echo json_encode($data_in);
+		$result = $this->Admin_model->add_courses($data_in);
 		$msg['success'] = false;
+		$msg['type'] = 'added';
 		if($result)
 		{
 			$msg['success'] = true;
 		}
-		echo json_encode($msg);
+			echo json_encode($msg);
 	}
 
-
+	public function EditCourse()
+	{
+		$result = $this->Admin_model->edit_course();
+		echo json_encode($result);
+	}
 	public function UpdateCourse()
 	{
-		$result = $this->Admin_model->update_college();
+		
+		$result = $this->Admin_model->update_course();
 		$msg['success'] = false;
 		$msg['type'] = 'updated';
 		if($result){
 			$msg['success'] = true;
 		}
 		echo json_encode($msg);
-	}
-	public function EditCourse()
+	}	
+
+	
+	public function DeleteCourse()
 	{
-		$result = $this->Admin_model->edit_course();	
-		echo json_encode($result);
+
+		$result = $this->Admin_model->delete_course();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success']= true;
+		}
+		echo json_encode($msg);
+	
 	}
 
 

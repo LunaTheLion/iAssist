@@ -293,7 +293,7 @@
                     },
                     error: function()
                     {
-                        alert('Could not delete'+id+' record');
+                        alert('Could not delete record');
                     }
                 });
             });

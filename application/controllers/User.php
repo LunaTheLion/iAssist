@@ -166,8 +166,6 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		
-
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('colleges', 'College', 'trim|required|min_length[8]');
@@ -222,47 +220,56 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$h = $this->User_Model->get_profile($email);
-		$post= $this->User_Model->get_post($email);
+		//$h = $this->User_Model->get_profile($email);
+		$one = $this->User_Model->get_account_info($email);
+			// $fetch = array(
+			// 	'data' => $this->User_Model->get_profile($email),
+			// );
 
-		if(empty($h))// new user
-		{
-			if(empty($post))
-			{
-				$fetch = array(
-					'data' => $this->User_Model->create_profile($email),
-				);
-				$this->load->view('freelance/header', $sess_data);
-				$this->load->view('freelance/new-account-side-nav');
-				$this->load->view('freelance/new-account.php');
-				$this->load->view('freelance/footer');
-			}
-			
-			else
-			{
-
-				//$get= $this->User_Model->get_post($email);
-				$fetch = array(
-					'data' => $this->User_Model->create_profile($email),
-					'data2' =>$this->User_Model->get_post($email),
-				);
-				// echo "<pre>";
-				// print_r($get);
-				// echo "</pre>";
-				$this->load->view('freelance/header', $sess_data);
-				$this->load->view('freelance/new-profile',$fetch);
-				$this->load->view('freelance/footer');
-			}
-		}
-		else
-		{
-			$fetch = array(
-				'data' => $this->User_Model->get_profile($email),
-			);
 			$this->load->view('freelance/header', $sess_data);
-			$this->load->view('freelance/new-profile', $fetch);
+			$this->load->view('freelance/new-profile');
 			$this->load->view('freelance/footer');
-		}
+
+		// $post= $this->User_Model->get_post($email);
+
+		// if(empty($h))// new user
+		// {
+		// 	if(empty($post))
+		// 	{
+		// 		$fetch = array(
+		// 			'data' => $this->User_Model->create_profile($email),
+		// 		);
+		// 		$this->load->view('freelance/header', $sess_data);
+		// 		$this->load->view('freelance/new-account-side-nav');
+		// 		$this->load->view('freelance/new-account.php');
+		// 		$this->load->view('freelance/footer');
+		// 	}
+			
+		// 	else
+		// 	{
+
+		// 		//$get= $this->User_Model->get_post($email);
+		// 		$fetch = array(
+		// 			'data' => $this->User_Model->create_profile($email),
+		// 			'data2' =>$this->User_Model->get_post($email),
+		// 		);
+		// 		// echo "<pre>";
+		// 		// print_r($get);
+		// 		// echo "</pre>";
+		// 		$this->load->view('freelance/header', $sess_data);
+		// 		$this->load->view('freelance/new-profile',$fetch);
+		// 		$this->load->view('freelance/footer');
+		// 	}
+		// }
+		// else
+		// {
+		// 	$fetch = array(
+		// 		'data' => $this->User_Model->get_profile($email),
+		// 	);
+		// 	$this->load->view('freelance/header', $sess_data);
+		// 	$this->load->view('freelance/new-profile', $fetch);
+		// 	$this->load->view('freelance/footer');
+		// }
 
 	}//general
 	
@@ -305,7 +312,7 @@ class User extends CI_CONTROLLER{
 		$this->User_Model->del_post($id);
 		redirect('user/general/'.$this->session->userdata('email'), 'refresh');
 	}
-	public function validate_post()
+	public function v_project()
 	{
 
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -380,19 +387,51 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill');
 		$this->load->view('freelance/footer');
 	}
-	public function validate_skill()
+	public function v_skill()
 	{
-		echo $_POST['title'];
-		// $get = $this->User_Model->get_important($this->session->userdata('email'));
-		// $sess_data = array(
-		// 	'id' => $get->account_id,
-		// 	'email' =>$get->account_email,
-		// 	'username' => $get->account_username,
-		// );
-		// $this->session->set_userdata($sess_data);
+		// echo $_POST['skill'];
+		// echo $_POST['category'];
+
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+		);
+		$this->session->set_userdata($sess_data);
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('skill','Skill','required');
+		$this->form_validation->set_rules('category','Category','required');
+		if($this->form_validation->run()== false)
+		{
+			//echo "Hello";
+			redirect('user/skill');
+		}
+		else
+		{
+			//echo "What is wrong";
+			$skills = array(
+				'skill_email' => $this->session->userdata('email'),
+				'skill_category' => $this->input->post('category'),
+				'skill' => $this->input->post('skill'),
+				'skill_created' => date('Y-m-d g:i'),
+			);
+			$j = $this->User_Model->insert_skill($skills);
+			if( $j == true)
+			{
+				redirect('user/interest', 'refresh');
+			}
+			else
+			{
+				show_404();
+			}
+			
+		}
+		redirect('user/skill');
 		// $this->load->view('freelance/header', $sess_data);
 		// $this->load->view('freelance/side-nav');
-		
+		// $this->load->view('freelance/interest');
 		// $this->load->view('freelance/footer');
 	}
 	public function Project()
@@ -409,6 +448,7 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/project');
 		$this->load->view('freelance/footer');
 	}
+	
 	public function Interest()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -419,7 +459,7 @@ class User extends CI_CONTROLLER{
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/header', $sess_data);
-		$this->load->view('freelance/side-nav');
+		$this->load->view('freelance/new-account-side-nav');
 		$this->load->view('freelance/interest');
 		$this->load->view('freelance/footer');
 	}
