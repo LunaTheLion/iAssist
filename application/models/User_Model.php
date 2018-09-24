@@ -39,7 +39,7 @@ class User_Model extends CI_Model{
 				'account_contact' => $this->input->post('contact'),
 				'house_no' => $this->input->post('houseNo'),
 				'street' => $this->input->post('street'),
-				'barangay' => $this->input->post('brngay'),
+				'barangay' => $this->input->post('brngy'),
 				'municipal' => $this->input->post('mncpl'),
 				'status' => 'complete',
 			);
@@ -109,6 +109,14 @@ class User_Model extends CI_Model{
 
 	}
 
+	public function get_educ_info($email)
+	{
+		$this->db->select('*');
+		$this->db->where('ed_account_email', $email);
+		$hey = $this->db->get('freelance_education_tbl');
+		return $hey->result();
+	}
+
 	public function insert_educ($educ_data)
 	{	
 		
@@ -128,15 +136,16 @@ class User_Model extends CI_Model{
 
 	public function get_profile($email)
 	{
+		//Education and Account Profile only
 		$this->db->select("*");
 		$this->db->where('account_email' , $email);
+		$this->db->where('status', 'complete');
 		$this->db->from('account_tbl');
-		$this->db->join('freelance_portfolio_tbl', 'portfolio_owner = account_email', 'right');
-		$this->db->join('freelance_education_tbl', 'ed_account_email = account_email' , 'right');
-		$this->db->join('post_tbl', 'creator = account_email', 'right');
+		$this->db->join('freelance_education_tbl', 'ed_account_email = account_email','right');
+		//	$this->db->join('freelance_skill_table','skill_email = account_email', 'outer');
 		 $query = $this->db->get();
 
-		    if($query->num_rows() != 0)
+		    if($query->result_array() > 0)
 		    {
 		        return $query->result();
 		    }
@@ -160,6 +169,13 @@ class User_Model extends CI_Model{
 				return false;
 			}
 		}
+	}
+	public function get_skill($email)
+	{
+		$this->db->select('*');
+		// $this->db->where('skill_email', $email);
+		$query = $this->db->get('freelance_skill_table');
+		return $query->result();
 	}
 	public function get_post($email)
 	{	
@@ -238,6 +254,7 @@ class User_Model extends CI_Model{
 			}
 		}
 	}
+	
 
 }//END OF MODEL CONTROLLER
 

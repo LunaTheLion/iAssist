@@ -36,7 +36,7 @@
 						<select class="form-control form-control-sm" id="college" name="College" required="required">
 						<option value="">Select College</option>
 						<?php foreach ($college as $get):?>
-							<option value="<?php echo $get->college_acronym; ?>"><?php echo $get->college_name; ?></option>
+							<option value="<?php echo $get->college_name; ?>"><?php echo $get->college_name; ?></option>
 						<?php endforeach; ?>
 				      </select>
 

@@ -18,10 +18,10 @@
 				
 					<div class="row">
 						<div class="col-lg-2 col-sm-2">
-							Skill field
+							Title
 						</div>
 						<div class="col-lg-10 col-sm-10">
-							<input type="text" class="form-control" name="field">
+							<input type="text" class="form-control" name="title">
 						</div>
 					</div>
 					<br>
@@ -48,7 +48,7 @@
 							Rate/Hour:
 						</div>
 						<div class="col-lg-5 col-sm-5">
-							<select class="form-control" id="rate" length="4">
+							<select class="form-control" id="" length="4">
 							        <option>1</option>
 							        <option>2</option>
 							        <option>3</option>

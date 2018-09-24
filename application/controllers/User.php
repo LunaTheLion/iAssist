@@ -205,7 +205,7 @@ class User extends CI_CONTROLLER{
 			$pro_select_box = '';
 			$pro_select_box .= '<option value="">Select Course';
 			foreach ($majors as $major) {
-				$pro_select_box .= "<option value='". $major->course_code ."'>".$major->course."";
+				$pro_select_box .= "<option value='". $major->course ."'>".$major->course."";
 			}
 			echo json_encode($pro_select_box);
 		}
@@ -221,13 +221,15 @@ class User extends CI_CONTROLLER{
 		);
 		$this->session->set_userdata($sess_data);
 		//$h = $this->User_Model->get_profile($email);
-		$one = $this->User_Model->get_account_info($email);
+		$one =array(
+			'h'=>$this->User_Model->get_account_info($email),);
 			// $fetch = array(
 			// 	'data' => $this->User_Model->get_profile($email),
 			// );
 
 			$this->load->view('freelance/header', $sess_data);
-			$this->load->view('freelance/new-profile');
+			$this->load->view('freelance/new-profile-side',$one);
+			$this->load->view('freelance/new-profile-body');
 			$this->load->view('freelance/footer');
 
 		// $post= $this->User_Model->get_post($email);
@@ -273,7 +275,31 @@ class User extends CI_CONTROLLER{
 
 	}//general
 	
+	public function user_profile()
+	{
+		$email = $this->session->userdata('email');
+		$get = $this->User_Model->get_important($email);
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			
+		);
+		$account = array(
+			'acc' => $this->User_Model->get_profile($email),
+			'skill' => $this->User_Model->get_skill($email),
+		);
 
+	
+		// echo "<pre>";
+		// print_r($account);
+		// echo "</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/new-profile-side');
+		$this->load->view('freelance/get-user-profile',$account);
+		$this->load->view('freelance/footer');
+	}
 	public function account()
 	{
 		$email = $this->session->userdata('email');

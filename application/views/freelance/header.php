@@ -39,6 +39,16 @@
     .error{
     color: red;
     }
+    .img {
+  border-radius: 50%;
+  width: 35%;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
     .iam{
       background-color: #A9A9A9;
       position: absolute; 
