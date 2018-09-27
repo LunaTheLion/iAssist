@@ -4,51 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/tags.css') ?>">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-
-
-
- <!--    Bootstrap -->
-    
-    <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user/css/lux-bootstrap.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user/css/lux-bootstrap.min.css')?>">
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-    <script type="text/javascript" async="" src="<?php echo base_url('assets/js/bootswatch.lux.js')?>"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
-      
-
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script> -->
-
-   
-   
+    <!-- JavaScript -->
+    
+    <script src="<?php echo base_url() ?>assets/user/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/user/js/popper.min.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/user/js/bootstrap.min.js') ?>"></script>
+   <!--  <script src="<?php echo base_url() ?>assets/user/js/bootstrap.js"></script> -->
 
     <style type="text/css">
     .error{
     color: red;
     }
     .img {
-  border-radius: 50%;
-  width: 35%;
-  }
+      border-radius: 50%;
+      width: 35%;
+    }
   .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     
-}
+    }
     .iam{
       background-color: #A9A9A9;
       position: absolute; 
@@ -94,7 +76,7 @@
                  <div class="collapse navbar-collapse" id="navbarColor01">
                    <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('users/thread');?>">Thread <span class="sr-only">(current)</span></a>
+                       <a class="nav-link" href="<?php echo base_url('user/thread');?>">Thread <span class="sr-only">(current)</span></a>
                      </li>
                      <!-- Paypal Integration part -->
                      <li class="nav-item">
@@ -108,7 +90,7 @@
                         <a class="nav-link" href="<?php echo base_url('messaging/message')?>"><img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon"></a>
                       </li>
                       <li class="nav-item nav-">
-                        <a class="nav-link" href="<?php echo site_url('users/general/'.$this->session->userdata('email'))?>"><?php 
+                        <a class="nav-link" href="<?php echo site_url('user/general/'.$this->session->userdata('email'))?>"><?php 
                         echo $this->session->userdata('username');
                         ?>
                         </a>
@@ -126,7 +108,9 @@
                            <div class="dropdown-divider"></div>
                            <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
                          </div>
-                       </li> 
+                       </li >
+                       
+                       
                     </ul>
                   </div>
                  </div>

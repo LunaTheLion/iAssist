@@ -40,7 +40,7 @@
                         </h3>
                     </div>
                     <div class="panel-footer">
-                        <a href=""><strong>College</strong></a>
+                        <a href="<?php echo base_url('admin/college') ?>"><strong>College</strong></a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         </h3>
                     </div>
                     <div class="panel-footer">
-                        <a href=""><strong>Jobs</strong></a>
+                        <a href="<?php echo base_url('admin/JobPost') ?>"><strong>Jobs</strong></a>
                     </div>
                 </div>
             </div>
@@ -331,7 +331,7 @@
                     $('#showdata').html(html);
                 },
                 error: function(){
-                    alert('Could not get aata from Database');
+                    alert('Could not get data from Database');
                 }
             });
         }

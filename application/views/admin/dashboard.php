@@ -58,7 +58,7 @@
                         </h3>
                     </div>
                     <div class="panel-footer">
-                        <a href=""><strong>Jobs</strong></a>
+                        <a href="<?php echo base_url('admin/JobPost')?>"><strong>Jobs</strong></a>
                     </div>
                 </div>
             </div>

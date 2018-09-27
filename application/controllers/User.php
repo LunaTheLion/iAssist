@@ -31,11 +31,11 @@ class User extends CI_CONTROLLER{
 				$fetch = array(
 					'data' => $this->User_Model->create_profile($email),
 				);
-				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
 				$this->load->view('freelance/new-account-side-nav');
 				$this->load->view('freelance/create-educ-profile');
 				// $this->load->view('freelance/new-profile',$fetch);
-				$this->load->view('freelance/footer');
+				$this->load->view('freelance/template/footer');
 				// echo "<pre>";
 				// print_r($get);	
 				// echo "</pre>";
@@ -61,11 +61,11 @@ class User extends CI_CONTROLLER{
 				$fetch = array(
 					'data' => $this->User_Model->create_profile($email),
 				);
-				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
 				$this->load->view('freelance/side-nav');
 				$this->load->view('freelance/create-educ-profile');
 				// $this->load->view('freelance/new-profile',$fetch);
-				$this->load->view('freelance/footer');
+				$this->load->view('freelance/template/footer');
 				// echo "<pre>";
 				// print_r($get);	
 				// echo "</pre>";
@@ -101,11 +101,11 @@ class User extends CI_CONTROLLER{
 				$fetch = array(
 					'data' => $this->User_Model->create_profile($email),
 				);
-				$this->load->view('freelance/header', $sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
 				$this->load->view('freelance/new-account-side-nav');
 				$this->load->view('freelance/create-educ-profile',$data);
 				// $this->load->view('freelance/new-profile',$fetch);
-				$this->load->view('freelance/footer');
+				$this->load->view('freelance/template/footer');
 				// echo "<pre>";
 				// print_r($get);	
 				// echo "</pre>";
@@ -141,10 +141,10 @@ class User extends CI_CONTROLLER{
 		if($this->form_validation->run() == FALSE )
 		{			
 			//if it didn't meet the Requirements
-			$this->load->view('freelance/header', $sess_data);
+			$this->load->view('freelance/template/header', $sess_data);
 			$this->load->view('freelance/new-account-side-nav');
 			$this->load->view('freelance/new-account.php');
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 
 		}
 		else
@@ -220,17 +220,12 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		//$h = $this->User_Model->get_profile($email);
-		$one =array(
-			'h'=>$this->User_Model->get_account_info($email),);
-			// $fetch = array(
-			// 	'data' => $this->User_Model->get_profile($email),
-			// );
-
-			$this->load->view('freelance/header', $sess_data);
-			$this->load->view('freelance/new-profile-side',$one);
-			$this->load->view('freelance/new-profile-body');
-			$this->load->view('freelance/footer');
+		$one =array('h'=>$this->User_Model->get_account_info($email));
+		
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/new-profile-side',$one);
+		$this->load->view('freelance/new-profile-body');
+		$this->load->view('freelance/template/footer');
 
 		// $post= $this->User_Model->get_post($email);
 
@@ -260,7 +255,7 @@ class User extends CI_CONTROLLER{
 		// 		// echo "</pre>";
 		// 		$this->load->view('freelance/header', $sess_data);
 		// 		$this->load->view('freelance/new-profile',$fetch);
-		// 		$this->load->view('freelance/footer');
+		// 		$this->load->view('freelance/template/footer');
 		// 	}
 		// }
 		// else
@@ -289,16 +284,11 @@ class User extends CI_CONTROLLER{
 			'acc' => $this->User_Model->get_profile($email),
 			'skill' => $this->User_Model->get_skill($email),
 		);
-
-	
-		// echo "<pre>";
-		// print_r($account);
-		// echo "</pre>";
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/new-profile-side');
 		$this->load->view('freelance/get-user-profile',$account);
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function account()
 	{
@@ -310,10 +300,10 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/side-nav');
 		$this->load->view('freelance/account-setting');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 
 
@@ -326,10 +316,10 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/side-nav');
 		$this->load->view('freelance/create-post');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function delete_post($id)
 	{
@@ -361,10 +351,10 @@ class User extends CI_CONTROLLER{
 		if ($this->form_validation->run() == FALSE)
 		{
 		  	
-		   	$this->load->view('freelance/header', $sess_data);
+		   	$this->load->view('freelance/template/header', $sess_data);
 		   	$this->load->view('freelance/side-nav');
 			$this->load->view('freelance/create-post');
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 		else
 		{	
@@ -389,10 +379,10 @@ class User extends CI_CONTROLLER{
     		unset($_POST['budget']);
     		unset($_POST['category']);
 
-			$this->load->view('freelance/header', $sess_data);
+			$this->load->view('freelance/template/header', $sess_data);
 			$this->load->view('freelance/side-nav');
 			$this->load->view('freelance/create-post');
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 
 
@@ -408,10 +398,10 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/new-account-side-nav');
 		$this->load->view('freelance/skill');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function v_skill()
 	{
@@ -455,10 +445,10 @@ class User extends CI_CONTROLLER{
 			
 		}
 		redirect('user/skill');
-		// $this->load->view('freelance/header', $sess_data);
+		// $this->load->view('freelance/template/header', $sess_data);
 		// $this->load->view('freelance/side-nav');
 		// $this->load->view('freelance/interest');
-		// $this->load->view('freelance/footer');
+		// $this->load->view('freelance/template/footer');
 	}
 	public function Project()
 	{
@@ -469,10 +459,10 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/new-account-side-nav');
 		$this->load->view('freelance/project');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	
 	public function Interest()
@@ -482,12 +472,13 @@ class User extends CI_CONTROLLER{
 			'id' => $get->account_id,
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
+
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/new-account-side-nav');
 		$this->load->view('freelance/interest');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function sample4()
 	{
@@ -498,10 +489,10 @@ class User extends CI_CONTROLLER{
 			'username' => $get->account_username,
 		);
 		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/header', $sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/side-nav');
 		$this->load->view('freelance/create-post');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function logout()
 	{
@@ -511,13 +502,113 @@ class User extends CI_CONTROLLER{
 
 	public function bayad()
 	{
-		$this->load->view('freelance/header');
+		$this->load->view('freelance/template/header');
 		$this->load->view('freelance/payment/products');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
+	public function thread()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->new_job(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/user-nav');
+		$this->load->view('freelance/thread',$job_posts);
+		$this->load->view('freelance/template/footer');
+	}
+	public function PostJob()
+	{	
+
+	$data_in['title'] = $this->input->post('title');
+	$data_in['post_type'] = $this->input->post('TypeOfPost');
+	$data_in['post_username'] = $this->session->userdata('username');
+	$data_in['title_slug'] = urlencode($this->input->post('title'));
+	$data_in['description'] = $this->input->post('description');
+	$data_in['category'] = $this->input->post('category');
+	$data_in['budget'] = $this->input->post('offer');
+	$data_in['date_created'] = date('Y-m-d g:i');
+	$data_in['creator'] = $this->session->userdata('email');
+	$data_in['status'] = 0;
+	$data_in['post_result'] = true;
 
 
+	$result = $this->User_Model->insert_job_post($data_in);
+	//  $msg['success'] = false;
+	// if($insert)
+	// {
+	// 	//redirect('user/general/'.$this->session->userdata('email'), 'refresh');
+	// 	$msg['success'] = true;
+	// }
+	echo json_encode($result);
 
+	}
+	public function countJobPost()
+	{
+		$result = $this->User_Model->count_user_job_post();
+		echo json_encode($result); 
+	}
+	public function countAllPost()
+	{
+		$result = $this->User_Model->count_all_user_post();
+		echo json_encode($result);
+	}
+	public function Post()
+	{
+		//echo $this->input->post('PostDesc');
+		$insert = $this->User_Model->insert_regular_post();
+		if($insert)
+		{
+			redirect('user/general/'.$this->session->userdata('email'), 'refresh');
+		}
+	}
+	public function get_post()
+	{
+		$getData = $this->User_Model->get_user_post();
+		//print_r()
+		 echo json_encode($getData);
+	}
+	public function user_post()
+	{
+
+	}
+	public function RequestPost()
+	{
+		$result = $this->User_Model->request_post();
+		if($result)
+		{
+			echo "<script>alert('Your Request will be posted once approved by the Admin.')</script>";
+			redirect('user/thread','refresh');
+		}
+		else
+		{
+			echo "<script>alert('Sorry, cannot generate your request, please try later.')</script>";
+			redirect('user/thread','refresh');
+		}
+
+	}
+	public function ProfilePic()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+		);
+		
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/user-nav');
+		$this->load->view('freelance/profile_pic');
+		$this->load->view('freelance/template/footer');
+	}
 
 
 

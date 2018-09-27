@@ -7,6 +7,16 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-3 col-sm-3">
+							Username
+						</div>
+						<div class="col-lg-7 col-sm-7"><p class="text-primary">
+							<?php 
+								echo $account->account_username;
+							  ?></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-sm-3">
 							Name
 						</div>
 						<div class="col-lg-7 col-sm-7"><p class="text-primary">
@@ -115,10 +125,18 @@
 					<?php foreach ($skill as $skills): ?>
 					<div class="row">
 						<div class="col-lg-3 col-sm-3">
+							  Category
+						</div>
+						<div class="col-lg-7 col-sm-7"><p class="text-primary">
 							<?php 
-							
 								echo $skills->skill_category;
 							  ?></p>
+							  
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-sm-3">
+							Skill
 						</div>
 						<div class="col-lg-7 col-sm-7"><p class="text-primary">
 							<?php 

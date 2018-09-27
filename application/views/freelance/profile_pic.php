@@ -1,11 +1,13 @@
-<title>iAssist - thread</title>
-<div class="col-lg-6 col-sm-6">
-			<div class="card" style="padding: 10px;">
+		<div class="col-lg-6 col-sm-8">
+			<div class="card">
+				
+				<div class="card-body">
+				
 				<div class="card" >
 				  <div class="card-body" style="padding-bottom: 3px;">
 				  	<div class="row">
 				  		<div class="col-lg-3 col-sm-6" style="padding-right: 0px;">
-				  			<h5 class="card-title">Create Post</h5>
+				  			<h5 class="card-title">Profile Pic</h5>
 				  			
 				  		</div>
 				  		<div class="col-lg-3 col-sm-6">
@@ -92,76 +94,40 @@
 					  </div> -->
 					  
 				</div>
+			
+				</div>
+				
 			</div>
 			<br>
-			<div class="card" style="padding: 10px;">
+			<div class="card" id="showPost">
+				
+				<!-- <div class="card-body">
 				
 
-				<?php foreach ($jobs as $row): ?>
-					<br>
-					<div class="card">
-						<div class="card-body">
-							<p class="text-primary" style="font-size: 19px;"><?php echo $row->title; ?></p>
-							<p><?php echo $row->description; ?></p>
-						</div>
-					</div>
-				<?php endforeach; ?>
-
+				<div class="card" id="post">
+				  <div class="card-body" style="padding-bottom: 3px;">
+				    <h5 class="card-title">Make Post</h5>
+				   
+				    <textarea class="form-control" style="border: none;" placeholder="Write Something" rows="4" cols="110"></textarea>
+				    <button class="btn btn-secondary" style="padding-top: 2px; padding: 10px;float: right; right: 0;">Post</button>
+				  </div>
+				</div> 
+				</div> -->
+				
 			</div>
-			<script>
-				$('#postType').change(function(){
-					
-					var val = $(this).val();
-					if(val == 'Regular')
-					{//Regular Post
-						$('#post1').show();
-						$('#post2').hide();
-					}
-					else
-					{//Job Posting
-						$('#post1').hide();
-						$('#post2').show();
-					}
-				});
-				$('#postType').load(function(){
-					if(this.val() == 'Regular')
-					{
-						$('#post1').show();
-						$('#post2').hide();
-					}
-					else
-					{
-						$('#post1').hide();
-						$('#post2').show();
-					}
-				});
+			
 
-				$('#JobForm').on('submit', function(){
-					event.preventDefault();
-					console.log($(this).serialize());
-					$.ajax({
-						type:'ajax',
-						method: 'Post',
-						url: '<?php echo base_url()?>user/PostJob',
-						data: $(this).serialize(),
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							console.log(data);
-							alert('Your Job Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
-							$('#JobForm')[0].reset();
-							location.reload();
-						},
-						error: function(){
-							alert('Could not save');
-						}
+		
 
 
-					})
+	</div>
+	</div>
+	
 
 
-				})
-			</script>
-		</div>
-	</div>	
+	
 </div>
+
+
+
+

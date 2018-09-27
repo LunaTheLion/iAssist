@@ -254,7 +254,125 @@ class User_Model extends CI_Model{
 			}
 		}
 	}
-	
+	public function insert_job_post($data_in)
+	{
+		// $data = array(
+		// 	'post_type' => $this->input->post('TypeOfPost'),
+		// 	'title' => $this->input->post('title'),
+		// 	'title_slug' => urlencode($this->input->post('title')),
+		// 	'description' => $this->input->post('description'),
+		// 	'budget' => $this->input->post('offer'),
+		// 	'category' => $this->input->post('category'),
+		// 	'date_created' => date('Y-m-d g:i'),
+		// 	'creator' => $this->session->userdata('email'),
+		// 	'status' => 0,
+		// );
+		$this->db->insert('post_tbl',$data_in);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function count_user_job_post()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type','Job');
+		$this->db->where('status',0);
+		$this->db->where('creator', $this->session->userdata('email'));
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function count_all_user_post()
+	{
+		$this->db->select('*');
+		$this->db->where('creator', $this->session->userdata('email'));
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function insert_regular_post()
+	{
+		$data = array(
+			'post_type' => $this->input->post('TypeOfPost'),
+			'post_username' =>$this->session->userdata('username'),
+			'description' => $this->input->post('PostDesc'),
+			'date_created' => date('Y-m-d g:i'),
+			'creator' => $this->session->userdata('email'),
+			'status' => 1,
+		);
+		$this->db->insert('post_tbl',$data);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_post()
+	{
+		$this->db->select('*');
+		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->where('creator', $this->session->userdata('email'));
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function new_job()
+	{
+		$this->db->select('*');
+		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		return $query->result();
+	}
+	public function request_post()
+	{
+		$request = array(
+			'request_email' => $this->session->userdata('email'),
+			'request_category' => $this->input->post('category'),
+			'request_description' => $this->input->post('description'),
+			'request_price' => $this->input->post('offer'),
+			'request_status' => 0,
+		);
+
+		$this->db->insert('project_request_tbl', $request);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
 
 }//END OF MODEL CONTROLLER
 

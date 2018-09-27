@@ -414,6 +414,66 @@ class Admin extends CI_Controller
 		echo json_encode($msg);
 	
 	}
+	public function JobPost()
+	{
+		$email = $this->session->userdata('email');
+		$this->load->model('Admin_model');
+		$info = $this->Admin_model->get_info($email);
+
+		$admin_data = array(
+			'email' =>$info->account_email,
+			'logged' =>$info->log_status,
+			'username' =>$info->account_username,
+		);
+		
+		$nav_data = array
+		(
+			'active_nav'	=>	'active-menu',
+			'active_nav'	=>	'',
+			//'new_users'			=>	$this->Admin_model->get_users(),
+			'active_job'		=>	'',
+		);
+
+		$new_job = array(
+			'new' =>$this->Admin_model->get_new_jobs(),
+		);
+
+		$this->session->set_userdata($admin_data);
+		$this->load->view('admin/template/header',$admin_data);
+		$this->load->view('admin/template/nav', $nav_data);	
+		$this->load->view('admin/jobs', $new_job);
+		$this->load->view('admin/template/footer');
+	}
+	public function showJobs()
+	{
+		$result = $this->Admin_model->get_new_jobs();
+		echo json_encode($result);
+	}
+	public function viewJobs()
+	{
+		$result = $this->Admin_model->view_jobs();
+		echo json_encode($result);
+	}
+	public function AllowJobs()
+	{
+		$result = $this->Admin_model->allow_job();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+	public function DeleteJobPost()
+	{
+		$result = $this->Admin_model->delete_job();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
 
 
 }

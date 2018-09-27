@@ -3,10 +3,10 @@
 	<div class="row">
 		<div class="col-lg-4 col-sm-4">
 				
+				<a href="<?php echo base_url('user/ProfilePic')?>"><img src="<?php echo base_url('assets/img/fromYe/g1.png')?>" class="img center" ></a>
 
-				<img src="<?php echo base_url('assets/img/fromYe/g1.png')?>" class="img center" >
-				<br>
-				<h3 align="center"><?php echo $this->session->userdata('username'); ?></h3>
+				<br><a href="<?php echo base_url('user/general/'.$this->session->userdata('email')) ?>">
+				<h3 align="center"><?php echo $this->session->userdata('username'); ?></h3></a>
 		
 			<div class="list-group" align="center" style="border:none;">
 			  <a href="<?php echo base_url('user/user_profile') ?>" class="list-group-item list-group-item-action " style="border:none;">
@@ -14,13 +14,142 @@
 			  </a>
 			  <a href="#" class="list-group-item list-group-item-action" style="border:none;">Projects
 			  </a>
+			  <a href="#" class="list-group-item list-group-item-action" style="border:none;">
+			  	<span id="totalJobPost" class="badge badge-light"></span>
+			  	Posts
+			  	<span class="badge" id="new"></span>
+			  </a>
+			  <!-- <div class="collapse" id="postCollapse">
+			  	<a href="" class="list-group-item list-group-item-action" style="border:none;">Approved Job Posts
+			  		<span class="badge" id="new2"></span>
+			  	</a>
+			  	
+			  </div> -->
 			  <a href="#" class="list-group-item list-group-item-action " style="border:none;">Skills
 			  </a>
 			</div>
 			<div class="card">
-				Card
+				
 				
 				
 			</div>
 		</div>
 
+		<!-- <div id="WarningPost" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <textarea class="form-control" rows="4" cols="60" ></textarea>
+		      </div>
+		      <div class="modal-footer">
+		      	
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div> -->
+
+		<!-- <?php if(!empty($post_result)): ?>
+			<?php if($post_result=='success'): ?>
+				<script type="text/javascript">
+					
+				</script>
+				<div  class="WarningPost modal fade" tabindex="-1" role="dialog">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <textarea class="form-control" rows="4" cols="60" ></textarea>
+				      </div>
+				      <div class="modal-footer">
+				      	
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			<?php endif; ?>
+		<?php endif; ?>
+ -->
+		<div  class="WarningPost modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <textarea class="form-control" rows="4" cols="60" ></textarea>
+		      </div>
+		      <div class="modal-footer">
+		      	
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<script>
+	$(window).on('load',function(){
+		showJobPost();
+		countAllPost();
+		$('#openModal').on('click',function(){
+			$('.WarningPost').modal('show');
+		});
+
+		function showJobPost(){
+
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url()?>user/countJobPost',
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					//Check if database result
+					//console.log(data); 
+					$('#new').text(data);
+					$('#new').addClass('badge-danger');
+					$('#new2').text(data);
+					$('#new2').addClass('badge-danger');
+				},
+				error: function(){
+					alert('Cant load your new job post');
+				}
+			});
+		}
+		function countAllPost()
+		{
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url()?>user/countAllPost',
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					//Check if database result
+					//console.log(data);
+					$('#totalJobPost').text(data);
+
+				},
+				error: function(){
+					alert('Cant count all your post');
+				}
+			})
+		}
+
+	});
+</script>

@@ -24,18 +24,7 @@
     <script type="text/javascript" src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- <!--    <script type="text/javascript" src="<?php echo base_url('assets/js/bootswatch.lux.js') ?>"></script> 
-   <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js') ?>"></script>  -->
 
-   <!--  <script src="<?php echo base_url('assets/tether/tether.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/smooth-scroll/smooth-scroll.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/dropdown/js/script.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/touch-swipe/jquery.touch-swipe.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/jarallax/jarallax.min.js'); ?>"></script> 
- -->
-    <!-- <script src="<?php echo base_url('assets/js/tags-input.js')?>"></script> -->
-
-    <!-- <script src="<?php echo base_url('assets/js/bootstrap-tokenfield.js')?>"></script> -->
 
 
 
