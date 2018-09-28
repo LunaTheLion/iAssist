@@ -605,11 +605,70 @@ class User extends CI_CONTROLLER{
 		
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
-		$this->load->view('freelance/user-nav');
+		$this->load->view('freelance/new-profile-side');
 		$this->load->view('freelance/profile_pic');
 		$this->load->view('freelance/template/footer');
 	}
+	public function countRequestPost()
+	{
+		$result = $this->User_Model->count_user_request_post();
+		echo json_encode($result);
+	}
+	public function success_upload()
+	{
 
+	}
+	public function do_upload()
+	{
+	        $config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 100;
+	        $config['max_width']            = 1024;
+	        $config['max_height']           = 768;
+
+	        $this->load->library('upload', $config);
+
+	        if ( ! $this->upload->do_upload('userfile'))
+	        {
+	                $error = array('error' => $this->upload->display_errors());
+
+	                $get = $this->User_Model->get_important($this->session->userdata('email'));
+	                $sess_data = array(
+	                	'id' => $get->account_id,
+	                	'email' =>$get->account_email,
+	                	'username' => $get->account_username,
+	                );
+	                
+	                $this->session->set_userdata($sess_data);
+	                $this->load->view('freelance/template/header', $sess_data);
+	                $this->load->view('freelance/new-profile-side');
+	                $this->load->view('freelance/profile_pic', $error);
+	                $this->load->view('freelance/template/footer');
+	        }
+	        else
+	        {
+	                $data = array(
+	                	'upload_data' => $this->upload->data()
+	                );
+	                $file_data = $this->upload->data();
+	                $data['img'] = base_url().'/uploads/'.$file_data['file_name'];
+	                $image =  $file_data['file_name'];
+	                $this->User_Model->saveImg($image);
+
+	                $get = $this->User_Model->get_important($this->session->userdata('email'));
+	                $sess_data = array(
+	                	'id' => $get->account_id,
+	                	'email' =>$get->account_email,
+	                	'username' => $get->account_username,
+	                );
+	                
+	                $this->session->set_userdata($sess_data);
+	                $this->load->view('freelance/template/header', $sess_data);
+	                $this->load->view('freelance/new-profile-side');
+	                $this->load->view('freelance/profile_pic_success', $data);
+	                $this->load->view('freelance/template/footer');
+	        }
+	}
 
 
 

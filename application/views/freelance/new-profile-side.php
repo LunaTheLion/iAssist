@@ -143,7 +143,23 @@
 					//Check if database result
 					//console.log(data);
 					$('#totalJobPost').text(data);
-
+				},
+				error: function(){
+					alert('Cant count all your post');
+				}
+			})
+		}
+		function countRequest()
+		{
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url()?>user/countRequestPost',
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					//Check if database result
+					//console.log(data);
+					$('#totalJobPost').text(data);
 				},
 				error: function(){
 					alert('Cant count all your post');

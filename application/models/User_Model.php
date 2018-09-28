@@ -373,6 +373,20 @@ class User_Model extends CI_Model{
 		}
 
 	}
+	public function count_user_request_post()
+	{
+		$this->db->select('*');
+		$this->db->where('request_email', $this->session->userdata('email'));
+		$query = $this->db->get('project_request_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 }//END OF MODEL CONTROLLER
 
