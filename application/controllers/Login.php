@@ -107,7 +107,7 @@ class Login extends CI_Controller{
 		}
 		elseif(!empty($data))
 		{
-			redirect('general/'.$this->session->userdata('username'));
+			redirect('user/general/'.$this->session->userdata('email'));
 		}
 		
 	}

@@ -15,7 +15,7 @@
     <script src="<?php echo base_url() ?>assets/user/js/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/user/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/user/js/bootstrap.min.js') ?>"></script>
-   <!--  <script src="<?php echo base_url() ?>assets/user/js/bootstrap.js"></script> -->
+    <script src="<?php echo base_url() ?>assets/user/js/bootstrap.js"></script> 
 
     <style type="text/css">
     .error{
@@ -95,6 +95,7 @@
                         ?>
                         </a>
                       </li>
+
                   <!--   <li>
                       <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
                     </li> -->

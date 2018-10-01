@@ -105,7 +105,15 @@ class User_Model extends CI_Model{
 		$this->db->where('account_email', $email);
 		$this->db->where('status','complete');
 		$hey = $this->db->get('account_tbl');
-		return $hey->result();
+		
+		if($hey->result_array() > 0)
+		{
+			return $hey->result();
+		}
+		else
+		{
+			return false;
+		}
 
 	}
 
@@ -114,7 +122,14 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('ed_account_email', $email);
 		$hey = $this->db->get('freelance_education_tbl');
-		return $hey->result();
+		if($hey->result_array() > 0)
+		{
+			return $hey->result();
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public function insert_educ($educ_data)
@@ -134,6 +149,36 @@ class User_Model extends CI_Model{
 		}
 	}
 
+	public function check_account($email)
+	{
+		$this->db->where('account_email', $email);
+		$this->db->where('status', 'complete');
+		$query = $this->db->get('account_tbl');
+		if( $query->result_array() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function check_educ($email)
+	{
+		$this->db->select('*');
+		$this->db->where('ed_account_email', $email);
+		$query = $this->db->get('freelance_education_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+
+			return false;
+		}
+	}
+
 	public function get_profile($email)
 	{
 		//Education and Account Profile only
@@ -142,16 +187,15 @@ class User_Model extends CI_Model{
 		$this->db->where('status', 'complete');
 		$this->db->from('account_tbl');
 		$this->db->join('freelance_education_tbl', 'ed_account_email = account_email','right');
-		//	$this->db->join('freelance_skill_table','skill_email = account_email', 'outer');
+		
 		 $query = $this->db->get();
-
 		    if($query->result_array() > 0)
 		    {
 		        return $query->result();
 		    }
 		    else
 		    {
-		        return $query->result();
+		        return false;
 		    }
 	}	
 	
@@ -202,12 +246,21 @@ class User_Model extends CI_Model{
 			//return false;
 		}
 	}
-	public function account_verified($email)
+	public function account_verified($email, $code)
 	{
 		$this->db->select('account_email', $email);
-		$this->db->where('confirm_code', '');
+		$this->db->where('verification_code', $code);
+		$this->db->Where('confirm_code', 'review');
 		$hey = $this->db->get('account_tbl');
-		return $hey->result();
+		if($hey->result_array() > 0)
+		{
+			return $hey->result();
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 	public function code_match($email,$code)
 	{
@@ -216,7 +269,7 @@ class User_Model extends CI_Model{
 		$this->db->where('verification_code', $code);
 		$this->db->set('confirm_code', 'review');
 		$this->db->update('account_tbl');
-		if($this->db->affected_rows() != 0)
+		if($this->db->affected_rows() > 0)
 		{
 			return true;
 		}
@@ -226,6 +279,8 @@ class User_Model extends CI_Model{
 			//return false;
 		}
 	}
+
+
 	public function get_college()
 	{
 		$this->db->select('*');
@@ -387,7 +442,148 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function saveImg($image)
+	{
+		$this->db->select('*');
+		$this->db->where('account_email', $this->session->userdata('email'));
+		$this->db->set('account_img', $image);
+		$this->db->update('account_tbl');
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			echo "NOPE";
+			return false;
+		}
+	}
+	public function insert_skill_post($data_in)
+	{
+		$this->db->insert('post_tbl',$data_in);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_skill()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type', 'skill');
+		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->where('creator', $this->session->userdata('email'));
+		// $this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function insert_project_post($data_in)
+	{
+		$this->db->insert('post_tbl',$data_in);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_project()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type', 'Project');
+		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->where('creator', $this->session->userdata('email'));
+		// $this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function view_project($title_slug, $id)
+	{
 
+
+		$this->db->where('post_id', $id);
+		$this->db->where('title_slug', $title_slug);
+		$query = $this->db->get('post_tbl');
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function view_project_if_not_user($title_slug,$id)
+	{
+
+		// $this->db->select("*");
+		// $this->db->where('account_email' , $email);
+		// $this->db->where('status', 'complete');
+		// $this->db->from('account_tbl');
+		// $this->db->join('freelance_education_tbl', 'ed_account_email = account_email','right');
+		
+		//  $query = $this->db->get();
+		//     if($query->result_array() > 0)
+		//     {
+		//         return $query->result();
+		//     }
+		//     else
+		//     {
+		//         return false;
+		//     }
+
+
+
+		$email = $this->session->userdata('email');
+		$this->db->select('*');
+		$this->db->where('creator', $email);
+		$this->db->where('post_id', $id);
+		$this->db->from('post_tbl');
+		$this->db->join('account_tbl', 'account_email = creator', 'right');
+		$get = $this->db->get();
+		if($get->result_array() > 0)
+		{
+			return $get->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_project_owner($id)
+	{
+		//echo $id;
+		$this->db->select('creator');
+		$this->db->where('post_id', $id);
+		$data = $this->db->get('post_tbl');
+		if($data->result_array() > 1 )
+		{
+			return $data->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
 }//END OF MODEL CONTROLLER
 
 

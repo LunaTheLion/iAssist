@@ -1,6 +1,9 @@
 		<div class="col-lg-6 col-sm-6">
 			<div class="card">
+				
+
 				<?php foreach ($acc as $account):?>
+
 				<div class="card-header">
 					Personal Profile
 				</div>
@@ -75,6 +78,8 @@
 
 				<?php endforeach; ?>
 			
+				
+
 			</div>
 			<br>
 			<div class="card">
@@ -82,36 +87,48 @@
 					Educational Profile
 				</div>
 				<div class="card-body">
-					<div class="row">
-						<div class="col-lg-3 col-sm-3">
-							School
+					<?php if (!isset($educ))
+					{
+						echo "
+						<div class='alert alert-dismissible alert-info'>
+						  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+						  <h4 class='alert-heading'>Oops!</h4>
+						  <p class='mb-0'>Seems like you haven't finish your educational field,<a href='".base_url('user/educ')."' class='alert-link'>Click me to add your educational detail</a>.</p>
 						</div>
-						<div class="col-lg-7 col-sm-7"><p class="text-primary">
-							<?php 
-								echo $account->ed_school_name;	
-							  ?></p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3 col-sm-3">
-							College
-						</div>
-						<div class="col-lg-7 col-sm-7"><p class="text-primary">
-							<?php 
-								echo $account->ed_college;
-							?></p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3 col-sm-3">
-							Major
-						</div>
-						<div class="col-lg-7 col-sm-7"><p class="text-primary">
-							<?php 
-								echo $account->ed_focus_of_study;
-							  ?></p>
-						</div>
-					</div>
+						";
+					}
+					else
+					{
+						foreach ($educ as $ed):
+						
+						echo "<div class='row'>
+								<div class='col-lg-3 col-sm-3'>
+								School
+								</div>
+								<div class='col-lg-7 col-sm-7'><p class='text-primary'>
+								'".$ed->ed_school_name."'</p>
+								</div>
+							</div>";
+						echo "<div class='row'>
+								<div class='col-lg-3 col-sm-3'>
+								College
+								</div>
+								<div class='col-lg-7 col-sm-7'><p class='text-primary'> 
+									'".$ed->ed_college."'</p>
+								</div>
+							</div>";
+						echo "<div class='row'>
+								<div class='col-lg-3 col-sm-3'>
+								Major
+								</div>
+								<div class='col-lg-7 col-sm-7'><p class='text-primary'> 
+									'".$ed->ed_focus_of_study."'</p>
+								</div>
+							</div>";						
+						endforeach;
+					}	
+					
+					 ?>
 				</div>
 
 			</div>
@@ -122,31 +139,49 @@
 					Skills
 				</div>
 				<div class="card-body">
-					<?php foreach ($skill as $skills): ?>
-					<div class="row">
-						<div class="col-lg-3 col-sm-3">
-							  Category
-						</div>
-						<div class="col-lg-7 col-sm-7"><p class="text-primary">
-							<?php 
-								echo $skills->skill_category;
-							  ?></p>
-							  
-						</div>
+						<?php if (!isset($educ))
+						{
+							echo "
+							<div class='alert alert-dismissible alert-info'>
+							  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+							  <h4 class='alert-heading'>Warning!</h4>
+							  <p class='mb-0'>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href='https://bootswatch.com/lux/#' class='alert-link'>vel scelerisque nisl consectetur et</a>.</p>
+							</div>
+							";
+						}
+						else
+						{
+							foreach ($educ as $ed):
+							
+							echo "<div class='row'>
+									<div class='col-lg-3 col-sm-3'>
+									School
+									</div>
+									<div class='col-lg-7 col-sm-7'><p class='text-primary'>
+									'".$ed->ed_school_name."'</p>
+									</div>
+								</div>";
+							echo "<div class='row'>
+									<div class='col-lg-3 col-sm-3'>
+									College
+									</div>
+									<div class='col-lg-7 col-sm-7'><p class='text-primary'> 
+										'".$ed->ed_college."'</p>
+									</div>
+								</div>";
+							echo "<div class='row'>
+									<div class='col-lg-3 col-sm-3'>
+									Major
+									</div>
+									<div class='col-lg-7 col-sm-7'><p class='text-primary'> 
+										'".$ed->ed_focus_of_study."'</p>
+									</div>
+								</div>";						
+							endforeach;
+						}	
+						
+						 ?>
 					</div>
-					<div class="row">
-						<div class="col-lg-3 col-sm-3">
-							Skill
-						</div>
-						<div class="col-lg-7 col-sm-7"><p class="text-primary">
-							<?php 
-								echo $skills->skill;
-							  ?></p>
-							  
-						</div>
-					</div>
-
-					<?php endforeach; ?>
 				</div>
 			
 			</div>

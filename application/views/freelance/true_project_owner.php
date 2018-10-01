@@ -2,24 +2,24 @@
 <div class="jumbotron p-5">
 	<div class="row">
 		<div class="col-lg-3 col-sm-3">
+			<?php foreach ($owner as $row):?>
+
+			
 			<img class="img center"  src="<?php 
 			$img = $this->session->userdata('img');
 			if(!empty($img))
 			{
-				echo base_url().'/uploads/'.$this->session->userdata('img');
+				echo base_url().'/uploads/'.$row->account_img;
 			}
 			else
 			{
 				echo base_url('assets/img/fromYe/g1.png');
 			} ?>">
 			<center>
-				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
+				<br>
+				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $row->account_username; ?></a></h6>
 			</center>
-			<?php foreach ($owner as $row)?>
-
-			<?php echo $row->account_img;  ?>
-
-			<?php endforeach; ?>
+			
 			<!-- <div class="card">
 				<div class="card" data-toggle="modal" data-target="#addModal">
 				  <div class="card-body" style="padding-bottom: 3px;">
@@ -34,14 +34,15 @@
 				
 			</div> -->
 			<div class="list-group">
-			 
+			 	<a href="#" class="btn btn-success" >Request Resume</a>
+			 	<a href="#" class="btn btn-info" >Message</a>
 			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request
 			  </a>
 			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
 			  </a> -->
 			</div>
 		</div>
-		
+		<?php endforeach; ?>
 
 <div id="postRequest" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">

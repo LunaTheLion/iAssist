@@ -2,14 +2,15 @@
 <div class="col-lg-6 col-sm-6">
 			<div class="card" style="padding: 10px;">
 				<div class="card" >
-				  <div class="card-body" style="padding-bottom: 3px;">
+				  <div class="card-body" style="padding: 3px;">
 				  	<div class="row">
 				  		<div class="col-lg-3 col-sm-6" style="padding-right: 0px;">
-				  			<h5 class="card-title">Create Post</h5>
-				  			
+				  			<h5><button class="btn btn-secondary" id="cp" style="margin-bottom: 0px; ">Create Post</button></h5>
+				  	
 				  		</div>
-				  		<div class="col-lg-3 col-sm-6">
-				  			<select class="form-control" id="postType" style="padding: 3px;">
+
+				  		<div class="col-lg-3 col-sm-6" id="Ptype">
+				  			<select class="form-control center" id="postType" style="margin-top: 5px;">
 				   				<option value="Regular">Regular Post</option>
 				   				<option value="Job">Job Post</option>
 				   			</select>
@@ -101,7 +102,7 @@
 					<br>
 					<div class="card">
 						<div class="card-body">
-							<p class="text-primary" style="font-size: 19px;"><?php echo $row->title; ?></p>
+							<p class="text-primary" style="font-size: 19px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>"><?php echo $row->title; ?></p></a>
 							<p><?php echo $row->description; ?></p>
 						</div>
 					</div>
@@ -109,6 +110,12 @@
 
 			</div>
 			<script>
+
+				$('#cp').on('click', function(){
+					$('#Ptype').toggle();
+					$('#post1').toggle();
+				})
+
 				$('#postType').change(function(){
 					
 					var val = $(this).val();

@@ -3,7 +3,17 @@
 	<div class="row">
 		<div class="col-lg-4 col-sm-4">
 				
-				<a href="<?php echo base_url('user/ProfilePic')?>"><img src="<?php echo base_url('assets/img/fromYe/g1.png')?>" class="img center" ></a>
+				<a href="<?php echo base_url('user/ProfilePic')?>"><img src="<?php
+					$img = $this->session->userdata('img');
+					if(!empty($img))
+					{
+						echo base_url().'/uploads/'.$this->session->userdata('img');
+					}
+					else 
+					{
+						echo base_url('assets/img/fromYe/g1.png');
+					}
+				 ?>" class="img center" ></a>
 
 				<br><a href="<?php echo base_url('user/general/'.$this->session->userdata('email')) ?>">
 				<h3 align="center"><?php echo $this->session->userdata('username'); ?></h3></a>
@@ -12,20 +22,14 @@
 			  <a href="<?php echo base_url('user/user_profile') ?>" class="list-group-item list-group-item-action " style="border:none;">
 			    Profile
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action" style="border:none;">Projects
+			  <a href="<?php echo base_url('user/ProjectPost') ?>" class="list-group-item list-group-item-action" style="border:none;">Projects
 			  </a>
 			  <a href="#" class="list-group-item list-group-item-action" style="border:none;">
 			  	<span id="totalJobPost" class="badge badge-light"></span>
 			  	Posts
 			  	<span class="badge" id="new"></span>
 			  </a>
-			  <!-- <div class="collapse" id="postCollapse">
-			  	<a href="" class="list-group-item list-group-item-action" style="border:none;">Approved Job Posts
-			  		<span class="badge" id="new2"></span>
-			  	</a>
-			  	
-			  </div> -->
-			  <a href="#" class="list-group-item list-group-item-action " style="border:none;">Skills
+			  <a href="<?php echo base_url('user/SkillPost')?>" class="list-group-item list-group-item-action " style="border:none;">Skill Post
 			  </a>
 			</div>
 			<div class="card">
@@ -122,10 +126,14 @@
 				success: function(data){
 					//Check if database result
 					//console.log(data); 
-					$('#new').text(data);
-					$('#new').addClass('badge-danger');
-					$('#new2').text(data);
-					$('#new2').addClass('badge-danger');
+					if(data.true)
+					{
+						$('#new').text(data);
+						$('#new').addClass('badge-danger');
+						$('#new2').text(data);
+						$('#new2').addClass('badge-danger');
+					}
+					
 				},
 				error: function(){
 					alert('Cant load your new job post');
@@ -140,9 +148,11 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					//Check if database result
-					//console.log(data);
-					$('#totalJobPost').text(data);
+					if(data.true)
+					{
+						$('#totalJobPost').text(data);
+					}
+					
 				},
 				error: function(){
 					alert('Cant count all your post');
@@ -157,8 +167,7 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					//Check if database result
-					//console.log(data);
+
 					$('#totalJobPost').text(data);
 				},
 				error: function(){
