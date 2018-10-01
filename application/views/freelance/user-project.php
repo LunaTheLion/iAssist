@@ -134,7 +134,7 @@
 				success: function(data){
 					console.log(data);
 					alert('Your Project Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
-					$('#SkillForm')[0].reset();
+					$('#ProjectForm')[0].reset();
 					location.reload();
 					showAllPost();
 				},

@@ -37,7 +37,8 @@ class Admin extends CI_Controller
 			'data' => $this->Admin_model->review_project(),
 		);
 		$this->load->view('admin/template/header');
-		$this->load->view('admin/template/nav');	
+		$this->load->view('admin/template/nav');
+		$this->load->view('admin/admin-upper-nav');	
 		$this->load->view('admin/projects',$review);
 		$this->load->view('admin/template/footer');
 
@@ -441,17 +442,27 @@ class Admin extends CI_Controller
 		$this->session->set_userdata($admin_data);
 		$this->load->view('admin/template/header',$admin_data);
 		$this->load->view('admin/template/nav', $nav_data);	
+		$this->load->view('admin/admin-upper-nav');
 		$this->load->view('admin/jobs', $new_job);
 		$this->load->view('admin/template/footer');
 	}
 	public function showJobs()
 	{
 		$result = $this->Admin_model->get_new_jobs();
+		echo json_encode($result); }
+	public function showProjects()
+	{
+		$result = $this->Admin_model->get_new_projects();
 		echo json_encode($result);
 	}
 	public function viewJobs()
 	{
 		$result = $this->Admin_model->view_jobs();
+		echo json_encode($result);
+	}
+	public function viewProjects()
+	{
+		$result = $this->Admin_model->view_projects();
 		echo json_encode($result);
 	}
 	public function AllowJobs()
@@ -464,9 +475,29 @@ class Admin extends CI_Controller
 		}
 		echo json_encode($msg);
 	}
+	public function AllowProjects()
+	{
+		$result = $this->Admin_model->allow_projects();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
 	public function DeleteJobPost()
 	{
 		$result = $this->Admin_model->delete_job();
+		$msg['success'] = false;
+		if($result)
+		{
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+	public function DeleteProjectPost()
+	{
+		$result = $this->Admin_model->delete_project();
 		$msg['success'] = false;
 		if($result)
 		{

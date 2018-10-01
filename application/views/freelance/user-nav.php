@@ -15,11 +15,7 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-			<?php foreach ($owner as $row)?>
-
-			<?php echo $row->account_img;  ?>
-
-			<?php endforeach; ?>
+			
 			<!-- <div class="card">
 				<div class="card" data-toggle="modal" data-target="#addModal">
 				  <div class="card-body" style="padding-bottom: 3px;">

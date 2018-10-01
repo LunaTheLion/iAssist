@@ -767,7 +767,7 @@ class User extends CI_CONTROLLER{
 		$data_in['creator'] = $this->session->userdata('email');
 		$data_in['status'] = 0;
 
-		//$result = $this->User_Model->insert_project_post($data_in);
+		$result = $this->User_Model->insert_project_post($data_in);
 		echo json_encode($result);
 	}
 	public function get_project()
@@ -782,7 +782,21 @@ class User extends CI_CONTROLLER{
 		 if($check_if_owner)
 		 {// Owner
 		 	echo "True";
-
+		 		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		 		$sess_data = array(
+		 			'id' => $get->account_id,
+		 			'email' =>$get->account_email,
+		 			'username' => $get->account_username,
+		 			'img' =>$get->account_img,
+		 		);
+		 		$data = array(
+		 			'proj' => $this->User_Model->view_project($title_slug, $id),
+		 		);	
+		 		$this->session->set_userdata($sess_data);
+		 		$this->load->view('freelance/template/header', $sess_data);
+		 		$this->load->view('freelance/new-profile-side');
+		 		$this->load->view('freelance/view_user_project',$data);
+		 		$this->load->view('freelance/template/footer');
 		 }
 		 else
 		 {

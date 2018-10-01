@@ -28,19 +28,42 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-3 col-sm-6">
-						<button class="btn btn-success">Proceed to order</button>
+						<button class="btn btn-success" id="order">Proceed to order</button>
 					</div>
 					<div class="col-lg-6 col-sm-6">
 						
 					</div>
 				</div>
 			</div>
-			<?php endforeach; ?>
+			
 		</div>		
 	</div>
+
 </div>
+<br>
+<div class="card" id="buy" style="display: none;">
+	<div class="card-body">
+		<div class="card">
+		<div class="card-header">
+			Order
+		</div>
+		<div class="card-body">
+			
+		</div>
+	</div>
+	</div>
+	
+</div>
+<?php endforeach; ?>
+</div>
+
 <br>
 	</div>
 	</div>
 
 </div>
+<script>
+	$('#order').on('click', function(){
+		$('#buy').toggle();
+	})
+</script>

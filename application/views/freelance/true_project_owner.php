@@ -6,7 +6,7 @@
 
 			
 			<img class="img center"  src="<?php 
-			$img = $this->session->userdata('img');
+			$img = $row->account_img;
 			if(!empty($img))
 			{
 				echo base_url().'/uploads/'.$row->account_img;

@@ -32,7 +32,7 @@
                         </h3>
                     </div>
                     <div class="panel-footer">
-                       <a href="#"><strong>Project Requests</strong></a>
+                       <a href="<?php echo base_url('admin/projects') ?>"><strong>Project Requests</strong></a>
                     </div>
                 </div>
             </div>

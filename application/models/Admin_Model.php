@@ -6,15 +6,19 @@ class Admin_model extends CI_Model{
 	public function __construct(){
 		parent::__construct();	
 	}
-	public function get_project_requests()
+	public function get_new_projects()
 	{
-		
+		$this->db->where('post_type', 'Project');
+		$this->db->where('status', 0);
+		$query = $this->db->get('post_tbl');
+		return $query->result();
 	}
 
 	public function review_project()
 	{
-		$this->db->where('project_admin_review', 0);
-		$query = $this->db->get('freelance_project_tbl');	
+		$this->db->where('post_type', 'Project');
+		$this->db->where('status', 0);
+		$query = $this->db->get('post_tbl');	
 			return $query->result();
 	}
 
@@ -343,6 +347,20 @@ class Admin_model extends CI_Model{
 			return false;
 		}
 	}
+	public function view_projects()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('post_id', $id);
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function allow_job()
 	{
 		$id = $this->input->get('id');
@@ -362,7 +380,44 @@ class Admin_model extends CI_Model{
 			return false;
 		}
 	}
+	public function allow_projects()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('post_id', $id);
+		$hell0 = array(
+			'status' => 1,
+			'date_allowed_by_admin' =>date('Y-m-d g:i'),
+			'admin' =>$this->session->userdata('username'),
+		);
+		$this->db->update('post_tbl', $hell0);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function delete_job()
+	{
+		$id = $this->input->get('id');
+		$this->db->where('post_id', $id);
+		$hell0 = array(
+			'deleted' => 1,
+			'date_deleted' =>date('Y-m-d g:i'),
+		);
+		$this->db->update('post_tbl', $hell0);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function delete_projects()
 	{
 		$id = $this->input->get('id');
 		$this->db->where('post_id', $id);
