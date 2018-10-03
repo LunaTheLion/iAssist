@@ -98,7 +98,9 @@
 					<br>
 					<div class="card">
 						<div class="card-body">
-							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->id) ?>" ><?php echo $row->request_category; ?></p></a>
+							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;">
+								<!-- <a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->id) ?>" > -->
+									<?php echo $row->request_category; ?></p></a>
 							<p><?php echo $row->request_description; ?></p>
 							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
 						</div>
