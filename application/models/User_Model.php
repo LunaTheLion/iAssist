@@ -637,6 +637,23 @@ class User_Model extends CI_Model{
 		$query = $this->db->get('project_request_tbl');
 		return $query->result();
 	}
+	public function get_thread()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type', 'Job');
+		$this->db->order_by('date_allowed_by_admin');
+		//$this->db->where('creator', $this->session->userdata('email'));
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
 }//END OF MODEL CONTROLLER
 
 

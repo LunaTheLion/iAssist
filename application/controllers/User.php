@@ -515,6 +515,11 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/thread',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
+	public function getThread()
+	{
+		$getData = $this->User_Model->get_thread();
+		 echo json_encode($getData);
+	}
 	public function PostJob()
 	{	
 
@@ -880,6 +885,10 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill/side-user-skill');
 		$this->load->view('freelance/skill/skill',$job_posts);
 		$this->load->view('freelance/template/footer');
+	}
+	public function ViewRequest()
+	{
+
 	}
 
 

@@ -15,39 +15,35 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-
-			<div class="list-group" >
-			 
-			  
-
-			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
-			  </a> -->
-			</div>
+		
 			<ul class="list-group">
 			  <li class="list-group-item d-flex justify-content-between align-items-center">
 			    <button class="btn btn-success" data-target="#postRequest" data-toggle="modal" >Post a Request 
 			    </button>
 			  
-			  </li>
-			  <li>Search</li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    <select class="form-control" name="category">
-			    	<option value="">Select Category</option>
-			    	<option value="Video and Animation">Video &amp; Animation</option>
-			    	<option value="Graphics and Design">Graphics &amp; Design</option>
-			    	<option value="Digital Marketing">Digital Marketing</option>
-			    	<option value="Writing and Translation">Writing &amp; Translation</option>
-			    	<option value="Music and Audio">Music &amp; Audio</option>
-			    	<option value="Programming and Tech">Programming &amp; Tech</option>
-			    	<option value="Business">Business</option>
-			    	<option value="Lifestyle">Fun &amp; Lifestyle</option>
-			    </select>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Morbi leo risus
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
+			  </li>  
 			</ul>
+			<div class="card">
+				<div class="card-header" style="">
+					<p class="text-primary" style="font-size: 20px; margin-bottom: 2px;">Search Criteria</p>
+
+				</div>
+				<div class="card-body">
+					<select class="form-control" name="category">
+						<option value="">Select Category</option>
+						<option value="Video and Animation">Video &amp; Animation</option>
+						<option value="Graphics and Design">Graphics &amp; Design</option>
+						<option value="Digital Marketing">Digital Marketing</option>
+						<option value="Writing and Translation">Writing &amp; Translation</option>
+						<option value="Music and Audio">Music &amp; Audio</option>
+						<option value="Programming and Tech">Programming &amp; Tech</option>
+						<option value="Business">Business</option>
+						<option value="Lifestyle">Fun &amp; Lifestyle</option>
+					</select>
+					<br>
+					<input type="text" class="form-control" name="budget" placeholder="budget">
+				</div>
+			</div>
 		</div>
 		
 

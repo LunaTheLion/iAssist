@@ -91,9 +91,8 @@
 				</div>
 			</div>
 			<br>
-			<div class="card" style="padding: 10px; border:none;" >
+			<div class="card" style="padding: 10px; border:none;" ><!--  id="showJob"  -->
 				
-
 				<?php foreach ($jobs as $row): ?>
 					<br>
 					<div class="card">
@@ -103,7 +102,7 @@
 							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
 						</div>
 				</div>
-				<?php endforeach; ?>
+				<?php endforeach; ?> 
 
 			</div>
 
@@ -112,6 +111,99 @@
 
 
 			<script>
+				$(window).on('load', function(){
+					// showAllJobs();
+					// function showAllJobs(){
+					// 	 $.ajax({
+					// 	 	type: 'ajax',
+					// 	 	url: '<?php echo base_url()?>user/getThread',
+					// 	 	async : true,
+					// 	 	dataType: 'json',
+					// 	 	success: function(data){
+					// 	 		console.log(data);
+					// 	 		var html = '';
+					// 	 		var i;
+					// 	 		for(i=0; i<data.length;i++)
+					// 	 		{
+					// 	 		html += '<br>'+
+					// 	 			'<div class="card">'+
+					// 	 			'<div class="card-body" >'+
+						 			
+					// 	 			'<textarea class="form-control" style="border: none; margin-bottom:2px;" placeholder="Write Something" rows="4" cols="110" readonly>'+data[i].description+'</textarea>'+
+					// 	 			'<button class="btn btn-secondary" style="padding-top: 2px; padding: 10px;float: right; right: 0;">Post</button>'+
+					// 	 			'</div>'+
+					// 	 			'</div>';	
+					// 	 		}
+					// 	 		$('#showJob').html(html);
+					// 	 	},
+					// 	 	error: function(){
+					// 	 		alert('Could not load Post');
+					// 	 	}
+					// 	 })
+					// };
+
+						$('#Ptype').hide();
+						$('#post1').hide();
+
+					
+					$('#cp').on('click', function(){
+						$('#Ptype').toggle();
+						$('#post1').toggle();
+					});
+
+
+
+					$('#postType').change(function(){
+						
+						var val = $(this).val();
+						if(val == 'Regular')
+						{//Regular Post
+							$('#post1').show();
+							$('#post2').hide();
+						}
+						else
+						{//Job Posting
+							$('#post1').hide();
+							$('#post2').show();
+						}
+					});
+					$('#postType').on('load',function(){
+						if(this.val() == 'Regular')
+						{
+							$('#post1').show();
+							$('#post2').hide();
+						}
+						else
+						{
+							$('#post1').hide();
+							$('#post2').show();
+						}
+					});
+
+					$('#JobForm').on('submit', function(){
+						//alert('Hello');
+						event.preventDefault();
+						console.log($(this).serialize());
+						$.ajax({
+							type:'ajax',
+							method: 'Post',
+							url: '<?php echo base_url()?>user/PostJob',
+							data: $(this).serialize(),
+							async: false,
+							dataType: 'json',
+							success: function(data){
+								console.log(data);
+								alert('Your Job Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
+								$('#JobForm')[0].reset();
+								location.reload();
+								//showAllPost();
+							},
+							error: function(){
+								alert('Could not save');
+							}
+						});
+					});
+				})
 				// window.addEventListener("scroll", function(){
 				//             var wrap = document.getElementById('timeline');
 				//             var contentHeight = wrap.offsetHeight;
@@ -122,68 +214,7 @@
 				//                 //load new content
 				//                 wrap.innerHTML = wrap.innerHTML + "<div>Random text</div>";
 				//             }
-
-
-
-					$('#Ptype').hide();
-					$('#post1').hide();
-				$('#cp').on('click', function(){
-					$('#Ptype').toggle();
-					$('#post1').toggle();
-				});
-
-
-
-				$('#postType').change(function(){
-					
-					var val = $(this).val();
-					if(val == 'Regular')
-					{//Regular Post
-						$('#post1').show();
-						$('#post2').hide();
-					}
-					else
-					{//Job Posting
-						$('#post1').hide();
-						$('#post2').show();
-					}
-				});
-				$('#postType').on('load',function(){
-					if(this.val() == 'Regular')
-					{
-						$('#post1').show();
-						$('#post2').hide();
-					}
-					else
-					{
-						$('#post1').hide();
-						$('#post2').show();
-					}
-				});
-
-				$('#JobForm').on('submit', function(){
-					//alert('Hello');
-					event.preventDefault();
-					console.log($(this).serialize());
-					$.ajax({
-						type:'ajax',
-						method: 'Post',
-						url: '<?php echo base_url()?>user/PostJob',
-						data: $(this).serialize(),
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							console.log(data);
-							alert('Your Job Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
-							$('#JobForm')[0].reset();
-							location.reload();
-							//showAllPost();
-						},
-						error: function(){
-							alert('Could not save');
-						}
-					});
-				});
+				
 			</script>
 		</div>
 	</div>	
