@@ -15,20 +15,7 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-			
-			<!-- <div class="card">
-				<div class="card" data-toggle="modal" data-target="#addModal">
-				  <div class="card-body" style="padding-bottom: 3px;">
-				    <h5 class="card-title">Create Post</h5>
-				   
-				    <textarea style="border: none;" placeholder="Write Something" rows="3" cols="50"></textarea>
-				    <button class="btn btn-secondary" style=" padding: 7px;float: right; right: 0;">Post</button>
-				  </div>
-					  
-					  
-				</div>
-				
-			</div> -->
+
 			<div class="list-group" >
 			 
 			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request 

@@ -614,6 +614,29 @@ class User_Model extends CI_Model{
 		}
 
 	}
+	public function count_new_message()
+	{
+		$this->db->select('*');
+		$this->db->where('msg_read',0);
+		$this->db->where('msg_receiver', $this->session->userdata('email'));
+		$query = $this->db->get('freelance_msg_dest_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function show_request()
+	{
+		$this->db->select('*');
+		$this->db->order_by('request_date_submitted');
+		$this->db->where('request_status', 0);
+		$query = $this->db->get('project_request_tbl');
+		return $query->result();
+	}
 }//END OF MODEL CONTROLLER
 
 

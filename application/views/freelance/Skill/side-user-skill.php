@@ -15,27 +15,46 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-			
-			<!-- <div class="card">
-				<div class="card" data-toggle="modal" data-target="#addModal">
-				  <div class="card-body" style="padding-bottom: 3px;">
-				    <h5 class="card-title">Create Post</h5>
-				   
-				    <textarea style="border: none;" placeholder="Write Something" rows="3" cols="50"></textarea>
-				    <button class="btn btn-secondary" style=" padding: 7px;float: right; right: 0;">Post</button>
-				  </div>
-					  
-					  
-				</div>
-				
-			</div> -->
+
 			<div class="list-group" >
 			 
 			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request 
 			  </a>
-			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
-			  </a> -->
 			</div>
+			<ul class="list-group">
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			   	Video and Animation
+			    <span class="badge badge-primary badge-pill">14</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Graphics and Design
+			    <span class="badge badge-primary badge-pill">2</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Digital Marketing
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Writing and Translation
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Music and Audio
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Programming and Tech
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Business
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    Lifestyle
+			    <span class="badge badge-primary badge-pill">1</span>
+			  </li>
+			</ul>
 		</div>
 		
 

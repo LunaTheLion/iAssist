@@ -1,7 +1,7 @@
-<title>iAssist - Job</title>
+<title>iAssist - Skill</title>
 
 <div class="col-lg-8 col-sm-8">
-			<div class="card " style="padding: 10px; border:none;">
+			<div class="card border-primary" style="padding: 10px; border:none;">
 				<div class="card" >
 				  <div class="card-body" style="padding: 3px;">
 				  	<div class="row">
@@ -91,7 +91,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="card" style="padding: 10px; border:none;" >
+			<div class="card " style="padding: 10px; border:none;">
 				
 
 				<?php foreach ($jobs as $row): ?>

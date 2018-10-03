@@ -4225,7 +4225,13 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
+
+  overflow: hidden;
+      background-color: #333;
+      position: fixed; /* Set the navbar to fixed position */
+      top: 0; /* Position the navbar at the top of the page */
+      width: 100%; /* Full width */
+/*  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4237,7 +4243,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem;*/
 }
 
 .navbar > .container,
@@ -4299,6 +4305,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-collapse {
+  
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   -webkit-box-flex: 1;

@@ -33,22 +33,22 @@ class Messaging extends CI_Controller{
 
 	public function message()
 	{
-		// $this->load->view('freelance/header');
+		// $this->load->view('freelance/template/header');
 		// $this->load->view('freelance/messaging/list');
 
-		// $this->load->view('freelance/footer');
+		// $this->load->view('freelance/template/footer');
 
 		$email = $this->session->userdata('email');
 		if($this->Message_model->get_msg_info($email))
 		{			
 
 			$get = array(
-				'sent' => $this->Message_model->get_msg_info($email),
+				'rcv' => $this->Message_model->receive_msg($email),
 			);
-
+			
 			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
-			$this->load->view('freelance/messaging/sent', $get);
+			$this->load->view('freelance/messaging/inbox',$get);
 			$this->load->view('freelance/template/footer');
 
 		}
@@ -58,10 +58,10 @@ class Messaging extends CI_Controller{
 				'sent' => $this->Message_model->get_msg_info($email),
 			);
 
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/sent', $get);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 
 
@@ -73,10 +73,10 @@ class Messaging extends CI_Controller{
 			$view = array(
 				'msg' =>$this->Message_model->read_msg($id),
 			);
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/read', $view);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 		else
 		{
@@ -92,25 +92,23 @@ class Messaging extends CI_Controller{
 			$view = array(
 				'msg' =>$this->Message_model->view_msg($id),
 			);
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/view', $view);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 		else
 		{
 
 		}
-
-		
 	}
 
 	public function compose()
 	{
-		$this->load->view('freelance/header');
+		$this->load->view('freelance/template/header');
 		$this->load->view('freelance/messaging/list');
 		$this->load->view('freelance/messaging/compose');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 	public function validate_message()
 	{
@@ -161,10 +159,10 @@ class Messaging extends CI_Controller{
 						'sent' => $this->Message_model->get_msg_info($email),
 					);
 
-					$this->load->view('freelance/header', $msg);
+					$this->load->view('freelance/template/header', $msg);
 					$this->load->view('freelance/messaging/list');
 					$this->load->view('freelance/messaging/sent', $get);
-					$this->load->view('freelance/footer');
+					$this->load->view('freelance/template/footer');
 
 				}
 				else
@@ -172,18 +170,18 @@ class Messaging extends CI_Controller{
 					echo "Not getting the Mails";
 				}
 
-				// $this->load->view('freelance/header', $msg);
+				// $this->load->view('freelance/template/header', $msg);
 				// $this->load->view('freelance/messaging/list');
 				// $this->load->view('freelance/messaging/sent');
-				// $this->load->view('freelance/footer');
+				// $this->load->view('freelance/template/footer');
 			}
 			else
 			{
 				// echo "Message Not Saved";
-				$this->load->view('freelance/header', $msg);
+				$this->load->view('freelance/template/header', $msg);
 				$this->load->view('freelance/messaging/list');
 				$this->load->view('freelance/messaging/compose');
-				$this->load->view('freelance/footer');
+				$this->load->view('freelance/template/footer');
 
 			}
 		}
@@ -203,10 +201,10 @@ class Messaging extends CI_Controller{
 				'sent' => $this->Message_model->get_msg_info($email),
 			);
 
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/sent', $get);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 
 		}
 		else
@@ -215,10 +213,10 @@ class Messaging extends CI_Controller{
 				'sent' => $this->Message_model->get_msg_info($email),
 			);
 
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/sent', $get);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		}
 	
 		
@@ -233,10 +231,10 @@ class Messaging extends CI_Controller{
 				'rcv' => $this->Message_model->receive_msg($email),
 			);
 			
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/inbox',$get);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 		// }
 		// else#no message received yet
 		// {
@@ -244,20 +242,20 @@ class Messaging extends CI_Controller{
 		// 		'rcv' => $this->Message_model->receive_msg($email),
 		// 	);
 			
-		// 	$this->load->view('freelance/header');
+		// 	$this->load->view('freelance/template/header');
 		// 	$this->load->view('freelance/messaging/list');
 		// 	$this->load->view('freelance/messaging/inbox',$get);
-		// 	$this->load->view('freelance/footer');
+		// 	$this->load->view('freelance/template/footer');
 		// }
 	
 	}
 	
 	public function trash()
 	{
-		$this->load->view('freelance/header');
+		$this->load->view('freelance/template/header');
 		$this->load->view('freelance/messaging/list');
 		$this->load->view('freelance/messaging/trash');
-		$this->load->view('freelance/footer');
+		$this->load->view('freelance/template/footer');
 	}
 
 

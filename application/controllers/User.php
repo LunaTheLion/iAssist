@@ -491,6 +491,7 @@ class User extends CI_CONTROLLER{
 
 	public function bayad()
 	{
+		
 		$this->load->view('freelance/template/header');
 		$this->load->view('freelance/payment/products');
 		$this->load->view('freelance/template/footer');
@@ -817,7 +818,68 @@ class User extends CI_CONTROLLER{
     				window.history.back();
 				</script>";
 		}
-
+	}
+	public function countNewMessage()
+	{
+		$result = $this->User_Model->count_new_message();
+		echo json_encode($result); 
+	}
+	public function Job()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->new_job(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/user-nav');
+		$this->load->view('freelance/thread',$job_posts);
+		$this->load->view('freelance/template/footer');
+	}
+	public function Request()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->show_request(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/request/side-user-request');
+		$this->load->view('freelance/request/request',$job_posts);
+		$this->load->view('freelance/template/footer');
+	}
+	public function SkillPosting()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->new_job(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/skill/side-user-skill');
+		$this->load->view('freelance/skill/skill',$job_posts);
+		$this->load->view('freelance/template/footer');
 	}
 
 

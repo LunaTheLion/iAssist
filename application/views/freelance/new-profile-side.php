@@ -124,16 +124,12 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					//Check if database result
-					//console.log(data); 
+				
 					$('#new').text(data);
 					$('#new').addClass('badge-danger');
 					$('#new2').text(data);
 					$('#new2').addClass('badge-danger');
-					// if(data.true)
-					// {
-						
-					// }
+				
 					
 				},
 				error: function(){
