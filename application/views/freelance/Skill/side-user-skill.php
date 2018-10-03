@@ -16,45 +16,43 @@
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
 
-			<div class="list-group" >
-			 
-			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request 
+			<div class="list-group">
+			  <a href="#" class="list-group-item list-group-item-action">
+			    Video and Animation
+			    <span class="badge badge-primary badge-pill" id="VA">14</span>
 			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Graphics and Design
+			    <span class="badge badge-primary badge-pill" id="GD">2</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Digital Marketing
+			  	<span class="badge badge-primary badge-pill" id="DM">1</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Writing and Translation
+			    <span class="badge badge-primary badge-pill" id="WT">1</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Music and Audio
+			    <span class="badge badge-primary badge-pill" id="MA">1</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Programming and Tech
+			    <span class="badge badge-primary badge-pill" id="PT">1</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Business
+			    <span class="badge badge-primary badge-pill" id="B">1</span>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			  	Lifestyle
+			    <span class="badge badge-primary badge-pill" id="L">1</span>
+			  </a>
+			
+			 
 			</div>
-			<ul class="list-group">
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			   	Video and Animation
-			    <span class="badge badge-primary badge-pill">14</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Graphics and Design
-			    <span class="badge badge-primary badge-pill">2</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Digital Marketing
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Writing and Translation
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Music and Audio
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Programming and Tech
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Business
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			  <li class="list-group-item d-flex justify-content-between align-items-center">
-			    Lifestyle
-			    <span class="badge badge-primary badge-pill">1</span>
-			  </li>
-			</ul>
+			
 		</div>
 		
 
@@ -123,5 +121,33 @@
 				</form>
 			</div>
 		</div>
+
+
+
+		<script>
+			$(window).on('load', function(){
+				//count newly accepted postings
+				//Video and Animation
+				function countVideoAnimation()
+				{
+					$.ajax({
+						type: 'ajax',
+						url: '<?php echo base_url()?>user/countVideoAnimation',
+						async: false,
+						dataType: 'json',
+						success: function(data){
+							
+								$('#VA').text(data);
+							
+							
+						},
+						error: function(){
+							alert('Cant count all your post');
+						}
+					})
+				}
+			})
+
+		</script>
 	</div>
 </div>

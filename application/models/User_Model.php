@@ -322,7 +322,7 @@ class User_Model extends CI_Model{
 		// 	'creator' => $this->session->userdata('email'),
 		// 	'status' => 0,
 		// );
-		$this->db->insert('post_tbl',$data_in);
+		$this->db->insert('freelance_job_tbl',$data_in);
 		if($this->db->affected_rows() == 1 )
 		{
 			return true;
@@ -383,13 +383,48 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
-	public function get_user_post()
+	public function get_user_job_post()
 	{
 		$this->db->select('*');
+		$this->db->where('post_type', 'Job');
 		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
 		$this->db->where('status', '1');
 		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_skill_post()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type', 'Project');
+		$this->db->order_by('date_allowed_by_admin');
+		$this->db->where('creator', $this->session->userdata('email'));
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_request_post()
+	{
+		$this->db->select('*');
+		//$this->db->where('post_type', 'Project');
+		// $this->db->order_by('date_allowed_by_admin');
+		$this->db->where('request_email', $this->session->userdata('email'));
+		//$this->db->where('status', '1');
+		$query = $this->db->get('project_request_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -407,6 +442,16 @@ class User_Model extends CI_Model{
 		$query = $this->db->get('post_tbl');
 		return $query->result();
 	}
+	public function get_all_skill()
+	{
+		$this->db->select('*');
+		$this->db->where('post_type','Project');
+		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		return $query->result();
+	}
+
 	public function request_post()
 	{
 		$request = array(
@@ -648,6 +693,52 @@ class User_Model extends CI_Model{
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_job_criteria()
+	{
+		$this->db->select('*');
+		$this->db->where('category', $this->input->post('category') );
+		$this->db->where('budget <=', $this->input->post('budget') );
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function click_category($category)
+	{
+		$this->db->select('*');
+		$this->db->where('category', $category);
+		$this->db->where('status', '1');
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function crud_user_job_post($id)
+	{
+		//$id = $this->input->get('id');
+		$this->db->select('*');
+		$this->db->where('post_id', $id);
+		$query = $this->db->get('post_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
 		}
 		else
 		{

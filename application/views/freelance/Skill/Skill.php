@@ -9,24 +9,17 @@
 				  			<h5><button class="btn btn-secondary" id="cp" style="margin-bottom: 0px; ">Create Post</button></h5>
 				  	
 				  		</div>
-
-				  		<div class="col-lg-3 col-sm-6" id="Ptype">
-				  			<select class="form-control center" id="postType" style="margin-top: 5px;">
-				   				<option value="Regular">Regular Post</option>
-				   				<option value="Job">Job Post</option>
-				   			</select>
-				  		</div>
-				  		
-				   	
 				  	</div>
-				  	<div id="post1">
-				  		<form action="<?php echo base_url('user/Post')?>" method="post" id="RegularForm">
-				  			<input type="hidden" name="TypeOfPost" value="Regular">
-				  			<textarea class="form-control" name="PostDesc" placeholder="Write Something" rows="3" cols="110" style="border:none;margin-bottom: 5px; "></textarea>
-				  			<button id="btnPost" type="submit" class="btn btn-secondary" style=" padding: 7px;float: right; right: 0;">Post</button>
-				  		</form>
-				  	</div>
+				 
 		 <div id="post2" style="display: none;" >
+		 	<div class="card" style="margin: 15px;">
+		 		<div class="card-header">
+		 			
+		 		</div>
+		 		<div class="card-body">
+		 			
+		 		</div>
+		 	</div>
 				<br>
 				<form action="" method="Post" id="JobForm" >
 				 <div class="row">
@@ -99,8 +92,9 @@
 					<div class="card">
 						<div class="card-body">
 							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" ><?php echo $row->title; ?></p></a>
-							<p><?php echo $row->description; ?></p>
-							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
+							<a href="<?php echo base_url('user/clickbyCategory/'.$row->category); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
+							<p style="font-size: 20px;"><?php echo $row->description; ?></p>
+							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Visit</button>
 						</div>
 				</div>
 				<?php endforeach; ?>
@@ -126,10 +120,10 @@
 
 
 					$('#Ptype').hide();
-					$('#post1').hide();
+					
 				$('#cp').on('click', function(){
-					$('#Ptype').toggle();
-					$('#post1').toggle();
+					$('#post2').toggle();
+					
 				});
 
 

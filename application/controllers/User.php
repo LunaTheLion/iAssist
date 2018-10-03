@@ -209,6 +209,8 @@ class User extends CI_CONTROLLER{
 		
 		if($one == true)//is true or has complete account 
 		{
+
+
 			$this->load->view('freelance/template/header', $sess_data);
 			$this->load->view('freelance/new-profile-side',$one);
 			$this->load->view('freelance/new-profile-body');
@@ -524,7 +526,7 @@ class User extends CI_CONTROLLER{
 	{	
 
 	$data_in['title'] = $this->input->post('title');
-	$data_in['post_type'] = $this->input->post('TypeOfPost');
+	$data_in['post_type'] = 'Job';
 	$data_in['post_username'] = $this->session->userdata('username');
 	$data_in['title_slug'] = urlencode($this->input->post('title'));
 	$data_in['description'] = $this->input->post('description');
@@ -534,15 +536,7 @@ class User extends CI_CONTROLLER{
 	$data_in['creator'] = $this->session->userdata('email');
 	$data_in['status'] = 0;
 
-
-
 	$result = $this->User_Model->insert_job_post($data_in);
-	//  $msg['success'] = false;
-	// if($insert)
-	// {
-	// 	//redirect('user/general/'.$this->session->userdata('email'), 'refresh');
-	// 	$msg['success'] = true;
-	// }
 	echo json_encode($result);
 
 	}
@@ -565,9 +559,21 @@ class User extends CI_CONTROLLER{
 			redirect('user/general/'.$this->session->userdata('email'), 'refresh');
 		}
 	}
-	public function get_post()
+	public function get_job_post()
 	{
-		$getData = $this->User_Model->get_user_post();
+		$getData = $this->User_Model->get_user_job_post();
+		//print_r()
+		 echo json_encode($getData);
+	}
+	public function get_skill_post()
+	{
+		$getData = $this->User_Model->get_user_skill_post();
+		//print_r()
+		 echo json_encode($getData);
+	}
+	public function get_request_post()
+	{
+		$getData = $this->User_Model->get_user_skill_post();
 		//print_r()
 		 echo json_encode($getData);
 	}
@@ -877,7 +883,7 @@ class User extends CI_CONTROLLER{
 			'img' =>$get->account_img,
 		);
 		$job_posts = array( 
-			'jobs' => $this->User_Model->new_job(),
+			'jobs' => $this->User_Model->get_all_skill(),
 		);
 		// echo"<pre>";print_r($job_posts);echo"</pre>";
 		$this->session->set_userdata($sess_data);
@@ -889,6 +895,81 @@ class User extends CI_CONTROLLER{
 	public function ViewRequest()
 	{
 
+	}
+	public function Search_Job_Criteria()
+	{
+
+		$result = $this->User_Model->search_job_criteria();
+		if($result)
+		{	
+			$get = $this->User_Model->get_important($this->session->userdata('email'));
+			$sess_data = array(
+				'id' => $get->account_id,
+				'email' =>$get->account_email,
+				'username' => $get->account_username,
+				'img' =>$get->account_img,
+			);
+			$job_posts = array( 
+				'jobs' => $this->User_Model->search_job_criteria(),
+			);
+			// echo"<pre>";print_r($job_posts);echo"</pre>";
+			$this->session->set_userdata($sess_data);
+			$this->load->view('freelance/template/header', $sess_data);
+			$this->load->view('freelance/user-nav');
+			$this->load->view('freelance/thread',$job_posts);
+			$this->load->view('freelance/template/footer');
+		}
+		else
+		{
+			echo "<script>alert('Sorry! No match found.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+			
+		}
+	}
+	public function countVideoAnimation()
+	{
+		//$this->User_Model->
+	}
+	public function clickbyCategory($category)
+	{
+		//echo $category;
+		$result = $this->User_Model->click_category($category);
+		if($result)
+		{	
+			$get = $this->User_Model->get_important($this->session->userdata('email'));
+			$sess_data = array(
+				'id' => $get->account_id,
+				'email' =>$get->account_email,
+				'username' => $get->account_username,
+				'img' =>$get->account_img,
+			);
+			$job_posts = array( 
+				'jobs' => $result = $this->User_Model->click_category($category),
+			);
+			// echo"<pre>";print_r($job_posts);echo"</pre>";
+			$this->session->set_userdata($sess_data);
+			$this->load->view('freelance/template/header', $sess_data);
+			$this->load->view('freelance/user-nav');
+			$this->load->view('freelance/thread',$job_posts);
+			$this->load->view('freelance/template/footer');
+		}
+		else
+		{
+			echo "<script>alert('Sorry! No match found.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+			
+		}
+
+	}
+	public function crud_job_post()
+	{
+		//$data_in['id'] = $this->input->get('id');
+		$result = $this->User_model->crud_user_job_post($data_in);
+		//echo json_encode($result);
 	}
 
 
