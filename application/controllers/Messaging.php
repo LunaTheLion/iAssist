@@ -46,10 +46,10 @@ class Messaging extends CI_Controller{
 				'sent' => $this->Message_model->get_msg_info($email),
 			);
 
-			$this->load->view('freelance/header');
+			$this->load->view('freelance/template/header');
 			$this->load->view('freelance/messaging/list');
 			$this->load->view('freelance/messaging/sent', $get);
-			$this->load->view('freelance/footer');
+			$this->load->view('freelance/template/footer');
 
 		}
 		else

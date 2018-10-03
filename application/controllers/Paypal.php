@@ -19,12 +19,12 @@ class Paypal extends CI_Controller
         $data['status'] = $paypalInfo["st"];
         
         // Pass the transaction data to view
-        $this->load->view('paypal/success', $data);
+        $this->load->view('freelance/payment/success', $data);
     }
      
      function cancel(){
         // Load payment failed view
-        $this->load->view('paypal/cancel');
+        $this->load->view('freelance/payment/cancel');
      }
      
      function ipn(){

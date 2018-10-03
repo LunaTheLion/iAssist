@@ -1,7 +1,7 @@
 
-<div class="jumbotron p-5">
+<div class="jumbotron p-5" style="">
 	<div class="row">
-		<div class="col-lg-3 col-sm-3">
+		<div class="col-lg-3 col-sm-3" style="position: fixed;">
 			<img class="img center"  src="<?php 
 			$img = $this->session->userdata('img');
 			if(!empty($img))

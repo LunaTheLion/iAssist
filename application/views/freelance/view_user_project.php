@@ -25,17 +25,11 @@
 					<div class="col-lg-6 col-sm-6">
 						<p class="text-success" style="font-size: 16px;"><?php echo $row->budget; ?></p>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-3 col-sm-6">
+					<div class="col-lg-3 col-sm-3">
 						<button class="btn btn-success" id="order">Proceed to order</button>
-					</div>
-					<div class="col-lg-6 col-sm-6">
-						
 					</div>
 				</div>
 			</div>
-			
 		</div>		
 	</div>
 
@@ -48,7 +42,22 @@
 			Order
 		</div>
 		<div class="card-body">
-			
+			<div class="row">
+				<div class="col-lg-2 col-sm-3">
+					Price
+				</div>
+				<div class="col-lg-2 col-sm-3">
+					<input type="text" name="" value="<?php echo $row->budget;?>" readonly>
+				</div>
+				<div class="col-lg-2 col-sm-3">
+					Quantity
+				</div>
+				<div class="col-lg-2 col-sm-3">
+					<select class="form form-control">
+						<option value="">Quantity</option>
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
 	</div>

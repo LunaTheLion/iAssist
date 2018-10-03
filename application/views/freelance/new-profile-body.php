@@ -20,7 +20,7 @@
 	<div id="post1">
 		<form action="<?php echo base_url('user/Post')?>" method="post" id="RegularForm">
 			<input type="hidden" name="TypeOfPost" value="Regular">
-			<textarea class="form-control" name="PostDesc" placeholder="Write Something" rows="3" cols="110" style="border:none;margin-bottom: 5px; "></textarea>
+			<textarea class="form-control" name="PostDesc" placeholder="Write Something" rows="3" cols="110" style="border:none;margin-bottom: 5px; " required></textarea>
 			<button id="btnPost" type="submit" class="btn btn-secondary" style=" padding: 7px;float: right; right: 0;">Post</button>
 		</form>
 	</div>
@@ -90,7 +90,7 @@
 		<form action="" method="Post" id="SkillForm" >
 			<div class="row">
 				<div class="col-lg-3 col-sm-3">	
-				  <center><p class="text-primary">Project Title</p></center>
+				  <center><p class="text-primary">Skill Title</p></center>
 				</div>
 				<div class="col-lg-9 col-sm-9">
 				  <input type="hidden" name="TypeOfPost" value="Job">

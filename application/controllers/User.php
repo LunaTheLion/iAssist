@@ -38,7 +38,7 @@ class User extends CI_CONTROLLER{
 		}
 		else if ( $check == true)
 		{
-			//echo "True";
+			
 			$get = $this->User_Model->get_important($email);
 			if(!empty($get))
 			{
@@ -226,46 +226,6 @@ class User extends CI_CONTROLLER{
 		}
 		
 
-		// $post= $this->User_Model->get_post($email);
-
-		// if(empty($h))// new user
-		// {
-		// 	if(empty($post))
-		// 	{
-		// 		$fetch = array(
-		// 			'data' => $this->User_Model->create_profile($email),
-		// 		);
-		// 		$this->load->view('freelance/header', $sess_data);
-		// 		$this->load->view('freelance/new-account-side-nav');
-		// 		$this->load->view('freelance/new-account');
-		// 		$this->load->view('freelance/footer');
-		// 	}
-			
-		// 	else
-		// 	{
-
-		// 		//$get= $this->User_Model->get_post($email);
-		// 		$fetch = array(
-		// 			'data' => $this->User_Model->create_profile($email),
-		// 			'data2' =>$this->User_Model->get_post($email),
-		// 		);
-		// 		// echo "<pre>";
-		// 		// print_r($get);
-		// 		// echo "</pre>";
-		// 		$this->load->view('freelance/header', $sess_data);
-		// 		$this->load->view('freelance/new-profile',$fetch);
-		// 		$this->load->view('freelance/template/footer');
-		// 	}
-		// }
-		// else
-		// {
-		// 	$fetch = array(
-		// 		'data' => $this->User_Model->get_profile($email),
-		// 	);
-		// 	$this->load->view('freelance/header', $sess_data);
-		// 	$this->load->view('freelance/new-profile', $fetch);
-		// 	$this->load->view('freelance/footer');
-		// }
 
 	}//general
 	
@@ -567,7 +527,7 @@ class User extends CI_CONTROLLER{
 	$data_in['date_created'] = date('Y-m-d g:i');
 	$data_in['creator'] = $this->session->userdata('email');
 	$data_in['status'] = 0;
-	$data_in['post_result'] = true;
+
 
 
 	$result = $this->User_Model->insert_job_post($data_in);
@@ -781,7 +741,6 @@ class User extends CI_CONTROLLER{
 		 $check_if_owner = $this->User_Model->view_project_if_not_user($title_slug,$id);
 		 if($check_if_owner)
 		 {// Owner
-		 	echo "True";
 		 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		 		$sess_data = array(
 		 			'id' => $get->account_id,
@@ -833,42 +792,32 @@ class User extends CI_CONTROLLER{
 		 			$this->load->view('freelance/true_project_owner', $true);
 		 			$this->load->view('freelance/view_user_project',$data);
 		 			$this->load->view('freelance/template/footer');
-
 		 	}
 		 	else
 		 	{
 		 		echo "No creator";
 		 	}
-			// $result  = array(
-			//  'proj' =>$this->User_Model->view_project($title_slug, $id),
-			//  );	
-		 // 	echo "<pre>";
-		 // 	print_r($result);
-		 // 	echo "</pre>";
 		 }
-		// if($result)
-		// {
+	}
+	public function MessageOwner()
+	{
+		
+		$send = $this->User_Model->message_owner();
+		if($send == true)
+		{	
+			echo "<script>alert('Message sent.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+		else
+		{
+			echo "<script>alert('Message not sent.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
 
-		// 	$get = $this->User_Model->get_important($this->session->userdata('email'));
-		// 	$sess_data = array(
-		// 		'id' => $get->account_id,
-		// 		'email' =>$get->account_email,
-		// 		'username' => $get->account_username,
-		// 		'img' =>$get->account_img,
-		// 	);
-		// 	$data = array(
-		// 		'proj' => $this->User_Model->view_project($title_slug, $id),
-		// 	);	
-		// 	$this->session->set_userdata($sess_data);
-		// 	$this->load->view('freelance/template/header', $sess_data);
-		// 	$this->load->view('freelance/new-profile-side');
-		// 	$this->load->view('freelance/view_user_project',$data);
-		// 	$this->load->view('freelance/template/footer');
-		// }
-		// else
-		// {
-		// 	echo "sorry";
-		// }
 	}
 
 

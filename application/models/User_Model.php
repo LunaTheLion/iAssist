@@ -386,7 +386,7 @@ class User_Model extends CI_Model{
 	public function get_user_post()
 	{
 		$this->db->select('*');
-		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
 		$this->db->where('status', '1');
 		$query = $this->db->get('post_tbl');
@@ -583,6 +583,36 @@ class User_Model extends CI_Model{
 		{
 			return false;
 		}
+	}
+	public function message_owner()
+	{
+		// echo $this->input->post('message');
+		// echo $this->input->post('to');
+		// echo $this->input->post('sender');
+		$msg = array (
+			'msg_sender' => $this->input->post('sender'),
+			'msg_receiver' => $this->input->post('to'),
+		);
+		
+
+		$msg2 = array(
+			'msg_author' => $this->input->post('sender'),
+			'msg_receiver' => $this->input->post('to'),
+			'msg_date' => date('Y-m-d i:g'),
+			'msg_subject' => $this->input->post('sender'),
+			'msg_body' => $this->input->post('message'),
+		);
+		$this->db->insert('freelance_msg_dest_tbl', $msg);
+		$this->db->insert('freelance_msg_info_tbl', $msg2);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
 	}
 }//END OF MODEL CONTROLLER
 

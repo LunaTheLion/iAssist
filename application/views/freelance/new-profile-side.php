@@ -126,13 +126,14 @@
 				success: function(data){
 					//Check if database result
 					//console.log(data); 
-					if(data.true)
-					{
-						$('#new').text(data);
-						$('#new').addClass('badge-danger');
-						$('#new2').text(data);
-						$('#new2').addClass('badge-danger');
-					}
+					$('#new').text(data);
+					$('#new').addClass('badge-danger');
+					$('#new2').text(data);
+					$('#new2').addClass('badge-danger');
+					// if(data.true)
+					// {
+						
+					// }
 					
 				},
 				error: function(){
@@ -148,10 +149,9 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					if(data.true)
-					{
+					
 						$('#totalJobPost').text(data);
-					}
+					
 					
 				},
 				error: function(){

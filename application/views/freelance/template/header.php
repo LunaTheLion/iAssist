@@ -12,7 +12,8 @@
 
     <!-- JavaScript -->
     
-    <script src="<?php echo base_url() ?>assets/user/js/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/user/js/jquery-3.3.1.js"></script>
+    <script src="<?php echo base_url() ?>assets/user/js/jquery-3.3.1.slim.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/user/js/popper.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/user/js/bootstrap.min.js') ?>"></script>
     <script src="<?php echo base_url() ?>assets/user/js/bootstrap.js"></script> 
@@ -57,6 +58,11 @@
 
      
 } 
+/*.ScrollStyle
+{
+    max-height: 800px;
+    overflow-y: scroll;
+}*/
     
     </style> 
 
@@ -66,21 +72,21 @@
 //header("Refresh:"); ?>
       <div class="bs-component">
        
-             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+             <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%; margin-bottom: 30px;">
             
                <div class="container">
                  <a class="navbar-brand" href="<?php echo base_url('users/home/'.$this->session->userdata('user_name'))?>">iAssist</a>
                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
                    <span class="navbar-toggler-icon"></span>
                  </button>
-                 <div class="collapse navbar-collapse" id="navbarColor01">
+                 <div class="collapse navbar-collapse" id="navbarColor02">
                    <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
                        <a class="nav-link" href="<?php echo base_url('user/thread');?>">Thread <span class="sr-only">(current)</span></a>
                      </li>
                      <!-- Paypal Integration part -->
                      <li class="nav-item">
-                       <a class="nav-link" href="<?php echo base_url('user/bayad')?>">Paypal</a>
+                       <a class="nav-link" href="<?php echo base_url('/paypal')?>">Paypal</a>
                      </li>  
                                     
                    </ul>
@@ -104,10 +110,10 @@
                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
                          <div class="dropdown-menu">
                            <a class="dropdown-item" href="<?php echo base_url('user/logout')?>">Logout</a>
-                           <a class="dropdown-item" href="https://bootswatch.com/lux/#">Another action</a>
-                           <a class="dropdown-item" href="https://bootswatch.com/lux/#">Something else here</a>
+                           <a class="dropdown-item" href="#">Another action</a>
+                           <a class="dropdown-item" href="#">Something else here</a>
                            <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="https://bootswatch.com/lux/#">Separated link</a>
+                           <a class="dropdown-item" href="#">Separated link</a>
                          </div>
                        </li >
                        
