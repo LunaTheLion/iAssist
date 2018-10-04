@@ -119,29 +119,62 @@
 </div>
 </div>
 <script>
-	$(function(){
-	$('#college').on('change', function(){
-		var college_id = $(this).val();
-		if(college_id == '')
-		{
-			$('#cmajor').prop('disabled',true);
-		}
-		else
-		{
-			$('#cmajor').prop('disabled', false);
-			$.ajax({
-				url: "<?php echo base_url() ?>user/get_major",
-				type: "Post",
-				data: {"college_id": college_id},
-				success : function(data){
-					$('#cmajor').html(data);
-				},
-				error: function(){
-					alert('Error');
-				}
-			});	
-		}
-		});
+	$(window).on('load', function(){
 		
+	
+		$('#college').on('change', function(){
+			var id = $(this).val();
+			if(id == '')
+			{	
+				$('#cmajor').prop('disabled', true);
+			}
+			else
+			{
+				
+				$('#cmajor').prop('disabled', false);
+				event.preventDefault();
+				$.ajax({
+					url: '<?php echo base_url()?>user/get_major',
+					type: 'post',
+					passive: true,
+					data: {id:id},
+					success: function(data){
+						console.log(data);
+						//$('#cmajor').html(data);
+					},
+					error: function(){
+						alert('Error');
+					}
+				});
+			}
+			
+
+		});//college on change
+
+		// 	$('#college').on('change', function(){
+		// var college_id = $(this).val();
+		// if(college_id == '')
+		// {
+		// 	$('#cmajor').prop('disabled',true);
+		// }
+		// else
+		// {
+		// 	$('#cmajor').prop('disabled', false);
+		// 	//alert('Hello');
+
+		// 	$.ajax({
+		// 		url: "<?php echo base_url() ?>user/get_major",
+		// 		type: "Post",
+		// 		data: {"college_id": college_id},
+		// 		success : function(data){
+		// 			$('#cmajor').html(data);
+		// 		},
+		// 		error: function(){
+		// 			alert('Error');
+		// 		}
+		// 	});	
+		// }
+		// });
 	});
+	
 </script>

@@ -290,7 +290,8 @@ class User_Model extends CI_Model{
 	}
 	public function get_major_id($college)
 	{
-		$query =  $this->db->get_where('major_tbl', array('college' => $college));
+		$this->db->where('college', $college);
+		$query =  $this->db->get('major_tbl');
 		return $query->result();
 	}
 	public function insert_skill($skills)

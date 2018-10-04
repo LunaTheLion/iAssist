@@ -192,6 +192,7 @@ class User extends CI_CONTROLLER{
 			}
 			echo json_encode($pro_select_box);
 		}
+		//echo json_encode($pro_select_box);
 	}
 
 	public function general($email)

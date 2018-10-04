@@ -139,7 +139,15 @@
         dataType: 'json',
         success: function(data){
           //alert(data);
-          $('#newMsg').text(data);
+          if(data == false)
+          {
+            $('#newMsg').text('');
+          }
+          else if(data == true)
+          {
+            $('#newMsg').text(data);
+          }
+          
         },
         error: function(){
           alert('Cant load your Messages');
