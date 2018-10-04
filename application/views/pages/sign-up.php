@@ -1,4 +1,5 @@
-<div class="container mt-5">
+<div class="jumbotron" style="background-image:url(<?php echo base_url('assets/img/boss/background.jpg');?>); background-size: cover; background-repeat: no-repeat;">
+<div class="container mt-5" >
 	
 	<div class="row">
 
@@ -6,6 +7,9 @@
 
 		<div class="col-lg-5 col-ls-5">
 			<div class="card" style="margin: 10px; padding: 20px;">
+				<div class="card-header">
+					<h4 class="text-primary" align="center">Sign Up</h4>
+				</div>
 			<div class="form-group" style="padding: 10px;">
 			
 				
@@ -83,6 +87,7 @@
 		</div>
 		<div class="col-lg-4 col-ls-2"></div>
 	</div>
+</div>
 </div>
 
 

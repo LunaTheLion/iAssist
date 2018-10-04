@@ -497,7 +497,7 @@ class Admin extends CI_Controller
 	}
 	public function DeleteProjectPost()
 	{
-		$result = $this->Admin_model->delete_project();
+		$result = $this->Admin_model->delete_projects();
 		$msg['success'] = false;
 		if($result)
 		{

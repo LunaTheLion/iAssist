@@ -108,7 +108,7 @@
 
 
 							</p>
-							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Visit</button>
+							<a class="btn btn-info" type="submit" style="float:0; right:0px;" a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
 						</div>
 					</div>
 					</div>
@@ -198,13 +198,13 @@
 					$.ajax({
 						type:'ajax',
 						method: 'Post',
-						url: '<?php echo base_url()?>user/PostJob',
+						url: '<?php echo base_url()?>user/PostSkill',
 						data: $(this).serialize(),
 						async: false,
 						dataType: 'json',
 						success: function(data){
 							console.log(data);
-							alert('Your Job Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
+							alert('Your Skill Post will be reviewed by the Admin first, please wait for the confirmation.'+data.post_result);
 							$('#JobForm')[0].reset();
 							location.reload();
 							//showAllPost();

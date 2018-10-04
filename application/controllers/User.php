@@ -542,6 +542,25 @@ class User extends CI_CONTROLLER{
 	echo json_encode($result);
 
 	}
+	public function PostSkill()
+	{	
+
+	$data_in['title'] = $this->input->post('title');
+	$data_in['post_type'] = 'Skill';
+	$data_in['post_username'] = $this->session->userdata('username');
+	$data_in['title_slug'] = urlencode($this->input->post('title'));
+	$data_in['description'] = $this->input->post('description');
+	$data_in['category'] = $this->input->post('category');
+	$data_in['category_slug'] =urlencode( $this->input->post('category'));
+	$data_in['budget'] = $this->input->post('offer');
+	$data_in['date_created'] = date('Y-m-d g:i');
+	$data_in['creator'] = $this->session->userdata('email');
+	$data_in['status'] = 0;
+
+	$result = $this->User_Model->insert_skill_post($data_in);
+	echo json_encode($result);
+
+	}
 	public function countJobPost()
 	{
 		$result = $this->User_Model->count_user_job_post();
@@ -575,7 +594,7 @@ class User extends CI_CONTROLLER{
 	}
 	public function get_request_post()
 	{
-		$getData = $this->User_Model->get_user_skill_post();
+		$getData = $this->User_Model->get_user_request_post();
 		//print_r()
 		 echo json_encode($getData);
 	}
@@ -887,15 +906,17 @@ class User extends CI_CONTROLLER{
 			'img' =>$get->account_img,
 		);
 		$job_posts = array( 
-			'jobs' => $this->User_Model->show_request(),
+			'jobs' => $this->User_Model->get_forum_topics(),
 		);
-		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		//echo"<pre>";print_r($job_posts);echo"</pre>";
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/forum/side-user-forum');
 		$this->load->view('freelance/forum/forum',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
+
+
 	public function SkillPosting()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));

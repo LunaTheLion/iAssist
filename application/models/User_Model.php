@@ -406,7 +406,7 @@ class User_Model extends CI_Model{
 		$this->db->where('post_type', 'Project');
 		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
-		$this->db->where('status', '1');
+		$this->db->where('status', '0');
 		$query = $this->db->get('post_tbl');
 		if($query->num_rows() > 0)
 		{
@@ -507,7 +507,7 @@ class User_Model extends CI_Model{
 	}
 	public function insert_skill_post($data_in)
 	{
-		$this->db->insert('post_tbl',$data_in);
+		$this->db->insert('freelance_project_tbl',$data_in);
 		if($this->db->affected_rows() == 1 )
 		{
 			return true;
@@ -746,6 +746,12 @@ class User_Model extends CI_Model{
 		{
 			return false;
 		}
+	}
+	public function get_forum_topics()
+	{	
+		$this->db->select('*');
+		$query = $this->db->get('freelance_forum_tbl');
+		return $query->result();
 	}
 }//END OF MODEL CONTROLLER
 

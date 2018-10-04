@@ -8,22 +8,38 @@
 		
 	</div>
 	<div class="col-lg-6">
-		<br>
-		<img src="<?php echo base_url('assets/img/boss/logo.png')?>" class="center" style="height: 120px; width:150px; text-align: center;">
-		<br><br><br><br><br><br>
-		<h1 class="text-center" style="font-size:3rem;">Create your team</h1><p></p>
-	 	<form action="<?php echo base_url('search/find')?>" method="POST"> 
-		<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need">
-		<p></p>
 		<div class="row">
-
-		  <div class="col-lg-4"></div>
-		  <div class="col-lg-4">
-		  	<button class="btn btn-secondary btn-block" type="submit">Search</button>
-		 </form>
-		  </div>
-		  <div class="col-lg-4"></div>
+			<div class="col-lg-5"></div>
+			<div class="col-lg-3">
+				<img src="<?php echo base_url('assets/img/boss/logo.png')?>" align="center" style="height: 120px; width:150px; text-align: center;">
+			</div>
+			<div class="col-lg-4"></div>
 		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-center" align="center" style="font-size:3rem;">Create your team</h1><p></p>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<form action="<?php echo base_url('search/find')?>" method="POST"> 
+					<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need">
+					<p></p>
+					<div class="row">
+						<div class="col-lg-4"></div>
+					  <div class="col-lg-4">
+					  	<button class="btn btn-secondary btn-block" type="submit">Search</button>
+					  </div>
+					  <div class="col-lg-4">
+					  	
+				</form>
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="col-lg-4"></div>
+	</div>
 
 	</div>
 	<div class="col-lg-3">

@@ -92,20 +92,48 @@
 			</div>
 			<br>
 			<div class="card border-primary" style="padding: 10px; border:none;">
-				
+			
+			<?php foreach ($jobs as $row): ?>
 
-				<?php foreach ($jobs as $row): ?>
 					<br>
 					<div class="card">
 						<div class="card-body">
 							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;">
-								<!-- <a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->id) ?>" > -->
-									<?php echo $row->request_category; ?></p></a>
-							<p><?php echo $row->request_description; ?></p>
-							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
+							 <a href="<?php echo site_url('user/ViewForum/'.$row->forum_topic_slug.'/'.$row->id) ?>" > 
+									<?php echo $row->forum_topic; ?></p></a>
+							<p><?php echo $row->forum_details; ?></p>
+							<P><a href="#cmnt" data-toggle="" id="viewComments">Comments</a>
+								<span class="badge">4</span> | <a href="#cmnt" data-toggle="" id="viewComments">Likes</a>
+								<span class="badge">2</span>
+							</P>
+							<div id="cmnt">
+								<div class="card">
+									<div class="card-body">
+										<p class="text-primary" style="font-size: 14px;">
+
+										Sample Comments</p>
+									</div>
+								</div>
+								<br>
+								<div class="card">
+									<div class="card-body">
+										<p class="text-primary" style="font-size: 14px;">
+											
+										Sample Comments</p>
+									</div>
+								</div>
+								<br>
+								<div class="card">
+									<div class="card-body">
+										<p class="text-primary" style="font-size: 14px;">
+											
+										Sample Comments</p>
+									</div>
+								</div>
+							</div>
 						</div>
 				</div>
-				<?php endforeach; ?>
+				<?php endforeach; ?> 
 
 			</div>
 
@@ -126,13 +154,16 @@
 				//             }
 
 
-
+					$('#cmnt').hide()
 					$('#Ptype').hide();
 					$('#post1').hide();
 				$('#cp').on('click', function(){
 					$('#Ptype').toggle();
 					$('#post1').toggle();
 				});
+				$('#viewComments').on('click', function(){
+					$('#cmnt').toggle()
+				})
 
 
 

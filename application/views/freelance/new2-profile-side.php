@@ -1,3 +1,4 @@
+<title>Profile</title>
 <div class="jumbotron" style="background-color: #E0E0E0; ">
 	<a href="<?php echo base_url('user/ProfilePic')?>"><img src="<?php
 					$img = $this->session->userdata('img');

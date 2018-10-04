@@ -1,4 +1,4 @@
-<div class="jumbotron" style="background-image:url(<?php echo base_url('assets/img/blog-desk4.jpg');?>); background-size: cover; background-repeat: no-repeat;">
+<div class="jumbotron" style="background-image:url(<?php echo base_url('assets/img/boss/background.jpg');?>); background-size: cover; background-repeat: no-repeat;">
 
 <div class="container">
 	

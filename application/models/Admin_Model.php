@@ -8,9 +8,11 @@ class Admin_model extends CI_Model{
 	}
 	public function get_new_projects()
 	{
-		$this->db->where('post_type', 'Project');
+		//$this->db->where('post_type', 'Project');
+		$this->db->select('*');
+		$this->db->where('deleted', 0);
 		$this->db->where('status', 0);
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
 		return $query->result();
 	}
 
@@ -330,14 +332,15 @@ class Admin_model extends CI_Model{
 	{
 		$this->db->where('post_type', 'Job');
 		$this->db->where('status', 0);
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_job_tbl');
 		return $query->result();
 	}
 	public function view_jobs()
 	{
 		$id = $this->input->get('id');
 		$this->db->where('post_id', $id);
-		$query = $this->db->get('post_tbl');
+
+		$query = $this->db->get('freelance_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			 return $query->row();
@@ -351,7 +354,8 @@ class Admin_model extends CI_Model{
 	{
 		$id = $this->input->get('id');
 		$this->db->where('post_id', $id);
-		$query = $this->db->get('post_tbl');
+		$this->db->where('deleted', 0);
+		$query = $this->db->get('freelance_project_tbl');
 		if($query->num_rows() > 0)
 		{
 			 return $query->row();
@@ -370,7 +374,7 @@ class Admin_model extends CI_Model{
 			'date_allowed_by_admin' =>date('Y-m-d g:i'),
 			'admin' =>$this->session->userdata('username'),
 		);
-		$this->db->update('post_tbl', $hell0);
+		$this->db->update('freelance_job_tbl', $hell0);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;
@@ -389,7 +393,7 @@ class Admin_model extends CI_Model{
 			'date_allowed_by_admin' =>date('Y-m-d g:i'),
 			'admin' =>$this->session->userdata('username'),
 		);
-		$this->db->update('post_tbl', $hell0);
+		$this->db->update('freelance_project_tbl', $hell0);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;
@@ -407,7 +411,7 @@ class Admin_model extends CI_Model{
 			'deleted' => 1,
 			'date_deleted' =>date('Y-m-d g:i'),
 		);
-		$this->db->update('post_tbl', $hell0);
+		$this->db->update('freelance_job_tbl', $hell0);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;
@@ -425,7 +429,7 @@ class Admin_model extends CI_Model{
 			'deleted' => 1,
 			'date_deleted' =>date('Y-m-d g:i'),
 		);
-		$this->db->update('post_tbl', $hell0);
+		$this->db->update('freelance_project_tbl', $hell0);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;
