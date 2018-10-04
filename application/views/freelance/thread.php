@@ -21,7 +21,7 @@
 					<div class="card">
 						<div class="card-body">
 							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" ><?php echo $row->title; ?> </a></p>
-								<a href="<?php echo base_url('user/clickbyCategory/'.$row->category); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
+								<a href="<?php echo base_url('user/clickbyCategory/'.$row->category_slug); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
 							<p style="font-size: 20px;"><?php echo $row->description; ?></p>
 							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
 						</div>

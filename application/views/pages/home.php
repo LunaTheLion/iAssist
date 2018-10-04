@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-lg-6">
 		<br>
-		<img src="<?php echo base_url('assets/img/boss/logo.png')?>" style="height: 120px; width:150px; text-align: center;">
+		<img src="<?php echo base_url('assets/img/boss/logo.png')?>" class="center" style="height: 120px; width:150px; text-align: center;">
 		<br><br><br><br><br><br>
 		<h1 class="text-center" style="font-size:3rem;">Create your team</h1><p></p>
 	 	<form action="<?php echo base_url('search/find')?>" method="POST"> 

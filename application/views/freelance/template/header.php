@@ -65,7 +65,7 @@
 //header("Refresh:"); ?>
       <div class="bs-component">
        
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
             
     <div class="container">
                  <a class="navbar-brand" href="<?php echo base_url('users/home/'.$this->session->userdata('user_name'))?>">iAssist</a>
@@ -110,25 +110,20 @@
                         ?>
                         </a>
                       </li>
-
+                  
                   <!--   <li>
                       <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
                     </li> -->
                     
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
-                         <div class="dropdown-menu">
-                           
-                           <a class="dropdown-item" href="<?php echo base_url('user/user_profile') ?>">Your Account</a>
-                           <a class="dropdown-item" href="#">Something else here</a>
-                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="<?php echo base_url('user/logout')?>">Logout</a>
-                         </div>
-                       </li >
+    <!--                  
+ -->
+
                        
                        
                     </ul>
+                   
                   </div>
+
                  </div>
                </div>
              </nav>

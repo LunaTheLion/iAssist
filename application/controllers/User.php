@@ -212,7 +212,8 @@ class User extends CI_CONTROLLER{
 
 
 			$this->load->view('freelance/template/header', $sess_data);
-			$this->load->view('freelance/new-profile-side',$one);
+			//$this->load->view('freelance/new-profile-side',$one);
+			$this->load->view('freelance/new2-profile-side', $one);
 			$this->load->view('freelance/new-profile-body');
 			$this->load->view('freelance/template/footer');
 		}
@@ -531,6 +532,7 @@ class User extends CI_CONTROLLER{
 	$data_in['title_slug'] = urlencode($this->input->post('title'));
 	$data_in['description'] = $this->input->post('description');
 	$data_in['category'] = $this->input->post('category');
+	$data_in['category_slug'] =urlencode( $this->input->post('category'));
 	$data_in['budget'] = $this->input->post('offer');
 	$data_in['date_created'] = date('Y-m-d g:i');
 	$data_in['creator'] = $this->session->userdata('email');
@@ -697,6 +699,7 @@ class User extends CI_CONTROLLER{
 		$data_in['title_slug'] = urlencode($this->input->post('Ptitle'));
 		$data_in['description'] = $this->input->post('Pdescription');
 		$data_in['category'] = $this->input->post('Pcategory');
+		$data_in['category_slug'] =urlencode( $this->input->post('Pcategory'));
 		$data_in['budget'] = $this->input->post('Ppricing');
 		$data_in['date_created'] = date('Y-m-d g:i');
 		$data_in['creator'] = $this->session->userdata('email');
@@ -734,6 +737,7 @@ class User extends CI_CONTROLLER{
 		$data_in['title_slug'] = urlencode($this->input->post('Ptitle'));
 		$data_in['description'] = $this->input->post('Pdescription');
 		$data_in['category'] = $this->input->post('Pcategory');
+		$data_in['category_slug'] =urlencode( $this->input->post('Pcategory'));
 		$data_in['budget'] = $this->input->post('Ppricing');
 		$data_in['date_created'] = date('Y-m-d g:i');
 		$data_in['creator'] = $this->session->userdata('email');
@@ -871,6 +875,25 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/template/header', $sess_data);
 		$this->load->view('freelance/request/side-user-request');
 		$this->load->view('freelance/request/request',$job_posts);
+		$this->load->view('freelance/template/footer');
+	}
+	public function forum()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->show_request(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/forum/side-user-forum');
+		$this->load->view('freelance/forum/forum',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
 	public function SkillPosting()

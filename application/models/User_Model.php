@@ -437,9 +437,10 @@ class User_Model extends CI_Model{
 	public function new_job()
 	{
 		$this->db->select('*');
+		$this->db->where('post_type', 'Job');
 		$this->db->order_by('date_allowed_by_admin', 'DESC');
 		$this->db->where('status', '1');
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_job_tbl');
 		return $query->result();
 	}
 	public function get_all_skill()
@@ -457,6 +458,7 @@ class User_Model extends CI_Model{
 		$request = array(
 			'request_email' => $this->session->userdata('email'),
 			'request_category' => $this->input->post('category'),
+			'request_category_slug' =>urlencode($this->input->post('category')),
 			'request_description' => $this->input->post('description'),
 			'request_price' => $this->input->post('offer'),
 			'request_status' => 0,
@@ -718,7 +720,7 @@ class User_Model extends CI_Model{
 	public function click_category($category)
 	{
 		$this->db->select('*');
-		$this->db->where('category', $category);
+		$this->db->where('category_slug', $category);
 		$this->db->where('status', '1');
 		$query = $this->db->get('post_tbl');
 		if($query->num_rows() > 0)

@@ -1,7 +1,7 @@
-<title>iAssist - Skill</title>
+<title>iAssist -Forum</title>
 
 <div class="col-lg-8 col-sm-8">
-			<div class="card border-primary" style="padding: 10px; border:none;">
+			<div class="card " style="padding: 10px; border:none;">
 				<div class="card" >
 				  <div class="card-body" style="padding: 3px;">
 				  	<div class="row">
@@ -9,10 +9,24 @@
 				  			<h5><button class="btn btn-secondary" id="cp" style="margin-bottom: 0px; ">Create Post</button></h5>
 				  	
 				  		</div>
+
+				  		<div class="col-lg-3 col-sm-6" id="Ptype">
+				  			<select class="form-control center" id="postType" style="margin-top: 5px;">
+				   				<option value="Regular">Regular Post</option>
+				   				<option value="Job">Job Post</option>
+				   			</select>
+				  		</div>
+				  		
+				   	
 				  	</div>
-				 
+				  	<div id="post1">
+				  		<form action="<?php echo base_url('user/Post')?>" method="post" id="RegularForm">
+				  			<input type="hidden" name="TypeOfPost" value="Regular">
+				  			<textarea class="form-control" name="PostDesc" placeholder="Write Something" rows="3" cols="110" style="border:none;margin-bottom: 5px; "></textarea>
+				  			<button id="btnPost" type="submit" class="btn btn-secondary" style=" padding: 7px;float: right; right: 0;">Post</button>
+				  		</form>
+				  	</div>
 		 <div id="post2" style="display: none;" >
-		 	
 				<br>
 				<form action="" method="Post" id="JobForm" >
 				 <div class="row">
@@ -77,65 +91,23 @@
 				</div>
 			</div>
 			<br>
-			<div class="row">
-				<?php foreach ($jobs as $row): ?>
-					<br>
-					<div class="col-lg-4 col-sm-1">
-						<div class="card">
-						<div class="card-body">
-							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" ><?php echo $row->title; ?></p></a>
-							<a href="<?php echo base_url('user/clickbyCategory/'.$row->category); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
-							<p style="font-size: 20px;"><?php //echo $row->description; ?>
-								<?php 
-								$string = "Oh squiggly line in my eye fluid. I see you lurking there on the peripheral of my vision. But when I try to look at you, you scurry away. Are you shy, squiggly line? Why only when I ignore you, do you return to the center of my eye? Oh, squiggly line, it's alright, you are sdfsfsfsadfasdfasdfasdfasdfasdfasdfasdfasdfsdf.";
-								$string = strip_tags($string);
-								if (strlen($string) > 200) {
-
-								    // truncate string
-								    $stringCut = substr($string, 0, 200);
-								    $endPoint = strrpos($stringCut, ' ');
-
-								    //if the string doesn't contain any space then it will cut without word basis.
-								    $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
-								    $string .= '... <a href="'.base_url('user/clickbyCategory/'.$row->category).'">Read More</a>';
-								}
-								echo $string;
-
-
-
-								 ?>
-
-
-
-							</p>
-							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Visit</button>
-						</div>
-					</div>
-					</div>
-					
-				<?php endforeach; ?>
-			
-			</div>
-			<br>
-			
+			<div class="card border-primary" style="padding: 10px; border:none;">
 				
 
-				<!-- <?php foreach ($jobs as $row): ?>
+				<?php foreach ($jobs as $row): ?>
 					<br>
-					<div class="col-lg-4 col-sm-1">
-						<div class="card">
+					<div class="card">
 						<div class="card-body">
-							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" ><?php echo $row->title; ?></p></a>
-							<a href="<?php echo base_url('user/clickbyCategory/'.$row->category); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
-							<p style="font-size: 20px;"><?php echo $row->description; ?></p>
-							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Visit</button>
+							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;">
+								<!-- <a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->id) ?>" > -->
+									<?php echo $row->request_category; ?></p></a>
+							<p><?php echo $row->request_description; ?></p>
+							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
 						</div>
-					</div>
-					</div>
-					
-				<?php endforeach; ?> -->
+				</div>
+				<?php endforeach; ?>
 
-			
+			</div>
 
 
 
@@ -156,10 +128,10 @@
 
 
 					$('#Ptype').hide();
-					
+					$('#post1').hide();
 				$('#cp').on('click', function(){
-					$('#post2').toggle();
-					
+					$('#Ptype').toggle();
+					$('#post1').toggle();
 				});
 
 
