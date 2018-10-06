@@ -455,6 +455,11 @@ class Admin extends CI_Controller
 		$result = $this->Admin_model->get_new_projects();
 		echo json_encode($result);
 	}
+	public function showAllProjects()
+	{
+		$result = $this->Admin_model->get_all_projects();
+		echo json_encode($result);
+	}
 	public function viewJobs()
 	{
 		$result = $this->Admin_model->view_jobs();

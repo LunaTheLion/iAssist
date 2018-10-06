@@ -506,6 +506,23 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function saveImgSkill($image)
+	{
+		echo $image;
+		//$this->db->select('*');
+		// $this->db->where('account_email', $this->session->userdata('email'));
+		// $this->db->set('project_img', $image);
+		// $this->db->update('freelance_project_tbl');
+		// if($this->db->affected_rows() > 0)
+		// {
+		// 	return true;
+		// }
+		// else
+		// {
+		// 	echo "NOPE";
+		// 	return false;
+		// }
+	}
 	public function insert_skill_post($data_in)
 	{
 		$this->db->insert('freelance_project_tbl',$data_in);
@@ -570,7 +587,21 @@ class User_Model extends CI_Model{
 
 		$this->db->where('post_id', $id);
 		$this->db->where('title_slug', $title_slug);
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function view_job($title_slug, $id)
+	{
+		$this->db->where('post_id', $id);
+		$this->db->where('title_slug', $title_slug);
+		$query = $this->db->get('freelance_job_tbl');
 		if($query->result_array() > 0)
 		{
 			return $query->result();
@@ -582,25 +613,6 @@ class User_Model extends CI_Model{
 	}
 	public function view_project_if_not_user($title_slug,$id)
 	{
-
-		// $this->db->select("*");
-		// $this->db->where('account_email' , $email);
-		// $this->db->where('status', 'complete');
-		// $this->db->from('account_tbl');
-		// $this->db->join('freelance_education_tbl', 'ed_account_email = account_email','right');
-		
-		//  $query = $this->db->get();
-		//     if($query->result_array() > 0)
-		//     {
-		//         return $query->result();
-		//     }
-		//     else
-		//     {
-		//         return false;
-		//     }
-
-
-
 		$email = $this->session->userdata('email');
 		$this->db->select('*');
 		$this->db->where('creator', $email);
@@ -617,13 +629,46 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function view_job_if_not_user($title_slug,$id)
+	{
+		$email = $this->session->userdata('email');
+		$this->db->select('*');
+		$this->db->where('creator', $email);
+		$this->db->where('post_id', $id);
+		$this->db->from('freelance_job_tbl');
+		$this->db->join('account_tbl', 'account_email = creator', 'right');
+		$get = $this->db->get();
+		if($get->result_array() > 0)
+		{
+			return $get->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function get_project_owner($id)
 	{
 		//echo $id;
 		$this->db->select('creator');
 		$this->db->where('post_id', $id);
-		$data = $this->db->get('post_tbl');
-		if($data->result_array() > 1 )
+		$data = $this->db->get('freelance_project_tbl');
+		if($data->result_array() > 0 )
+		{
+			return $data->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_job_owner($id)
+	{
+		//echo $id;
+		$this->db->select('creator');
+		$this->db->where('post_id', $id);
+		$data = $this->db->get('freelance_job_tbl');
+		if($data->result_array() > 0 )
 		{
 			return $data->row();
 		}
@@ -647,7 +692,7 @@ class User_Model extends CI_Model{
 			'msg_author' => $this->input->post('sender'),
 			'msg_receiver' => $this->input->post('to'),
 			'msg_date' => date('Y-m-d i:g'),
-			'msg_subject' => $this->input->post('sender'),
+			'msg_subject' => $this->input->post('subject'),
 			'msg_body' => $this->input->post('message'),
 		);
 		$this->db->insert('freelance_msg_dest_tbl', $msg);

@@ -124,12 +124,22 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-				
-					$('#new').text(data);
-					$('#new').addClass('badge-danger');
-					$('#new2').text(data);
-					$('#new2').addClass('badge-danger');
-				
+					if(data == false)
+					{
+						$('#new').text('');
+						$('#new').removeClass('badge-danger');
+						$('#new2').text('');
+						$('#new2').removeClass('badge-danger');
+					}
+					else if ( data == true)
+					{
+						$('#new').text(data);
+						$('#new').addClass('badge-danger');
+						$('#new2').text(data);
+						$('#new2').addClass('badge-danger');
+						
+					}
+					
 					
 				},
 				error: function(){

@@ -137,7 +137,7 @@
 				    		<p class="text-primary center">Subject</p>
 				    	</div>
 				    	<div class="col-lg-9 col-sm-9">
-				    		<input type="text" class="form-control" name="sender" required>
+				    		<input type="text" class="form-control" name="subject" required>
 				    	</div>
 				    </div>
 				    <br>

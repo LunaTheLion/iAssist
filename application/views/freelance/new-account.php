@@ -1,17 +1,4 @@
 <title>Personal Profile</title>
-
-<!-- <div class="jumbotron">
-<div class="row">
-	<div class="col-lg-4 col-sm-4">
-		<div class="card">
-			<div class="card-header"></div>
-			<div class="card-body">
-				<a href="<?php echo site_url('user/general/'.$this->session->userdata('email')); ?>">Back to profile</a>
-			</div>
-			<div class="card-footer"></div>
-		</div>
-	</div> -->
-
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
 			<div class="card-header">Personal Information</div>

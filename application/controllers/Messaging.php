@@ -24,12 +24,8 @@ class Messaging extends CI_Controller{
 
 		$this->email->send();
 
-
-		//$this->email->initialize($config);
-
-
-
 	}
+	
 
 	public function message()
 	{

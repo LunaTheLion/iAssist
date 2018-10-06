@@ -15,8 +15,9 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-
+			<a href="<?php echo base_url('user/') ?>" class="btn btn-info">Create Post</a>
 			<div class="list-group">
+			  
 			  <a href="#" class="list-group-item list-group-item-action">
 			    Video and Animation
 			    <span class="badge badge-primary badge-pill" id="VA">14</span>

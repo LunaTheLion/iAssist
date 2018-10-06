@@ -101,7 +101,7 @@
                     
                       <li>
                         <a id="oo" class="nav-link"  href="<?php echo base_url('messaging/inbox')?>">
-                          <span class="badge badge-danger" id="newMsg"></span>
+                          <span class="badge badge-danger" id="newMsg" style="font-size: 15px;"></span>
                           <img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon" ></a>
                       </li>
                       <li class="nav-item nav-">
@@ -109,16 +109,7 @@
                         echo $this->session->userdata('username');
                         ?>
                         </a>
-                      </li>
-                  
-                  <!--   <li>
-                      <a class="nav-link" href="<?php echo base_url('users/logout');?>">Logout</a>
-                    </li> -->
-                    
-    <!--                  
- -->
-
-                       
+                      </li> 
                        
                     </ul>
                    
@@ -132,6 +123,9 @@
   $(window).on('load',function(){
     //$('#button').on('click', function(){
       //alert('Hello');
+      $('#oo').on('click', function(){
+          $('#newMsg').text('');
+      });
       $.ajax({
         type: 'ajax',
         url: '<?php echo base_url()?>user/countNewMessage',
@@ -139,14 +133,16 @@
         dataType: 'json',
         success: function(data){
           //alert(data);
-          if(data == false)
+          json = JSON.parse(data);
+          if(json === false)
           {
             $('#newMsg').text('');
           }
-          else if(data == true)
+          else
           {
-            $('#newMsg').text(data);
+            $('#newMsg').text(data);  
           }
+          console.log(data);
           
         },
         error: function(){

@@ -15,6 +15,14 @@ class Admin_model extends CI_Model{
 		$query = $this->db->get('freelance_project_tbl');
 		return $query->result();
 	}
+	public function get_all_projects()
+	{
+		//$this->db->where('post_type', 'Project');
+		$this->db->select('*');
+	
+		$query = $this->db->get('freelance_project_tbl');
+		return $query->result();
+	}
 
 	public function review_project()
 	{

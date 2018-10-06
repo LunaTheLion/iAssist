@@ -8,16 +8,17 @@ class Products extends CI_Controller
         $this->load->model('product');
     }
     
-    function index(){
+    function paypal(){
         $data = array();
         
         // Get products data from database
         $data['products'] = $this->product->getRows();
         
         // Pass products data to view
-       // $this->load->view('products/index', $data);
+       //$this->load->view('products/index', $data);
+        $this->load->view('freelance/template/header');
          $this->load->view('freelance/payment/products', $data);
-       
+       $this->load->view('freelance/template/footer');
     }   
     
     function buy($id){

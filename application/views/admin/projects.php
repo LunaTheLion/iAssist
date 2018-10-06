@@ -42,10 +42,45 @@
     	   <tbody id="showProjects">                                    
     	   
     	   </tbody>
-    	   </table>
-    	   </div>
-    	   </div>
-    	   </div>
+  	   </table>
+   	   </div>
+    </div>
+  </div>
+  <div class="panel panel-primary no-border">
+ <div class="panel-heading">
+      All Projects
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+         <table class="table table-hover">
+           <thead>
+              <tr>
+                   <th>
+                         <i class="fa fa-lg fa-sort-amount-asc" aria-hidden="true"></i>
+                     </th>
+                  <th>
+                        <i class="fa fa-lg fa-envelope" aria-hidden="true"></i> Email
+                  </th>
+                 <th>
+                         <i class="fa fa-lg fa-user" aria-hidden="true"></i> Username
+                  </th>
+
+                  <th>
+                         <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Title
+                  </th>
+                    <th></th>
+                  <th>
+                        <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Category
+                  </th>
+                 </tr>
+          </thead>
+         <tbody id="showAProjects">                                    
+         
+         </tbody>
+       </table>
+       </div>
+    </div>
+  </div>
                <!-- View Modal -->
                <div id="jobModal" class="modal fade" tabindex="-1" role="dialog">
                  <div class="modal-dialog modal-lg" role="document">
@@ -139,6 +174,7 @@
    <script>
         $(function(){
             showAllNewProjects()
+            showAllProjects()
             function showAllNewProjects(){
                 $.ajax({
                     type: 'ajax',
@@ -164,6 +200,38 @@
                                     '</td>'+
                                '</tr>';
                         }$('#showProjects').html(html);
+
+                    },
+                    error: function(){
+                        alert('Could not load Jobs');
+                    }
+                })
+            }
+            function showAllProjects(){
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url()?>admin/showAllProjects',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++)
+                        {
+                             html +='<tr>'+
+                                    '<td>'+(i+1)+'</td>'+
+                                    '<td>'+data[i].creator+'</td>'+
+                                    '<td>'+data[i].post_username+'</td>'+
+                                    '<td>'+data[i].title+'</td>'+
+                                    '<td></td>'+
+                                    '<td>'+data[i].category+'</td>'+
+                                    '<td>'+
+                                        '<a href="javascript:;" class="btn btn-info item-view" data="'+data[i].post_id+'">View</a>'+
+                                        '&nbsp;&nbsp;<a href="javascript:;" class="btn btn-success item-allow " data="'+data[i].post_id+'">Allow</a>'+'&nbsp;&nbsp;<a href="javascript:;" class="btn btn-danger item-delete " data="'+data[i].post_id+'">Delete</a>'
+                                    '</td>'+
+                               '</tr>';
+                        }$('#showAProjects').html(html);
 
                     },
                     error: function(){
