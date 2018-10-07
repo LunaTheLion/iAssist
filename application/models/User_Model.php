@@ -294,21 +294,42 @@ class User_Model extends CI_Model{
 		$query =  $this->db->get('major_tbl');
 		return $query->result();
 	}
-	public function insert_skill($skills)
+	public function insert_skill($image)
 	{
-		// print_r($skills);
-		if(!empty($skills))
+		// echo $this->input->post('title');
+		// echo "<br>";
+		// echo $this->input->post('description');
+		// echo "<br>";
+		// echo $this->input->post('offer');
+		// echo "<br>";
+		// echo $this->input->post('category');
+		// echo "<br>";
+		// echo $image;
+
+		$skill = array(
+			'post_username' => $this->session->userdata('username'),
+			'post_type' =>'Skill',
+			'post_img' => $image,
+			'title' => $this->input->post('title'),
+			'title_slug' =>urlencode($this->input->post('title')),
+			'category' =>$this->input->post('category'),
+			'category_slug' => urlencode($this->input->post('category')),
+			'description' => $this->input->post('description'),
+			'budget' => $this->input->post('offer'),
+			'date_created' => date('Y-m-d g:i'),
+			'creator' => $this->session->userdata('email'),
+		);
+		$this->db->insert('freelance_project_tbl',$skill);
+		if($this->db->affected_rows() == 1 )
 		{
-			$this->db->insert('freelance_skill_table', $skills);
-			if ($this->db->affected_rows()==1)
-			{//success insert	
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return true;
 		}
+		else
+		{
+			return false;
+		}
+
+		
 	}
 	public function insert_job_post($data_in)
 	{
@@ -447,10 +468,10 @@ class User_Model extends CI_Model{
 	public function get_all_skill()
 	{
 		$this->db->select('*');
-		$this->db->where('post_type','Project');
-		$this->db->order_by('date_allowed_by_admin', 'DESC');
+		//$this->db->where('post_type','Project');
+		$this->db->order_by('date_allowed_by_admin', 'ASC');
 		$this->db->where('status', '1');
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
 		return $query->result();
 	}
 

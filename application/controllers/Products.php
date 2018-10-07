@@ -37,10 +37,10 @@ class Products extends CI_Controller
         $this->paypal_lib->add_field('return', $returnURL);
         $this->paypal_lib->add_field('cancel_return', $cancelURL);
         $this->paypal_lib->add_field('notify_url', $notifyURL);
-        $this->paypal_lib->add_field('item_name', $product['name']);
+        $this->paypal_lib->add_field('item_name', $product['post_username']);
         $this->paypal_lib->add_field('custom', $userID);
-        $this->paypal_lib->add_field('item_number',  $product['id']);
-        $this->paypal_lib->add_field('amount',  $product['price']);
+        $this->paypal_lib->add_field('item_number',  $product['post_id']);
+        $this->paypal_lib->add_field('amount',  $product['budget']);
         
         // Load paypal form
         $this->paypal_lib->paypal_auto_form();

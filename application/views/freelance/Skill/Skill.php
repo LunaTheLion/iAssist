@@ -1,9 +1,7 @@
 <title>iAssist - Skill</title>
 
 <div class="col-lg-8 col-sm-8">
-			<div class="card border-primary" style="padding: 10px; border:none;">
-				<div class="card" >
-				  <div class="card-body" style="padding: 3px;">
+
 				  
 				 
 		<!--  <div id="post2" style="display: none;" >
@@ -67,10 +65,7 @@
 		 	</form>	  		
 		</div> -->
 
-				  </div>
-
-				</div>
-			</div>
+				
 			<br>
 			<div class="row">
 				<?php foreach ($jobs as $row): ?>

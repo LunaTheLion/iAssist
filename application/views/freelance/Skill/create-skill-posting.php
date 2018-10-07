@@ -9,14 +9,14 @@
 				  	<Br>
 				  		<div id="post2"  >
 				  		 			<br>
-				  		 			<form action="<?php echo base_url('user/PostSkill_with_image') ?>" method="Post" id="JobForm" >
+				  		 			 <?php echo form_open_multipart('user/PostSkill_with_image') ?>	 
 				  		 			 <div class="row">
 				  		 			 	<div class="col-lg-3 col-sm-3">	
 				  		 			    <center><p class="text-primary">Title</p></center>
 				  		 			  </div>
 				  		 			  <div class="col-lg-9 col-sm-9">
 				  		 			  	<input type="hidden" name="TypeOfPost" value="Job">
-				  		 			  	<input type="text" name="title" placeholder="What are you looking for?" class="form-control" required value="<?php 
+				  		 			  	<input type="text" name="title" placeholder="Tell them what you can do?" class="form-control" required value="<?php 
 				  		 			  	if(empty($_POST['title']))
 				  		 			  	{
 				  		 			  		echo "";
@@ -35,7 +35,7 @@
 				  		 			  </div>
 				  		 			  <div class="col-lg-9 col-sm-9">
 				  		 			  	<div class="form-group">
-				  		 			  	 <textarea class="form-control " name="description" placeholder="Briefly Describe what you are looking for" rows="5" required><?php 
+				  		 			  	 <textarea class="form-control " name="description" placeholder="Briefly Describe what you can do" rows="5" required><?php 
 				  		 			  	 if(empty($_POST['description']))
 				  		 			  	 {
 				  		 			  	 	echo "";
@@ -95,68 +95,38 @@
 				  		 			  	 <?php echo form_error('category');?> 
 				  		 			   </div>
 				  		 			  </div>
-				  		 			  
 				  		 			  </div>
-				  		 			
-				  		 			  		<button class="btn btn-secondary" type="submit" id="btnJob" style=" padding: 7px;float: right; right: 0;" >Post</button>
+				  		 	<div class="row">
+								<div class="col-lg-3 col-sm-3">
+								<center><p class="text-primary" required>Upload Image</p></center>
+								</div>
+								<div class="col-lg-9 col-sm-9">
+								<?php if(isset($error))
+								{
+									echo '<div class="alert alert-dismissible alert-danger">
+								  			<button type="button" class="close" data-dismiss="alert">&times;</button>
+								 			<strong>Oh snap!</strong>'.$error.'</div>';
+								}
+								else if(isset($upload_data))
+								{
+									echo '<div class="alert alert-dismissible alert-success">
+  								<button type="button" class="close" data-dismiss="alert">&times;</button>
+ 								 <strong>Well done!</strong> You successfully upload an image.
+								</div>';
+								}
 
+								 ?>
+								<input class="form-control" type="file" name="userfile" size="20"/>
+								</div>
+							</div>
+							<br>
+							<input type="submit" value="Submit" class="btn btn-info center">
+							<br>
+							<a class="btn btn-primary center" href="<?php echo base_url('user/skillPosting') ?>" >Back to Skill</a>
 				  		 	</form>	  		
 				  		</div> 	
 
 				  		<div>
-				  			<?php 
-
-					if(isset($error)) 	
-					{
-						//echo $error;
-						echo '<div class="alert alert-dismissible alert-danger">
-  								<button type="button" class="close" data-dismiss="alert">&times;</button>
- 								 <strong>Oh snap!</strong>'.$error.'.
-							</div>';
-						echo form_open_multipart('user/');
-						echo '<input class="form-control" type="file" name="userfile" size="20"/>';
-						echo "<br><br>";
-						echo '<div class="row">
-						<div class="col-lg-6 col-sm-3">
-							<input type="submit" value="upload" class="btn btn-info center">
-						</div>
-						<div class="col-lg-6 col-sm-3">
-							<a href="'.site_url('user/general/'.$this->session->userdata('email')).'" class="btn btn-primary center">Back to Profile</a>
-						</div>
-					</div>';
-						//echo '<input type="submit" value="upload" class="btn btn-info center">';
-						//echo "<br><br>";
-						//echo '<a href="'.site_url('user/general/'.$this->session->userdata('email')).'" class="btn btn-primary center">Back to Profile</a>';
-					}
-					else if (isset($upload_data))
-					{
-						echo '<div class="alert alert-dismissible alert-success">
-  								<button type="button" class="close" data-dismiss="alert">&times;</button>
- 								 <strong>Well done!</strong> You successfully upload an image.
-							</div>';
-
-						//echo  anchor(base_url('user/ProfilePic'), 'Upload another file!');
-						echo '<div class="row">
-						<div class="col-lg-6 col-sm-3">
-							<a href="'.base_url('user/ProfilePic').'" class="btn btn-info center">Upload another file</a>
-						</div>
-						<div class="col-lg-6 col-sm-3">
-							<a href="'.site_url('user/general/'.$this->session->userdata('email')).'" class="btn btn-primary center">Back to Profile</a>
-						</div>
-					</div>';
-
-					
-					}
-					else
-					{
-						echo form_open_multipart('user/PostSkill_with_image');
-						echo '<input class="form-control" type="file" name="userfile" size="20"/>';
-						echo "<br><br>";
-						echo '<input type="submit" value="upload" class="btn btn-info center">';
-						echo "<br><br>";
-				
-					}
-					?>
 				  		</div>		
 				  </div>
 				</div>
