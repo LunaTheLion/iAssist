@@ -52,12 +52,13 @@
 			    	
 			    	      </label>
 			    	    </div>
-			    	    
+			    	    <!-- <div class="g-recaptcha" data-sitekey="6Lc84XMUAAAAACZQwWh5CQaZEp1UoJW6KYo2yi9U"></div> -->
 			    	    <div class="row">
 			    	    	<div class="col-lg-6">
 			    	    		<button type="submit" class="btn btn-primary  btn-block">Sign In</button>
 			    	    	</div>
-			    	    	<div class="col-lg-6"></form>
+			    	    	<div class="col-lg-6">
+			    	    	</form>
 			    	    		<a href="<?php echo base_url('login/sign_up');?>" class="btn btn-secondary btn-block">Sign Up</a>
 			    	    	</div>
 			    	    </div>

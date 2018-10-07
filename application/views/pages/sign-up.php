@@ -64,6 +64,9 @@
 						
 					</div>
 				</div>
+				<div class="row">
+					<div class="g-recaptcha" data-sitekey="6Lc84XMUAAAAACZQwWh5CQaZEp1UoJW6KYo2yi9U" required></div>
+				</div>
 
 
 				<div><p></p>
