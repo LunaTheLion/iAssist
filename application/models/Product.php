@@ -13,7 +13,7 @@ class Product extends CI_Model{
         $this->db->where('status', '1');
         
         if($id){
-            $this->db->where('id', $id);
+            $this->db->where('post_id', $id);
             $query = $this->db->get();
             $result = $query->row_array();
         }else{
