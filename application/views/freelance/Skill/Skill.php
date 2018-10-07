@@ -4,12 +4,7 @@
 			<div class="card border-primary" style="padding: 10px; border:none;">
 				<div class="card" >
 				  <div class="card-body" style="padding: 3px;">
-				  	<div class="row">
-				  		<div class="col-lg-3 col-sm-6" style="padding-right: 0px;">
-				  			<h5><button class="btn btn-secondary" id="cp" style="margin-bottom: 0px; ">Create Post</button></h5>
-				  	
-				  		</div>
-				  	</div>
+				  
 				 
 		<!--  <div id="post2" style="display: none;" >
 		 			<br>

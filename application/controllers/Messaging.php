@@ -166,10 +166,7 @@ class Messaging extends CI_Controller{
 					echo "Not getting the Mails";
 				}
 
-				// $this->load->view('freelance/template/header', $msg);
-				// $this->load->view('freelance/messaging/list');
-				// $this->load->view('freelance/messaging/sent');
-				// $this->load->view('freelance/template/footer');
+				
 			}
 			else
 			{

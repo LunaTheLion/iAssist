@@ -9330,10 +9330,12 @@ button.bg-dark:focus {
 
 .text-primary {
   color: #1a1a1a !important;
+  font-size: 15px;
 }
 
 a.text-primary:hover, a.text-primary:focus {
   color: #010000 !important;
+  font-size: 15px;
 }
 
 .text-secondary {

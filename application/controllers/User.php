@@ -1041,6 +1041,11 @@ class User extends CI_CONTROLLER{
 		$result = $this->User_Model->count_new_message();
 		echo json_encode($result); 
 	}
+	public function notify()
+	{
+		$result = $this->User_Model->set_notified();
+		echo json_encode($result);
+	}
 	public function Job()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));

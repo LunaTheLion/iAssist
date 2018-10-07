@@ -48,9 +48,7 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="<?php echo base_url('/home');?>">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="<?php echo base_url('products/paypal');?>">Paypal <span class="sr-only">(current)</span></a>
-                    </li>
+                  
                     
                     <li class="nav-item">
                       <a class="nav-link" href="#features" >Features</a>

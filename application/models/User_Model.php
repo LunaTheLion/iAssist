@@ -710,7 +710,7 @@ class User_Model extends CI_Model{
 	public function count_new_message()
 	{
 		$this->db->select('*');
-		$this->db->where('msg_read',0);
+		$this->db->where('msg_notify',0);
 		$this->db->where('msg_receiver', $this->session->userdata('email'));
 		$query = $this->db->get('freelance_msg_dest_tbl');
 		if($query->num_rows() > 0)
@@ -721,6 +721,23 @@ class User_Model extends CI_Model{
 		{
 			return false;
 		}
+	}
+	public function set_notified()
+	{
+		$data = array(
+			'msg_notify' => 1,
+		);
+		$this->db->where('msg_receiver', $this->session->userdata('email'));
+		$this->db->update('freelance_msg_dest_tbl', $data);
+
+		if ($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else{
+			return false;
+		}
+
 	}
 	public function show_request()
 	{

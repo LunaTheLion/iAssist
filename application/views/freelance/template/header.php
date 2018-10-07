@@ -85,6 +85,12 @@
                      <li class="nav-item active">
                        <a class="nav-link" href="<?php echo base_url('user/request');?>">Request
                         <span class="sr-only">(current)</span></a>
+
+                     </li>
+                     <li class="nav-item active">
+                       <a class="nav-link" href="<?php echo base_url('products/paypal');?>">Paypal
+                        <span class="sr-only">(current)</span></a>
+                        
                      </li>
                      <!-- Paypal Integration part -->
                      <li class="nav-item">
@@ -100,7 +106,8 @@
                      <ul class="navbar-nav mr-auto">
                     
                       <li>
-                        <a id="oo" class="nav-link"  href="<?php echo base_url('messaging/inbox')?>">
+                        <a id="oo" class="nav-link"  href="JavaScript:;">
+                          <!-- <a id="oo" class="nav-link"  href="<?php echo base_url('messaging/inbox')?>"> -->
                           <span class="badge badge-danger" id="newMsg" style="font-size: 15px;"></span>
                           <img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon" ></a>
                       </li>
@@ -124,8 +131,25 @@
     //$('#button').on('click', function(){
       //alert('Hello');
       $('#oo').on('click', function(){
-          $('#newMsg').text('');
+        $.ajax({
+          type: 'ajax',
+          url: '<?php echo base_url()?>user/notify',
+          async: false,
+          dataType: 'json',
+          success: function(data){
+            //alert(data);
+            console.log(data);
+            window.location.href = "<?php echo base_url('messaging/inbox') ?>";
+          },
+          error: function(){
+            alert('Cant load your Messages');
+          }
+        });
+
       });
+
+
+
       $.ajax({
         type: 'ajax',
         url: '<?php echo base_url()?>user/countNewMessage',

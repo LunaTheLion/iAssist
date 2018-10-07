@@ -2,7 +2,7 @@
 
 class Product extends CI_Model{
     function __construct() {
-        $this->proTable = 'products';
+        $this->proTable = 'freelance_project_tbl';
         $this->transTable = 'payments';
     }
     
@@ -11,12 +11,13 @@ class Product extends CI_Model{
         $this->db->select('*');
         $this->db->from($this->proTable);
         $this->db->where('status', '1');
+        
         if($id){
             $this->db->where('id', $id);
             $query = $this->db->get();
             $result = $query->row_array();
         }else{
-            $this->db->order_by('name', 'asc');
+            $this->db->order_by('date_allowed_by_admin');
             $query = $this->db->get();
             $result = $query->result_array();
         }

@@ -31,7 +31,7 @@ class Products extends CI_Controller
         $product = $this->product->getRows($id);
         
         // Get current user ID from session
-        $userID = $_SESSION['userID'];
+        $userID = $this->session->userdata('email');
         
         // Add fields to paypal form
         $this->paypal_lib->add_field('return', $returnURL);
