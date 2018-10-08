@@ -23,7 +23,8 @@
 			<div class="list-group">
 			 	<a href="#" class="btn btn-success" >Request Resume</a>
 			 	<button data-target="#Message" data-toggle="modal" class="btn btn-info">Message</button>
-			 
+			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request
+			  </a>
 			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
 			  </a> -->
 			</div>

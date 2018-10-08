@@ -35,38 +35,228 @@ class Search extends CI_Controller{
 		$this->load->view('freelance/payment');
 		$this->load->view('freelance/footer');
 	}
-
+	public function thread()
+	{
+		$job_posts = array( 
+		'jobs' => $this->Search_Model->get_jobs(),
+		);
+		// echo "<pre>";
+		// print_r($job_posts);
+		// echo "</pre>";
+		$this->load->view('guest/template/header');
+		$this->load->view('guest/thread-guest-side-nav');
+		$this->load->view('guest/thread', $job_posts);
+		$this->load->view('guest/template/footer');
+	}
+		public function Search_Job_Criteria()
+		{
+			$data1 = $this->input->post('category');
+			$data2 = $this->input->post('budget');
+			$data3 = $this->input->post('searchInput');
+			$result = $this->Search_Model->search_job_criteria();
+			if( empty($data1) && empty($data2) && empty($data3))
+			{
+				echo "<script>alert('Sorry! No match found.')</script>";
+				echo "<script>
+	    				window.history.back();
+					</script>";
+			}
+			else if($result)
+			{	
+				
+				$job_posts = array( 
+					'jobs' => $this->Search_Model->search_job_criteria(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				
+				$this->load->view('guest/template/header');
+				$this->load->view('guest/thread-guest-side-nav');
+				$this->load->view('guest/thread',$job_posts);
+				$this->load->view('guest/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry! No match found.')</script>";
+				echo "<script>
+	    				window.history.back();
+					</script>";
+				
+			}
+		}
+		public function Search_skill_Criteria()
+		{
+			$data1 = $this->input->post('category');
+			$data2 = $this->input->post('budget');
+			$data3 = $this->input->post('searchInput');
+			$result = $this->Search_Model->search_skill_criteria();
+			if( empty($data1) && empty($data2) && empty($data3))
+			{
+				echo "<script>alert('Sorry! No match found.')</script>";
+				echo "<script>
+	    				window.history.back();
+					</script>";
+			}
+			else if($result)
+			{	
+				
+				$job_posts = array( 
+					'jobs' => $this->Search_Model->search_skill_criteria(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				
+				$this->load->view('guest/template/header');
+				$this->load->view('guest/job-guest-side-nav');
+				$this->load->view('guest/thread',$job_posts);
+				$this->load->view('guest/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry! No match found.')</script>";
+				echo "<script>
+	    				window.history.back();
+					</script>";
+				
+			}
+		}
+			public function Search_request_Criteria()
+			{
+				$data1 = $this->input->post('category');
+				$data2 = $this->input->post('budget');
+				$data3 = $this->input->post('searchInput');
+				$result = $this->Search_Model->search_request_criteria();
+				if( empty($data1) && empty($data2) && empty($data3))
+				{
+				echo "<script>alert('Sorry! No match found.')</script>";
+				echo "<script>
+	    				window.history.back();
+					</script>";
+				}
+				else if($result)
+				{	
+					
+					$job_posts = array( 
+						'jobs' => $this->Search_Model->search_request_criteria(),
+					);
+					// echo"<pre>";print_r($job_posts);echo"</pre>";
+					
+					$this->load->view('guest/template/header');
+					$this->load->view('guest/job-guest-side-nav');
+					$this->load->view('guest/thread',$job_posts);
+					$this->load->view('guest/template/footer');
+				}
+				else
+				{
+					echo "<script>alert('Sorry! No match found.')</script>";
+					echo "<script>
+		    				window.history.back();
+						</script>";
+					
+				}
+			}
 	public function find()
 	{
+			$job_posts = array( 
+			'jobs' => $this->Search_Model->search(),
+			);
+			
+			if($this->Search_Model->search())
+			{
+				$this->load->view('guest/template/header');
+				$this->load->view('guest/thread-guest-side-nav');
+				$this->load->view('guest/thread', $job_posts);
+				$this->load->view('guest/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+			
+	}
+	public function Skill()
+	{
+		$job_posts = array( 
+		'jobs' => $this->Search_Model->get_skill(),
+		);
+		$this->load->view('guest/template/header');
+		$this->load->view('guest/skill-guest-side-nav');
+		$this->load->view('guest/skill', $job_posts);
+		$this->load->view('guest/template/footer');
+	}
+	public function Request()
+	{
+		$job_posts = array( 
+		'jobs' => $this->Search_Model->get_requests(),
+		);
+		$this->load->view('guest/template/header');
+		$this->load->view('guest/request-guest-side-nav');
+		$this->load->view('guest/request', $job_posts);
+		$this->load->view('guest/template/footer');
+	}
+public function ViewProject($title_slug,$id)
+	{
+		 	//echo "Not Owner";
+		 	$ow = $this->Search_Model->get_project_owner($id);	
 
-		$this->Search_Model->result();
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/thread');
-		$this->load->view('freelance/footer');
+		 	if($ow)
+		 	{	
+		 		//echo " True Creator<br>";
+		 		$email = $ow->creator;
+		 		$data = $this->Search_Model->get_account_info($email);
 
+		 			
+		 			$data = array(
+		 				'proj' => $this->Search_Model->view_project($title_slug, $id),
+		 			);	
+		 			$true = array(
+		 				'owner' =>$this->Search_Model->get_account_info($email),
+		 			);
+		 			// echo "<pre>";
+		 			// print_r($true);
+		 			// echo "</pre>";
+		 			$this->load->view('guest/template/header');
+		 			$this->load->view('guest/true_project_owner', $true);
+		 			$this->load->view('guest/view_user_project',$data);
+		 			$this->load->view('guest/template/footer');
+		 	}
+		 	else
+		 	{
+		 		echo "No creator";
+		 	}
 		 
 	}
-	public function view_projects($slug)
-	{	
+	public function ViewJob($title_slug,$id)
+		{
+			 	//echo "Not Owner";
+			 	$ow = $this->Search_Model->get_job_owner($id);	
 
-		$id = substr($slug, -2);
-	
+			 	if($ow)
+			 	{	
+			 		//echo " True Creator<br>";
+			 		$email = $ow->creator;
+			 		$data = $this->Search_Model->get_account_info($email);
 
-		$post = $this->Search_Model->get_email($id);
-		// print_r($post);
-		$email = $post->project_publisher;
-		
-		$view = array (
-			'view' 			=>	$this->Search_Model->get_post($id),
-			'publisher' 	=>	$this->Search_Model->get_owner($email), 
-			'proj'			=>  $this->Search_Model->get_more_proj($email),
-		);
-
-		$this->load->view('freelance/header');
-		$this->load->view('freelance/view-project', $view);
-		$this->load->view('freelance/footer');
-	}
-	
+			 			
+			 			$data = array(
+			 				'proj' => $this->Search_Model->view_job($title_slug, $id),
+			 			);	
+			 			$true = array(
+			 				'owner' =>$this->Search_Model->get_account_info($email),
+			 			);
+			 			// echo "<pre>";
+			 			// print_r($true);
+			 			// echo "</pre>";
+			 			$this->load->view('guest/template/header');
+			 			$this->load->view('guest/true_project_owner', $true);
+			 			$this->load->view('guest/view_user_project',$data);
+			 			$this->load->view('guest/template/footer');
+			 	}
+			 	else
+			 	{
+			 		echo "No creator";
+			 	}
+			 
+		}
 	public function request_service()
 	{
 

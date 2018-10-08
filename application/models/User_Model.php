@@ -319,6 +319,9 @@ class User_Model extends CI_Model{
 			'date_created' => date('Y-m-d g:i'),
 			'creator' => $this->session->userdata('email'),
 		);
+		// echo "<pre>";
+		// print_r($skill);
+		// echo "</pre>";
 		$this->db->insert('freelance_project_tbl',$skill);
 		if($this->db->affected_rows() == 1 )
 		{
@@ -478,11 +481,15 @@ class User_Model extends CI_Model{
 	public function request_post()
 	{
 		$request = array(
+			'request_title' => $this->input->post('title'),
+			'request_title_slug' => urlencode($this->input->post('title')),
+			'requestee_username' => $this->session->userdata('username'),
 			'request_email' => $this->session->userdata('email'),
 			'request_category' => $this->input->post('category'),
 			'request_category_slug' =>urlencode($this->input->post('category')),
 			'request_description' => $this->input->post('description'),
 			'request_price' => $this->input->post('offer'),
+			'request_date_submitted' => date('Y-m-d g:i'),
 			'request_status' => 0,
 		);
 
@@ -806,7 +813,7 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('category_slug', $category);
 		$this->db->where('status', '1');
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();

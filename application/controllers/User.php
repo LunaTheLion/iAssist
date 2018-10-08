@@ -6,9 +6,6 @@ class User extends CI_CONTROLLER{
 		parent:: __construct();
 		$this->load->model('User_Model');
 	}
-
-
-
 	public function new_user($email,$code)
 	{
 		$confirm = $this->User_Model->code_match($email,$code);
@@ -805,12 +802,14 @@ class User extends CI_CONTROLLER{
 		if($result)
 		{
 			echo "<script>alert('Your Request will be posted once approved by the Admin.')</script>";
-			redirect('user/thread','refresh');
+			//redirect('user/thread','refresh');
+			echo "<script>window.history.back();</script>";
 		}
 		else
 		{
 			echo "<script>alert('Sorry, cannot generate your request, please try later.')</script>";
-			redirect('user/thread','refresh');
+			echo "<script>window.history.back();</script>";
+			//redirect('user/thread','refresh');
 		}
 
 	}
@@ -991,7 +990,6 @@ class User extends CI_CONTROLLER{
 		 }
 		 else
 		 {
-		 	echo "Not Owner";
 		 	$ow = $this->User_Model->get_project_owner($id);	
 
 		 	if($ow)
@@ -1090,11 +1088,6 @@ class User extends CI_CONTROLLER{
 	}
 	public function MessageOwner()
 	{
-		// echo $this->input->post('sender');
-		// echo $this->input->post('to');
-		// echo $this->input->post('subject');
-		// echo $this->input->post('Message');
-		
 
 		$send = $this->User_Model->message_owner();
 		if($send == true)

@@ -68,30 +68,26 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
             
     <div class="container">
-                 <a class="navbar-brand" href="<?php echo base_url('/home/')?>">iAssist</a>
+                 <a class="navbar-brand" href="<?php echo base_url('home/')?>">iAssist</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
                    <span class="navbar-toggler-icon"></span>
             </button>
           <div class="collapse navbar-collapse" id="navbarColor02">
                    <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('user/thread');?>">Jobs
+                       <a class="nav-link" href="<?php echo base_url('search/thread');?>">Jobs
                         <span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('user/skillposting');?>">Skill
+                       <a class="nav-link" href="<?php echo base_url('search/Skill');?>">Skill
                         <span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('user/request');?>">Request
+                       <a class="nav-link" href="<?php echo base_url('search/request');?>">Request
                         <span class="sr-only">(current)</span></a>
 
                      </li>
-                     <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('products/paypal');?>">Paypal
-                        <span class="sr-only">(current)</span></a>
-                        
-                     </li>
+                   
                      <!-- Paypal Integration part -->
                      <li class="nav-item">
                       <!--  <a class="nav-link" href="<?php echo base_url('/paypal')?>">Paypal</a> -->
@@ -104,19 +100,21 @@
                    </ul>
                     <div>
                      <ul class="navbar-nav mr-auto">
-                    
-                      <li>
-                        <a id="oo" class="nav-link"  href="JavaScript:;">
-                          <!-- <a id="oo" class="nav-link"  href="<?php echo base_url('messaging/inbox')?>"> -->
-                          <span class="badge badge-danger" id="newMsg" style="font-size: 15px;"></span>
-                          <img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon" ></a>
-                      </li>
-                      <li class="nav-item nav-">
-                        <a class="nav-link" href="<?php echo site_url('user/general/'.$this->session->userdata('email'))?>"><?php 
-                        echo $this->session->userdata('username');
-                        ?>
-                        </a>
-                      </li> 
+                    <li class="nav-item nav-">
+                      <a class="nav-link" href="<?php
+                        if(!empty($this->session->has_userdata('email')))
+                        {
+                           echo base_url('user/general/'.$this->session->userdata('email'));
+                        }
+                        else
+                        {
+                           echo base_url('/sign-in');
+                        }
+                      ?>">Sign In</a>
+                    </li>
+                    <li class="nav-item nav-">
+                      <a class="nav-link" href="<?php echo base_url('/sign-up');?>">Sign Up</a>
+                    </li>
                        
                     </ul>
                    

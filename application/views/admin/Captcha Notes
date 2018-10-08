@@ -1,2 +1,8 @@
 Site Key for Recaptcha
+Use this in the HTML code your site serves to users.
 6Le03nMUAAAAAIch9I1sm2bEuCrZdrHC8aIeS0aK
+
+
+Secret key
+Use this for communication between your site and Google. Be sure to keep it a secret.
+6Le03nMUAAAAADI9Ql96rooPDI2jGeY4UjAPrNIB

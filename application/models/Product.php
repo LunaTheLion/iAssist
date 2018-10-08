@@ -11,15 +11,21 @@ class Product extends CI_Model{
         $this->db->select('*');
         $this->db->from($this->proTable);
         $this->db->where('status', '1');
-        
-        if($id){
+        echo $id;
+        if($id)
+        {
             $this->db->where('post_id', $id);
             $query = $this->db->get();
             $result = $query->row_array();
-        }else{
+           // echo "iD";
+            //$result = $query->row_result();
+        }
+        else{
             $this->db->order_by('date_allowed_by_admin');
             $query = $this->db->get();
+            echo "Order";
             $result = $query->result_array();
+            //$result = $query->result();
         }
         return !empty($result)?$result:false;
     }

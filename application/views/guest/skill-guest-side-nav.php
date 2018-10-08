@@ -15,23 +15,25 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-		
+		<!-- 
 			<ul class="list-group">
 			  <li class="list-group-item d-flex justify-content-between align-items-center">
 			    <button class="btn btn-success" data-target="#postRequest" data-toggle="modal" >Post a Request 
 			    </button>
 			  
 			  </li>  
-			</ul>	
+			</ul> -->
 			<div class="card">
 				
 				<div class="card-header" style="">
 					<p class="text-primary" style="font-size: 20px; margin-bottom: 2px;">Search Criteria</p>
 
 				</div>
-				<form action="<?php echo base_url('user/Search_Job_Criteria') ?>" method="Post">
+				<form action="<?php echo base_url('search/Search_skill_Criteria') ?>" method="Post">
 					<div class="card-body">
-						<select class="form-control" name="category" required>
+						<input type="text" class="form-control" name="searchInput" placeholder="Search Request">
+						<br>
+						<select class="form-control" name="category">
 							<option value="">Select Category</option>
 							<option value="Video and Animation">Video &amp; Animation</option>
 							<option value="Graphics and Design">Graphics &amp; Design</option>
@@ -43,7 +45,7 @@
 							<option value="Lifestyle">Fun &amp; Lifestyle</option>
 						</select>
 						<br>
-						<input type="text" class="form-control" name="budget" placeholder="Offer" required>
+						<input type="text" class="form-control" name="budget" placeholder="Offer" >
 						<br>
 						<button class="btn btn-info" type="submit">Submit Search</button>
 					</div>
@@ -53,7 +55,7 @@
 		</div>
 		
 
-<div id="postRequest" class="modal fade" tabindex="-1" role="dialog">
+<!-- <div id="postRequest" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -88,7 +90,7 @@
 				    		<p class="text-primary center">Offer</p>
 				    	</div>
 				    	<div class="col-lg-9 col-sm-9">
-				    		<input type="text" class="form-control" name="offer" required>
+				    		<input type="text"  class="form-control" name="offer" required>
 				    	</div>
 				    </div>
 				    <br>
@@ -119,4 +121,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->

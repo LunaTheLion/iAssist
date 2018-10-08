@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<form action="<?php echo base_url('search/find')?>" method="POST"> 
-					<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need">
+					<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Talents You Need" required>
 					<p></p>
 					<div class="row">
 						<div class="col-lg-4"></div>

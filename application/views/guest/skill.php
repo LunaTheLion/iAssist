@@ -7,20 +7,17 @@
 					<br>
 					<div class="col-lg-4 col-sm-1">
 						<div class="card">
-							<a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" >
-							<img style="height: 200px; width: 100%; display: block;" src="<?php echo base_url('uploads/'.$row->post_img)?>" alt="Card image">
-						<div class="card-body" style="padding: 15px;">
-							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><?php echo $row->title; ?></p></a>
-							<p class="text-primary" style="margin-bottom: 2px"><?php echo $row->post_username;?></p>
+						<div class="card-body">
+							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" ><?php echo $row->title; ?></p></a>
 							<a href="<?php echo base_url('user/clickbyCategory/'.$row->category); ?>"><?php echo $row->category ?></a> |&nbsp<a href=""><?php echo $row->budget ?></a> 
-							<p style="font-size: 18px;"><?php //echo $row->description; ?>
+							<p style="font-size: 20px;"><?php //echo $row->description; ?>
 								<?php 
-								$string = $row->description;
+								$string = "Oh squiggly line in my eye fluid. I see you lurking there on the peripheral of my vision. But when I try to look at you, you scurry away. Are you shy, squiggly line? Why only when I ignore you, do you return to the center of my eye? Oh, squiggly line, it's alright, you are sdfsfsfsadfasdfasdfasdfasdfasdfasdfasdfasdfsdf.";
 								$string = strip_tags($string);
-								if (strlen($string) > 20) {
-								    // truncate string
+								if (strlen($string) > 200) {
 
-								    $stringCut = substr($string, 0, 20);
+								    // truncate string
+								    $stringCut = substr($string, 0, 200);
 								    $endPoint = strrpos($stringCut, ' ');
 
 								    //if the string doesn't contain any space then it will cut without word basis.
@@ -36,7 +33,7 @@
 
 
 							</p>
-							<a class="btn btn-info" type="submit" style="float:0; right:0px;" a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
+							<a class="btn btn-info" type="submit" style="float:0; right:0px;" a href="<?php echo site_url('search/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
 						</div>
 					</div>
 					</div>

@@ -12,8 +12,8 @@
 						<div class="card-body">
 							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;">
 								<!-- <a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->id) ?>" > -->
-									<?php echo $row->title; ?></p></a>
-							<p><?php echo $row->description; ?></p>
+									<?php echo $row->request_category; ?></p></a>
+							<p><?php echo $row->request_description; ?></p>
 							<button class="btn btn-info" type="submit" style="float:0; right:0px;">Apply</button>
 						</div>
 				</div>
@@ -26,6 +26,19 @@
 
 
 			<script>
+				// window.addEventListener("scroll", function(){
+				//             var wrap = document.getElementById('timeline');
+				//             var contentHeight = wrap.offsetHeight;
+				//             var yOffset = window.pageYOffset; 
+				//             var y = yOffset + window.innerHeight;
+				//             if(y >= contentHeight)
+				//             {
+				//                 //load new content
+				//                 wrap.innerHTML = wrap.innerHTML + "<div>Random text</div>";
+				//             }
+
+
+
 					$('#Ptype').hide();
 					$('#post1').hide();
 				$('#cp').on('click', function(){

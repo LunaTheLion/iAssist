@@ -1,18 +1,7 @@
 <title>iAssist - Job</title>
 
 <div class="col-lg-8 col-sm-8">
-			<div class="card " style="padding: 10px; border:none;">
-				<div class="card" >
-				  <div class="card-body" style="padding: 3px;">
-				  	<div class="row">
-				  		<div class="col-lg-3 col-sm-6" style="padding-right: 0px;">
-				  			<h5><button class="btn btn-secondary" data-toggle="modal" data-target="#view" style="margin-bottom: 0px; ">Create Post</button></h5>
-				  	
-				  		</div>				   	
-				  	</div>		
-				  </div>
-				</div>
-			</div>
+			
 			<br>
 			<div class="card" style="padding: 10px; border:none;" ><!--  id="showJob"  -->
 				
