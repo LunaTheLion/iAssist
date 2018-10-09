@@ -29,7 +29,15 @@
 			</div>
 		</div>
 		
-
+<div id="resumeRequest" class="modal-fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog " role="document">
+		<div class="modal-content">
+			<div class="modal-title">
+				
+			</div>
+		</div>		
+	</div>
+</div>	
 <div id="postRequest" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">

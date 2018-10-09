@@ -22,10 +22,6 @@
 							" alt="Card image">
 						<div class="card-body" style="padding: 15px;">
 							<p class="text-primary" style="font-size: 25px; margin-bottom: 2px;"><?php echo $row->account_username; ?></p></a>
-						
-
-
-
 							</p>
 							<a class="btn btn-info" type="submit" style="float:0; right:0px;" a href="<?php // echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
 						</div>
