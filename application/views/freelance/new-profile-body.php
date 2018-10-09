@@ -30,7 +30,7 @@
 			<div class="card"  style="border:none;">
 				<div class="card-header">
 					<h3>Request</h3>
-					Interesteds | Likes
+					Interested | Likes
 				</div>
 				<div class="card-body" id="showRequest" style="padding: 2px;">
 					
@@ -153,8 +153,29 @@
 				       alert('Could not edit data');
 				   }
 				});
-
-
+			})
+			$('#showSkill').on('click', '.item-crud', function(){
+				var id = $(this).attr('data');
+				//alert(id);
+				$(' .modal-body #num').val(id);
+				$.ajax({
+				   type: 'ajax',
+				   method: 'get',
+				   url: '<?php echo base_url() ?>User/crud_project_post',
+				   data: {id:id},
+				   async: false,
+				   dataType: 'json',
+				   success: function(data){
+				       console.log(data);
+				        $('.modal-body  #title').val(data.title);
+				        $('.modal-body #description').val(data.description);
+				        $('.modal-body #category' ).val(data.category);
+				   },
+				   error: function()
+				   {
+				       alert('Could not edit data');
+				   }
+				});
 			})
 			function showSkillPost(){
 				$.ajax({

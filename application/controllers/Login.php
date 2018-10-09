@@ -12,13 +12,13 @@ class Login extends CI_Controller{
 
 	public function validate()
 	{
-	        $this->load->helper(array('form','captcha'));
+	        //$this->load->helper(array('form','captcha'));
 	        $this->load->library('form_validation');
 	        $this->form_validation->set_rules('username', 'User Name', 'trim|required|min_length[8]');
 	        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 	        $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
 	        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-	        $this->form_validation->set_rules('captcha', 'Captcha', 'callback_validate_captcha');
+	     //   $this->form_validation->set_rules('captcha', 'Captcha', 'callback_validate_captcha');
 
 	        if ($this->form_validation->run() == FALSE)
 	        {

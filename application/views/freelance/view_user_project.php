@@ -87,9 +87,13 @@
 	</div>
 	
 </div>
-<?php endforeach; ?>
-</div>
 
+</div>
+<div class="col-lg-3 col-sm-2">
+	<img src="<?php echo base_url('uploads/'.$row->post_img) ?>" style="height: 200px; width: 100%; display: block;">
+	<?php //echo  ?>
+</div>
+<?php endforeach; ?>
 <br>
 	</div>
 	</div>

@@ -127,14 +127,6 @@
 
 		<script>
 			$(window).on('load', function(){
-				countVideoAnimation();
-				countGraphicsDesign();
-				countDigitalMarketing();
-				countWritingTranslation();
-				countMusicAudio();
-				countProgramminTech();
-				countBusiness()
-				countFunLifestyle();
 				//count newly accepted postings
 				//Video and Animation
 				function countVideoAnimation()
@@ -145,191 +137,14 @@
 						async: false,
 						dataType: 'json',
 						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#VA').text('');	
-							}
-							else
-							{
-								$('#VA').text(data);	
-							}		
+							$('#VA').text(data);
 						},
 						error: function(){
-							alert('Cant count all Video Animation');
+							alert('Cant count all your post');
 						}
 					})
 				}
-				function countGraphicsDesign()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countGraphicsDesign',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#GD').text('');	
-							}
-							else
-							{
-								$('#GD').text(data);	
-							}			
-						},
-						error: function(){
-							alert('Cant count all Graphics and Design');
-						}
-					})
-				}
-				function countWritingTranslation()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countWritingTranslation',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#WT').text('');	
-							}
-							else
-							{
-								$('#WT').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Writing and Translation');
-						}
-					})
-				}
-				function countDigitalMarketing()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countDigitalMarketing',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#DM').text('');	
-							}
-							else
-							{
-								$('#DM').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Video Animation');
-						}
-					})
-				}
-				function countMusicAudio()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countMusicAudio',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#MA').text('');	
-							}
-							else
-							{
-								$('#MA').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Music and Audio Category');
-						}
-					})
-				}
-				function countProgramminTech()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countProgramminTech',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#PT').text('');	
-							}
-							else
-							{
-								$('#PT').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Programming and Tech Category');
-						}
-					})
-				}
-				function countBusiness()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countBusiness',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#B').text('');	
-							}
-							else
-							{
-								$('#B').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Programming and Tech Category');
-						}
-					})
-				}
-				function countFunLifestyle()
-				{
-					$.ajax({
-						type: 'ajax',
-						url: '<?php echo base_url()?>user/countFunLifestyle',
-						async: false,
-						dataType: 'json',
-						success: function(data){
-							json = JSON.parse(data);
-							if( json === false)
-							{
-								$('#L').text('');	
-							}
-							else
-							{
-								$('#L').text(data);	
-							}
-										
-						},
-						error: function(){
-							alert('Cant count all Programming and Tech Category');
-						}
-					})
-				}
-
-				})//end of function 
-
+			})
 
 		</script>
 	</div>

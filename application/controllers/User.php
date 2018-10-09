@@ -392,9 +392,6 @@ class User extends CI_CONTROLLER{
 	}
 	public function v_skill()
 	{
-		// echo $_POST['skill'];
-		// echo $_POST['category'];
-
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		$sess_data = array(
 			'id' => $get->account_id,
@@ -421,7 +418,7 @@ class User extends CI_CONTROLLER{
 				'skill' => $this->input->post('skill'),
 				'skill_created' => date('Y-m-d g:i'),
 			);
-			$j = $this->User_Model->insert_skill($skills);
+			$j = $this->User_Model->insert_profile_skill($skills);
 			if( $j == true)
 			{
 				redirect('user/interest', 'refresh');
@@ -432,7 +429,7 @@ class User extends CI_CONTROLLER{
 			}
 			
 		}
-		redirect('user/skill');
+		//redirect('user/skill');
 		// $this->load->view('freelance/template/header', $sess_data);
 		// $this->load->view('freelance/side-nav');
 		// $this->load->view('freelance/interest');
@@ -680,24 +677,8 @@ class User extends CI_CONTROLLER{
 	                	$this->load->view('freelance/skill/side-user-skill',$data);
 	                	$this->load->view('freelance/skill/create-skill-posting');
 	                	$this->load->view('freelance/template/footer');
-	                }
-	   //              $get = $this->User_Model->get_important($this->session->userdata('email'));
-				// 	$sess_data = array(
-				// 	'id' => $get->account_id,
-				// 	'email' =>$get->account_email,
-				// 	'username' => $get->account_username,
-				// 	'img' =>$get->account_img,
-				// );
-				// echo "<script>alert('Your Skill Post will be reviewed by the Admin first, before posting.')</script>";
-				// $this->session->set_userdata($sess_data);
-				// $this->load->view('freelance/template/header', $sess_data);
-				// $this->load->view('freelance/skill/side-user-skill',$data);
-				// $this->load->view('freelance/skill/create-skill-posting');
-				// $this->load->view('freelance/template/footer');
-				  	    
+	                }   
 			}
-
-			
 	}
 	public function upload_image_skill()
 	{
@@ -1086,6 +1067,25 @@ class User extends CI_CONTROLLER{
 		 	}
 		 }
 	}
+	public function people()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$people= array( 
+			'jobs' => $this->User_Model->get_all_people(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/people/side-user-people');
+		$this->load->view('freelance/people/Allpeople',$people);
+		$this->load->view('freelance/template/footer');
+	}
 	public function MessageOwner()
 	{
 
@@ -1153,6 +1153,7 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/request/request',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
+	
 	public function forum()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -1192,6 +1193,10 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill/side-user-skill');
 		$this->load->view('freelance/skill/skill',$job_posts);
 		$this->load->view('freelance/template/footer');
+	}
+	public function RequestResume()
+	{
+
 	}
 	public function CreateSkillPost()
 	{
@@ -1248,8 +1253,45 @@ class User extends CI_CONTROLLER{
 	}
 	public function countVideoAnimation()
 	{
-		//$this->User_Model->
+		$count = $this->User_Model->countVA();
+		echo json_encode($count);
 	}
+	public function countGraphicsDesign()
+	{
+		$count = $this->User_Model->countGD();
+		echo json_encode($count);
+	}
+	public function countDigitalMarketing()
+	{
+		$count = $this->User_Model->countDM();
+		echo json_encode($count);
+	}
+	public function countWritingTranslation()
+	{
+		$count = $this->User_Model->countWT();
+		echo json_encode($count);
+	}
+	public function countMusicAudio()
+	{
+		$count = $this->User_Model->countMA();
+		echo json_encode($count);
+	}
+	public function countProgramminTech()
+	{
+		$count = $this->User_Model->countPT();
+		echo json_encode($count);
+	}
+	public function countBusiness()
+	{
+		$count = $this->User_Model->countB();
+		echo json_encode($count);
+	}
+	public function countFunLifestyle()
+	{
+		$count = $this->User_Model->countFL();
+		echo json_encode($count);
+	}
+
 	public function clickbyCategory($category)
 	{
 		//echo $category;
@@ -1287,6 +1329,12 @@ class User extends CI_CONTROLLER{
 	{
 		//$data_in['id'] = $this->input->get('id');
 		$result = $this->User_model->crud_user_job_post($data_in);
+		//echo json_encode($result);
+	}
+	public function crud_project_post()
+	{
+		//$data_in['id'] = $this->input->get('id');
+		$result = $this->User_model->crud_user_project_post($data_in);
 		//echo json_encode($result);
 	}
 

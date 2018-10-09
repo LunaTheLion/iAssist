@@ -21,7 +21,7 @@
 			</center>
 			
 			<div class="list-group">
-			 	<a href="#" class="btn btn-success" >Request Resume</a>
+			 	<a href="<?php echo base_url('user/request_resume') ?>" class="btn btn-success" >Request Resume</a>
 			 	<button data-target="#Message" data-toggle="modal" class="btn btn-info">Message</button>
 			 
 			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus

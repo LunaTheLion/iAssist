@@ -296,16 +296,7 @@ class User_Model extends CI_Model{
 	}
 	public function insert_skill($image)
 	{
-		// echo $this->input->post('title');
-		// echo "<br>";
-		// echo $this->input->post('description');
-		// echo "<br>";
-		// echo $this->input->post('offer');
-		// echo "<br>";
-		// echo $this->input->post('category');
-		// echo "<br>";
-		// echo $image;
-
+	
 		$skill = array(
 			'post_username' => $this->session->userdata('username'),
 			'post_type' =>'Skill',
@@ -360,10 +351,10 @@ class User_Model extends CI_Model{
 	public function count_user_job_post()
 	{
 		$this->db->select('*');
-		$this->db->where('post_type','Job');
+		//$this->db->where('post_type','Job');
 		$this->db->where('status',0);
 		$this->db->where('creator', $this->session->userdata('email'));
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->num_rows();
@@ -377,7 +368,7 @@ class User_Model extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->where('creator', $this->session->userdata('email'));
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->num_rows();
@@ -388,34 +379,13 @@ class User_Model extends CI_Model{
 		}
 	}
 
-	public function insert_regular_post()
-	{
-		$data = array(
-			'post_type' => $this->input->post('TypeOfPost'),
-			'post_username' =>$this->session->userdata('username'),
-			'description' => $this->input->post('PostDesc'),
-			'date_created' => date('Y-m-d g:i'),
-			'creator' => $this->session->userdata('email'),
-			'status' => 1,
-		);
-		$this->db->insert('post_tbl',$data);
-		if($this->db->affected_rows() == 1 )
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 	public function get_user_job_post()
 	{
 		$this->db->select('*');
-		$this->db->where('post_type', 'Job');
 		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
 		$this->db->where('status', '1');
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -428,11 +398,10 @@ class User_Model extends CI_Model{
 	public function get_user_skill_post()
 	{
 		$this->db->select('*');
-		$this->db->where('post_type', 'Project');
 		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
-		$this->db->where('status', '0');
-		$query = $this->db->get('post_tbl');
+		//$this->db->where('status', '0');
+		$query = $this->db->get('freelance_project_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -475,6 +444,20 @@ class User_Model extends CI_Model{
 		$this->db->order_by('date_allowed_by_admin', 'ASC');
 		$this->db->where('status', '1');
 		$query = $this->db->get('freelance_project_tbl');
+		return $query->result();
+	}
+	public function count_VA()
+	{
+		$this->db->select('*');
+		$this->db->where('category', 'Video and Animation');
+		$query = $this->db->get('freelance_project_tbl');
+		return $query->result();
+	}
+	public function get_all_people()
+	{
+		$this->db->select('*');
+		$this->db->where('account_type', 'freelance');
+		$query = $this->db->get('account_tbl');
 		return $query->result();
 	}
 
@@ -808,6 +791,128 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function countVA()
+	{
+		$va = 'Video and Animation';
+		$this->db->select('*');
+		$this->db->where('category', $va);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countGD()
+	{
+		$gd = 'Graphics and Design';
+		$this->db->select('*');
+		$this->db->where('category', $gd);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countDM()
+	{
+		$va = 'Digital Marketing';
+		$this->db->select('*');
+		$this->db->where('category', $va);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countWT()
+	{
+		$wt = 'Writing and Translation';
+		$this->db->select('*');
+		$this->db->where('category', $wt);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countMA()
+	{
+		$wt = 'Music and Audio';
+		$this->db->select('*');
+		$this->db->where('category', $wt);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countPT()
+	{
+		$wt = 'Programming and Tech';
+		$this->db->select('*');
+		$this->db->where('category', $wt);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countB()
+	{
+		$wt = 'Business';
+		$this->db->select('*');
+		$this->db->where('category', $wt);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	public function countFL()
+	{
+		$wt = 'Lifestyle';
+		$this->db->select('*');
+		$this->db->where('category', $wt);
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->num_rows();		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	
+
 	public function click_category($category)
 	{
 		$this->db->select('*');
@@ -828,7 +933,22 @@ class User_Model extends CI_Model{
 		//$id = $this->input->get('id');
 		$this->db->select('*');
 		$this->db->where('post_id', $id);
-		$query = $this->db->get('post_tbl');
+		$query = $this->db->get('freelance_project_tbl');
+		if($query->num_rows() > 0)
+		{
+			 return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function crud_user_project_post($id)
+	{
+		//$id = $this->input->get('id');
+		$this->db->select('*');
+		$this->db->where('post_id', $id);
+		$query = $this->db->get('freelance_project_tbl');
 		if($query->num_rows() > 0)
 		{
 			 return $query->row();
@@ -843,6 +963,18 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$query = $this->db->get('freelance_forum_tbl');
 		return $query->result();
+	}
+	public function insert_profile_skill($skills)
+	{
+		$this->db->insert('freelance_skill_table', $skills);
+		if($this->db->affected_rows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }//END OF MODEL CONTROLLER
 

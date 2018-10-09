@@ -74,10 +74,7 @@
             </button>
           <div class="collapse navbar-collapse" id="navbarColor02">
                    <ul class="navbar-nav mr-auto">
-                     <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('user/thread');?>">Jobs
-                        <span class="sr-only">(current)</span></a>
-                     </li>
+                 
                      <li class="nav-item active">
                        <a class="nav-link" href="<?php echo base_url('user/skillposting');?>">Skill
                         <span class="sr-only">(current)</span></a>
@@ -87,20 +84,12 @@
                         <span class="sr-only">(current)</span></a>
 
                      </li>
-                     <li class="nav-item active">
-                       <a class="nav-link" href="<?php echo base_url('products/paypal');?>">Paypal
+                      <li class="nav-item active">
+                       <a class="nav-link" href="<?php echo base_url('user/people');?>">Search People
                         <span class="sr-only">(current)</span></a>
-                        
-                     </li>
-                     <!-- Paypal Integration part -->
-                     <li class="nav-item">
-                      <!--  <a class="nav-link" href="<?php echo base_url('/paypal')?>">Paypal</a> -->
 
-                     </li>  
-                      <form class="form-inline my-2 my-lg-0" action="#" method="post">
-                         <input class="form-control mr-sm-2" type="text" id="search" placeholder="Search">
-                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                       </form>             
+                     </li>
+                                  
                    </ul>
                     <div>
                      <ul class="navbar-nav mr-auto">
@@ -117,7 +106,7 @@
                         ?>
                         </a>
                       </li> 
-                       
+                      
                     </ul>
                    
                   </div>
@@ -166,7 +155,7 @@
           {
             $('#newMsg').text(data);  
           }
-          console.log(data);
+          //console.log(data);
           
         },
         error: function(){

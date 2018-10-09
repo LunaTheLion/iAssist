@@ -8,52 +8,52 @@
 				  <div class="card-body" style="padding: 3px;">
 				  	<Br>
 				  		<div id="post2"  >
-				  		 			<br>
-				  		 			 <?php echo form_open_multipart('user/PostSkill_with_image') ?>	 
-				  		 			 <div class="row">
-				  		 			 	<div class="col-lg-3 col-sm-3">	
-				  		 			    <center><p class="text-primary">Title</p></center>
-				  		 			  </div>
-				  		 			  <div class="col-lg-9 col-sm-9">
-				  		 			  	<input type="hidden" name="TypeOfPost" value="Job">
-				  		 			  	<input type="text" name="title" placeholder="Tell them what you can do?" class="form-control" required value="<?php 
-				  		 			  	if(empty($_POST['title']))
-				  		 			  	{
-				  		 			  		echo "";
-				  		 			  	}
-				  		 			  	else{
-				  		 			  		echo $_POST['title'];
-				  		 			  	}
-				  		 			  	 ?>">
-				  		 			  	<?php echo form_error('title');?>    
-				  		 			  </div>
-				  		 			 </div>
-				  		 			 <br>
-				  		 			 <div class="row">
-				  		 			  <div class="col-lg-3 col-sm-3">
-				  		 			   <center><p class="text-primary">Description</p></center>
-				  		 			  </div>
-				  		 			  <div class="col-lg-9 col-sm-9">
-				  		 			  	<div class="form-group">
-				  		 			  	 <textarea class="form-control " name="description" placeholder="Briefly Describe what you can do" rows="5" required><?php 
-				  		 			  	 if(empty($_POST['description']))
-				  		 			  	 {
-				  		 			  	 	echo "";
-				  		 			  	 }
-				  		 			  	 else{
-				  		 			  	 	echo $_POST['description'];
-				  		 			  	 }
-				  		 			  	  ?></textarea>
-				  		 			  	 <?php echo form_error('description');?> 
-				  		 			  	</div>
-				  		 			  </div>
-				  		 			 </div>
-				  		 			 <div class="row">
-				  		 			  <div class="col-lg-3 col-sm-3">
-				  		 			  	<center><p class="text-primary" required>Offer</p></center>
-				  		 			  </div>
-				  		 			  <div class="col-lg-9 col-sm-9">
-				  		 			   <div class="form-group">
+				  	<br>
+				  		<?php echo form_open_multipart('user/PostSkill_with_image') ?>	 
+				  		<div class="row">
+				  		 <div class="col-lg-3 col-sm-3">	
+				  		 		<center><p class="text-primary">Title</p></center>
+				  		 </div>
+				  		 <div class="col-lg-9 col-sm-9">
+				  		 	<input type="hidden" name="TypeOfPost" value="Job">
+				  		 	<input type="text" name="title" placeholder="Tell them what you can do?" class="form-control" required value="<?php 
+				  		 	if(empty($_POST['title']))
+				  		 	{
+				  		 		echo "";
+				  		 	}
+				  		 	else{
+				  		 		echo $_POST['title'];
+				  		 	}
+				  		 	 ?>">
+				  		 	<?php echo form_error('title');?>    
+				  		</div>
+				   </div>
+				   <br>
+				  	<div class="row">
+				  	 <div class="col-lg-3 col-sm-3">
+				  		 <center><p class="text-primary">Description</p></center>
+				  	 </div>
+				  	 <div class="col-lg-9 col-sm-9">
+				  		 <div class="form-group">
+				  		  <textarea class="form-control " name="description" placeholder="Briefly Describe what you can do" rows="5" required><?php 
+				  		 if(empty($_POST['description']))
+				  		 {
+				  		 	echo "";
+				  		 }
+				  		 else{
+				  		 	echo $_POST['description'];
+				  		 }
+				  		  ?></textarea>
+				  		 <?php echo form_error('description');?> 
+				  		</div>
+				   </div>
+				  </div>
+				  <div class="row">
+				   <div class="col-lg-3 col-sm-3">
+				  		<center><p class="text-primary" required>Offer</p></center>
+				   </div>
+				   <div class="col-lg-9 col-sm-9">
+				  	 <div class="form-group">
 				  		 			  	 <input type="text" name="offer" class="form-control" required value="<?php 
 				  		 			  	 if(empty($_POST['offer']))
 				  		 			  	 {
@@ -67,7 +67,7 @@
 				  		 			   </div>
 				  		 			  </div>
 				  		 			 </div>
-				  		 			 <div class="row">
+				  		 		 <div class="row">
 				  		 			  <div class="col-lg-3 col-sm-3">
 				  		 			  	<center><p class="text-primary" required>Category</p></center>
 				  		 			  </div>

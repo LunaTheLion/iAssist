@@ -124,20 +124,20 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					if(data == false)
-					{
-						$('#new').text('');
-						$('#new').removeClass('badge-danger');
-						$('#new2').text('');
-						$('#new2').removeClass('badge-danger');
-					}
-					else if ( data == true)
+					json = JSON.parse(data);
+					if(json === true)
 					{
 						$('#new').text(data);
 						$('#new').addClass('badge-danger');
 						$('#new2').text(data);
 						$('#new2').addClass('badge-danger');
-						
+					}
+					else
+					{
+						$('#new').text('');
+						$('#new').removeClass('badge-danger');
+						$('#new2').text('');
+						$('#new2').removeClass('badge-danger');
 					}
 					
 					
@@ -155,9 +155,15 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-					
-						$('#totalJobPost').text(data);
-					
+					json = JSON.parse(data);
+					if(json === false)
+					{
+						$('#totalJobPost').text('');	
+					}
+					else
+					{
+						$('#totalJobPost').text(data);	
+					}
 					
 				},
 				error: function(){
@@ -173,8 +179,16 @@
 				async: false,
 				dataType: 'json',
 				success: function(data){
-
-					$('#totalJobPost').text(data);
+					json = JSON.parse(data);
+					if(json === false)
+					{
+						$('#totalJobPost').text('');	
+					}
+					else
+					{
+						$('#totalJobPost').text(data);	
+					}
+					
 				},
 				error: function(){
 					alert('Cant count all your post');
