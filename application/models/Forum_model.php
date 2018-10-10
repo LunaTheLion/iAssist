@@ -97,7 +97,8 @@ class Forum_model extends CI_MODEL{
 	{
 		//$va = 'Video and Animation';
 		//$this->db->select('*');
-		$this->db->where('forum_id', '1' );
+		$id = $this->input->get('id');
+		$this->db->where('forum_id', $id );
 		$query = $this->db->get('forum_topics_tbl');
 		if($query->num_rows() > 0)
 		{
@@ -107,6 +108,22 @@ class Forum_model extends CI_MODEL{
 		{
 			return false;
 		}
+	}
+	public function count_posts()
+	{
+		//$va = 'Video and Animation';
+		//$this->db->select('*');
+		// $id = $this->input->get('id');
+		// $this->db->where('forum_id', $id );
+		// $query = $this->db->get('forum_topics_tbl');
+		// if($query->num_rows() > 0)
+		// {
+		// 	return $query->num_rows();		
+		// }
+		// else
+		// {
+		// 	return false;
+		// }
 	}
 
 }

@@ -746,15 +746,7 @@ class User extends CI_CONTROLLER{
 		$result = $this->User_Model->count_all_user_post();
 		echo json_encode($result);
 	}
-	public function Post()
-	{
-		//echo $this->input->post('PostDesc');
-		$insert = $this->User_Model->insert_regular_post();
-		if($insert)
-		{
-			redirect('user/general/'.$this->session->userdata('email'), 'refresh');
-		}
-	}
+	
 	public function get_job_post()
 	{
 		$getData = $this->User_Model->get_user_job_post();
@@ -773,10 +765,7 @@ class User extends CI_CONTROLLER{
 		//print_r()
 		 echo json_encode($getData);
 	}
-	public function user_post()
-	{
 
-	}
 	public function RequestPost()
 	{
 		$result = $this->User_Model->request_post();
@@ -953,6 +942,7 @@ class User extends CI_CONTROLLER{
 		 $check_if_owner = $this->User_Model->view_project_if_not_user($title_slug,$id);
 		 if($check_if_owner)
 		 {// Owner
+
 		 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		 		$sess_data = array(
 		 			'id' => $get->account_id,
@@ -1105,6 +1095,25 @@ class User extends CI_CONTROLLER{
 				</script>";
 		}
 	}
+	public function RequestResume()
+	{
+		echo "Hello";
+		// $send = $this->User_Model->message_owner();
+		// if($send == true)
+		// {	
+		// 	echo "<script>alert('Message sent.')</script>";
+		// 	echo "<script>
+  //   				window.history.back();
+		// 		</script>";
+		// }
+		// else
+		// {
+		// 	echo "<script>alert('Message not sent.')</script>";
+		// 	echo "<script>
+  //   				window.history.back();
+		// 		</script>";
+		// }
+	}
 	public function countNewMessage()
 	{
 		$result = $this->User_Model->count_new_message();
@@ -1194,10 +1203,7 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill/skill',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
-	public function RequestResume()
-	{
 
-	}
 	public function CreateSkillPost()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -1337,6 +1343,7 @@ class User extends CI_CONTROLLER{
 		$result = $this->User_model->crud_user_project_post($data_in);
 		//echo json_encode($result);
 	}
+
 
 
 }// end of the controller

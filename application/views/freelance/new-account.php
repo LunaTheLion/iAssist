@@ -1,15 +1,16 @@
 <title>Personal Profile</title>
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
-			<div class="card-header">Personal Information</div>
+			<div class="card-header" style="font-size: 20px;">Personal Information</div>
 			<form method="POST" action="<?php echo base_url('user/v_personal') ?>">
 			<div class="card-body">
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Name</center>
+							<!-- <p class="text-primary" style="font-size: 20px;">Name</p> -->
+							<center class="text-primary" style="font-size: 18px;">Name</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
-							<input type="text" class="form-control form-control-sm" name="name" 
+							<input type="text" class="form-control form-control-sm" style="font-size: 15px;" name="name" 
 							value="<?php 
 							if(empty($_POST['name']))
 							{
@@ -28,10 +29,10 @@
 				<br>
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Middle Name</center>
+							<center class="text-primary" style="font-size: 18px;">Middle Name</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
-							<input type="text" class="form-control form-control-sm" name="middlename"
+							<input type="text" class="form-control form-control-sm" style="font-size: 15px;" name="middlename"
 							value="<?php 
 							if(empty($_POST['middlename']))
 							{
@@ -49,10 +50,10 @@
 				<Br>
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Surname</center>
+							<center class="text-primary" style="font-size: 18px;">Surname</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
-							<input type="text" name="surname" class="form-control form-control-sm" 
+							<input type="text" name="surname" style="font-size: 15px;" class="form-control form-control-sm" 
 							value="<?php 
 							if(empty($_POST['surname']))
 							{
@@ -70,10 +71,10 @@
 				<br>
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Email</center>
+							<center class="text-primary" style="font-size: 18px;">Email</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
-							<input type="text" name="email" class="form-control form-control-sm" readonly value="<?php echo $this->session->userdata('email'); ?>">
+							<input type="text" name="email" style="font-size: 15px;" class="form-control form-control-sm" readonly value="<?php echo $this->session->userdata('email'); ?>">
 							
 						</div>
 
@@ -81,10 +82,10 @@
 				<br>
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Contact No.</center>
+							<center class="text-primary" style="font-size: 18px;">Contact No.</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
-							<input type="text" name="contact" class="form-control form-control-sm"
+							<input type="text" name="contact" style="font-size: 15px;" class="form-control form-control-sm"
 							value="<?php 
 							if(empty($_POST['contact']))
 							{
@@ -102,15 +103,15 @@
 				<Br>	
 				<div class="row">
 						<div class="col-lg-3 col-sm-3">
-							<center>Address</center>
+							<center class="text-primary" style="font-size: 18px;">Address</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									House No.
+									<center class="text-primary" style="font-size: 18px;">House No.</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
-									<input type="text" name="houseNo" class="form-control form-control-sm"
+									<input type="text" name="houseNo" style="font-size: 15px;" class="form-control form-control-sm"
 									value="<?php 
 									if(empty($_POST['houseNo']))
 									{
@@ -128,10 +129,10 @@
 							<br>
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									Street Name
+									<center class="text-primary" style="font-size: 18px;">Street Name</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
-									<input type="text" name="street" class="form-control form-control-sm"
+									<input type="text" name="street" style="font-size: 15px;" class="form-control form-control-sm"
 									value="<?php 
 									if(empty($_POST['street']))
 									{
@@ -149,10 +150,10 @@
 							<br>
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									Barangay
+									<center class="text-primary" style="font-size: 18px;">Barangay</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
-									<input type="text" name="brngy" class="form-control form-control-sm" 
+									<input type="text" name="brngy" style="font-size: 15px;" class="form-control form-control-sm" 
 									value="<?php 
 									if(empty($_POST['brngy']))
 									{
@@ -170,10 +171,10 @@
 							<br>
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									Municipality
+									<center class="text-primary" style="font-size: 18px;">Municipality</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
-									<input type="text" name="mncpl" class="form-control form-control-sm"
+									<input type="text" name="mncpl" style="font-size: 15px;" class="form-control form-control-sm"
 									 value="<?php 
 									 if(empty($_POST['mncpl']))
 									 {
@@ -198,23 +199,16 @@
 						<div class="col-lg-3 col-sm-3">
 							
 						</div>
-						
-						<div class="col-lg-5 col-sm-5">
-							<!-- <a href="">Reset Password</a> -->
+						<div class="col-lg-7 col-sm-7">
+							 <input type="checkbox" name="liscense" required> <a href="#myModal" data-toggle="modal" data-target="#myModal" style="padding-left: 10px; font-size: 18px;">I Agree to User Terms and Agreement</a>
 						</div>
 				</div>
 					
-			</div>
-					
-					
-			
-					
-				
-			
+			</div>			
 			<div class="card-footer">
 				
 				<button type="submit" class="btn btn-info">Next</button>
-				<a href="<?php echo base_url('user/educ') ?>" class="btn btn-danger">Skip</a>
+				
 			</div>
 			</div>
 
@@ -223,12 +217,13 @@
 			</form>
 
 				<div id="myModal" class="modal fade" role="dialog">
-				  <div class="modal-dialog">
+				  <div class="modal-dialog modal-lg">
 				    <!-- Modal content-->
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				        <h4 class="modal-title">Modal Header</h4>
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        
 				      </div>
 				      <div class="modal-body">
 				        <p>Some text in the modal.</p>

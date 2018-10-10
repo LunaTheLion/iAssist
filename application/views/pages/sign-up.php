@@ -1,19 +1,20 @@
+<title>iAssist | Sign up</title>
 <div class="jumbotron" style="background-image:url(<?php echo base_url('assets/img/boss/background.jpg');?>); background-size: cover; background-repeat: no-repeat;">
+
 <div class="container mt-5" >
 	
 	<div class="row">
 
-		<div class="col-lg-3 col-ls-2"></div>
-
-		<div class="col-lg-5 col-ls-5">
+		<div class="col-lg-2 col-sm-2"></div>
+		<div class="col-lg-1 col-sm-1"></div>
+			
+		<div class="col-lg-6 col-sm-6">
 			<div class="card" style="margin: 10px; padding: 20px;">
 				<div class="card-header">
 					<h4 class="text-primary" align="center">Sign Up</h4>
 				</div>
 			<div class="form-group" style="padding: 10px;">
 			
-				
-
 				<?php //echo form_open('/Form/frm'); ?>
 				<form method="POST" action="<?php echo base_url('/Login/validate')?>">
 				<p></p>
@@ -64,10 +65,10 @@
 						
 					</div>
 				</div>
-		<!-- 		<div class="row">
+				<div class="row" style="padding-left: 80px;">
 					<div class="g-recaptcha" data-sitekey="6Lc84XMUAAAAACZQwWh5CQaZEp1UoJW6KYo2yi9U" required></div>
 					<?php echo form_error('captcha'); ?>
-				</div> -->
+				</div>
 
 
 				<div><p></p>
@@ -89,7 +90,8 @@
 			</div>
 			</div>
 		</div>
-		<div class="col-lg-4 col-ls-2"></div>
+		<div class="col-lg-1 col-sm-1"></div>
+		<div class="col-lg-2 col-sm-2"></div>
 	</div>
 </div>
 </div>

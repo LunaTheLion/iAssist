@@ -73,7 +73,14 @@ class Forum extends CI_CONTROLLER{
 	}
 	public function countTopics()
 	{
-		$count = $this->Forum_Model->countVA();
+		//$data_in= $this->input->get('id');
+		$count = $this->Forum_Model->count_topics();
+		echo json_encode($count);
+	}
+	public function countPosts()
+	{
+		//$data_in= $this->input->get('id');
+		$count = $this->Forum_Model->count_posts();
 		echo json_encode($count);
 	}
 }

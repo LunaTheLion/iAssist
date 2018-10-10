@@ -53,6 +53,20 @@ class Login_model extends CI_Model{
 			return false;
 		}
 	}
+	public function check_account($email)
+	{
+		$this->db->where('account_email', $email);
+		$this->db->where('confirm_code', 'review');
+		$sql = $this->db->get('account_tbl');
+		if($sql->num_rows() == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 
 	public function signup($username,$email,$password, $pass)

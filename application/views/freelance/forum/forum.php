@@ -17,8 +17,9 @@
 									<?php echo $row->forum_topic; ?></p></a>
 							<p><?php echo $row->forum_details; ?></p>
 							<P><a href="#cmnt" data-toggle="" id="viewComments">Topics</a>
-								<span class="badge" id="topic">4</span> | <a href="#cmnt" data-toggle="" >Posts</a>
-								<span class="badge" id="posts">2</span>
+								<input type="hidden" name="id" value="<?php echo $row->id;?>">
+								<span class="badge" id="topic">4</span> | <!--<a href="#cmnt" data-toggle="" >Posts</a>
+								 <span class="badge" id="posts">2</span> -->
 							</P>
 					
 						</div>
@@ -29,35 +30,63 @@
 		<script>
 			$(window).on('load', function(){
 				countTopics();
-				countPosts();
+				//countPosts();
 				function countTopics()
-				{
-					// $.ajax({
-					// 	type: 'ajax',
-					// 	url: '<?php echo base_url()?>forum/countTopics',
-					// 	async: false,
-					// 	dataType: 'json',
-					// 	success: function(data){
-					// 		console.log(data);
-					// 		json = JSON.parse(data);
-					// 		if( json === false)
-					// 		{
-					// 			$('#topics').text('');	
-					// 		}
-					// 		else
-					// 		{
-					// 			$('#topics').text(data);	
-					// 		}		
-					// 	},
-					// 	error: function(){
-					// 		alert('Cant count Topics');
-					// 	}
-					// })
+				{	
+					var id = $('input[name=id]').val();
+					//alert(id);
+					$.ajax({
+						type: 'ajax',
+						method: 'get',
+						url: '<?php echo base_url()?>forum/countTopics/',
+						data:{id:id},
+						async: false,
+						dataType: 'json',
+						success: function(data){
+							console.log(data);
+							json = JSON.parse(data);
+							if( json === false)
+							{
+								$('#topic').text('');	
+							}
+							else
+							{
+								$('#topic').text(data);	
+							}		
+						},
+						error: function(){
+							alert('Cant count Topics');
+						}
+					})
 				}
-				function countPosts()
-				{
-					
-				}
+				// function countPosts()
+				// {
+				// 	var id = $('input[name=id]').val();
+				// 	//alert(id);
+				// 	$.ajax({
+				// 		type: 'ajax',
+				// 		method: 'get',
+				// 		url: '<?php echo base_url()?>forum/countTopics/',
+				// 		data:{id:id},
+				// 		async: false,
+				// 		dataType: 'json',
+				// 		success: function(data){
+				// 			console.log(data);
+				// 			json = JSON.parse(data);
+				// 			if( json === false)
+				// 			{
+				// 				$('#topic').text('');	
+				// 			}
+				// 			else
+				// 			{
+				// 				$('#topic').text(data);	
+				// 			}		
+				// 		},
+				// 		error: function(){
+				// 			alert('Cant count Topics');
+				// 		}
+				// 	})
+				// }
 			})
 		</script>
 		</div>

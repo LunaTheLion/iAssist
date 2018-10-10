@@ -11,6 +11,7 @@
 		<div class="row">
 			<div class="col-lg-5"></div>
 			<div class="col-lg-3">
+				<br><br><br><br>
 				<img src="<?php echo base_url('assets/img/boss/logo.png')?>" align="center" style="height: 120px; width:150px; text-align: center;">
 			</div>
 			<div class="col-lg-4"></div>
@@ -46,6 +47,7 @@
 		
 	</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
 </div>
 
 
@@ -136,7 +138,7 @@
 				  <img style="height: 220px; width: 100%; display: block;" src="<?php echo base_url('assets/img/luna.jpg');?>" alt="Card image">
 				   <div class="card-body">
 				    
-				    <a href="<?php echo base_url('')?>" class="card-link">See Profile</a>
+				    <!-- <a href="<?php echo base_url('')?>" class="card-link">See Profile</a> -->
 				  </div>
 				</div>
 			</div>
@@ -150,7 +152,7 @@
 				  <img style="height: 220px; width: 100%; display: block;" src="<?php echo base_url('assets/img/ye.jpg');?>" alt="Card image">
 				   <div class="card-body">
 				    
-				    <a href="<?php echo base_url('')?>" class="card-link">See Profile</a>
+				   <!--  <a href="<?php echo base_url('')?>" class="card-link">See Profile</a> -->
 				  </div>
 				  
 				</div>
@@ -165,7 +167,7 @@
 				  <img style="height: 220px; width: 100%; display: block;" src="<?php echo base_url('assets/img/athan.jpg');?>" alt="Card image">
 				  <div class="card-body">
 				    
-				    <a href="<?php echo base_url('')?>" class="card-link">See Profile</a>
+				    <!-- <a href="<?php echo base_url('')?>" class="card-link">See Profile</a> -->
 				  </div>
 				  
 				</div>

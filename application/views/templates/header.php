@@ -53,9 +53,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#features" >Features</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url('/about');?>">About</a>
-                    </li>
+                   
                   </ul>
                 </div>
                 <div>

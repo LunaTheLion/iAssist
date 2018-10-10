@@ -21,7 +21,7 @@
 			</center>
 			
 			<div class="list-group">
-			 	<a href="<?php echo base_url('user/request_resume') ?>" class="btn btn-success" >Request Resume</a>
+			 	<a href="#resume" class="btn btn-success" data-toggle="modal" data-target="#resume">Request Resume</a>
 			 	<button data-target="#Message" data-toggle="modal" class="btn btn-info">Message</button>
 			 
 			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
@@ -154,6 +154,68 @@
 				    	</div>
 				    	<div class="col-lg-9 col-sm-9">
 				    		<textarea class="form-control" name="message" required rows="5"></textarea>
+				    	</div>
+				    </div>
+				    <br>
+			    <br>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" >Submit</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="resume" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+					Message <?php echo $row->account_username; ?>
+				</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<form id="ResumeForm" action="<?php echo base_url('user/RequestResume')?>" method="post" >
+				    <input type="hidden" name="txtId" value="0">   
+				    <input type="hidden" name="titleSlug" >
+				    <input type="hidden" name="id" >
+				   <div class="row">
+				   	<div class="col-lg-2 col-sm-2">
+				   		<p class="text-primary center">To</p>
+				   	</div>
+				   	<div class="col-lg-9 col-sm-9">
+				   		<input type="text" class="form-control" name="to" readonly value="<?php echo $row->account_email; ?>">
+				   	</div>
+
+				   </div>
+				   <br>
+				    <div class="row">
+				    	<div class="col-lg-2 col-sm-2">
+				    		<p class="text-primary center">From</p>
+				    	</div>
+				    	<div class="col-lg-9 col-sm-9">
+				    		<input type="text" class="form-control" name="sender" value="<?php echo $this->session->userdata('email') ?>" readonly>
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-lg-2 col-sm-2">
+				    		<p class="text-primary center">Subject</p>
+				    	</div>
+				    	<div class="col-lg-9 col-sm-9">
+				    		<input type="text" class="form-control" name="subject" required value="Requesting for Resume">
+				    	</div>
+				    </div>
+				    <br>
+				    <div class="row">
+				    	<div class="col-lg-2 col-sm-2">
+				    		<p class="text-primary center">Message</p>
+				    	</div>
+				    	<div class="col-lg-9 col-sm-9">
+				    		<textarea class="form-control" name="message" required rows="3"></textarea>
 				    	</div>
 				    </div>
 				    <br>
