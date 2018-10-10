@@ -83,5 +83,46 @@ class Forum extends CI_CONTROLLER{
 		$count = $this->Forum_Model->count_posts();
 		echo json_encode($count);
 	}
+	public function CreateTopic()
+	{
+		
+		$id = $this->input->post('forum_id');
+		if($this->Forum_Model->insert_topic($id))
+		{
+			echo "<script>alert('Topic Saved')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+		else
+		{
+			echo "<script>alert('Sorry, Cannot save your post')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+	}
+	public function CreatePost()
+	{
+		$id = $this->input->post('topic_id');
+		// echo $this->input->post('content');	
+		// echo $id;
+		//$this->Forum_Model->insert_post($id);
+		if($this->Forum_Model->insert_post($id))
+		{
+			echo "<script>alert('Post Saved')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+		else
+		{
+			echo "<script>alert('Sorry, Cannot save your post')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+	}
+
 }
 ?>

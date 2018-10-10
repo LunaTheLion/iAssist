@@ -18,8 +18,7 @@
 
 			<div class="list-group" >
 			 
-			  <a data-target="#postRequest" data-toggle="modal" class="list-group-item list-group-item-action">Post a Request 
-			  </a>
+			  
 			<!--   <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
 			  </a> -->
 			  <a href="<?php echo base_url('user/forum');?>" class="list-group-item list-group-item-action" role="button">Forums

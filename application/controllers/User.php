@@ -494,6 +494,227 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/payment/products');
 		$this->load->view('freelance/template/footer');
 	}
+	public function Search_Skill()
+	{
+		$data1 = $this->input->post('search');
+		$data2 = $this->input->post('category');
+		$data3 =  $this->input->post('budget');
+		if(!empty($data1))
+		{
+			
+
+			if($this->User_Model->search_skill_word())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+				'jobs' => $this->User_Model->search_skill_word(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/skill/side-user-skill');
+				$this->load->view('freelance/skill/skill',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+
+		}
+		elseif (!empty($data2))
+		{
+			//$this->User_Model->search_skill_category();
+			if($this->User_Model->search_skill_category())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+				'jobs' => $this->User_Model->search_skill_category(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/skill/side-user-skill');
+				$this->load->view('freelance/skill/skill',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+		}
+		elseif (!empty($data3)) 
+		{
+			
+			if($this->User_Model->search_skill_price())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+				'jobs' => $this->User_Model->search_skill_price(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/skill/side-user-skill');
+				$this->load->view('freelance/skill/skill',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+		}
+		else
+		{
+			echo "<script>alert('Please input at least one Search Criteria')</script>";
+			echo "<script>window.history.back(); location.reload()</script>";
+		}
+		
+		
+	}
+	public function Search_Request()
+	{
+		$data1 = $this->input->post('search');
+		$data2 = $this->input->post('category');
+		$data3 =  $this->input->post('budget');
+		if(!empty($data1))
+		{
+			
+
+			if($this->User_Model->search_request_word())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+					'jobs' => $this->User_Model->search_request_word(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/request/side-user-request');
+				$this->load->view('freelance/request/request',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+
+		}
+		elseif (!empty($data2))
+		{
+			//$this->User_Model->search_skill_category();
+			if($this->User_Model->search_skill_category())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+					'jobs' => $this->User_Model->search_skill_category(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/request/side-user-request');
+				$this->load->view('freelance/request/request',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+		}
+		elseif (!empty($data3)) 
+		{
+			
+			if($this->User_Model->search_skill_price())
+			{
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+					'id' => $get->account_id,
+					'email' =>$get->account_email,
+					'username' => $get->account_username,
+					'img' =>$get->account_img,
+				);
+				$job_posts = array( 
+					'jobs' => $this->User_Model->search_skill_price(),
+				);
+				// echo"<pre>";print_r($job_posts);echo"</pre>";
+				$this->session->set_userdata($sess_data);
+				$this->load->view('freelance/template/header', $sess_data);
+				$this->load->view('freelance/request/side-user-request');
+				$this->load->view('freelance/request/request',$job_posts);
+				$this->load->view('freelance/template/footer');
+			}
+			else
+			{
+				echo "<script>alert('Sorry No match Found')</script>";
+				echo "<script>window.history.back();</script>";
+			}
+		}
+		else
+		{
+			echo "<script>alert('Please input at least one Search Criteria')</script>";
+			echo "<script>window.history.back(); location.reload()</script>";
+		}
+		
+		
+	}
+	public function Search_People()
+	{
+		$data1 = $this->input->post('search');
+		$data2 = $this->input->post('category');
+		$data3 =  $this->input->post('budget');
+		if(!empty($data1))
+		{
+			echo $data1;
+		}
+		elseif (!empty($data2))
+		{
+			echo $data2;
+		}
+		elseif (!empty($data3)) 
+		{
+			echo $data3;
+		}
+		else
+		{
+			echo "<script>alert('Please input at least one Search Criteria')</script>";
+			echo "<script>window.history.back();</script>";
+		}
+	}
 	public function thread()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -860,6 +1081,7 @@ class User extends CI_CONTROLLER{
 	                $this->load->view('freelance/template/footer');
 	        }
 	}
+
 	public function SkillPost()
 	{
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
@@ -941,8 +1163,8 @@ class User extends CI_CONTROLLER{
 				 
 		 $check_if_owner = $this->User_Model->view_project_if_not_user($title_slug,$id);
 		 if($check_if_owner)
-		 {// Owner
-
+		 {//if Owner
+		 		//echo "Owner";
 		 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		 		$sess_data = array(
 		 			'id' => $get->account_id,
@@ -960,7 +1182,7 @@ class User extends CI_CONTROLLER{
 		 		$this->load->view('freelance/template/footer');
 		 }
 		 else
-		 {
+		 { //not owner
 		 	$ow = $this->User_Model->get_project_owner($id);	
 
 		 	if($ow)
@@ -1076,6 +1298,33 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/people/Allpeople',$people);
 		$this->load->view('freelance/template/footer');
 	}
+	public function View_User_Profile($id)
+	{
+		// echo $id;
+		// $get_user = $this->User_Model->get_view_profile($id);
+		// echo "<pre>";
+		// print_r($get_user);
+		// echo "</pre>";
+
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+		);
+		$people= array( 
+			'jobs' => $this->User_Model->get_view_profile($id),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		//$this->load->view('freelance/people/side-user-people');
+		$this->load->view('freelance/people/ViewProfile',$people);
+		$this->load->view('freelance/template/footer');
+
+	}
+
 	public function MessageOwner()
 	{
 
@@ -1095,24 +1344,32 @@ class User extends CI_CONTROLLER{
 				</script>";
 		}
 	}
+	public function ReportUser($id)
+	{
+		//echo $id;
+		echo "<script>alert('Message can not be processed')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+	}
 	public function RequestResume()
 	{
-		echo "Hello";
-		// $send = $this->User_Model->message_owner();
-		// if($send == true)
-		// {	
-		// 	echo "<script>alert('Message sent.')</script>";
-		// 	echo "<script>
-  //   				window.history.back();
-		// 		</script>";
-		// }
-		// else
-		// {
-		// 	echo "<script>alert('Message not sent.')</script>";
-		// 	echo "<script>
-  //   				window.history.back();
-		// 		</script>";
-		// }
+		//echo "Hello";
+		$send = $this->User_Model->request_resume();
+		if($send == true)
+		{	
+			echo "<script>alert('Message sent.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+		else
+		{
+			echo "<script>alert('Message not sent.')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
 	}
 	public function countNewMessage()
 	{

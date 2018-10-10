@@ -7,7 +7,7 @@
 					<br>
 					<div class="col-lg-4 col-sm-1">
 						<div class="card">
-							 <a href="<?php //echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>" > 
+							 <a href="<?php echo site_url('user/View_User_Profile/'.$row->account_id) ?>" > 
 							<img style="height: 200px; width: 100%; display: block;" src="<?php
 								$img = $row->account_img;
 								if(!empty($img))

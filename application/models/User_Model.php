@@ -214,6 +214,12 @@ class User_Model extends CI_Model{
 			}
 		}
 	}
+	public function get_view_profile($id)
+	{
+		$this->db->where('account_id', $id);
+		$query =  $this->db->get('account_tbl');
+		return $query->result();
+	}
 	public function get_skill($email)
 	{
 		$this->db->select('*');
@@ -696,6 +702,7 @@ class User_Model extends CI_Model{
 		$msg = array (
 			'msg_sender' => $this->input->post('sender'),
 			'msg_receiver' => $this->input->post('to'),
+			'msg_type' => 'message',
 		);
 		
 
@@ -716,7 +723,36 @@ class User_Model extends CI_Model{
 		{
 			return false;
 		}
+	}
+		public function request_resume()
+	{
+		// echo $this->input->post('message');
+		// echo $this->input->post('to');
+		// echo $this->input->post('sender');
+		$msg = array (
+			'msg_sender' => $this->input->post('sender'),
+			'msg_receiver' => $this->input->post('to'),
+			'msg_type' => 'resume',
+		);
+		
 
+		$msg2 = array(
+			'msg_author' => $this->input->post('sender'),
+			'msg_receiver' => $this->input->post('to'),
+			'msg_date' => date('Y-m-d i:g'),
+			'msg_subject' => $this->input->post('subject'),
+			'msg_body' => $this->input->post('message'),
+		);
+		$this->db->insert('freelance_msg_dest_tbl', $msg);
+		$this->db->insert('freelance_msg_info_tbl', $msg2);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	public function count_new_message()
 	{
@@ -775,14 +811,95 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
-	public function search_job_criteria()
+
+	public function search_skill_word()
 	{
+		$word = $this->input->post('search');
 		$this->db->select('*');
-		$this->db->where('category', $this->input->post('category') );
-		$this->db->where('budget <=', $this->input->post('budget') );
-		$this->db->where('status', '1');
-		$query = $this->db->get('post_tbl');
-		if($query->num_rows() > 0)
+		$this->db->from('freelance_project_tbl');
+		$this->db->like('title', $word);
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_skill_category()
+	{
+		$category = $this->input->post('category');
+		$this->db->select('*');
+		$this->db->where('category', $category);
+		$this->db->from('freelance_project_tbl');
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_skill_price()
+	{
+		$budget = $this->input->post('budget');
+		$this->db->select('*');
+		$this->db->where('budget <=', $budget);
+		$this->db->from('freelance_project_tbl');
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_request_word()
+	{
+		$word = $this->input->post('search');
+		$this->db->select('*');
+		$this->db->from('project_request_tbl');
+		$this->db->like('request_title', $word);
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_request_category()
+	{
+		$category = $this->input->post('category');
+		$this->db->select('*');
+		$this->db->where('request_category', $category);
+		$this->db->from('project_request_tbl');
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function search_request_price()
+	{
+		$budget = $this->input->post('budget');
+		$this->db->select('*');
+		$this->db->where('request_price <=', $budget);
+		$this->db->from('project_request_tbl');
+		$query =  $this->db->get();
+		if($query->result_array() > 0)
 		{
 			return $query->result();
 		}

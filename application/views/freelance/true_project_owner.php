@@ -98,7 +98,7 @@
 				
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" >Submit</button>
+				<button type="submit" class="btn btn-primary" >Send</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</form>
 			</div>
@@ -215,14 +215,14 @@
 				    		<p class="text-primary center">Message</p>
 				    	</div>
 				    	<div class="col-lg-9 col-sm-9">
-				    		<textarea class="form-control" name="message" required rows="3"></textarea>
+				    		<textarea class="form-control" name="message" required rows="3">Hi There! I saw your profile and i'm interested to hire you, can you send in your resume for me to further verify your information </textarea>
 				    	</div>
 				    </div>
 				    <br>
 			    <br>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" >Submit</button>
+				<button type="submit" class="btn btn-primary" >Send</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</form>
 			</div>

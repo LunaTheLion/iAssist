@@ -1,4 +1,4 @@
-
+	
 <div class="jumbotron">
 	<?php foreach ($view as $row):?>
 <title>View Project <?php echo $row->project_title?> </title>

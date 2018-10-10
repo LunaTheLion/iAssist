@@ -125,6 +125,50 @@ class Forum_model extends CI_MODEL{
 		// 	return false;
 		// }
 	}
+	public function insert_topic($id)
+	{
+		echo $this->input->post('title');
+		//echo $this->input->post('content');	
+		echo $id;
+		$topic = array(
+			'title' => $this->input->post('title'),
+			'title_slug' =>urlencode($this->input->post('title')),
+			'creator' => $this->session->userdata('email'),
+			'forum_id' => $id,
+		);
+
+		$this->db->insert('forum_topics_tbl', $topic);
+		if ($this->db->affected_rows()==1)
+		{//success insert	
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function insert_post($id)
+	{
+		//When you're parents are strict and belong to conservative family :(
+		// echo $this->input->post('content');	
+		echo $id;
+		$topic = array(
+			'content' => $this->input->post('content'),
+			'date_created' =>date('Y-m-d g:i'),
+			'creator' => $this->session->userdata('email'),
+			'topic_id' => $id,
+		);
+
+		$this->db->insert('forum_posts_tbl', $topic);
+		if ($this->db->affected_rows()==1)
+		{//success insert	
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 }
 ?>

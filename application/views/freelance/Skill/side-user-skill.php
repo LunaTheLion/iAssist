@@ -15,38 +15,67 @@
 			<center>
 				<h6><a href="<?php echo base_url('user/general/'.$this->session->userdata('email'))?>"><?php echo $this->session->userdata('username'); ?></a></h6>
 			</center>
-			<a href="<?php echo base_url('user/CreateSkillPost') ?>" class="btn btn-info">Create Post</a>
+			
+
 			<div class="list-group">
-			  
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/CreateSkillPost') ?>" class="btn btn-info">Create Post</a>
+			  <div class="card">
+			  	
+			  	<div class="card-header" style="">
+			  		<p class="text-primary" style="font-size: 20px; margin-bottom: 2px;">Search Criteria</p>
+
+			  	</div>
+			  	<form action="<?php echo base_url('user/Search_Skill') ?>" method="Post">
+			  		<div class="card-body">
+			  			<input type="text" class="form-control" name="search" placeholder="Search word">
+			  			<br>
+			  			<select class="form-control" name="category" >
+			  				<option value="">Select Category</option>
+			  				<option value="Video and Animation">Video &amp; Animation</option>
+			  				<option value="Graphics and Design">Graphics &amp; Design</option>
+			  				<option value="Digital Marketing">Digital Marketing</option>
+			  				<option value="Writing and Translation">Writing &amp; Translation</option>
+			  				<option value="Music and Audio">Music &amp; Audio</option>
+			  				<option value="Programming and Tech">Programming &amp; Tech</option>
+			  				<option value="Business">Business</option>
+			  				<option value="Lifestyle">Fun &amp; Lifestyle</option>
+			  			</select>
+			  			<br>
+			  			<input type="text" class="form-control" name="budget" placeholder="Offer">
+			  			<br>
+			  			<button class="btn btn-info" type="submit">Search Skill</button>
+			  		</div>
+			  	</form>
+			  </div>
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			    Video and Animation
 			    <span class="badge badge-primary badge-pill" id="VA"></span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Graphics and Design
 			    <span class="badge badge-primary badge-pill" id="GD">2</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Digital Marketing
 			  	<span class="badge badge-primary badge-pill" id="DM">1</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Writing and Translation
 			    <span class="badge badge-primary badge-pill" id="WT">1</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Music and Audio
 			    <span class="badge badge-primary badge-pill" id="MA">1</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Programming and Tech
 			    <span class="badge badge-primary badge-pill" id="PT">1</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Business
 			    <span class="badge badge-primary badge-pill" id="B">1</span>
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">
+			  <a href="<?php echo base_url('user/VideoAnimation') ?>" class="list-group-item list-group-item-action">
 			  	Lifestyle
 			    <span class="badge badge-primary badge-pill" id="L">1</span>
 			  </a>

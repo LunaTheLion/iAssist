@@ -14,17 +14,21 @@ class Paypal extends CI_Controller
         
         $data['item_number'] = $paypalInfo['item_number']; 
         $data['txn_id'] = $paypalInfo["tx"];
-        $data['payment_amt'] = $paypalInfo["amt"];
+        $data['payment_amt'] = $paypalInfo["amt"];  
         $data['currency_code'] = $paypalInfo["cc"];
         $data['status'] = $paypalInfo["st"];
         
         // Pass the transaction data to view
+        $this->load->view('freelance/template/header');
         $this->load->view('freelance/payment/success', $data);
+        $this->load->view('freelance/template/footer');
     }
      
      function cancel(){
         // Load payment failed view
+        $this->load->view('freelance/template/header');
         $this->load->view('freelance/payment/cancel');
+        $this->load->view('freelance/template/footer');
      }
      
      function ipn(){

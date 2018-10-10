@@ -71,10 +71,10 @@ class Login extends CI_Controller{
 				
 				if($this->Login_model->signin($email,$password))
 				{
-					$status = $this->Login_model->accountstatus($this->session->userdata('email'));
+					$status = $this->Login_model->check_account($email);
 					// upon signing in you are logged in. until you click the logout.
-					echo $status;
-					if($status)
+					//echo $status;
+					if($status == 1)
 					{
 						$this->session->set_userdata('Account_Status', $astatus);
 						if($this->Login_model->accountstatus($email)) // if user has completed the profile
@@ -86,7 +86,7 @@ class Login extends CI_Controller{
 							{
 								$user = $get_user->account_username;
 								$this->session->set_userdata('log_status',1);
-								redirect(base_url().'user/general');
+								redirect(base_url().'user/general/'.$email);
 							}
 							else{
 								echo "Error";
@@ -108,9 +108,6 @@ class Login extends CI_Controller{
 						$this->load->view('pages/open_ur_email');
 						$this->load->view('templates/footer');
 					}
-					
-
-					
 				}
 				else
 				{
