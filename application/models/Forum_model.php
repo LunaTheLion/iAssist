@@ -169,6 +169,27 @@ class Forum_model extends CI_MODEL{
 			return false;
 		}
 	}
+	public function insert_forum($topic)
+	{
+
+		// $topic = array(
+		// 	'content' => $this->input->post('content'),
+		// 	'date_posted' =>date('Y-m-d g:i'),
+		// 	'post_owner' => $this->session->userdata('email'),
+		// 	'forum_topic' => $this->input->post('title'),
+		// 	'forum_topic_slug' => urlencode($this->input->post('title')),
+		// );
+
+		$this->db->insert('freelance_forum_tbl', $topic);
+		if ($this->db->affected_rows()==1)
+		{//success insert	
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 }
 ?>

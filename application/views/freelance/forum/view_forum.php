@@ -43,7 +43,7 @@
 			</div>
 			<div class="modal-body">
 				<form id="RequestForm" action="<?php echo base_url('forum/CreateTopic')?>" method="post" >
-				    <input type="text" name="forum_id" value="<?php echo $this->session->userdata('forum_topic_id');?>">   
+				    <input type="hidden" name="forum_id" value="<?php echo $this->session->userdata('forum_topic_id');?>">   
 				    <div class="row">
 				    	<div class="col-lg-2 col-sm-2">
 				    		<p class="text-primary center">Title</p>

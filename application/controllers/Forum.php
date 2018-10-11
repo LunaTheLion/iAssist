@@ -123,6 +123,37 @@ class Forum extends CI_CONTROLLER{
 				</script>";
 		}
 	}
+	public function CreateForum()
+	{
+		
+		echo $this->input->post('content');	
+		echo $this->input->post('title');
+		echo $this->input->post('category');	
+		
+		$topic = array(
+			'forum_details' => $this->input->post('content'),
+			'date_posted' =>date('Y-m-d g:i'),
+			'post_owner' => $this->session->userdata('email'),
+			'forum_topic' => $this->input->post('title'),
+			'forum_topic_slug' => urlencode($this->input->post('title')),
+			'forum_category' => $this->input->post('category'),
+			'forum_category_slug' => urlencode($this->input->post('category')),
+		);
+		if($this->Forum_Model->insert_forum($topic))
+		{
+			echo "<script>alert('Forum Saved')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+		else
+		{
+			echo "<script>alert('Sorry, Cannot save your Forum')</script>";
+			echo "<script>
+    				window.history.back();
+				</script>";
+		}
+	}
 
 }
 ?>
