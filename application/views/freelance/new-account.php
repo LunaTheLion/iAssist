@@ -1,13 +1,32 @@
 <title>Personal Profile</title>
 	<div class="col-lg-6 col-sm-6">
 		<div class="card">
-			<div class="card-header" style="font-size: 20px;">Personal Information</div>
-			<form method="POST" action="<?php echo base_url('user/v_personal') ?>">
+			<div class="card-header" style="font-size: 20px;">
+				<?php if($this->session->userdata('acc_type') == 'Client')
+					{
+						echo "Company Information";
+					}
+					else
+					{
+						echo "Personal Information";
+					}
+				 ?>
+			</div>
+			<form method="POST" action="<?php
+			if($this->session->userdata('acc_type') != 'Client')
+			{
+				echo base_url('user/v_personal');
+			}
+			else
+			{
+				echo base_url('user/v_client');
+			}
+			?>">
 			<div class="card-body">
 				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+						<div class="col-lg-3 col-sm-3" style="padding-top: 5px;">
 							<!-- <p class="text-primary" style="font-size: 20px;">Name</p> -->
-							<center class="text-primary" style="font-size: 18px;">Name</center>
+							<center class="text-primary" style="font-size: 15px;">Name</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
 							<input type="text" class="form-control form-control-sm" style="font-size: 15px;" name="name" 
@@ -27,14 +46,19 @@
 						
 				</div>	
 				<br>
-				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+				<?php 
+				if($this->session->userdata('acc_type' != 'Client'))
+				{
+					
+					echo '<div class="row">
+						<div class="col-lg-3 col-sm-3" style="padding-top: 5px;">
 							<center class="text-primary" style="font-size: 18px;">Middle Name</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
 							<input type="text" class="form-control form-control-sm" style="font-size: 15px;" name="middlename"
-							value="<?php 
-							if(empty($_POST['middlename']))
+							value="'. 
+							$md = $_POST['middlename']; 
+							if(empty($md))
 							{
 								echo "";
 							}
@@ -42,14 +66,19 @@
 							{
 								echo $_POST['middlename'];
 							}
-							 ?>">
-							 <?php echo  form_error('middleName'); ?>
+							 '">
+							 "'.form_error('middleName').'"
 						</div>
 						
-				</div>	
-				<Br>
+				</div><Br>';
+				}
+				else
+				{}
+				 ?>
+					
+				
 				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+						<div class="col-lg-3 col-sm-3" style="padding-top: 5px;">
 							<center class="text-primary" style="font-size: 18px;">Surname</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
@@ -70,7 +99,7 @@
 				</div>	
 				<br>
 				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+						<div class="col-lg-3 col-sm-3" style="padding-top: 5px;">
 							<center class="text-primary" style="font-size: 18px;">Email</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
@@ -81,7 +110,7 @@
 				</div>
 				<br>
 				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+						<div class="col-lg-3 col-sm-3" style="padding-top: 5px;">
 							<center class="text-primary" style="font-size: 18px;">Contact No.</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
@@ -102,13 +131,13 @@
 				</div>
 				<Br>	
 				<div class="row">
-						<div class="col-lg-3 col-sm-3">
+						<div class="col-lg-3 col-sm-3" >
 							<center class="text-primary" style="font-size: 18px;">Address</center>
 						</div>
 						<div class="col-lg-9 col-sm-9">
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									<center class="text-primary" style="font-size: 18px;">House No.</center>
+									<center class="text-primary" style="font-size: 15px;">House No.</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="houseNo" style="font-size: 15px;" class="form-control form-control-sm"
@@ -128,8 +157,8 @@
 							</div>
 							<br>
 							<div class="row">
-								<div class="col-lg-3 col-sm-3">
-									<center class="text-primary" style="font-size: 18px;">Street Name</center>
+								<div class="col-lg-3 col-sm-3" style="padding: 2px;">
+									<center class="text-primary" style="font-size: 15px;">Street Name</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="street" style="font-size: 15px;" class="form-control form-control-sm"
@@ -150,7 +179,7 @@
 							<br>
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									<center class="text-primary" style="font-size: 18px;">Barangay</center>
+									<center class="text-primary" style="font-size: 15px;">Barangay</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="brngy" style="font-size: 15px;" class="form-control form-control-sm" 
@@ -170,8 +199,8 @@
 							</div>
 							<br>
 							<div class="row">
-								<div class="col-lg-3 col-sm-3">
-									<center class="text-primary" style="font-size: 18px;">Municipality</center>
+								<div class="col-lg-3 col-sm-3" style="padding: 3px;">
+									<center class="text-primary" style="font-size: 15px;">Municipality</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="mncpl" style="font-size: 15px;" class="form-control form-control-sm"
@@ -200,7 +229,7 @@
 							
 						</div>
 						<div class="col-lg-7 col-sm-7">
-							 <input type="checkbox" name="liscense" required> <a href="#myModal" data-toggle="modal" data-target="#myModal" style="padding-left: 10px; font-size: 18px;">I Agree to User Terms and Agreement</a>
+							 <input type="checkbox" name="liscense" required> <a href="#myModal" data-toggle="modal" data-target="#myModal" style="padding-left: 10px; font-size: 15px;">I Agree to User Terms and Agreement</a>
 						</div>
 				</div>
 					
@@ -221,7 +250,7 @@
 				    <!-- Modal content-->
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h4 class="modal-title">Modal Header</h4>
+				        <h4 class="modal-title">User Agreement</h4>
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				        
 				      </div>

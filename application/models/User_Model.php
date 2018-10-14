@@ -62,7 +62,7 @@ class User_Model extends CI_Model{
 	{
 		if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $email))
 		{
-			$this->db->select('account_id,account_email,account_status,account_username,account_img');
+			$this->db->select('account_id,account_email,account_type,account_status,account_username,account_img');
 			$this->db->where('account_email' , $email);
 			$query = $this->db->get('account_tbl');
 
@@ -255,6 +255,7 @@ class User_Model extends CI_Model{
 	public function account_verified($email, $code)
 	{
 		$this->db->select('account_email', $email);
+
 		$this->db->where('verification_code', $code);
 		$this->db->Where('confirm_code', 'review');
 		$hey = $this->db->get('account_tbl');

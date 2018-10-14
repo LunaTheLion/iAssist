@@ -18,11 +18,22 @@
 				<?php //echo form_open('/Form/frm'); ?>
 				<form method="POST" action="<?php echo base_url('/Login/validate')?>">
 				<p></p>
+				<div class="row">
+					<div class="col-lg-6 col-sm-6" style="padding-top: 8px;">
+						<center>Account Type</center>
+					</div>
+					<div class="col-lg-6 col-sm-6">
+						<select class="form-control" name="account_type" style="padding-left:10px;">
+							<option value="Freelance">Freelance</option>
+							<option value="Client">Client</option>
+						</select>
+					</div>
+				</div>
+				<br>
 				<input class="form-control" type="text" name="username" value="<?php 
 					if(!empty($_POST['username']))
 					{
 						echo $_POST['username'];
-						
 					}
 					else
 					{
@@ -34,8 +45,7 @@
 				<input class="form-control" type="email" name="email" value="<?php
 					if(!empty($_POST['email']))
 					{
-						echo $_POST['email'];
-						
+						echo $_POST['email'];	
 					}
 					else
 					{
@@ -69,8 +79,6 @@
 					<div class="g-recaptcha" data-sitekey="6Lc84XMUAAAAACZQwWh5CQaZEp1UoJW6KYo2yi9U" required></div>
 					<?php echo form_error('captcha'); ?>
 				</div>
-
-
 				<div><p></p>
 					<div class="row">
 						<div class="col-lg-4 col-ls-4">

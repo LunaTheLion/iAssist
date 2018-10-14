@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col-lg-5"></div>
 			<div class="col-lg-3">
-				<br><br><br><br>
+				<br><br><br>
 				<img src="<?php echo base_url('assets/img/boss/logo.png')?>" align="center" style="height: 120px; width:150px; text-align: center;">
 			</div>
 			<div class="col-lg-4"></div>
@@ -46,7 +46,7 @@
 	<div class="col-lg-3">
 		
 	</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<br><br><br><br><br><br><br><br>
 </div>
 

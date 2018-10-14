@@ -5,9 +5,9 @@
         
         <div class="col-lg-4">
             <?php 
-              // echo "<pre class='text-muted'>";
-               //print_r($this->session->all_userdata());
-               //echo "</pre>";
+              echo "<pre class='text-muted'>";
+               print_r($this->session->all_userdata());
+               echo "</pre>";
             ?> 
         </div>
         <div class="col-lg-4">

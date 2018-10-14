@@ -28,6 +28,7 @@ class Login extends CI_Controller{
 	        }
 	        else
 	        {	
+	        		$accType = $this->input->post('account_type');
 	        		$email = $this->input->post('email');
 	        		$password = $this->input->post('password');
 	        		$username = $this->input->post('username');
@@ -43,7 +44,7 @@ class Login extends CI_Controller{
 	        		    $i++; 
 	        		} 
 
-	        		if($this->Login_model->signup($username,$email,$password,$pass))
+	        		if($this->Login_model->signup($username,$email,$password,$pass,$accType))
 	        		{
 
 	        			$this->session->set_userdata('email', $email);		

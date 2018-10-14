@@ -10,7 +10,6 @@ class User extends CI_CONTROLLER{
 	{
 		$confirm = $this->User_Model->code_match($email,$code);
 		$check = $this->User_Model->account_verified($email,$code);
-	
 
 		if( $confirm == true)
 		{
@@ -21,7 +20,7 @@ class User extends CI_CONTROLLER{
 					'id' => $get->account_id,
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
-
+					'acc_type' => $get->account_type,
 				);
 				$this->session->set_userdata($sess_data);
 				$fetch = array(
@@ -43,6 +42,7 @@ class User extends CI_CONTROLLER{
 					'id' => $get->account_id,
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
+					'acc_type' => $get->account_type,
 				);
 				$this->session->set_userdata($sess_data);
 				$fetch = array(
@@ -75,6 +75,7 @@ class User extends CI_CONTROLLER{
 					'id' => $get->account_id,
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
+					'acc_type' => $get->account_type,
 				);
 				$this->session->set_userdata($sess_data);
 				$fetch = array(
@@ -102,6 +103,7 @@ class User extends CI_CONTROLLER{
 			'id' => $get->account_id,
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		
@@ -143,6 +145,7 @@ class User extends CI_CONTROLLER{
 			'id' => $get->account_id,
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->helper(array('form'));
@@ -200,6 +203,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$one =array('h'=>$this->User_Model->get_account_info($email));
@@ -239,6 +243,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$check_account = $this->User_Model->check_account($email);
 		$check_educ = $this->User_Model->check_educ($email);
@@ -282,6 +287,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -299,6 +305,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -322,6 +329,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		
@@ -383,6 +391,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -398,6 +407,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 
@@ -443,6 +453,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -459,6 +470,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -474,6 +486,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
@@ -511,6 +524,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 				'jobs' => $this->User_Model->search_skill_word(),
@@ -540,6 +554,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 				'jobs' => $this->User_Model->search_skill_category(),
@@ -568,6 +583,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 				'jobs' => $this->User_Model->search_skill_price(),
@@ -610,6 +626,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 					'jobs' => $this->User_Model->search_request_word(),
@@ -639,6 +656,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 					'jobs' => $this->User_Model->search_skill_category(),
@@ -667,6 +685,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				$job_posts = array( 
 					'jobs' => $this->User_Model->search_skill_price(),
@@ -723,6 +742,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
 			'jobs' => $this->User_Model->new_job(),
@@ -825,6 +845,7 @@ class User extends CI_CONTROLLER{
 						'email' =>$get->account_email,
 						'username' => $get->account_username,
 						'img' =>$get->account_img,
+						'acc_type' => $get->account_type,
 					);
 					//print_r($error);
 					$this->session->set_userdata($sess_data);
@@ -842,6 +863,7 @@ class User extends CI_CONTROLLER{
 					'email' =>$get->account_email,
 					'username' => $get->account_username,
 					'img' =>$get->account_img,
+					'acc_type' => $get->account_type,
 				);
 				
 				$this->session->set_userdata($sess_data);
@@ -1012,6 +1034,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		
 		$this->session->set_userdata($sess_data);
@@ -1090,6 +1113,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		
 		$this->session->set_userdata($sess_data);
@@ -1128,6 +1152,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		
 		$this->session->set_userdata($sess_data);
@@ -1171,6 +1196,7 @@ class User extends CI_CONTROLLER{
 		 			'email' =>$get->account_email,
 		 			'username' => $get->account_username,
 		 			'img' =>$get->account_img,
+		 			'acc_type' => $get->account_type,
 		 		);
 		 		$data = array(
 		 			'proj' => $this->User_Model->view_project($title_slug, $id),
@@ -1197,6 +1223,7 @@ class User extends CI_CONTROLLER{
 		 				'email' =>$get->account_email,
 		 				'username' => $get->account_username,
 		 				'img' =>$get->account_img,
+		 				'acc_type' => $get->account_type,
 		 			);
 		 			$data = array(
 		 				'proj' => $this->User_Model->view_project($title_slug, $id),
@@ -1232,6 +1259,7 @@ class User extends CI_CONTROLLER{
 		 			'email' =>$get->account_email,
 		 			'username' => $get->account_username,
 		 			'img' =>$get->account_img,
+		 			'acc_type' => $get->account_type,
 		 		);
 		 		$data = array(
 		 			'proj' => $this->User_Model->view_job($title_slug, $id),
@@ -1259,6 +1287,7 @@ class User extends CI_CONTROLLER{
 		 				'email' =>$get->account_email,
 		 				'username' => $get->account_username,
 		 				'img' =>$get->account_img,
+		 				'acc_type' => $get->account_type,
 		 			);
 		 			$data = array(
 		 				'proj' => $this->User_Model->view_job($title_slug, $id),
@@ -1287,6 +1316,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$people= array( 
 			'jobs' => $this->User_Model->get_all_people(),
@@ -1312,6 +1342,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$people= array( 
 			'jobs' => $this->User_Model->get_view_profile($id),
@@ -1389,6 +1420,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
 			'jobs' => $this->User_Model->new_job(),
@@ -1408,6 +1440,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
 			'jobs' => $this->User_Model->show_request(),
@@ -1428,6 +1461,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
 			'jobs' => $this->User_Model->get_forum_topics(),
@@ -1449,6 +1483,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
 			'jobs' => $this->User_Model->get_all_skill(),
@@ -1469,6 +1504,7 @@ class User extends CI_CONTROLLER{
 			'email' =>$get->account_email,
 			'username' => $get->account_username,
 			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
 		);
 		
 		// echo"<pre>";print_r($job_posts);echo"</pre>";
@@ -1494,6 +1530,7 @@ class User extends CI_CONTROLLER{
 				'email' =>$get->account_email,
 				'username' => $get->account_username,
 				'img' =>$get->account_img,
+				'acc_type' => $get->account_type,
 			);
 			$job_posts = array( 
 				'jobs' => $this->User_Model->search_job_criteria(),
@@ -1567,6 +1604,7 @@ class User extends CI_CONTROLLER{
 				'email' =>$get->account_email,
 				'username' => $get->account_username,
 				'img' =>$get->account_img,
+				'acc_type' => $get->account_type,
 			);
 			$job_posts = array( 
 				'jobs' => $result = $this->User_Model->click_category($category),
@@ -1600,8 +1638,45 @@ class User extends CI_CONTROLLER{
 		$result = $this->User_model->crud_user_project_post($data_in);
 		//echo json_encode($result);
 	}
+	public function VideoAnimation()
+	{
+		
+	}
+	public function tokenfield()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
+		);
+		
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/new-account-side-nav');
+		$this->load->view('freelance/tokenfield');
+		//$this->load->view('freelance/template/footer');
+	}
+	public function insert()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
+		);
+		
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
 
-
+		$this->load->view('freelance/new-account-side-nav');
+		$this->load->view('freelance/insert');
+	}
 
 }// end of the controller
 

@@ -45,13 +45,13 @@
 			    	             ?>
 			    	        </label>
 			    	    </div>   
-			    	    <div class="form-check">
+			    	  <!--   <div class="form-check">
 			    	      <label class="form-check-label">
 			    	        <input type="checkbox" id="Signin" class=""
 			    	        onchange="document.getElementById('InputPassword1').type = this.checked ? 'text' : 'password'">Show Password
 			    	
 			    	      </label>
-			    	    </div>
+			    	    </div> -->
 			    	    <!-- <div class="g-recaptcha" data-sitekey="6Lc84XMUAAAAACZQwWh5CQaZEp1UoJW6KYo2yi9U"></div> -->
 			    	    <div class="row">
 			    	    	<div class="col-lg-6">

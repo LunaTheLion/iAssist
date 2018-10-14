@@ -96,7 +96,7 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-	<script>
+	<script >
 		$(window).on('load', function(){
 			showJobPost();
 			showSkillPost();
@@ -140,7 +140,7 @@
 				   method: 'get',
 				   url: '<?php echo base_url() ?>User/crud_job_post',
 				   data: {id:id},
-				   async: false,
+				   async: true,
 				   dataType: 'json',
 				   success: function(data){
 				       console.log(data);
@@ -163,7 +163,7 @@
 				   method: 'get',
 				   url: '<?php echo base_url() ?>User/crud_project_post',
 				   data: {id:id},
-				   async: false,
+				  async: true,
 				   dataType: 'json',
 				   success: function(data){
 				       console.log(data);
