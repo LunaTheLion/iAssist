@@ -10,8 +10,7 @@
 				{
 					echo '<a href="'.base_url('user/educ').'">Educational Background</a><br>';
 					echo '<a href="'.base_url('user/Skill').'">Skill Set</a><br>';
-					echo '<a href="'.base_url('user/Project').'">Project</a><br>';
-					echo '<a href="'.base_url('user/Interest').'">Interests</a><br>';
+					
 				}
 				else
 				{

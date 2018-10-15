@@ -1,15 +1,17 @@
 <?php
 //insert.php
 
-if(isset($_POST["name"]))
+if(isset($_POST["category"]))
 {
  $connect = new PDO("mysql:host=localhost;dbname=iassist", "root", "");
- $query = "INSERT INTO programmer(name, skill) VALUES(:name, :skill)";
+ $query = "INSERT INTO programmer(email,skill_category, skill,skill_created) VALUES(:email,:skill_category, :skill,:skill_created)";
  $statement = $connect->prepare($query);
  $statement->execute(
   array(
-   ':name'  => $_POST["name"],
-   ':skill' => $_POST["skill"]
+   ':email' => $this->session->userdata('email'),
+   ':skill_category'  => $_POST["category"],
+   ':skill' => $_POST["skill"],
+   ':skill_created' => date('Y-m-d g:i'),
   )
  );
  $result = $statement->fetchAll();

@@ -1495,6 +1495,26 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill/skill',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
+	public function JobPosting()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
+		);
+		$job_posts = array( 
+			'jobs' => $this->User_Model->get_all_skill(),
+		);
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/skill/side-user-skill');
+		$this->load->view('freelance/skill/skill',$job_posts);
+		$this->load->view('freelance/template/footer');
+	}
 
 	public function CreateSkillPost()
 	{
@@ -1642,26 +1662,10 @@ class User extends CI_CONTROLLER{
 	{
 		
 	}
-	public function tokenfield()
-	{
-		$get = $this->User_Model->get_important($this->session->userdata('email'));
-		$sess_data = array(
-			'id' => $get->account_id,
-			'email' =>$get->account_email,
-			'username' => $get->account_username,
-			'img' =>$get->account_img,
-			'acc_type' => $get->account_type,
-		);
-		
-		// echo"<pre>";print_r($job_posts);echo"</pre>";
-		$this->session->set_userdata($sess_data);
-		$this->load->view('freelance/template/header', $sess_data);
-		$this->load->view('freelance/new-account-side-nav');
-		$this->load->view('freelance/tokenfield');
-		//$this->load->view('freelance/template/footer');
-	}
+
 	public function insert()
 	{
+
 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		$sess_data = array(
 			'id' => $get->account_id,
@@ -1671,10 +1675,7 @@ class User extends CI_CONTROLLER{
 			'acc_type' => $get->account_type,
 		);
 		
-		// echo"<pre>";print_r($job_posts);echo"</pre>";
 		$this->session->set_userdata($sess_data);
-
-		$this->load->view('freelance/new-account-side-nav');
 		$this->load->view('freelance/insert');
 	}
 

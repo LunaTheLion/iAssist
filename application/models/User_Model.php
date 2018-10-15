@@ -1082,9 +1082,10 @@ class User_Model extends CI_Model{
 		$query = $this->db->get('freelance_forum_tbl');
 		return $query->result();
 	}
-	public function insert_profile_skill($skills)
+
+	public function insert_user_skill($arr)
 	{
-		$this->db->insert('freelance_skill_table', $skills);
+		$this->db->insert('freelance_skill_table', $arr);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;

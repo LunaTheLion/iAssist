@@ -1,11 +1,5 @@
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
- </head> 
+  
+   </head> 
 
 <title>Personal Profile</title>
 	<div class="col-lg-6 col-sm-6">
@@ -17,7 +11,7 @@
 			  <input type="text" name="name" id="name" class="form-control" />
 			 </div>
 			 <div class="form-group">
-			  <label>Enter your Skill</label>
+			  <label>Enter the Skill</label>
 			  <input type="text" name="skill" id="skill" class="form-control" />
 			 </div>
 			 <div class="form-group">
@@ -34,7 +28,7 @@ $(document).ready(function(){
  
  $('#skill').tokenfield({
   autocomplete:{
-   source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql'],
+   source: ['PHP','Codeigniter','HTML','JQuery','Javascript','CSS','Laravel','CakePHP','Symfony','Yii 2','Phalcon','Zend','Slim','FuelPHP','PHPixie','Mysql','Android Developer'],
    delay:100
   },
   showAutocompleteOnFocus: true
