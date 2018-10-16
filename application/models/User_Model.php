@@ -1101,6 +1101,23 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function save_job($data_in)
+	{
+		$arr = array(
+			'job_id' => $data_in,
+			'email' => $this->session->userdata('email'),
+			'date_saved' => date('Y-m-d g:i'),
+		);
+		$this->db->insert('save_jobs_tbl', $arr);
+		if($this->db->affected_rows()>0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }//END OF MODEL CONTROLLER
 
 

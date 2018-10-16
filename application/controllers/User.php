@@ -1252,7 +1252,7 @@ class User extends CI_CONTROLLER{
 				 
 		 $check_if_owner = $this->User_Model->view_job_if_not_user($title_slug,$id);
 		 if($check_if_owner)
-		 {// Owner
+		 { //Owner
 		 		$get = $this->User_Model->get_important($this->session->userdata('email'));
 		 		$sess_data = array(
 		 			'id' => $get->account_id,
@@ -1267,7 +1267,7 @@ class User extends CI_CONTROLLER{
 		 		$this->session->set_userdata($sess_data);
 		 		$this->load->view('freelance/template/header', $sess_data);
 		 		$this->load->view('freelance/new-profile-side');
-		 		$this->load->view('freelance/view_user_project',$data);
+		 		$this->load->view('freelance/job/view_user_job',$data);
 		 		$this->load->view('freelance/template/footer');
 		 }
 		 else
@@ -1298,8 +1298,8 @@ class User extends CI_CONTROLLER{
 		 		
 		 			$this->session->set_userdata($sess_data);
 		 			$this->load->view('freelance/template/header', $sess_data);
-		 			$this->load->view('freelance/true_project_owner', $true);
-		 			$this->load->view('freelance/view_user_project',$data);
+		 			$this->load->view('freelance/job/job-owner', $true);
+		 			$this->load->view('freelance/job/view-user-job',$data);
 		 			$this->load->view('freelance/template/footer');
 		 	}
 		 	else
@@ -1534,6 +1534,24 @@ class User extends CI_CONTROLLER{
 		$this->load->view('freelance/skill/create-skill-posting');
 		$this->load->view('freelance/template/footer');
 	}
+	public function CreateJobPost()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'img' =>$get->account_img,
+			'acc_type' => $get->account_type,
+		);
+		
+		// echo"<pre>";print_r($job_posts);echo"</pre>";
+		$this->session->set_userdata($sess_data);
+		$this->load->view('freelance/template/header', $sess_data);
+		$this->load->view('freelance/skill/side-user-skill');
+		$this->load->view('freelance/skill/create-job-posting');
+		$this->load->view('freelance/template/footer');
+	}
 	public function ViewRequest()
 	{
 
@@ -1678,7 +1696,16 @@ class User extends CI_CONTROLLER{
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/insert');
 	}
+	public function saveJob()
+	{
+		$data_in= $this->input->get('id');
+		$this->User_Model->save_job($data_in);
+		echo json_encode($data_in);
+	}
+	public function checkifSaved()
+	{
 
+	}
 }// end of the controller
 
 

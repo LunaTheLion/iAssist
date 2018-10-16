@@ -3,8 +3,19 @@
 		<div class="col-lg-4 col-sm-12" >
 			<div class="card" style="border:none;">
 				<div class="card-header">
-					<h3>Job</h3>
-					Interested | Likes
+					<?php $acc = $this->session->userdata('client');
+						if( $acc == 'Client')
+						{
+							echo '<h3>Job</h3>
+					Interested | Likes';
+						}
+						else
+						{
+							echo '<h3> Saved Jobs</h3>
+					Interested | Likes';
+						}
+					 ?>
+					
 				</div>
 				<div class="card-body" id="showJob" style="padding: 2px;">
 					
