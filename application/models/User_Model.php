@@ -6,9 +6,6 @@ class User_Model extends CI_Model{
 	public function __construct(){
 		parent::__construct();	
 	}
-
-
-
 	public function create_profile($email)
 	{
 		$this->db->select("*");
@@ -451,6 +448,15 @@ class User_Model extends CI_Model{
 		$this->db->order_by('date_allowed_by_admin', 'ASC');
 		$this->db->where('status', '1');
 		$query = $this->db->get('freelance_project_tbl');
+		return $query->result();
+	}
+	public function get_all_job()
+	{
+		$this->db->select('*');
+		//$this->db->where('post_type','Project');
+		$this->db->order_by('date_allowed_by_admin', 'ASC');
+		$this->db->where('status', '1');
+		$query = $this->db->get('freelance_job_tbl');
 		return $query->result();
 	}
 	public function count_VA()

@@ -1506,13 +1506,13 @@ class User extends CI_CONTROLLER{
 			'acc_type' => $get->account_type,
 		);
 		$job_posts = array( 
-			'jobs' => $this->User_Model->get_all_skill(),
+			'jobs' => $this->User_Model->get_all_job(),
 		);
 		// echo"<pre>";print_r($job_posts);echo"</pre>";
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
-		$this->load->view('freelance/skill/side-user-skill');
-		$this->load->view('freelance/skill/skill',$job_posts);
+		$this->load->view('freelance/job/side-user-job');
+		$this->load->view('freelance/job/job',$job_posts);
 		$this->load->view('freelance/template/footer');
 	}
 
