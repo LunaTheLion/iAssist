@@ -98,6 +98,10 @@
                        <a class="nav-link" href="'.base_url('user/skillposting').'">Skills
                         <span class="sr-only">(current)</span></a>
                      </li>';
+                          echo ' <li class="nav-item active">
+                       <a class="nav-link" href="'.base_url('user/jobPosting').'">Jobs
+                        <span class="sr-only">(current)</span></a>
+                     </li>';
                       }
                       else
                       {
@@ -110,10 +114,11 @@
 
                      ?>
 
+
                     
-                     <li class="nav-item active">
+                   <!--   <li class="nav-item active">
                        <a class="nav-link" href="<?php echo base_url('user/request');?>">Request
-                        <span class="sr-only">(current)</span></a>
+                        <span class="sr-only">(current)</span></a> -->
 
                      </li>
                       <li class="nav-item active">

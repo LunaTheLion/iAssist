@@ -82,7 +82,19 @@
 
 			</div>
 			<br>
-			<div class="card">
+			<?php $acc = $this->session->userdata('acc_type');
+			if( $acc == 'Client') 
+			{
+				echo "<script>
+						$(window).on('load', function(){
+						$('#Skills').css('display', 'none');
+						$('#Educ').css('display', 'none');
+						})
+					</script>";
+			}
+				
+			?>
+			<div class="card" id="Educ">
 				<div class="card-header">
 					Educational Profile
 				</div>
@@ -133,7 +145,7 @@
 
 			</div>
 			<br>
-			<div class="card">
+			<div class="card" id="Skills">
 				
 				<div class="card-header">
 					Skills
@@ -192,3 +204,4 @@
 	
 	
 </div>
+

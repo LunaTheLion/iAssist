@@ -326,8 +326,35 @@ class User_Model extends CI_Model{
 		{
 			return false;
 		}
-
-		
+	}
+	public function insert_job($image)
+	{
+	
+		$job = array(
+			'post_username' => $this->session->userdata('username'),
+			'post_img' => $image,
+			'post_type' => 'Job',
+			'title' => $this->input->post('title'),
+			'title_slug' =>urlencode($this->input->post('title')),
+			'category' =>$this->input->post('category'),
+			'category_slug' => urlencode($this->input->post('category')),
+			'description' => $this->input->post('description'),
+			'budget' => $this->input->post('offer'),
+			'date_created' => date('Y-m-d g:i'),
+			'creator' => $this->session->userdata('email'),
+		);
+		echo "<pre>";
+		print_r($job);
+		echo "</pre>";
+		$this->db->insert('freelance_job_tbl',$job);
+		if($this->db->affected_rows() == 1 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	public function insert_job_post($data_in)
 	{
@@ -390,6 +417,20 @@ class User_Model extends CI_Model{
 		$this->db->where('creator', $this->session->userdata('email'));
 		$this->db->where('status', '1');
 		$query = $this->db->get('freelance_job_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_user_saved_job()
+	{
+		$this->db->select('*');
+		$this->db->where('email', $this->session->userdata('email'));
+		$query = $this->db->get('save_jobs_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -1112,6 +1153,21 @@ class User_Model extends CI_Model{
 		if($this->db->affected_rows()>0)
 		{
 			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function get_job($id)
+	{
+		//echo $id;
+		$this->db->select('creator');
+		$this->db->where('post_id', $id);
+		$data = $this->db->get('freelance_project_tbl');
+		if($data->result_array() > 0 )
+		{
+			return $data->row();
 		}
 		else
 		{

@@ -1,30 +1,40 @@
 <div class="jumbotron" style="background-color: 	#E0E0E0;">
 	<div class="row">
-		<div class="col-lg-4 col-sm-12" >
+		
+		<?php $acc = $this->session->userdata('acc_type');
+			if($acc == 'Client')
+			{
+				echo '<div class="col-lg-4 col-sm-12" >
 			<div class="card" style="border:none;">
 				<div class="card-header">
-					<?php $acc = $this->session->userdata('client');
-						if( $acc == 'Client')
-						{
-							echo '<h3>Job</h3>
-					Interested | Likes';
-						}
-						else
-						{
-							echo '<h3> Saved Jobs</h3>
-					Interested | Likes';
-						}
-					 ?>
+				 <h3>Job</h3>
+					Interested | Likes;
+				
 					
 				</div>
 				<div class="card-body" id="showJob" style="padding: 2px;">
 					
 				</div>
 			</div>
-		</div>
-
-
-		<div class="col-lg-4 col-sm-12">
+		</div>';
+			}
+			else
+			{
+				echo '<div class="col-lg-4 col-sm-12" >
+			<div class="card" style="border:none;">
+				<div class="card-header">
+				
+							<h3> Saved Jobs</h3>
+					Interested | Likes;
+					
+					
+				</div>
+				<div class="card-body" id="saveJob" style="padding: 2px;">
+					
+				</div>
+			</div>
+		</div>';
+				echo '<div class="col-lg-4 col-sm-12">
 			<div class="card"  style="border:none;">
 				<div class="card-header">
 					<h3>Skill</h3>
@@ -34,10 +44,16 @@
 					
 				</div>
 			</div>
-		</div>
+		</div>';
+			}
 
 
-		<div class="col-lg-4 col-sm-12" >
+		 ?>
+
+		
+
+
+	<!-- 	<div class="col-lg-4 col-sm-12" >
 			<div class="card"  style="border:none;">
 				<div class="card-header">
 					<h3>Request</h3>
@@ -47,7 +63,7 @@
 					
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
      <div id="view" class="modal fade" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-lg" role="document">
@@ -112,6 +128,37 @@
 			showJobPost();
 			showSkillPost();
 			showRequestPost();
+			showSaveJob();
+
+			function showSaveJob(){
+				$.ajax({
+					type: 'ajax',
+					url: '<?php echo base_url()?>user/get_saved_job',
+					async : true,
+					dataType: 'json',
+					success: function(data){
+						console.log(data);
+						// var html = '';
+						// var i;
+						// for(i=0; i<data.length;i++)
+						// {
+						// html += '<div class="card-body" style="padding: 5px;">'+
+						// 	'<div class="card">'+
+						// 	'<div class="card-body" style="padding-bottom: 3px;">'+
+						// 	'<h4 class="text-primary"><a href="#view" data-toggle="modal" class="item-crud" data="'+data[i].post_id+'">'+data[i].title+'</a></h4>'+
+						// 	'<p>'+data[i].description+'</p>'+
+							
+						// 	'</div>'+
+						// 	'</div>'+
+						// 	'</div>';	
+						// }
+						// $('#saveJob').html(html);
+					},
+					error: function(){
+						alert('Could not load Post');
+					}
+				})
+			}
 
 			function showJobPost(){
 				$.ajax({

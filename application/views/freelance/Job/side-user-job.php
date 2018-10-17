@@ -22,6 +22,7 @@
 				if( $acc == 'Client')
 				{
 					echo '<a href="'.base_url('user/CreateJobPost').'" class="btn btn-info">Create Post</a>';
+					echo '<a href="'.base_url('user/forum').'" class="btn btn-success" >Forum</a>';
 				} 
 				else
 				{

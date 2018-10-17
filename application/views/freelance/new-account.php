@@ -137,7 +137,18 @@
 						<div class="col-lg-9 col-sm-9">
 							<div class="row">
 								<div class="col-lg-3 col-sm-3">
-									<center class="text-primary" style="font-size: 15px;">House No.</center>
+									<?php $acc = $this->session->userdata('acc_type');
+									if($acc == 'Client')
+									{
+										echo '<center class="text-primary" style="font-size: 15px;">Office No.</center>';
+									}
+									else
+									{
+										echo '<center class="text-primary" style="font-size: 15px;">House No.</center>';
+									}	
+									 ?>
+									
+									
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="houseNo" style="font-size: 15px;" class="form-control form-control-sm"
@@ -158,7 +169,7 @@
 							<br>
 							<div class="row">
 								<div class="col-lg-3 col-sm-3" style="padding: 2px;">
-									<center class="text-primary" style="font-size: 15px;">Street Name</center>
+									<center class="text-primary" style="font-size: 15px;">Street</center>
 								</div>
 								<div class="col-lg-9 col-sm-9">
 									<input type="text" name="street" style="font-size: 15px;" class="form-control form-control-sm"

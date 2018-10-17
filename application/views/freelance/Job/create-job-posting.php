@@ -4,19 +4,19 @@
 <div class="col-lg-8 col-sm-8">
 			<div class="card border-primary" style="padding: 10px; border:none;">
 				<div class="card" >
-					<div class="card-header" style="font-size: 20px;">Create Skill Post</div>
+					<div class="card-header" style="font-size: 20px;">Create Job Post</div>
 				  <div class="card-body" style="padding: 3px;">
 				  	<Br>
 				  		<div id="post2"  >
 				  	<br>
-				  		<?php echo form_open_multipart('user/PostSkill_with_image') ?>	 
+				  		<?php echo form_open_multipart('user/PostJob_with_image') ?>	 
 				  		<div class="row">
 				  		 <div class="col-lg-3 col-sm-3">	
 				  		 		<center><p class="text-primary">Title</p></center>
 				  		 </div>
 				  		 <div class="col-lg-9 col-sm-9">
 				  		 	<input type="hidden" name="TypeOfPost" value="Job">
-				  		 	<input type="text" name="title" placeholder="Tell them what you can do?" class="form-control" required value="<?php 
+				  		 	<input type="text" name="title" placeholder="Tell them what you need?" class="form-control" required value="<?php 
 				  		 	if(empty($_POST['title']))
 				  		 	{
 				  		 		echo "";
@@ -35,7 +35,7 @@
 				  	 </div>
 				  	 <div class="col-lg-9 col-sm-9">
 				  		 <div class="form-group">
-				  		  <textarea class="form-control " name="description" placeholder="Briefly Describe what you can do" rows="5" required><?php 
+				  		  <textarea class="form-control " name="description" placeholder="Briefly Describe what you need" rows="5" required><?php 
 				  		 if(empty($_POST['description']))
 				  		 {
 				  		 	echo "";
@@ -122,7 +122,7 @@
 							<br>
 							<input type="submit" value="Submit" class="btn btn-info center">
 							<br>
-							<a class="btn btn-primary center" href="<?php echo base_url('user/skillPosting') ?>" >Back to Skill</a>
+							<a class="btn btn-primary center" href="<?php echo base_url('user/jobPosting') ?>" >Back to Job</a>
 				  		 	</form>	  		
 				  		</div> 	
 

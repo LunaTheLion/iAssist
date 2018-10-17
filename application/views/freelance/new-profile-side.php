@@ -17,19 +17,32 @@
 
 				<br><a href="<?php echo base_url('user/general/'.$this->session->userdata('email')) ?>">
 				<h3 align="center"><?php echo $this->session->userdata('username'); ?></h3></a>
-		
-			<div class="list-group" align="center" style="border:none;">
+			
+			<div class="list-group" align="center" style="border:none;" >
 			  <a href="<?php echo base_url('user/user_profile') ?>" class="list-group-item list-group-item-action " style="border:none;">
 			    Profile
 			  </a>
-			  <a href="<?php echo base_url('user/ProjectPost') ?>" class="list-group-item list-group-item-action" style="border:none;">Projects
+
+			  <?php $acc = $this->session->userdata('acc_type');
+			  if( $acc == 'Client') 
+			  {
+			  	echo "<script>
+			  			$(window).on('load', function(){
+			  			$('#pj').css('display', 'none');
+			  			$('#sk').css('display', 'none');
+			  			})
+			  		</script>";
+			  }
+			  	
+			  ?>
+			  <a id="pj" href="<?php echo base_url('user/ProjectPost') ?>" class="list-group-item list-group-item-action" style="border:none;">Projects
 			  </a>
-			  <a href="#" class="list-group-item list-group-item-action" style="border:none;">
+			  <a href="<?php echo base_url('user/general/'.$this->session->userdata('email')) ?>" class="list-group-item list-group-item-action" style="border:none;">
 			  	<span id="totalJobPost" class="badge badge-light"></span>
 			  	Posts
 			  	<span class="badge" id="new"></span>
 			  </a>
-			  <a href="<?php echo base_url('user/SkillPost')?>" class="list-group-item list-group-item-action " style="border:none;">Skill Post
+			  <a id="sk" href="<?php echo base_url('user/SkillPost')?>" class="list-group-item list-group-item-action " style="border:none;">Skill Post
 			  </a>
 			</div>
 			<div class="card">
@@ -115,6 +128,8 @@
 		$('#openModal').on('click',function(){
 			$('.WarningPost').modal('show');
 		});
+
+
 
 		function showJobPost(){
 

@@ -126,7 +126,6 @@ class User extends CI_CONTROLLER{
 			$this->load->view('freelance/new-account-side-nav');
 			$this->load->view('freelance/new-account.php');
 			$this->load->view('freelance/template/footer');
-
 		}
 		else
 		{	//success filling out the form
@@ -134,9 +133,54 @@ class User extends CI_CONTROLLER{
 			$this->User_Model->create_personal_profile($email);
 			redirect('user/educ','refresh');				
 		}
+	}
+	public function v_client()
+	{
+		$get = $this->User_Model->get_important($this->session->userdata('email'));
+		$sess_data = array(
+			'id' => $get->account_id,
+			'email' =>$get->account_email,
+			'username' => $get->account_username,
+			'acc_type' => $get->account_type,
+		);
+		$this->session->set_userdata($sess_data);
+		
+		$this->form_validation->set_error_delimiters('<span class=error>', '</span>');
 
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		//$this->form_validation->set_rules('middlename', 'Middle Name', 'trim|required');
+		$this->form_validation->set_rules('surname', 'Surname', 'trim|required');
+		$this->form_validation->set_rules('contact', 'Contact', 'trim|required');
+		$this->form_validation->set_rules('houseNo', 'House Number', 'trim|required');
+		$this->form_validation->set_rules('street', 'Street', 'trim|required');
+		$this->form_validation->set_rules('brngy', 'Barangay', 'trim|required');
+		$this->form_validation->set_rules('mncpl', 'Municipal', 'trim|required');
 
+		if($this->form_validation->run() == FALSE )
+		{			
+			//if it didn't meet the Requirements
+			$this->load->view('freelance/template/header', $sess_data);
+			$this->load->view('freelance/new-account-side-nav');
+			$this->load->view('freelance/new-account.php');
+			$this->load->view('freelance/template/footer');
+		}
+		else
+		{	//success filling out the form
+			$email = $this->session->userdata('email');
+			$this->User_Model->create_personal_profile($email);
+			
+			$acc = $this->session->userdata('acc_type');
+			if($acc == 'Client')
+			{
 
+			}
+			else
+			{
+				redirect('user/educ','refresh');	
+			}
+
+		}
 	}
 	public function v_educ()
 	{
@@ -923,6 +967,137 @@ class User extends CI_CONTROLLER{
 	                }   
 			}
 	}
+	public function PostJob_with_image()
+	{	
+			$this->load->helper('form');
+			$this->form_validation->set_error_delimiters('<span class=error>', '</span>');
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[8]');
+			$this->form_validation->set_rules('description', 'Description', 'trim|required');
+			$this->form_validation->set_rules('offer', 'Offer', 'trim|required');
+			$this->form_validation->set_rules('category', 'Category', 'trim|required');
+
+			$config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 100;
+	        $config['max_width']            = 1024;
+	        $config['max_height']           = 768;
+
+	         $this->load->library('upload', $config);
+
+	        // && !$this->upload->do_upload('userfile')
+	         //$this->form_validation->run() == FALSE ||
+			if( !$this->upload->do_upload('userfile') || $this->form_validation->run() == FALSE )
+			{ // input fail
+				
+				if($this->form_validation->run() == FALSE)
+				{
+					$get = $this->User_Model->get_important($this->session->userdata('email'));
+					$sess_data = array(
+						'id' => $get->account_id,
+						'email' =>$get->account_email,
+						'username' => $get->account_username,
+						'img' =>$get->account_img,
+						'acc_type' => $get->account_type,
+					);
+					
+					// echo"<pre>";print_r($job_posts);echo"</pre>";
+					$this->session->set_userdata($sess_data);
+					$this->load->view('freelance/template/header', $sess_data);
+					$this->load->view('freelance/job/side-user-job');
+					$this->load->view('freelance/job/create-job-posting');
+					$this->load->view('freelance/template/footer');
+
+				}
+				else
+				{
+					$error = array('error' => $this->upload->display_errors());
+					$get = $this->User_Model->get_important($this->session->userdata('email'));
+					$sess_data = array(
+						'id' => $get->account_id,
+						'email' =>$get->account_email,
+						'username' => $get->account_username,
+						'img' =>$get->account_img,
+						'acc_type' => $get->account_type,
+					);
+					
+					// echo"<pre>";print_r($job_posts);echo"</pre>";
+					$this->session->set_userdata($sess_data);
+					$this->load->view('freelance/template/header', $sess_data);
+					$this->load->view('freelance/job/side-user-job', $error);
+					$this->load->view('freelance/job/create-job-posting');
+					$this->load->view('freelance/template/footer');
+
+				}
+
+				 
+				$get = $this->User_Model->get_important($this->session->userdata('email'));
+				$sess_data = array(
+						'id' => $get->account_id,
+						'email' =>$get->account_email,
+						'username' => $get->account_username,
+						'img' =>$get->account_img,
+						'acc_type' => $get->account_type,
+					);
+					
+					// echo"<pre>";print_r($job_posts);echo"</pre>";
+					$this->session->set_userdata($sess_data);
+					$this->load->view('freelance/template/header', $sess_data);
+					$this->load->view('freelance/job/side-user-job', $error);
+					$this->load->view('freelance/job/create-job-posting');
+					$this->load->view('freelance/template/footer');
+			}
+			else
+			{// success input
+				 $data = array(
+	                	'upload_data' => $this->upload->data()
+	                );
+	                $file_data = $this->upload->data();
+	                $data['img'] = $file_data['file_name'];
+	                $image =  $file_data['file_name'];
+
+	                $insert_db = $this->User_Model->insert_job($image);
+	                if($insert_db)
+	                {
+	                	//echo 'saved';
+	                	unset($_POST['title']);
+	                	unset($_POST['description']);
+	                	unset($_POST['category']);
+	                	unset($_POST['offer']);
+
+	                	$get = $this->User_Model->get_important($this->session->userdata('email'));
+	                	$sess_data = array(
+	                	'id' => $get->account_id,
+	                	'email' =>$get->account_email,
+	                	'username' => $get->account_username,
+	                	'img' =>$get->account_img,
+	                	'acc_type' => $get->account_type,
+	                	);
+	                	echo "<script>alert('Your Job Post is saved and will be reviewed by the Admin first, before posting.')</script>";
+	                	$this->session->set_userdata($sess_data);
+	               	 	$this->load->view('freelance/template/header', $sess_data);
+						$this->load->view('freelance/job/side-user-job', $data);
+						$this->load->view('freelance/job/create-job-posting');
+						$this->load->view('freelance/template/footer');
+	                }
+	          	 else
+	              {
+	                	$get = $this->User_Model->get_important($this->session->userdata('email'));
+	                	$sess_data = array(
+	                	'id' => $get->account_id,
+	                	'email' =>$get->account_email,
+	                	'username' => $get->account_username,
+	                	'img' =>$get->account_img,
+	                		);
+	                	echo "<script>alert('Sorry, your Job post is not saved.')</script>";
+	                	 $this->session->set_userdata($sess_data);
+	                	$this->load->view('freelance/template/header', $sess_data);
+						$this->load->view('freelance/job/side-user-job');
+						$this->load->view('freelance/job/create-job-posting');
+						$this->load->view('freelance/template/footer');
+	              }   
+			}
+	}
 	public function upload_image_skill()
 	{
 		 	$config['upload_path']          = './uploads/';
@@ -973,10 +1148,7 @@ class User extends CI_CONTROLLER{
 				$this->load->view('freelance/template/header', $sess_data);
 				$this->load->view('freelance/skill/side-user-skill',$data);
 				$this->load->view('freelance/skill/create-skill-posting');
-				$this->load->view('freelance/template/footer');
-
-
-	                
+				$this->load->view('freelance/template/footer');                
 	        }
 	}
 	public function countJobPost()
@@ -993,6 +1165,12 @@ class User extends CI_CONTROLLER{
 	public function get_job_post()
 	{
 		$getData = $this->User_Model->get_user_job_post();
+		//print_r()
+		 echo json_encode($getData);
+	}
+	public function get_saved_job()
+	{
+		$getData = $this->User_Model->get_user_saved_job();
 		//print_r()
 		 echo json_encode($getData);
 	}
@@ -1267,7 +1445,7 @@ class User extends CI_CONTROLLER{
 		 		$this->session->set_userdata($sess_data);
 		 		$this->load->view('freelance/template/header', $sess_data);
 		 		$this->load->view('freelance/new-profile-side');
-		 		$this->load->view('freelance/job/view_user_job',$data);
+		 		$this->load->view('freelance/job/view-user-job',$data);
 		 		$this->load->view('freelance/template/footer');
 		 }
 		 else
@@ -1548,8 +1726,8 @@ class User extends CI_CONTROLLER{
 		// echo"<pre>";print_r($job_posts);echo"</pre>";
 		$this->session->set_userdata($sess_data);
 		$this->load->view('freelance/template/header', $sess_data);
-		$this->load->view('freelance/skill/side-user-skill');
-		$this->load->view('freelance/skill/create-job-posting');
+		$this->load->view('freelance/job/side-user-job');
+		$this->load->view('freelance/job/create-job-posting');
 		$this->load->view('freelance/template/footer');
 	}
 	public function ViewRequest()
@@ -1704,8 +1882,9 @@ class User extends CI_CONTROLLER{
 	}
 	public function checkifSaved()
 	{
-
+		
 	}
+	
 }// end of the controller
 
 

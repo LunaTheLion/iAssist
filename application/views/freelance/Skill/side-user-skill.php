@@ -18,7 +18,19 @@
 			
 
 			<div class="list-group">
-			  <a href="<?php echo base_url('user/CreateSkillPost') ?>" class="btn btn-info">Create Post</a>
+			<?php  $acc = $this->session->userdata('acc_type');
+				if( $acc == 'Client')
+				{
+					echo '';
+				}
+				else
+				{
+					echo '<a href="'.base_url('user/CreateSkillPost').'" class="btn btn-info">Create Post</a>';
+				}
+
+
+			 ?>
+			  
 			  <div class="card">
 			  	
 			  	<div class="card-header" style="">

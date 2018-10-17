@@ -31,7 +31,17 @@
 								 ?>
 							</p>
 							<a class="btn btn-sm btn-success" style="float:0; right:0px;" a href="<?php echo site_url('user/ViewJob/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
-							<button class="btn btn-sm btn-info" style="float:0; right:0px;" id="save" data="<?php echo $row->post_id ?>"> Save</button>
+							<?php $acc = $this->session->userdata('acc_type');
+								if( $acc == 'Client')
+								{
+									echo '';
+								}
+								else
+								{
+									echo '<button class="btn btn-sm btn-info" style="float:0; right:0px;" id="save" data="'.$row->post_id.'"> Save</button>';
+								}	
+							 ?>
+							
 						</div>
 					</div>
 					</div>

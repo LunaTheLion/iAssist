@@ -338,7 +338,7 @@ class Admin_model extends CI_Model{
 	}
 	public function get_new_jobs()
 	{
-		$this->db->where('post_type', 'Job');
+		$this->db->select('*');
 		$this->db->where('status', 0);
 		$query = $this->db->get('freelance_job_tbl');
 		return $query->result();
