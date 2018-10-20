@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user/css/lux-bootstrap.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user/css/lux-bootstrap.min.css')?>">
     <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon"> 
+    
 
     <!-- JavaScript -->
   <script src="<?php echo base_url('assets/user/js/jquery-3.3.1.js') ?>"></script> 
@@ -20,16 +21,18 @@
   <script  src="<?php echo base_url('assets/user/js/popper.min.js') ?>"></script>
   <script  src="<?php echo base_url('assets/user/js/bootstrap.min.js') ?>"></script>
   <script src="<?php echo base_url() ?>assets/user/js/bootstrap.js"></script>
+  
     <!-- TokenField -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/user/rating.css')?>">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
-
-    </head>
+  <script src="<?php echo base_url() ?>assets/user/rating.js"></script>
+  </head>
    
 
 
@@ -81,14 +84,35 @@
 //header("Refresh:"); ?>
       <div class="bs-component">
        
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
+ <?php $acc = $this->session->userdata('acc_type');
+ if($acc == 'Client')
+ {
+  echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+ }
+ else
+ {
+  echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark " >';
+ }
+  ?>
+ 
             
     <div class="container">
                  <a class="navbar-brand" href="<?php echo base_url('/home/')?>">iAssist</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
                    <span class="navbar-toggler-icon"></span>
             </button>
-          <div class="collapse navbar-collapse" id="navbarColor02">
+            <?php $acc = $this->session->userdata('acc_type');
+            if($acc == 'Client')
+            {
+             echo '<div class="collapse navbar-collapse" id="navbarColor03">';
+            }
+            else
+            {
+             echo '<div class="collapse navbar-collapse" id="navbarColor02">';
+            }
+             ?>
+            
+          
                    <ul class="navbar-nav mr-auto">
                  
                     <?php $acc_type = $this->session->userdata('acc_type');
@@ -135,7 +159,18 @@
                         <a id="oo" class="nav-link"  href="JavaScript:;">
                           <!-- <a id="oo" class="nav-link"  href="<?php echo base_url('messaging/inbox')?>"> -->
                           <span class="badge badge-danger" id="newMsg" style="font-size: 15px;"></span>
-                          <img src="<?php echo base_url('assets/img/message.png')?>" style="height:20px; width: 30px;"  rel="shortcut icon" ></a>
+                          <img src="<?php
+                            $acc = $this->session->userdata('acc_type');
+
+                            if($acc == 'Client')
+                            {
+                              echo base_url('assets/img/mb.png');
+                            }
+                            else
+                            {
+                              echo base_url('assets/img/message.png');
+                            }
+                           ?>" style="height:20px; width: 30px;"  rel="shortcut icon" ></a>
                       </li>
                       <li class="nav-item nav-">
                         <a class="nav-link" href="<?php echo site_url('user/general/'.$this->session->userdata('email'))?>"><?php 

@@ -53,7 +53,7 @@
 			  				<option value="Lifestyle">Fun &amp; Lifestyle</option>
 			  			</select>
 			  			<br>
-			  			<input type="text" class="form-control" name="budget" placeholder="Offer">
+			  			<input type="text" class="form-control number" name="budget" id="budget" placeholder="Offer">
 			  			<br>
 			  			<button class="btn btn-info" type="submit">Search Skill</button>
 			  		</div>
@@ -167,6 +167,7 @@
 
 
 		<script>
+			
 			$(window).on('load', function(){
 				countVideoAnimation();
 				countGraphicsDesign();
@@ -176,8 +177,17 @@
 				countProgramminTech();
 				countBusiness()
 				countFunLifestyle();
-				//count newly accepted postings
-				//Video and Animation
+				function addCommas(x) {
+				    var parts = x.toString().split(".");
+				    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				    return parts.join(".");
+				}
+				
+				$('#budget').on('propertychange input', function(e){
+					 var num = $(this).val();
+					var commaNum = addCommas(num);
+					$('#budget').val(commaNum);
+				})		
 				function countVideoAnimation()
 				{
 					$.ajax({

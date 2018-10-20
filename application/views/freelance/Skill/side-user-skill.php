@@ -133,7 +133,7 @@
 				    		<p class="text-primary center">Offer</p>
 				    	</div>
 				    	<div class="col-lg-9 col-sm-9">
-				    		<input type="text" class="form-control" name="offer" required>
+				    		<input type="text" class="form-control" name="offer"  required>
 				    	</div>
 				    </div>
 				    <br>
@@ -167,6 +167,7 @@
 
 
 		<script>
+
 			$(window).on('load', function(){
 				countVideoAnimation();
 				countGraphicsDesign();
@@ -178,6 +179,17 @@
 				countFunLifestyle();
 				//count newly accepted postings
 				//Video and Animation
+				function addCommas(x) {
+				    var parts = x.toString().split(".");
+				    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				    return parts.join(".");
+				}
+				
+				$('#budget').on('propertychange input', function(e){
+					 var num = $(this).val();
+					var commaNum = addCommas(num);
+					$('#budget').val(commaNum);
+				})	
 				function countVideoAnimation()
 				{
 					$.ajax({

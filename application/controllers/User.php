@@ -173,7 +173,7 @@ class User extends CI_CONTROLLER{
 			$acc = $this->session->userdata('acc_type');
 			if($acc == 'Client')
 			{
-
+				redirect('user/general/'.$this->session->userdata('email'));
 			}
 			else
 			{
@@ -1165,14 +1165,18 @@ class User extends CI_CONTROLLER{
 	public function get_job_post()
 	{
 		$getData = $this->User_Model->get_user_job_post();
+		
 		//print_r()
 		 echo json_encode($getData);
 	}
 	public function get_saved_job()
 	{
 		$getData = $this->User_Model->get_user_saved_job();
+		$job = $getData->job_id;
+		$specific = $this->User_Model->get_saved_job($job);
+
 		//print_r()
-		 echo json_encode($getData);
+		 echo json_encode($specific);
 	}
 	public function get_skill_post()
 	{
@@ -1852,7 +1856,7 @@ class User extends CI_CONTROLLER{
 	{
 		//$data_in['id'] = $this->input->get('id');
 		$result = $this->User_model->crud_user_project_post($data_in);
-		//echo json_encode($result);
+		echo json_encode($result);
 	}
 	public function VideoAnimation()
 	{
@@ -1882,7 +1886,23 @@ class User extends CI_CONTROLLER{
 	}
 	public function checkifSaved()
 	{
-		
+		$data_in= $this->input->get('id');
+		$meron = $this->User_Model->checksave($data_in);
+		if($meron)
+		{
+			echo json_encode($meron);
+		}
+		else
+		{
+			$sorry = "Sorry";
+			echo json_encode($sorry);
+		}
+		//echo json_encode($data_in);
+	}
+	public function getUserRate()
+	{
+		$data_in= $this->input->get('id');
+		echo json_encode($data_in);
 	}
 	
 }// end of the controller

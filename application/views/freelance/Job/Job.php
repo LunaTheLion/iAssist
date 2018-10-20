@@ -37,7 +37,8 @@
 									echo '';
 								}
 								else
-								{
+								{	
+									echo '<input type="hidden" value="'.$row->post_id.'" name="postid">';
 									echo '<button class="btn btn-sm btn-info" style="float:0; right:0px;" id="save" data="'.$row->post_id.'"> Save</button>';
 								}	
 							 ?>
@@ -55,7 +56,7 @@
 					checkifsaved();
 					$('#save').on('click', function(){
 						var id = $(this).attr('data');
-						alert(id);
+						//alert(id);
 						$.ajax({
 							type: 'ajax',
 							method: 'get',
@@ -75,7 +76,31 @@
 					});
 					function checkifsaved()
 					{
-						
+						var id = $('input[name=postid]').val();
+						$.ajax({
+							type: 'ajax',
+							method: 'get',
+							url: '<?php echo base_url()?>user/checkifSaved',
+							data: {id:id},
+							async:true,
+							dataType: json,
+							success: function(data)
+							{
+								console.log(data);
+								json = JSON.parse(data);
+								if(json === true)
+								{
+									$('#save').text('Saved');
+									$('#save').removeClass('btn-info');
+									$('#save').addClass('btn-secondary');
+								}
+								
+							},
+							error: function (data)
+							{
+								alert('Sorry cannot check if the job is saved');
+							}
+						})
 					}
 
 				})

@@ -30,6 +30,17 @@
 
 
     <script type="text/javascript"> //for disabled
+    function addCommas(x) {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        return parts.join(".");
+    }
+    
+    $('#budget').on('propertychange input', function(e){
+         var num = $(this).val();
+        var commaNum = addCommas(num);
+        $('#budget').val(commaNum);
+    })  
    $('.collapse').removeClass('');
     
     // $('#myCollapsible').collapse({

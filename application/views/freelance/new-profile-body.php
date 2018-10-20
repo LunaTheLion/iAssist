@@ -138,21 +138,21 @@
 					dataType: 'json',
 					success: function(data){
 						console.log(data);
-						// var html = '';
-						// var i;
-						// for(i=0; i<data.length;i++)
-						// {
-						// html += '<div class="card-body" style="padding: 5px;">'+
-						// 	'<div class="card">'+
-						// 	'<div class="card-body" style="padding-bottom: 3px;">'+
-						// 	'<h4 class="text-primary"><a href="#view" data-toggle="modal" class="item-crud" data="'+data[i].post_id+'">'+data[i].title+'</a></h4>'+
-						// 	'<p>'+data[i].description+'</p>'+
+						var html = '';
+						var i;
+						for(i=0; i<data.length;i++)
+						{
+						html += '<div class="card-body" style="padding: 5px;">'+
+							'<div class="card">'+
+							'<div class="card-body" style="padding-bottom: 3px;">'+
+							'<h4 class="text-primary"><a href="#view" data-toggle="modal" class="item-crud" data="'+data[i].post_id+'">'+data[i].title+'</a></h4>'+
+							'<p>'+data[i].description+'</p>'+
 							
-						// 	'</div>'+
-						// 	'</div>'+
-						// 	'</div>';	
-						// }
-						// $('#saveJob').html(html);
+							'</div>'+
+							'</div>'+
+							'</div>';	
+						}
+						$('#saveJob').html(html);
 					},
 					error: function(){
 						alert('Could not load Post');

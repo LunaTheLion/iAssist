@@ -2,6 +2,7 @@
 
 <div class="col-lg-8 col-sm-8">
 			<br>
+			
 			<div class="row">
 				<?php foreach ($jobs as $row): ?>
 					<br>
@@ -25,7 +26,7 @@
 
 								    //if the string doesn't contain any space then it will cut without word basis.
 								    $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
-								    $string .= '... <a href="'.base_url('user/clickbyCategory/'.$row->category).'">Read More</a>';
+								    $string .= '... <a href="'.site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id).'">Read More</a>';
 								}
 								echo $string;
 
@@ -36,7 +37,7 @@
 
 
 							</p>
-							<a class="btn btn-info" type="submit" style="float:0; right:0px;" a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
+							<a class="btn btn-info btn-sm" type="submit" style="float:0; right:0px;" a href="<?php echo site_url('user/ViewProject/'.$row->title_slug.'/'.$row->post_id) ?>">Visit</a>
 						</div>
 					</div>
 					</div>

@@ -342,12 +342,13 @@ class User_Model extends CI_Model{
 			'budget' => $this->input->post('offer'),
 			'date_created' => date('Y-m-d g:i'),
 			'creator' => $this->session->userdata('email'),
+			'status' => 0,
 		);
 		echo "<pre>";
 		print_r($job);
 		echo "</pre>";
 		$this->db->insert('freelance_job_tbl',$job);
-		if($this->db->affected_rows() == 1 )
+		if($this->db->affected_rows() == 0 )
 		{
 			return true;
 		}
@@ -426,14 +427,28 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function get_saved_job($job)
+	{
+		
+		$this->db->where('post_id', $job);
+		$query = $this->db->get('freelance_job_tbl');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function get_user_saved_job()
 	{
 		$this->db->select('*');
 		$this->db->where('email', $this->session->userdata('email'));
 		$query = $this->db->get('save_jobs_tbl');
-		if($query->num_rows() > 0)
+		if($query->result_array() > 0)
 		{
-			return $query->result();
+			return $query->row();
 		}
 		else
 		{
@@ -510,6 +525,7 @@ class User_Model extends CI_Model{
 	public function get_all_people()
 	{
 		$this->db->select('*');
+		$this->db->where('confirm_code','review');
 		$this->db->where('account_type', 'freelance');
 		$query = $this->db->get('account_tbl');
 		return $query->result();
@@ -1168,6 +1184,21 @@ class User_Model extends CI_Model{
 		if($data->result_array() > 0 )
 		{
 			return $data->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function checksave($data_in)
+	{
+		//$this->db->select('*');
+		$this->db->where('job_id', $data_in);
+		$this->db->where('email', $this->session->userdata('email'));
+		$q = $this->db->get('save_jobs_tbl');
+		if($q->num_rows()> 0 )
+		{
+			return true;
 		}
 		else
 		{
