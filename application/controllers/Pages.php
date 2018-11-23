@@ -7,7 +7,7 @@
 				show_404();
 			}
 			$data['title'] = ucfirst($page);
-
+			//echo "Hello";
 			$this->load->view('templates/header');
 			$this->load->view('pages/'.$page, $data);
 			$this->load->view('templates/footer');

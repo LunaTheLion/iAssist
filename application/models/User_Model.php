@@ -220,8 +220,8 @@ class User_Model extends CI_Model{
 	public function get_skill($email)
 	{
 		$this->db->select('*');
-		// $this->db->where('skill_email', $email);
-		$query = $this->db->get('freelance_skill_table');
+		$this->db->where('email', $email);
+		$query = $this->db->get('programmer');
 		return $query->result();
 	}
 	public function get_post($email)
@@ -330,25 +330,42 @@ class User_Model extends CI_Model{
 	public function insert_job($image)
 	{
 	
-		$job = array(
+		// $job = array(
+		// 	'post_username' => $this->session->userdata('username'),
+		// 	'post_img' => $image,
+		// 	'post_type' => 'Job',
+		// 	'title' => $this->input->post('title'),
+		// 	'title_slug' =>urlencode($this->input->post('title')),
+		// 	'description' => $this->input->post('description'),
+		// 	'budget' => $this->input->post('offer'),
+		// 	'category' =>$this->input->post('category'),
+		// 	'category_slug' => urlencode($this->input->post('category')),
+		// 	'date_created' => date('Y-m-d g:i'),
+		// 	'creator' => $this->session->userdata('email'),
+			
+		// );
+		// echo "<pre>";
+		// print_r($job);
+		// echo "</pre>";
+		//$this->db->insert('client_job_tbl',$job);
+		$skill = array(
 			'post_username' => $this->session->userdata('username'),
 			'post_img' => $image,
 			'post_type' => 'Job',
 			'title' => $this->input->post('title'),
 			'title_slug' =>urlencode($this->input->post('title')),
-			'category' =>$this->input->post('category'),
-			'category_slug' => urlencode($this->input->post('category')),
 			'description' => $this->input->post('description'),
 			'budget' => $this->input->post('offer'),
+			'category' =>$this->input->post('category'),
+			'category_slug' => urlencode($this->input->post('category')),
 			'date_created' => date('Y-m-d g:i'),
 			'creator' => $this->session->userdata('email'),
-			'status' => 0,
 		);
-		echo "<pre>";
-		print_r($job);
-		echo "</pre>";
-		$this->db->insert('freelance_job_tbl',$job);
-		if($this->db->affected_rows() == 0 )
+		// echo "<pre>";
+		// print_r($skill);
+		// echo "</pre>";
+		$this->db->insert('client_job_tbl',$skill);
+		if($this->db->affected_rows() == 1 )
 		{
 			return true;
 		}
@@ -370,7 +387,7 @@ class User_Model extends CI_Model{
 		// 	'creator' => $this->session->userdata('email'),
 		// 	'status' => 0,
 		// );
-		$this->db->insert('freelance_job_tbl',$data_in);
+		$this->db->insert('client_job_tbl',$data_in);
 		if($this->db->affected_rows() == 1 )
 		{
 			return true;
@@ -386,7 +403,7 @@ class User_Model extends CI_Model{
 		//$this->db->where('post_type','Job');
 		$this->db->where('status',0);
 		$this->db->where('creator', $this->session->userdata('email'));
-		$query = $this->db->get('freelance_job_tbl');
+		$query = $this->db->get('client_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->num_rows();
@@ -416,8 +433,8 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$this->db->order_by('date_allowed_by_admin');
 		$this->db->where('creator', $this->session->userdata('email'));
-		$this->db->where('status', '1');
-		$query = $this->db->get('freelance_job_tbl');
+		//$this->db->where('status', '1');
+		$query = $this->db->get('client_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -427,11 +444,42 @@ class User_Model extends CI_Model{
 			return false;
 		}
 	}
+	public function get_user_job_post_id()
+	{
+		$this->db->select('post_id');
+		$this->db->order_by('date_allowed_by_admin');
+		$this->db->where('creator', $this->session->userdata('email'));
+		$this->db->where('status', '1');
+		$query = $this->db->get('client_job_tbl');
+		if($query->result_array() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	 public function get_client_transaction()
+	 {
+	 	$this->db->select('*');
+	 	$this->db->where('client_email', $this->session->userdata('email'));
+	 	$query = $this->db->get('client_transaction_tbl');
+	 	if($query->result_array() > 0)
+	 	{
+	 		return $query->result();
+	 	}
+	 	else
+	 	{
+	 		return false;
+	 	}
+	 }
+
 	public function get_saved_job($job)
 	{
 		
 		$this->db->where('post_id', $job);
-		$query = $this->db->get('freelance_job_tbl');
+		$query = $this->db->get('client_job_tbl');
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -448,7 +496,7 @@ class User_Model extends CI_Model{
 		$query = $this->db->get('save_jobs_tbl');
 		if($query->result_array() > 0)
 		{
-			return $query->row();
+			return $query->result();
 		}
 		else
 		{
@@ -494,7 +542,7 @@ class User_Model extends CI_Model{
 		$this->db->where('post_type', 'Job');
 		$this->db->order_by('date_allowed_by_admin', 'DESC');
 		$this->db->where('status', '1');
-		$query = $this->db->get('freelance_job_tbl');
+		$query = $this->db->get('client_job_tbl');
 		return $query->result();
 	}
 	public function get_all_skill()
@@ -512,7 +560,7 @@ class User_Model extends CI_Model{
 		//$this->db->where('post_type','Project');
 		$this->db->order_by('date_allowed_by_admin', 'ASC');
 		$this->db->where('status', '1');
-		$query = $this->db->get('freelance_job_tbl');
+		$query = $this->db->get('client_job_tbl');
 		return $query->result();
 	}
 	public function count_VA()
@@ -527,6 +575,14 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('confirm_code','review');
 		$this->db->where('account_type', 'freelance');
+		$query = $this->db->get('account_tbl');
+		return $query->result();
+	}
+	public function get_all_client()
+	{
+		$this->db->select('*');
+		$this->db->where('confirm_code','review');
+		$this->db->where('account_type', 'Client');
 		$query = $this->db->get('account_tbl');
 		return $query->result();
 	}
@@ -682,7 +738,7 @@ class User_Model extends CI_Model{
 	{
 		$this->db->where('post_id', $id);
 		$this->db->where('title_slug', $title_slug);
-		$query = $this->db->get('freelance_job_tbl');
+		$query = $this->db->get('client_job_tbl');
 		if($query->result_array() > 0)
 		{
 			return $query->result();
@@ -716,7 +772,7 @@ class User_Model extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('creator', $email);
 		$this->db->where('post_id', $id);
-		$this->db->from('freelance_job_tbl');
+		$this->db->from('client_job_tbl');
 		$this->db->join('account_tbl', 'account_email = creator', 'right');
 		$get = $this->db->get();
 		if($get->result_array() > 0)
@@ -748,7 +804,7 @@ class User_Model extends CI_Model{
 		//echo $id;
 		$this->db->select('creator');
 		$this->db->where('post_id', $id);
-		$data = $this->db->get('freelance_job_tbl');
+		$data = $this->db->get('client_job_tbl');
 		if($data->result_array() > 0 )
 		{
 			return $data->row();
@@ -1148,7 +1204,7 @@ class User_Model extends CI_Model{
 
 	public function insert_user_skill($arr)
 	{
-		$this->db->insert('freelance_skill_table', $arr);
+		$this->db->insert('programmer', $arr);
 		if($this->db->affected_rows() > 0)
 		{
 			return true;

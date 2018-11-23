@@ -1,84 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <title>Megaworld | Condotel</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
-    <!-- Bootstrap -->
-    <link href="<?php echo base_url('assets/css/bootstrap-lux.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/css/bootstrap-lux.min.css'); ?>" rel="stylesheet">
-<!--     <link rel="stylesheet" href="<?php echo base_url('assets/css/Bootswatch-lux-files.bootstrap.css') ?>" media="screen">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/Bootswatch-lux-files.bootstrap.custom.min.css') ?>" media="screen"> -->
+  <!-- Favicons -->
+  <link href="<?php echo base_url('assets/img/favicon.png') ?>" rel="icon">
+  <link href="<?php echo base_url('assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
+  <!-- Bootstrap CSS File -->
+  <link href="<?php echo base_url('assets/lib/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 
- <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux_variables.css')?>" media="screen">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-lux-bootswatch.css')?>">
-  
-    <link href="<?php echo base_url('assets/img/iAssist.ico'); ?>" rel="shortcut icon">
-    <style type="text/css">
-     html{
-       height:100%;
-     }
-     body{
-       min-height:100%; 
-       position:relative;
-       height: 100%;
-      margin: 0;
-      padding: 0;
-        
-     }
-    </style>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-  </head>
-  <body>
-      <div class="bs-component">
-                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="<?php echo base_url('/home');?>">iAssist</a>
-                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
+  <!-- Libraries CSS Files -->
+  <link href="<?php echo base_url('assets/lib/nivo-slider/css/nivo-slider.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/lib/owlcarousel/owl.carousel.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/lib/owlcarousel/owl.transitions.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/lib/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/lib/animate/animate.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/lib/venobox/venobox.css') ?>" rel="stylesheet">
 
-                <div class="navbar-collapse collapse show" id="navbarColor01" style="">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="<?php echo base_url('/home');?>">Home <span class="sr-only">(current)</span></a>
-                    </li>
+  <!-- Nivo Slider Theme -->
+  <link href="<?php echo base_url('assets/css/nivo-slider-theme.css') ?>" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="<?php echo base_url('assets/css/responsive.css') ?>" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+<style type="text/css">
+  body{
+    font-family: TimesNewRoman;
+  }
+
+</style>
+<body data-spy="scroll" data-target="#navbar-example">
+
+  <div id="preloader"></div>
+
+  <header>
+    <!-- header-area start -->
+    <div id="sticker" class="header-area" style="background: rgba(249,244,244,0.6);">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" >
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="<?php echo base_url('')?>">
+                    <img src="<?php echo base_url('assets/img/Megaworld.png')?>" style="width: 360px; height:100px;">
+                  s
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <img src="img/logo.png" alt="" title=""> -->
+								</a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                    <a class="page-scroll" href="#home" style="color: #004990; font-size: 20px; ">Home</a>
+                  </li>
                   
-                    
-                    <li class="nav-item">
-                      <a class="nav-link" href="#features" >Features</a>
-                    </li>
-                   
-                  </ul>
-                </div>
-                <div>
-                   <ul class="navbar-nav mr-auto">
-                    <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php
-                        if(!empty($this->session->has_userdata('email')))
-                        {
-                           echo base_url('user/general/'.$this->session->userdata('email'));
-                        }
-                        else
-                        {
-                           echo base_url('/sign-in');
-                        }
-                      ?>">Sign In</a>
-                    </li>
-                    <li class="nav-item nav-">
-                      <a class="nav-link" href="<?php echo base_url('/sign-up');?>">Sign Up</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-      </div>    
+                  </li>
 
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #004990; font-size: 20px; ">Projects<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href=# >Drop Down 1</a></li>
+                      <li><a href=# >Drop Down 2</a></li>
+                    </ul> 
+                  </li>
 
-
-
-   
+                  <li>
+                    <a class="page-scroll" href="#AboutCondotel" style="color: #004990; font-size: 20px; ">About Condotel</a>
+                  </li>
+                   <li>
+                    <a class="page-scroll" href="#AboutMegaworld" style="color: #004990; font-size: 20px; ">About Megaworld</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#contact" style="color: #004990; font-size: 20px; ">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- navbar-collapse -->
+            </nav>
+            <!-- END: Navigation -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header-area end -->
+  </header>
+  <!-- header end -->

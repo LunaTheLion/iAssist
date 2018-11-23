@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/iAssist/';
-$route['general/(:any)'] = "/iAssist/general/$1";
+$config['base_url'] = 'http://localhost/Megaworld-Condotel/';
+$route['general/(:any)'] = "/Megaworld-Condotel/general/$1";
 
 /*
 |--------------------------------------------------------------------------
