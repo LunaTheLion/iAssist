@@ -12,4 +12,10 @@
 			$this->load->view('pages/'.$page, $data);
 			$this->load->view('templates/footer');
 		}
+		public function send_email()
+		{
+			echo $_POST['name'];
+			echo $_POST['email'];
+			echo $_POST['subject'];
+		}
 	}
