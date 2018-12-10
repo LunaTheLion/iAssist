@@ -68,14 +68,18 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>information</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
+                <h4>Properties</h4>
+                <h5 style="margin-bottom: 0px;">LUZON</h5>
+                &nbsp;&nbsp;<a href="">Savoy Hotel Newport City</a><br>
+                &nbsp;&nbsp;<a href="">Belmont Hotel Newport City</a><br>
+                &nbsp;&nbsp;<a href="">Kingsford Hotel Entertainment City</a><br>
+                &nbsp;&nbsp;<a href="">Grandwest Site Entertainment City</a><br>
+
+          
                 <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> contact@example.com</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
+                  <p><span>Call:</span>  +639 178 403 037</p>
+                  <p><span>Email:</span> megaworldproperties168@gmail.com</p>
+                  
                 </div>
               </div>
             </div>
